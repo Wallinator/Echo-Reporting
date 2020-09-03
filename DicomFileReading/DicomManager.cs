@@ -7,12 +7,16 @@ using Dicom;
 namespace DICOMReporting.DicomFileReading {
 	public class DicomManager {
 		public static void test() {
-			DicomFile file = DicomFile.Open("../../../test materials/STUDYX0W");
+			string directory = "../../../test materials";
 
-			var walker = new DicomDatasetWalker(file.Dataset);
 
-			//GetFiles();
-			walker.Walk(new Walker());
+			var e = new DicomFileEnumerator(new DirectoryInfo(directory));
+			while (e.MoveNext()) {
+
+				//var walker = new DicomDatasetWalker(e.Current.Dataset);
+				System.Diagnostics.Debug.WriteLine(e.Current.File.Name);
+			}
+			//walker.Walk(new Walker());
 
 			/*var en = file.Dataset.GetEnumerator();
 			while (en.MoveNext()) {
@@ -22,24 +26,6 @@ namespace DICOMReporting.DicomFileReading {
 				//System.Diagnostics.Debug.WriteLine(en.Current.ValueRepresentation.IsMultiValue);
 			}*/
 		}
-		public static void GetFiles() {
-			string directory = "../../../test materials";
-			var dirinfo = new DirectoryInfo(directory);
-			List<DicomFile> filenames = new List<DicomFile>();
-			var fileenum = dirinfo.EnumerateFiles("*", new EnumerationOptions() { RecurseSubdirectories = true, IgnoreInaccessible = true }).GetEnumerator();
-			while (fileenum.MoveNext()) {
-				DicomFile file;
-				try {
-					file = DicomFile.Open(fileenum.Current.FullName);
-				}
-				catch (Exception) {
-					continue;
-				}
-				if (file.Dataset.InternalTransferSyntax.Equals(DicomTransferSyntax.ImplicitVRLittleEndian)) {
-					filenames.Add(file);
-					System.Diagnostics.Debug.WriteLine(fileenum.Current.Name);
-				}
-			}
-		}
+		
 	}
 }
