@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Dicom;
+using DICOMReporting.Data;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using System.Text;
-using Dicom;
 
 namespace DICOMReporting.DicomFileReading {
 	public class DicomManager {
@@ -11,10 +11,12 @@ namespace DICOMReporting.DicomFileReading {
 
 
 			var e = new DicomFileEnumerator(new DirectoryInfo(directory));
-			while (e.MoveNext()) {
-
-				//var walker = new DicomDatasetWalker(e.Current.Dataset);
-				System.Diagnostics.Debug.WriteLine(e.Current.File.Name);
+			if (e.MoveNext()) {
+				new StructuredReport(e.Current.Dataset);
+				var list = GetMeasurements(e.Current.Dataset);
+				foreach (MeasurementHeader x in list) {
+					Debug.WriteLine(x);
+				}
 			}
 			//walker.Walk(new Walker());
 
@@ -26,6 +28,12 @@ namespace DICOMReporting.DicomFileReading {
 				//System.Diagnostics.Debug.WriteLine(en.Current.ValueRepresentation.IsMultiValue);
 			}*/
 		}
-		
+		public static List<MeasurementHeader> GetMeasurements(DicomDataset dataset) {
+			List<MeasurementHeader> list = new List<MeasurementHeader>();
+			;
+			DicomDatasetWalker walker = new DicomDatasetWalker(dataset);
+			//walker.Walk(new SRWalker());
+			return list;
+		}
 	}
 }

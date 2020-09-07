@@ -1,24 +1,25 @@
-﻿using CharLS;
-using Dicom;
+﻿using Dicom;
 using Dicom.IO.Buffer;
 using Dicom.StructuredReport;
 using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DICOMReporting.DicomFileReading {
-	public class Walker : IDicomDatasetWalker {
+	public class SRWalker : IDicomDatasetWalker {
+
+
 		//public string level = "";
 		public bool OnBeginFragment(DicomFragmentSequence fragment) {
 			//System.Diagnostics.Debug.WriteLine(fragment.Tag.DictionaryEntry.Name);
-			return true;		
+			return true;
 		}
 
 		public bool OnBeginSequence(DicomSequence sequence) {
-
 			DicomDataset measuredvaluesequence;
+
+
 			if (sequence.Tag.Equals(DicomTag.ContentSequence)) {
 				DicomCodeItem codeitem;
 				try {
@@ -29,7 +30,10 @@ namespace DICOMReporting.DicomFileReading {
 				}
 				if (codeitem.Value == "121033") {
 					measuredvaluesequence = sequence.Items.First().GetMeasuredValue(DicomTag.MeasuredValueSequence);
-					System.Diagnostics.Debug.WriteLine(codeitem.Value + "  " + codeitem.Meaning + "  " + measuredvaluesequence.GetString(DicomTag.NumericValue));
+					DicomCodeItem measurementtype = measuredvaluesequence.GetCodeItem(DicomTag.MeasurementUnitsCodeSequence);
+					//.WriteLine();
+					Debug.WriteLine(codeitem.Value + "  " + codeitem.Meaning + "  " + measuredvaluesequence.GetString(DicomTag.NumericValue) + " " + measurementtype.Meaning);
+					return false;
 				}
 			}
 			return true;
