@@ -4,7 +4,7 @@
 		public decimal Value;
 		public MeasurementUnit Unit;
 
-		public MeasurementHeader(string name, decimal value, MeasurementUnit unit) {
+		public MeasurementHeader(string name, decimal value, MeasurementUnit unit = new MeasurementUnit()) {
 			Name = name;
 			Value = value;
 			Unit = unit;

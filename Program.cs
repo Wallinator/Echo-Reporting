@@ -12,7 +12,7 @@ namespace DICOMReporting {
 						Application.EnableVisualStyles();
 						Application.SetCompatibleTextRenderingDefault(false);
 						Application.Run(new Form1());*/
-			DicomFileReading.DicomManager.test();
+			DicomFileReading.DicomReader.test();
 		}
 	}
 }

@@ -5,7 +5,6 @@ using System.Linq;
 namespace DICOMReporting.Data {
 	public class Measurement {
 		public MeasurementHeader Header;
-		public bool Mean = false;
 		public Dictionary<string, string> Properties = new Dictionary<string, string>();
 
 		public Measurement() {
@@ -16,12 +15,7 @@ namespace DICOMReporting.Data {
 		}
 
 		public void AddProperty(string name, string value) {
-			if (name.Equals("Derivation") && value.Equals("Mean")) {
-				Mean = true;
-			}
-			else {
-				Properties[name] = value;
-			}
+			Properties[name] = value;
 		}
 
 		public void PrintDebug() {
