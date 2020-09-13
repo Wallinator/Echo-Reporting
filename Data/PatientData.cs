@@ -27,7 +27,7 @@ namespace DICOMReporting.Data {
 				switch (child.Code.Value) {
 					case "121033":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
-						PatientAge = new MeasurementHeader(child.Code.Meaning, measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+						PatientAge = new MeasurementHeader(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
 						Debug.WriteLine(PatientAge);
 						break;
 					case "121032":
@@ -36,22 +36,22 @@ namespace DICOMReporting.Data {
 						break;
 					case "8302-2":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
-						PatientSize = new MeasurementHeader(child.Code.Meaning, measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+						PatientSize = new MeasurementHeader(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
 						Debug.WriteLine(PatientSize);
 						break;
 					case "29463-7":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
-						PatientWeight = new MeasurementHeader(child.Code.Meaning, measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+						PatientWeight = new MeasurementHeader(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
 						Debug.WriteLine(PatientWeight);
 						break;
 					case "F-008EC":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
-						SystolicBloodPressure = new MeasurementHeader(child.Code.Meaning, measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+						SystolicBloodPressure = new MeasurementHeader(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
 						Debug.WriteLine(SystolicBloodPressure);
 						break;
 					case "F-008ED":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
-						DiastolicBloodPressure = new MeasurementHeader(child.Code.Meaning, measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+						DiastolicBloodPressure = new MeasurementHeader(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
 						Debug.WriteLine(DiastolicBloodPressure);
 						break;
 					case "121029":
@@ -68,7 +68,7 @@ namespace DICOMReporting.Data {
 						var numbers = Regex.Split(input, @"\D+").ToList().GetRange(1, 3).Select(x => int.Parse(x)).ToArray();
 						//Debug.WriteLine(numbers[0] + " " + numbers[1] + " " + numbers[2]);
 						PatientDOB = new DateTime(numbers[0], numbers[1], numbers[2]);
-						Debug.WriteLine(PatientDOB.Date);
+						Debug.WriteLine(PatientDOB);
 						break;
 					default:
 						break;

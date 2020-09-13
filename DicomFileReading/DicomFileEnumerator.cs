@@ -19,7 +19,7 @@ namespace DICOMReporting.DicomFileReading {
 
 		public DicomFileEnumerator(DirectoryInfo dirinfo) {
 			this.dirinfo = dirinfo;
-			init();
+			Init();
 		}
 
 		public void Dispose() {
@@ -52,7 +52,7 @@ namespace DICOMReporting.DicomFileReading {
 			return file.Dataset.InternalTransferSyntax.Equals(DicomTransferSyntax.ImplicitVRLittleEndian);
 		}
 
-		private void init() {
+		private void Init() {
 			fileEnumerator = dirinfo.EnumerateFiles("*", new EnumerationOptions() { RecurseSubdirectories = true, IgnoreInaccessible = true }).GetEnumerator();
 		}
 	}
