@@ -1,17 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using DICOMReporting.Data.Units;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
 namespace DICOMReporting.Data {
 	public class Measurement {
-		public MeasurementHeader Header;
+		public IMeasurementHeader Header;
 		public Dictionary<string, string> Properties = new Dictionary<string, string>();
 
 		public Measurement() {
 		}
 
-		public Measurement(MeasurementHeader measurement) {
-			Header = measurement;
+		public Measurement(IMeasurementHeader header) {
+			Header = header;
 		}
 
 		public void AddProperty(string name, string value) {
@@ -19,7 +20,7 @@ namespace DICOMReporting.Data {
 		}
 
 		public void PrintDebug() {
-			Debug.WriteLine("\t" + Header);
+			Debug.WriteLine("\t" + Header.ToString());
 			foreach (var name in Properties.Keys) {
 				Debug.WriteLine("\t" + "\t" + name + ": " + Properties[name]);
 			}

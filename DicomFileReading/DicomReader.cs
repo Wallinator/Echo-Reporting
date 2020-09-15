@@ -1,6 +1,7 @@
 ﻿using Dicom;
 using Dicom.StructuredReport;
 using DICOMReporting.Data;
+using DICOMReporting.Data.Units;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -43,7 +44,7 @@ namespace DICOMReporting.DicomFileReading {
 					foreach (var rawmeasurement in site.Children()) {
 						Measurement measurement = GetMeasurementFromRaw(rawmeasurement);
 						measurements.Add(measurement);
-						//measurement.PrintDebug();
+						measurement.PrintDebug();
 					}
 					if (findings.ContainsKey(sitename)) {
 						findings[sitename].AddRange(measurements);
@@ -57,7 +58,7 @@ namespace DICOMReporting.DicomFileReading {
 
 		private static Measurement GetMeasurementFromRaw(DicomContentItem raw) {
 			DicomMeasuredValue measurementsequence = raw.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
-			MeasurementHeader m = new MeasurementHeader(raw.Code.Meaning, measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+			IMeasurementHeader m = HeaderFactory.Parse(raw.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
 
 			Measurement measurement = new Measurement(m);
 

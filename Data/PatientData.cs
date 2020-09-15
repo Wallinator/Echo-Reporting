@@ -1,5 +1,6 @@
 ﻿using Dicom;
 using Dicom.StructuredReport;
+using DICOMReporting.Data.Units;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -13,11 +14,11 @@ namespace DICOMReporting.Data {
 		public string PatientName;
 		public string PatientSex;
 		public DateTime PatientDOB;
-		public MeasurementHeader PatientAge;
-		public MeasurementHeader PatientWeight;
-		public MeasurementHeader PatientSize;
-		public MeasurementHeader SystolicBloodPressure;
-		public MeasurementHeader DiastolicBloodPressure;
+		public IMeasurementHeader PatientAge;
+		public IMeasurementHeader PatientWeight;
+		public IMeasurementHeader PatientSize;
+		public IMeasurementHeader SystolicBloodPressure;
+		public IMeasurementHeader DiastolicBloodPressure;
 
 		public PatientData(DicomContentItem patientcontainer) {
 			foreach (var child in patientcontainer.Children()) {
@@ -27,7 +28,7 @@ namespace DICOMReporting.Data {
 				switch (child.Code.Value) {
 					case "121033":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
-						PatientAge = new MeasurementHeader(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+						PatientAge = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
 						Debug.WriteLine(PatientAge);
 						break;
 					case "121032":
@@ -36,22 +37,22 @@ namespace DICOMReporting.Data {
 						break;
 					case "8302-2":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
-						PatientSize = new MeasurementHeader(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+						PatientSize = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
 						Debug.WriteLine(PatientSize);
 						break;
 					case "29463-7":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
-						PatientWeight = new MeasurementHeader(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+						PatientWeight = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
 						Debug.WriteLine(PatientWeight);
 						break;
 					case "F-008EC":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
-						SystolicBloodPressure = new MeasurementHeader(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+						SystolicBloodPressure = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
 						Debug.WriteLine(SystolicBloodPressure);
 						break;
 					case "F-008ED":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
-						DiastolicBloodPressure = new MeasurementHeader(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+						DiastolicBloodPressure = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
 						Debug.WriteLine(DiastolicBloodPressure);
 						break;
 					case "121029":

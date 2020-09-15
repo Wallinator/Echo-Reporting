@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="fo-dicom" Version="4.0.6" />
+    <PackageReference Include="UnitsNet" Version="4.70.1" />
   </ItemGroup>
 
 </Project>
