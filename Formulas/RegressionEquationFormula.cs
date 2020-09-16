@@ -1,13 +1,17 @@
 ﻿using System;
 
 namespace DICOMReporting.Formulas {
-	public static class RegressionEquationFormula {
+	public class RegressionEquationFormula : IFormula {
+		private Constants constants;
 
-		public static double GetZScore(double observed_y, Constants constants) {
+		public RegressionEquationFormula(Constants constants) {
+			this.constants = constants;
+		}
+		public double GetZScore(double observed_y) {
 			double mean_y = constants.b0 + (constants.b1 * constants.BSA) + (constants.b2 * Math.Pow(constants.BSA, 2)) + (constants.b3 * Math.Pow(constants.BSA, 3));
 			return (Math.Log(observed_y) - mean_y) / Math.Sqrt(constants.MSE);
 		}
-		public class Constants {
+		public struct Constants {
 			public static Constants IVSd(double BSA) {
 				return new Constants(-1.242, 1.272, -0.762, 0.208, 0.046, BSA);
 			}

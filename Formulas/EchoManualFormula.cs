@@ -1,10 +1,14 @@
 ﻿namespace DICOMReporting.Formulas {
-	public static class EchoManualFormula {
+	public class EchoManualFormula : IFormula {
+		private Constants constants;
 
-		public static double GetZScore(double measurement, Constants constants) {
+		public EchoManualFormula(Constants constants) {
+			this.constants = constants;
+		}
+		public double GetZScore(double measurement) {
 			return (measurement - constants.Average) / constants.SD;
 		}
-		public class Constants {
+		public struct Constants {
 			public static Constants MVDecelTime(double Age) {
 				double[] averages = { 145 ,  157 ,172 };
 				double[] sds = { 18 ,19 , 22 };

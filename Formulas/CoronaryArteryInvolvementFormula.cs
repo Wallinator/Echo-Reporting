@@ -1,12 +1,18 @@
 ﻿using System;
 
 namespace DICOMReporting.Formulas {
-	public static class CoronaryArteryInvolvementFormula {
-		public static double GetZScore(double observed_y, Constants constants) {
+	public class CoronaryArteryInvolvementFormula : IFormula {
+		private Constants constants;
+
+		public CoronaryArteryInvolvementFormula(Constants constants) {
+			this.constants = constants;
+		}
+
+		public double GetZScore(double observed_y) {
 			double mean_y = (constants.Multiplier * Math.Pow(constants.BSA, constants.Power)) + constants.Intercept;
 			return ((observed_y / 10) - mean_y) / Math.Sqrt(constants.SD);
 		}
-		public class Constants {
+		public struct Constants {
 			public static Constants LeftMainCoronary(double BSA) {
 				return new Constants(0.31747, 0.36008, -0.02887, 0.03040 + (0.01514 * BSA), BSA);
 			}

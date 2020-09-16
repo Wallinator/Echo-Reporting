@@ -1,15 +1,21 @@
 ﻿using System;
 
 namespace DICOMReporting.Formulas {
-	public static class DilationOfAscendingAortaFormula {
-		public static double GetZScore(double observed_y, Constants constants) {
+	public class DilationOfAscendingAortaFormula : IFormula {
+		private Constants constants;
+
+		public DilationOfAscendingAortaFormula(Constants constants) {
+			this.constants = constants;
+		}
+
+		public double GetZScore(double observed_y) {
 			double mean_y = (constants.Multiplier * Math.Log(constants.BSA)) + constants.Intercept;
 			return (Math.Log(observed_y) - mean_y) / Math.Sqrt(constants.MSE);
 		}
-		public class Constants {
+		public struct Constants {
 			public static Constants AscendingAorta(double BSA) {
 				return new Constants(0.421, 2.898, 0.09111, BSA);
-			}
+			}/*
 			public static Constants AorticAnnulus(double BSA) {
 				return new Constants(0.426, 2.732, 0.10392, BSA);
 			}
@@ -18,7 +24,7 @@ namespace DICOMReporting.Formulas {
 			}
 			public static Constants STJunction(double BSA) {
 				return new Constants(0.434, 2.819, 0.10961, BSA);
-			}
+			}*/
 			public double Multiplier {
 				get; private set;
 			}

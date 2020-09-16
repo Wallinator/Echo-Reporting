@@ -1,10 +1,15 @@
 ﻿namespace DICOMReporting.Formulas {
-	public static class ImpactOfCardiacGrowthFormula {
+	public class ImpactOfCardiacGrowthFormula : IFormula {
+		private Constants constants;
 
-		public static double GetZScore(double measurement, Constants constants) {
+		public ImpactOfCardiacGrowthFormula(Constants constants) {
+			this.constants = constants;
+		}
+		public double GetZScore(double measurement) {
 			return (measurement - constants.Average) / constants.SD;
 		}
-		public class Constants {
+
+		public struct Constants {
 			public static Constants MitralValveEWave(double Age) {
 				double[] averages = { 79.7, 95.2, 94.4, 94.5, 90.3 };
 				double[] sds = { 18.8, 19.5, 14.8, 16, 17.8 };
@@ -84,7 +89,7 @@
 				double[] averages = { 13.8 , 17.1  ,  16.5  ,  16.5 ,   16.7 };
 				double[] sds = { 8.2 ,   4  , 3  , 3.1, 2.8 };
 				return new Constants(averages, sds, Age);
-			}
+			}/*
 			public static Constants TricuspidAnnulusA(double Age) {
 				double[] averages = { 9.8  , 10.9 ,   9.8 ,10.3,    10.1 };
 				double[] sds = { 2.4  ,  2.7, 2.7, 3.4, 2.6 };
@@ -94,7 +99,7 @@
 				double[] averages = { 10.2 , 13.2  ,  13.4 ,   13.9  ,  14.2 };
 				double[] sds = { 5.5  ,  2 ,  2 ,  2.4, 2.3 };
 				return new Constants(averages, sds, Age);
-			}
+			}*/
 			public double Average {
 				get; private set;
 			}
