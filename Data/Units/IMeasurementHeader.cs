@@ -13,6 +13,8 @@
 		public string UnitShorthand {
 			get;
 		}
-
+		public string AsString() {
+			return Name + ": " + Value + " " + UnitShorthand;
+		}
 	}
 }

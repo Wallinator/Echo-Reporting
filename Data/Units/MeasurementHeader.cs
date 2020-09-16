@@ -31,7 +31,7 @@ namespace DICOMReporting.Data {
 			set;
 		}
 		public override string ToString() {
-			return Name + ": " + Value + " " + UnitShorthand;
+			return ((IMeasurementHeader) this).AsString();
 		}
 
 
