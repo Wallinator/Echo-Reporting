@@ -2,12 +2,13 @@
 
 namespace DICOMReporting.Data {
 	public class StructuredReport {
-		private PatientData _patientData;
+		private PatientData patientData;
+
 		public PatientData PatientData {
-			get {
-				return _patientData;
-			} set {
-				PatientData = value;
+			get => patientData;
+
+			set {
+				patientData = value;
 				BSA = CalculateBSA(value.PatientSize.Value, value.PatientWeight.Value);
 			}
 		}

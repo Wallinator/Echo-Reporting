@@ -26,8 +26,5 @@ namespace DICOMReporting.Data {
 			}
 		}
 
-		public bool CompareProperties(Dictionary<string, string> properties) {
-			return Properties.Count == properties.Count && !Properties.Except(properties).Any();
-		}
 	}
 }
