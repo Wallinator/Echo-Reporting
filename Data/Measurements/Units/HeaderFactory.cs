@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using UnitsNet;
-using UnitsNet.Units;
+﻿using UnitsNet;
 
-namespace DICOMReporting.Data.Units {
+namespace DICOMReporting.Data.Measurements.Units {
 	public static class HeaderFactory {
 		public static IMeasurementHeader Parse(string name, double value, string unitname, string unitshorthand) {
 			IQuantity quantity;
 			string parsestring = string.Format("{0} {1}", value, unitshorthand);
-			var e = SupportedUnitsHelpers.SupportedUnits.GetEnumerator();
-			while (e.MoveNext()) {
-				if (Quantity.TryParse(e.Current, parsestring, out quantity)) {
+
+			foreach (var t in SupportedUnitsHelpers.SupportedUnits) {
+				if (Quantity.TryParse(t, parsestring, out quantity)) {
 					return new UnitHeaderAdapter(name, quantity);
 				} 
 			}

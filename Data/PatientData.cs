@@ -1,10 +1,12 @@
 ﻿using Dicom;
 using Dicom.StructuredReport;
-using DICOMReporting.Data.Units;
+using DICOMReporting.Data.Measurements;
+using DICOMReporting.Data.Measurements.Units;
 using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
+using UnitsNet.Units;
 
 namespace DICOMReporting.Data {
 	public class PatientData {
@@ -29,6 +31,7 @@ namespace DICOMReporting.Data {
 					case "121033":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
 						PatientAge = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+						SupportedUnitsHelpers.Convert(PatientAge, DurationUnit.Year365);
 						Debug.WriteLine(PatientAge);
 						break;
 					case "121032":

@@ -1,6 +1,5 @@
-﻿using DICOMReporting.Data.Units;
-
-namespace DICOMReporting.Data {
+﻿
+namespace DICOMReporting.Data.Measurements {
 	public class MeasurementHeader : IMeasurementHeader {
 		public MeasurementHeader()  {
 		}
@@ -10,6 +9,12 @@ namespace DICOMReporting.Data {
 			Value = value;
 			UnitName = unitName;
 			UnitShorthand = unitShorthand;
+		}
+		public MeasurementHeader(IMeasurementHeader header) {
+			Name = header.Name;
+			Value = header.Value;
+			UnitName = header.UnitName;
+			UnitShorthand = header.UnitShorthand;
 		}
 
 		public double Value {

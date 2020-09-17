@@ -5,22 +5,21 @@ using System.Globalization;
 using System.Text;
 using System.Transactions;
 using UnitsNet;
-using UnitsNet.Units;
 
-namespace DICOMReporting.Data.Units {
+namespace DICOMReporting.Data.Measurements.Units {
 	public class UnitHeaderAdapter : IMeasurementHeader {
-		private IQuantity _quantity;
+		public IQuantity Quantity;
 		public UnitHeaderAdapter(string name, IQuantity quantity) {
 			Name = name;
-			_quantity = quantity;
+			Quantity = quantity;
 			UnitShorthand = SupportedUnitsHelpers.GetUnitShortHand(quantity);
 		}
 
 		public string Name { get; set; }
 
-		public double Value => _quantity.Value;
+		public double Value => Quantity.Value;
 
-		public string UnitName => _quantity.Unit.ToString();
+		public string UnitName => Quantity.Unit.ToString();
 
 		public string UnitShorthand {
 			get;

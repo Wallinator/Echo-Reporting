@@ -1,7 +1,7 @@
 ﻿﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace DICOMReporting.Data {
+namespace DICOMReporting.Data.Measurements {
 	public class MeasurementGroup {
 		public string Name;
 		public Dictionary<string, string> Properties;
@@ -20,7 +20,7 @@ namespace DICOMReporting.Data {
 			foreach (var measurement in measurements) {
 				assigned = false;
 				foreach (var group in groups) {
-					if (MeasurementHelpers.CompareProperties(measurement, group)) {
+					if (measurement.Header.Name.Equals(group.Name) && MeasurementHelpers.CompareProperties(measurement.Properties, group)) {
 						group.Measurements.Add(measurement);
 						assigned = true;
 						break;
@@ -38,13 +38,7 @@ namespace DICOMReporting.Data {
 				return Measurements.First();
 			}
 			else {
-				return Measurements.Find((m) => {
-					if (m.Properties.TryGetValue("Derivation", out string val) && val.Equals("Mean")) {
-						return true;
-
-					}
-					return false;
-				});
+				return Measurements.Find(m => m.Properties.TryGetValue("Derivation", out string val) && val.Equals("Mean"));
 			}
 		}
 	}

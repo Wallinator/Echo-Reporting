@@ -1,7 +1,8 @@
 ﻿using Dicom;
 using Dicom.StructuredReport;
 using DICOMReporting.Data;
-using DICOMReporting.Data.Units;
+using DICOMReporting.Data.Measurements;
+using DICOMReporting.Data.Measurements.Units;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;

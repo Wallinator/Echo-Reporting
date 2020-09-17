@@ -1,4 +1,4 @@
-﻿namespace DICOMReporting.Data.Units {
+﻿namespace DICOMReporting.Data.Measurements {
 	public interface IMeasurementHeader {
 	
 		public string Name {
