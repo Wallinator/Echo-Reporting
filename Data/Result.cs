@@ -25,5 +25,13 @@ namespace DICOMReporting.Data {
 		}
 
 		public double ZScore => Formula.GetZScore(Value);
+
+		public override string ToString() {
+			string ZSCORE = "";
+			if (ZScoreable) {
+				ZSCORE = " Z Score: " + ZScore;
+			}
+			return Name + ": " + Value + " " + UnitShorthand + ZSCORE;
+		}
 	}
 }

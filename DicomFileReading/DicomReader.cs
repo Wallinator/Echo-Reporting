@@ -21,8 +21,8 @@ namespace DICOMReporting.DicomFileReading {
 
 		public static void GetStructuredReport(DicomDataset ds) {
 			var sr = new DicomStructuredReport(ds);
-			PatientData pd;
-			var findings = new Dictionary<string, List<Measurement>>();
+			PatientData pd = null;
+			var findings = new Dictionary<string, List<MeasurementGroup>>();
 			foreach (var group in sr.Children()) {
 				if (group.Type == DicomValueType.Container && group.Code.Value.Equals("121070")) {
 					HandleFinding(findings, group);
@@ -31,27 +31,29 @@ namespace DICOMReporting.DicomFileReading {
 					pd = new PatientData(group);
 				}
 			}
+			var report = new StructuredReport(pd);
+			report.ResultsFromFindings(findings);
 		}
 
-		private static void HandleFinding(Dictionary<string, List<Measurement>> findings, DicomContentItem finding) {
+		private static void HandleFinding(Dictionary<string, List<MeasurementGroup>> findings, DicomContentItem finding) {
 			string sitename = "";
 			foreach (var site in finding.Children()) {
 				if (site.Type != DicomValueType.Container) {
 					sitename = site.Dataset.GetCodeItem(DicomTag.ConceptCodeSequence).Meaning;
-					Debug.WriteLine(sitename);
+					//Debug.WriteLine(sitename);
 				}
 				else {
 					var measurements = new List<Measurement>();
 					foreach (var rawmeasurement in site.Children()) {
 						Measurement measurement = GetMeasurementFromRaw(rawmeasurement);
 						measurements.Add(measurement);
-						measurement.PrintDebug();
+						//measurement.PrintDebug();
 					}
 					if (findings.ContainsKey(sitename)) {
-						findings[sitename].AddRange(measurements);
+						findings[sitename].AddRange(MeasurementGroup.GroupMeasurements(measurements));
 					}
 					else {
-						findings.Add(sitename, measurements);
+						findings.Add(sitename, MeasurementGroup.GroupMeasurements(measurements));
 					}
 				}
 			}

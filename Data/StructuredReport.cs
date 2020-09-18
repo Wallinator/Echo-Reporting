@@ -2,11 +2,12 @@
 using DICOMReporting.Formulas;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace DICOMReporting.Data {
 	public class StructuredReport {
 		private PatientData patientData;
-		public Dictionary<string, Result> Results;
+		public Dictionary<string, Result> Results = new Dictionary<string, Result>();
 
 		public PatientData PatientData {
 			get => patientData;
@@ -28,15 +29,18 @@ namespace DICOMReporting.Data {
 			//weight in kg
 			return 0.024265 * Math.Pow(height, 0.3964) * Math.Pow(weight, 0.5378);
 		}
-		public void something(Dictionary<string, List<MeasurementGroup>> findings, Dictionary<string, List<MeasurementSpecification>> specsbysite) {
+		public void ResultsFromFindings(Dictionary<string, List<MeasurementGroup>> findings) {
+			Dictionary<string, List<MeasurementSpecification>> specsbysite = MeasurementSpecification.SpecsBySite(BSA, patientData.PatientAge.Value);
 			foreach (var sitename in specsbysite.Keys) {
-				dosomething(findings[sitename], specsbysite[sitename]);
+				ResultsFromGroups(findings[sitename], specsbysite[sitename]);
 			}
 		}
 
-		private void dosomething(List<MeasurementGroup> groups, List<MeasurementSpecification> specs) {
+		private void ResultsFromGroups(List<MeasurementGroup> groups, List<MeasurementSpecification> specs) {
 			foreach (var spec in specs) {
-				spec.FindAndRemoveFromGroups(groups);
+				var r = spec.FindAndRemoveFromGroups(groups);
+				Results.Add(r.Name, r);
+				Debug.WriteLine(r);
 			}
 		}
 	}
