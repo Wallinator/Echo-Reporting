@@ -27,11 +27,11 @@ namespace DICOMReporting.Data {
 		public double ZScore => Formula.GetZScore(Value);
 
 		public override string ToString() {
-			string ZSCORE = "";
+			string ZSCOREstring = "";
 			if (ZScoreable) {
-				ZSCORE = " Z Score: " + ZScore;
+				ZSCOREstring = "\n\tZ Score: " + ZScore;
 			}
-			return Name + ": " + Value + " " + UnitShorthand + ZSCORE;
+			return Name + ": \n\t" + "Value: " + Value + " " + UnitShorthand + ZSCOREstring;
 		}
 	}
 }

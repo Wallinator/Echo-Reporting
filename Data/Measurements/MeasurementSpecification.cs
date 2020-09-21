@@ -17,8 +17,9 @@ namespace DICOMReporting.Data.Measurements {
 		public bool IncludeImageMode;
 		public Enum UnitEnum;
 		public IFormula Formula;
+		public bool NonMean;
 
-		public MeasurementSpecification(string name, string rawMeasurementName, Dictionary<string, string> properties, string defaultUnitShorthand, IFormula formula = null, bool includeImageMode = false, Enum unitEnum = null) {
+		public MeasurementSpecification(string name, string rawMeasurementName, Dictionary<string, string> properties, string defaultUnitShorthand, IFormula formula = null, bool includeImageMode = false, Enum unitEnum = null, bool nonMean = false) {
 			Name = name;
 			RawMeasurementName = rawMeasurementName;
 			Properties = properties;
@@ -26,6 +27,7 @@ namespace DICOMReporting.Data.Measurements {
 			Formula = formula;
 			IncludeImageMode = includeImageMode;
 			UnitEnum = unitEnum;
+			NonMean = nonMean;
 		}
 
 		public Result FindAndRemoveFromGroups(List<MeasurementGroup> groups) {
@@ -37,7 +39,7 @@ namespace DICOMReporting.Data.Measurements {
 			if (groupIndex > -1) {
 				var group = groups[groupIndex];
 				groups.RemoveAt(groupIndex);
-				return MeasurementToResult(group.SelectMean());
+				return NonMean ? MeasurementToResult(group.SelectNonMean()) : MeasurementToResult(group.SelectMean());
 			}
 
 			else {
@@ -56,7 +58,7 @@ namespace DICOMReporting.Data.Measurements {
 			if (UnitEnum != null) {
 				SupportedUnitsHelpers.Convert(measurement.Header, UnitEnum);
 			}
-			return new Result(Name, measurement.Header.UnitShorthand, Formula, false, measurement.Header.Value);
+			return new Result(Name, DefaultUnitShorthand, Formula, empty: false, value: measurement.Header.Value);
 
 		}
 
@@ -70,6 +72,24 @@ namespace DICOMReporting.Data.Measurements {
 			final["Structure Sinus of Valsalva"] = StructureSinusOfValsalvaSpecs(BSA, AgeInYears);
 			final["Aortic sinotubular junction"] = AorticSinotubularJunctionSpecs(BSA, AgeInYears);
 			final["Aortic arch"] = AorticArchSpecs(BSA, AgeInYears);
+			final["Aortic isthmus"] = AorticIsthmusSpecs(BSA, AgeInYears);
+			final["Pulmonic Valve"] = PulmonicValveSpecs(BSA, AgeInYears);
+			final["Pulmonary artery"] = PulmonaryArterySpecs(BSA, AgeInYears);
+			final["Mitral Valve"] = MitralValveSpecs(BSA, AgeInYears);
+			final["Tricuspid Valve"] = TricuspidValveSpecs(BSA, AgeInYears);
+			final["Ascending aorta"] = AscendingAortaSpecs(BSA, AgeInYears);
+			final["Left Main Coronary Artery"] = LeftMainCoronaryArterySpecs(BSA, AgeInYears);
+			final["Anterior Descending Branch of Left Coronary Artery"] = AnteriorDescendingBranchOfLeftCoronaryArterySpecs(BSA, AgeInYears);
+			final["Right Coronary Artery"] = RightCoronaryArterySpecs(BSA, AgeInYears);
+			final["Pulmonary Vein"] = PulmonaryVeinSpecs(BSA, AgeInYears);
+			final["Atrial Septal Defect"] = AtrialSeptalDefectSpecs(BSA, AgeInYears);
+			final["Ventricular Septal Defect"] = VentricularSeptalDefectSpecs(BSA, AgeInYears);
+			final["Right Ventricle"] = RightVentricleSpecs(BSA, AgeInYears);
+			final["Pulmonary Trunk"] = PulmonaryTrunkSpecs(BSA, AgeInYears);
+			final["Coarctation of aorta"] = CoarctationOfTheAortaSpecs(BSA, AgeInYears);
+			final["Thoracic aorta"] = ThoracicAortaSpecs(BSA, AgeInYears);
+			final["Circumflex Coronary Artery"] = CircumflexCoronaryArterySpecs(BSA, AgeInYears);
+			final["Patent Ductus Arteriosus"] = PatentDuctusArteriosusSpecs(BSA, AgeInYears);
 
 			return final;
 		}
@@ -161,9 +181,6 @@ namespace DICOMReporting.Data.Measurements {
 			specs.Add(new MeasurementSpecification("Left ventricle outflow peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
 			specs.Add(new MeasurementSpecification("Left ventricle outflow peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
 			specs.Add(new MeasurementSpecification("Left ventricle outflow mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
-			props.Clear();
-
-			props.Add("Finding Site", "Left Ventricle Outflow Tract");
 			specs.Add(new MeasurementSpecification("Left ventricle outflow dimension", "Cardiovascular Orifice Diameter", new Dictionary<string, string>(props), "cm", unitEnum: LengthUnit.Centimeter));
 			props.Clear();
 
@@ -189,8 +206,6 @@ namespace DICOMReporting.Data.Measurements {
 
 			return specs;
 		}
-
-
 		private static List<MeasurementSpecification> AorticValveSpecs(double BSA, double AgeInYears) {
 
 			var specs = new List<MeasurementSpecification>();
@@ -211,7 +226,6 @@ namespace DICOMReporting.Data.Measurements {
 			var specs = new List<MeasurementSpecification>();
 			Dictionary<string, string> props = new Dictionary<string, string>();
 
-			props.Add("Finding Site", "Cardiac valve annulus");
 			specs.Add(new MeasurementSpecification("Sinuses of Valsalva", "Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.SinusesOfValsalva(BSA), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
 			return specs;
 		}
@@ -229,7 +243,7 @@ namespace DICOMReporting.Data.Measurements {
 			var specs = new List<MeasurementSpecification>();
 			Dictionary<string, string> props = new Dictionary<string, string>();
 
-			specs.Add(new MeasurementSpecification("Transverse aortic arch", "Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.TransverseAorticArch(BSA), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			specs.Add(new MeasurementSpecification("Transverse aortic arch", "Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.TransverseAorticArch(BSA), includeImageMode: true, unitEnum: LengthUnit.Centimeter, nonMean: true));
 			props.Clear();
 
 			props.Add("Topographical modifier", "Distal");
@@ -237,20 +251,274 @@ namespace DICOMReporting.Data.Measurements {
 			props.Clear();
 			return specs;
 		}
-		private static List<MeasurementSpecification> AorticValveSpecs124124(double BSA, double AgeInYears) {
+		private static List<MeasurementSpecification> AorticIsthmusSpecs(double BSA, double AgeInYears) {
+
+			var specs = new List<MeasurementSpecification>();
+			Dictionary<string, string> props = new Dictionary<string, string>();
+
+			specs.Add(new MeasurementSpecification("Aortic isthmus", "Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.AorticIsthmus(BSA), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			props.Clear();
+			return specs;
+		}
+		private static List<MeasurementSpecification> PulmonicValveSpecs(double BSA, double AgeInYears) {
+			var specs = new List<MeasurementSpecification>();
+			Dictionary<string, string> props = new Dictionary<string, string>();
+
+			props.Add("Finding Site", "Cardiac valve annulus");
+			specs.Add(new MeasurementSpecification("Pulmonary valve annulus", "Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.PulmonaryValveAnnulus(BSA), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			props.Clear();
+
+			props.Add("Flow Direction", "Antegrade Flow");
+			specs.Add(new MeasurementSpecification("Pulmonary valve mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Pulmonary valve peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Pulmonary valve peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
+			props.Clear();
+			
+			props.Add("Flow Direction", "Regurgitant Flow");
+			specs.Add(new MeasurementSpecification("Pulmonary valve end diastolic velocity", "End Diastolic Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
+			props.Clear();
+			return specs;
+		}
+		private static List<MeasurementSpecification> PulmonaryArterySpecs(double BSA, double AgeInYears) {
+
+			var specs = new List<MeasurementSpecification>();
+			Dictionary<string, string> props = new Dictionary<string, string>();
+
+			specs.Add(new MeasurementSpecification("Main pulmonary artery", "Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.MainPulmonaryArtery(BSA), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			props.Clear();
+
+			props.Add("Finding Site", "Left pulmonary artery");
+			specs.Add(new MeasurementSpecification("Left pulmonary artery", "Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.LeftPulmonaryArtery(BSA), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			specs.Add(new MeasurementSpecification("Left pulmonary artery peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Left pulmonary artery peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
+			props.Clear();
+
+			props.Add("Finding Site", "Right pulmonary artery");
+			specs.Add(new MeasurementSpecification("Right pulmonary artery", "Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.RightPulmonaryArtery(BSA), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			specs.Add(new MeasurementSpecification("Right pulmonary artery peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Right pulmonary artery peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
+			props.Clear();
+
+			return specs;
+		}
+		private static List<MeasurementSpecification> MitralValveSpecs(double BSA, double AgeInYears) {
+
+			var specs = new List<MeasurementSpecification>();
+			Dictionary<string, string> props = new Dictionary<string, string>();
+
+			specs.Add(new MeasurementSpecification("Mitral valve annulus", "Cardiovascular Orifice Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.MitralValveAnnulus(BSA), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			props.Clear();
+
+			props.Add("Flow Direction", "Antegrade Flow");
+			specs.Add(new MeasurementSpecification("Mitral valve E wave", "E-Wave Peak Velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.MitralValveEWave(AgeInYears), includeImageMode: true, unitEnum: SpeedUnit.CentimeterPerSecond));
+			specs.Add(new MeasurementSpecification("Mitral valve A wave", "A-Wave Peak Velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.MitralValveAWave(AgeInYears), includeImageMode: true, unitEnum: SpeedUnit.CentimeterPerSecond));
+			props.Clear();
+
+			props.Add("Image Mode", "Tissue Doppler Imaging");
+			specs.Add(new MeasurementSpecification("Mitral E/A ratio", "Peak E wave/Peak A wave by US", new Dictionary<string, string>(props), "%", formula: ImpactOfCardiacGrowthFormula.MitralEA_Ratio(BSA)));
+			props.Clear();
+
+
+			props.Add("Flow Direction", "Antegrade Flow");
+			specs.Add(new MeasurementSpecification("MV decel time", "Deceleration Time", new Dictionary<string, string>(props), "ms", formula: EchoManualFormula.MVDecelTime(AgeInYears), includeImageMode: true, unitEnum: DurationUnit.Millisecond));
+			props.Clear();
+
+
+			props.Add("Flow Direction", "Antegrade Flow");
+			specs.Add(new MeasurementSpecification("Mitral valve inflow mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			props.Clear();
+
+			props.Add("Flow Direction", "Regurgitant Flow");
+			specs.Add(new MeasurementSpecification("Mitral valve regurgitation peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Mitral valve regurgitation peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
+			props.Clear();
+
+			specs.Add(new MeasurementSpecification("Mitral valve inflow A wave duration", "A-Wave Duration", new Dictionary<string, string>(props), "ms", unitEnum: DurationUnit.Millisecond));
+			specs.Add(new MeasurementSpecification("Myocardial Performance Index", "Myocardial Performance Index (Tei)", new Dictionary<string, string>(props), ""));
+			props.Clear();
+
+			return specs;
+		}
+		private static List<MeasurementSpecification> TricuspidValveSpecs(double BSA, double AgeInYears)	{
 
 			var specs = new List<MeasurementSpecification>();
 			Dictionary<string, string> props = new Dictionary<string, string>();
 
 			props.Add("Finding Site", "Cardiac valve annulus");
-			specs.Add(new MeasurementSpecification("Aortic valve annulus", "Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.AorticValveAnnulus(BSA), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			specs.Add(new MeasurementSpecification("Tricuspid valve annulus", "Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.TricuspidValveAnnulus(BSA), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
 			props.Clear();
 
 			props.Add("Flow Direction", "Antegrade Flow");
-			specs.Add(new MeasurementSpecification("Aortic valve mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
-			specs.Add(new MeasurementSpecification("Aortic valve peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
-			specs.Add(new MeasurementSpecification("Aortic valve peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
+			specs.Add(new MeasurementSpecification("Tricuspid valve inflow mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
 			props.Clear();
+
+			props.Add("Flow Direction", "Regurgitant Flow");
+			specs.Add(new MeasurementSpecification("Tricuspid valve regurgitation peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Tricuspid valve regurgitation peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
+			props.Clear();
+
+			specs.Add(new MeasurementSpecification("Tricuspid annulus E'", "", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.TricuspidAnnulusE(AgeInYears), unitEnum: SpeedUnit.CentimeterPerSecond));
+			specs.Add(new MeasurementSpecification("Tricuspid annulus A'", "", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.TricuspidAnnulusA(AgeInYears), unitEnum: SpeedUnit.CentimeterPerSecond));
+			specs.Add(new MeasurementSpecification("Tricuspid annulus S'", "", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.TricuspidAnnulusS(AgeInYears), unitEnum: SpeedUnit.CentimeterPerSecond));
+			props.Clear();
+
+			return specs;
+		}
+		private static List<MeasurementSpecification> AscendingAortaSpecs(double BSA, double AgeInYears) {
+
+			var specs = new List<MeasurementSpecification>();
+			Dictionary<string, string> props = new Dictionary<string, string>();
+
+			specs.Add(new MeasurementSpecification("Ascending aorta", "Diameter", new Dictionary<string, string>(props), "cm", formula: DilationOfAscendingAortaFormula.AscendingAorta(BSA), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			props.Clear();
+
+			specs.Add(new MeasurementSpecification("Ascending aorta peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
+			specs.Add(new MeasurementSpecification("Ascending aorta peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			props.Clear();
+
+			return specs;
+		}
+		private static List<MeasurementSpecification> LeftMainCoronaryArterySpecs(double BSA, double AgeInYears) {
+
+			var specs = new List<MeasurementSpecification>();
+			Dictionary<string, string> props = new Dictionary<string, string>();
+
+			specs.Add(new MeasurementSpecification("Left Main Coronary Artery", "Diameter", new Dictionary<string, string>(props), "mm", formula: CoronaryArteryInvolvementFormula.LeftMainCoronary(BSA), includeImageMode: true, unitEnum: LengthUnit.Millimeter));
+			props.Clear();
+
+			return specs;
+		}
+		private static List<MeasurementSpecification> AnteriorDescendingBranchOfLeftCoronaryArterySpecs(double BSA, double AgeInYears) {
+
+			var specs = new List<MeasurementSpecification>();
+			Dictionary<string, string> props = new Dictionary<string, string>();
+
+			specs.Add(new MeasurementSpecification("Anterior Descending Branch of Left Coronary Artery", "Diameter", new Dictionary<string, string>(props), "mm", formula: CoronaryArteryInvolvementFormula.LeftAnteriorDescending(BSA), includeImageMode: true, unitEnum: LengthUnit.Millimeter));
+			props.Clear();
+
+			return specs;
+		}
+		private static List<MeasurementSpecification> RightCoronaryArterySpecs(double BSA, double AgeInYears) {
+
+			var specs = new List<MeasurementSpecification>();
+			Dictionary<string, string> props = new Dictionary<string, string>();
+
+			specs.Add(new MeasurementSpecification("Right Coronary Artery", "Diameter", new Dictionary<string, string>(props), "mm", formula: CoronaryArteryInvolvementFormula.RightCoronaryArtery(BSA), includeImageMode: true, unitEnum: LengthUnit.Millimeter));
+			props.Clear();
+
+			return specs;
+		}
+		private static List<MeasurementSpecification> PulmonaryVeinSpecs(double BSA, double AgeInYears) {
+
+			var specs = new List<MeasurementSpecification>();
+			Dictionary<string, string> props = new Dictionary<string, string>();
+
+			props.Add("Cardiac Cycle Point", "End Systole");
+			specs.Add(new MeasurementSpecification("Pulm vein S wave", "Peak Velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.PulmVeinSWave(AgeInYears), unitEnum: SpeedUnit.CentimeterPerSecond));
+			props.Clear();
+
+			props.Add("Cardiac Cycle Point", "End Diastole");
+			specs.Add(new MeasurementSpecification("Pulm vein D wave", "Peak Velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.PulmVeinDWave(AgeInYears), unitEnum: SpeedUnit.CentimeterPerSecond));
+			props.Clear();
+
+			specs.Add(new MeasurementSpecification("Pulm vein A wave", "Peak Reversal Velocity during Atrial Contraction", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.PulmVeinAWave(AgeInYears), unitEnum: SpeedUnit.CentimeterPerSecond));
+			specs.Add(new MeasurementSpecification("Pulmonary vein A wave duration", "A-Wave Duration", new Dictionary<string, string>(props), "ms", unitEnum: DurationUnit.Millisecond));
+			props.Clear();
+
+			return specs;
+		}
+		private static List<MeasurementSpecification> AtrialSeptalDefectSpecs(double BSA, double AgeInYears) {
+
+			var specs = new List<MeasurementSpecification>();
+			Dictionary<string, string> props = new Dictionary<string, string>();
+
+			specs.Add(new MeasurementSpecification("Atrial Septal Defect dimension", "Major Axis", new Dictionary<string, string>(props), "cm", includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			specs.Add(new MeasurementSpecification("Atrial Septal Defect mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+
+			return specs;
+		}
+		private static List<MeasurementSpecification> VentricularSeptalDefectSpecs(double BSA, double AgeInYears) {
+
+			var specs = new List<MeasurementSpecification>();
+			Dictionary<string, string> props = new Dictionary<string, string>();
+
+			specs.Add(new MeasurementSpecification("Ventricular Septal Defect peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Ventricular Septal Defect peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "cm/s", unitEnum: SpeedUnit.CentimeterPerSecond));
+			specs.Add(new MeasurementSpecification("Ventricular Septal Defect dimension", "Major Axis", new Dictionary<string, string>(props), "cm", includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+
+			return specs;
+		}
+		private static List<MeasurementSpecification> RightVentricleSpecs(double BSA, double AgeInYears) {
+
+			var specs = new List<MeasurementSpecification>();
+			Dictionary<string, string> props = new Dictionary<string, string>();
+
+			props.Add("Finding Site", "Right Ventricle Outflow Tract");
+			specs.Add(new MeasurementSpecification("Right ventricle outflow peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
+			specs.Add(new MeasurementSpecification("Right ventricle outflow peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Right ventricle outflow mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Right ventricle outflow dimension", "Cardiovascular Orifice Diameter", new Dictionary<string, string>(props), "cm", includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			props.Clear();
+
+			return specs;
+		}
+		private static List<MeasurementSpecification> PulmonaryTrunkSpecs(double BSA, double AgeInYears) {
+
+			var specs = new List<MeasurementSpecification>();
+			Dictionary<string, string> props = new Dictionary<string, string>();
+
+			specs.Add(new MeasurementSpecification("Main pulmonary artery peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Main pulmonary artery peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
+			props.Clear();
+
+			return specs;
+		}
+		private static List<MeasurementSpecification> CoarctationOfTheAortaSpecs(double BSA, double AgeInYears) {
+
+			var specs = new List<MeasurementSpecification>();
+			Dictionary<string, string> props = new Dictionary<string, string>();
+
+			specs.Add(new MeasurementSpecification("Coarctation of the aorta", "Diameter", new Dictionary<string, string>(props), "cm", includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			props.Clear();
+
+			return specs;
+		}
+		private static List<MeasurementSpecification> ThoracicAortaSpecs(double BSA, double AgeInYears) {
+
+			var specs = new List<MeasurementSpecification>();
+			Dictionary<string, string> props = new Dictionary<string, string>();
+
+			specs.Add(new MeasurementSpecification("Descending aorta peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
+			specs.Add(new MeasurementSpecification("Descending aorta peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			props.Clear();
+
+			return specs;
+		}
+		private static List<MeasurementSpecification> CircumflexCoronaryArterySpecs(double BSA, double AgeInYears) {
+
+			var specs = new List<MeasurementSpecification>();
+			Dictionary<string, string> props = new Dictionary<string, string>();
+
+			specs.Add(new MeasurementSpecification("Left Circumflex", "Diameter", new Dictionary<string, string>(props), "mm", includeImageMode: true, unitEnum: LengthUnit.Millimeter));
+			props.Clear();
+
+			return specs;
+		}
+		private static List<MeasurementSpecification> PatentDuctusArteriosusSpecs(double BSA, double AgeInYears) {
+
+			var specs = new List<MeasurementSpecification>();
+			Dictionary<string, string> props = new Dictionary<string, string>();
+
+			specs.Add(new MeasurementSpecification("Patent Ductus Arteriosus", "Diameter", new Dictionary<string, string>(props), "cm", includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+
+			props.Add("Cardiac Cycle Point", "End Systole");
+			specs.Add(new MeasurementSpecification("Patent Ductus Arteriosus peak velocity systole", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
+			props.Clear();
+
+			props.Add("Cardiac Cycle Point", "End Diastole");
+			specs.Add(new MeasurementSpecification("Patent Ductus Arteriosus peak velocity diastole", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
+			props.Clear();
+
 			return specs;
 		}
 	}

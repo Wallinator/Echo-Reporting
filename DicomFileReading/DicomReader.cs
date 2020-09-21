@@ -15,6 +15,7 @@ namespace DICOMReporting.DicomFileReading {
 
 			var e = new DicomFileEnumerator(new DirectoryInfo(directory));
 			if (e.MoveNext()) {
+				Debug.WriteLine(e.Current.File.Name);
 				GetStructuredReport(e.Current.Dataset);
 			}
 		}

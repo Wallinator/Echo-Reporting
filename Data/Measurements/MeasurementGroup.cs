@@ -41,5 +41,13 @@ namespace DICOMReporting.Data.Measurements {
 				return Measurements.Find(m => m.Properties.TryGetValue("Derivation", out string val) && val.Equals("Mean"));
 			}
 		}
+		public Measurement SelectNonMean() {
+			if (Measurements.Count == 1) {
+				return Measurements.First();
+			}
+			else {
+				return Measurements.Find(m => !(m.Properties.TryGetValue("Derivation", out string val) && val.Equals("Mean")));
+			}
+		}
 	}
 }
