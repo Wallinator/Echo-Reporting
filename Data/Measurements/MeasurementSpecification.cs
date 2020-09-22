@@ -310,8 +310,8 @@ namespace DICOMReporting.Data.Measurements {
 			props.Clear();
 
 			props.Add("Flow Direction", "Antegrade Flow");
-			specs.Add(new MeasurementSpecification("Mitral valve E wave", "E-Wave Peak Velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.MitralValveEWave(AgeInYears), includeImageMode: true, unitEnum: SpeedUnit.CentimeterPerSecond));
-			specs.Add(new MeasurementSpecification("Mitral valve A wave", "A-Wave Peak Velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.MitralValveAWave(AgeInYears), includeImageMode: true, unitEnum: SpeedUnit.CentimeterPerSecond));
+			specs.Add(new MeasurementSpecification("Mitral valve E wave", "E-Wave Peak Velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.MitralValveEWave(AgeInYears), unitEnum: SpeedUnit.CentimeterPerSecond));
+			specs.Add(new MeasurementSpecification("Mitral valve A wave", "A-Wave Peak Velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.MitralValveAWave(AgeInYears), unitEnum: SpeedUnit.CentimeterPerSecond));
 			props.Clear();
 
 			props.Add("Image Mode", "Tissue Doppler Imaging");
@@ -320,7 +320,7 @@ namespace DICOMReporting.Data.Measurements {
 
 
 			props.Add("Flow Direction", "Antegrade Flow");
-			specs.Add(new MeasurementSpecification("MV decel time", "Deceleration Time", new Dictionary<string, string>(props), "ms", formula: EchoManualFormula.MVDecelTime(AgeInYears), includeImageMode: true, unitEnum: DurationUnit.Millisecond));
+			specs.Add(new MeasurementSpecification("MV decel time", "Deceleration Time", new Dictionary<string, string>(props), "ms", formula: EchoManualFormula.MVDecelTime(AgeInYears), unitEnum: DurationUnit.Millisecond));
 			props.Clear();
 
 
@@ -369,7 +369,7 @@ namespace DICOMReporting.Data.Measurements {
 			var specs = new List<MeasurementSpecification>();
 			Dictionary<string, string> props = new Dictionary<string, string>();
 
-			specs.Add(new MeasurementSpecification("Ascending aorta", "Diameter", new Dictionary<string, string>(props), "cm", formula: DilationOfAscendingAortaFormula.AscendingAorta(BSA), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			specs.Add(new MeasurementSpecification("Ascending aorta", "Diameter", new Dictionary<string, string>(props), "mm", formula: DilationOfAscendingAortaFormula.AscendingAorta(BSA), includeImageMode: true, unitEnum: LengthUnit.Millimeter));
 			props.Clear();
 
 			specs.Add(new MeasurementSpecification("Ascending aorta peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));

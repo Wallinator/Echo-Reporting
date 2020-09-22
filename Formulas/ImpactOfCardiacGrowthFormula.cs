@@ -8,6 +8,7 @@
 		public double GetZScore(double measurement) {
 			return (measurement - constants.Average) / constants.SD;
 		}
+		public bool ZScoreable() => true;
 		public static ImpactOfCardiacGrowthFormula MitralValveEWave(double Age) {
 			double[] averages = { 79.7, 95.2, 94.4, 94.5, 90.3 };
 			double[] sds = { 18.8, 19.5, 14.8, 16, 17.8 };

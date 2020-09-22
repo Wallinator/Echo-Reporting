@@ -20,18 +20,23 @@ namespace DICOMReporting.Data {
 			UnitShorthand = unitShorthand;
 			Value = value;
 			Formula = formula;
-			ZScoreable = formula != null;
+			ZScoreable = formula != null && formula.ZScoreable();
 			Empty = empty;
 		}
 
 		public double ZScore => Formula.GetZScore(Value);
 
 		public override string ToString() {
-			string ZSCOREstring = "";
-			if (ZScoreable) {
-				ZSCOREstring = "\n\tZ Score: " + ZScore;
+			string emptyZscorestring = "";
+			if (Empty) {
+				emptyZscorestring = "\n\t!! MEASUREMENT NOT FOUND !!";
 			}
-			return Name + ": \n\t" + "Value: " + Value + " " + UnitShorthand + ZSCOREstring;
+			else {
+				if (ZScoreable) {
+					emptyZscorestring = "\n\tZ Score: " + ZScore;
+				}
+			}
+			return Name + ": \n\t" + "Value: " + Value + " " + UnitShorthand + emptyZscorestring;
 		}
 	}
 }

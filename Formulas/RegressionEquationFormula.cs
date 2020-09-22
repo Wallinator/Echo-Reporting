@@ -11,6 +11,7 @@ namespace DICOMReporting.Formulas {
 			double mean_y = constants.b0 + (constants.b1 * constants.BSA) + (constants.b2 * Math.Pow(constants.BSA, 2)) + (constants.b3 * Math.Pow(constants.BSA, 3));
 			return (Math.Log(observed_y) - mean_y) / Math.Sqrt(constants.MSE);
 		}
+		public bool ZScoreable() => true;
 		public static RegressionEquationFormula IVSd(double BSA) {
 			return new RegressionEquationFormula(new Constants(-1.242, 1.272, -0.762, 0.208, 0.046, BSA));
 		}

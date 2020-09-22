@@ -7,8 +7,9 @@ namespace DICOMReporting.Formulas {
 
 		public double GetZScore(double observed_y) {
 			double mean_y = (constants.Multiplier * Math.Log(constants.BSA)) + constants.Intercept;
-			return (Math.Log(observed_y) - mean_y) / Math.Sqrt(constants.MSE);
+			return (Math.Log(observed_y) - mean_y) / constants.MSE;
 		}
+		public bool ZScoreable() => true;
 		public static DilationOfAscendingAortaFormula AscendingAorta(double BSA) {
 			return new DilationOfAscendingAortaFormula(new Constants(0.421, 2.898, 0.09111, BSA));
 		}/*

@@ -6,8 +6,9 @@ namespace DICOMReporting.Formulas {
 
 		public double GetZScore(double observed_y) {
 			double mean_y = (constants.Multiplier * Math.Pow(constants.BSA, constants.Power)) + constants.Intercept;
-			return ((observed_y / 10) - mean_y) / Math.Sqrt(constants.SD);
+			return ((observed_y / 10) - mean_y) / constants.SD;
 		}
+		public bool ZScoreable() => true;
 		private CoronaryArteryInvolvementFormula(Constants constants) {
 			this.constants = constants;
 		}
@@ -21,6 +22,8 @@ namespace DICOMReporting.Formulas {
 		public static CoronaryArteryInvolvementFormula RightCoronaryArtery(double BSA) {
 			return new CoronaryArteryInvolvementFormula(new Constants(0.26117, 0.3992, -0.02756, 0.02407 + (0.01597 * BSA), BSA));
 		}
+
+
 		private struct Constants {
 			public double Multiplier {
 				get; private set;
