@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DICOMReporting.Formulas {
 	public interface IFormula {
-		public double GetZScore(double measurement);
-		public bool ZScoreable();
+		double GetZScore(double measurement);
+		bool ZScoreable();
 	}
 }

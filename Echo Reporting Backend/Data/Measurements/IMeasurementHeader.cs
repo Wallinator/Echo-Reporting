@@ -1,20 +1,17 @@
 ﻿namespace DICOMReporting.Data.Measurements {
 	public interface IMeasurementHeader {
 	
-		public string Name {
+		string Name {
 			get;
 		}
-		public double Value {
+		double Value {
 			get;
 		}
-		public string UnitName {
+		string UnitName {
 			get;
 		}
-		public string UnitShorthand {
+		string UnitShorthand {
 			get;
-		}
-		public string AsString() {
-			return Name + ": " + Value + " " + UnitShorthand;
 		}
 	}
 }

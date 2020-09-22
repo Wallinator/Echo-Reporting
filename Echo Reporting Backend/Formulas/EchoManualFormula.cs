@@ -1,6 +1,4 @@
-﻿using CSJ2K.j2k.codestream.reader;
-
-namespace DICOMReporting.Formulas {
+﻿namespace DICOMReporting.Formulas {
 	public class EchoManualFormula : IFormula {
 		private Constants constants;
 		public double GetZScore(double measurement) {

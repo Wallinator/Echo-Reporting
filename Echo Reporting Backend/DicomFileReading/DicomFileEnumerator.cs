@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Management;
 
 namespace DICOMReporting.DicomFileReading {
 	public class DicomFileEnumerator : IEnumerator<DicomFile> {
@@ -53,7 +54,7 @@ namespace DICOMReporting.DicomFileReading {
 		}
 
 		private void Init() {
-			fileEnumerator = dirinfo.EnumerateFiles("*", new EnumerationOptions() { RecurseSubdirectories = true, IgnoreInaccessible = true }).GetEnumerator();
+			fileEnumerator = dirinfo.EnumerateFiles("*", SearchOption.AllDirectories).GetEnumerator();
 		}
 	}
 }

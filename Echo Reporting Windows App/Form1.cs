@@ -14,5 +14,8 @@ namespace Echo_Reporting_Windows_App {
 			InitializeComponent();
 		}
 
+		private void start_button_Click(object sender, EventArgs e) {
+
+		}
 	}
 }

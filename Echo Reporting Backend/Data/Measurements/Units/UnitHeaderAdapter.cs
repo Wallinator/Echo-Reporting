@@ -3,7 +3,6 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
-using System.Transactions;
 using UnitsNet;
 
 namespace DICOMReporting.Data.Measurements.Units {
@@ -28,7 +27,7 @@ namespace DICOMReporting.Data.Measurements.Units {
 
 		
 		public override string ToString() {
-			return ((IMeasurementHeader) this).AsString();
+			return Name + ": " + Value + " " + UnitShorthand;
 		}
 
 	}

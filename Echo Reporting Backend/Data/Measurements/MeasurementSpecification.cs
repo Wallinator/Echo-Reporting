@@ -1,5 +1,4 @@
-﻿using Accessibility;
-using DICOMReporting.Data.Measurements;
+﻿using DICOMReporting.Data.Measurements;
 using DICOMReporting.Data.Measurements.Units;
 using DICOMReporting.Formulas;
 using System;
