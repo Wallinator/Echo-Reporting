@@ -9,18 +9,7 @@ using System.IO;
 
 namespace DICOMReporting.DicomFileReading {
 	public class DicomReader {
-		public static void test() {
-			string directory = "../../../test materials";
-
-
-			var e = new DicomFileEnumerator(new DirectoryInfo(directory));
-			if (e.MoveNext()) {
-				Debug.WriteLine(e.Current.File.Name);
-				GetStructuredReport(e.Current.Dataset);
-			}
-		}
-
-		public static void GetStructuredReport(DicomDataset ds) {
+		public static StructuredReport GetStructuredReport(DicomDataset ds) {
 			var sr = new DicomStructuredReport(ds);
 			PatientData pd = null;
 			var findings = new Dictionary<string, List<MeasurementGroup>>();
@@ -34,6 +23,7 @@ namespace DICOMReporting.DicomFileReading {
 			}
 			var report = new StructuredReport(pd);
 			report.ResultsFromFindings(findings);
+			return report;
 		}
 
 		private static void HandleFinding(Dictionary<string, List<MeasurementGroup>> findings, DicomContentItem finding) {

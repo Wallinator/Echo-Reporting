@@ -29,16 +29,13 @@ namespace DICOMReporting.DicomFileReading {
 
 		public bool MoveNext() {
 			while (fileEnumerator.MoveNext()) {
-				DicomFile file;
-				try {
-					file = DicomFile.Open(fileEnumerator.Current.FullName);
-				}
-				catch (Exception) {
-					continue;
-				}
-				if (IsValidDicom(file)) {
+				DicomFile file = TryOpen(fileEnumerator.Current.FullName);
+				if (file != null) {
 					Current = file;
 					return true;
+				}
+				else {
+					continue;
 				}
 			}
 			return false;
@@ -48,8 +45,22 @@ namespace DICOMReporting.DicomFileReading {
 			fileEnumerator.Reset();
 			Current = null;
 		}
-
-		private bool IsValidDicom(DicomFile file) {
+		public static DicomFile TryOpen(string filename) {
+			DicomFile file;
+			try {
+				file = DicomFile.Open(filename);
+			}
+			catch (Exception) {
+				return null;
+			}
+			if (IsValidDicom(file)) {
+				return file;
+			}
+			else {
+				return null;
+			}
+		}
+		private static bool IsValidDicom(DicomFile file) {
 			return file.Dataset.InternalTransferSyntax.Equals(DicomTransferSyntax.ImplicitVRLittleEndian);
 		}
 

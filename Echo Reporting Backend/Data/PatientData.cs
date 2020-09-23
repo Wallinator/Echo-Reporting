@@ -5,6 +5,7 @@ using DICOMReporting.Data.Measurements.Units;
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using UnitsNet.Units;
 
