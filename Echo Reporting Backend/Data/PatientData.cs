@@ -5,23 +5,28 @@ using DICOMReporting.Data.Measurements.Units;
 using System;
 using System.Diagnostics;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using UnitsNet.Units;
 
 namespace DICOMReporting.Data {
 	public class PatientData {
-		public string StudyID;
-		public string StudyDate;
+		//public string StudyID;
+		//public string StudyDate;
 		public string PatientID;
 		public string PatientName;
 		public string PatientSex;
-		public DateTime PatientDOB;
+		//public DateTime PatientDOB;
 		public IMeasurementHeader PatientAge;
 		public IMeasurementHeader PatientWeight;
 		public IMeasurementHeader PatientSize;
 		public IMeasurementHeader SystolicBloodPressure;
 		public IMeasurementHeader DiastolicBloodPressure;
+
+		public double BSA => 
+			//height in cm
+			//weight in kg
+			0.024265 * Math.Pow(PatientSize.Value, 0.3964) * Math.Pow(PatientWeight.Value, 0.5378);
+		
 
 		public PatientData(DicomContentItem patientcontainer) {
 			foreach (var child in patientcontainer.Children()) {
@@ -42,11 +47,13 @@ namespace DICOMReporting.Data {
 					case "8302-2":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
 						PatientSize = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+						SupportedUnitsHelpers.Convert(PatientSize, LengthUnit.Centimeter);
 						Debug.WriteLine(PatientSize);
 						break;
 					case "29463-7":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
 						PatientWeight = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+						SupportedUnitsHelpers.Convert(PatientWeight, MassUnit.Kilogram);
 						Debug.WriteLine(PatientWeight);
 						break;
 					case "F-008EC":
@@ -69,11 +76,11 @@ namespace DICOMReporting.Data {
 						break;
 					case "121031":
 						string input = child.Get<string>();
-						// Split on one or more non-digit characters.
+
 						var numbers = Regex.Split(input, @"\D+").ToList().GetRange(1, 3).Select(x => int.Parse(x)).ToArray();
-						//Debug.WriteLine(numbers[0] + " " + numbers[1] + " " + numbers[2]);
-						PatientDOB = new DateTime(numbers[0], numbers[1], numbers[2]);
-						Debug.WriteLine(PatientDOB);
+
+						//PatientDOB = new DateTime(numbers[0], numbers[1], numbers[2]);
+						//Debug.WriteLine(PatientDOB);
 						break;
 					default:
 						break;
@@ -82,12 +89,12 @@ namespace DICOMReporting.Data {
 		}
 
 		public PatientData(string studyID, string studyDate, string patientID, string patientName, string patientSex, DateTime patientDOB, MeasurementHeader patientAge, MeasurementHeader patientWeight, MeasurementHeader patientSize, MeasurementHeader systolicBloodPressure, MeasurementHeader diastolicBloodPressure) {
-			StudyID = studyID;
-			StudyDate = studyDate;
+			//StudyID = studyID;
+			//StudyDate = studyDate;
 			PatientID = patientID;
 			PatientName = patientName;
 			PatientSex = patientSex;
-			PatientDOB = patientDOB;
+			//PatientDOB = patientDOB;
 			PatientAge = patientAge;
 			PatientWeight = patientWeight;
 			PatientSize = patientSize;

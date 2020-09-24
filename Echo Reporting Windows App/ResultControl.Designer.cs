@@ -35,7 +35,7 @@
 			// ResultTitleLabel
 			// 
 			this.ResultTitleLabel.AutoSize = true;
-			this.ResultTitleLabel.Location = new System.Drawing.Point(-2, 2);
+			this.ResultTitleLabel.Location = new System.Drawing.Point(-1, 3);
 			this.ResultTitleLabel.Name = "ResultTitleLabel";
 			this.ResultTitleLabel.Size = new System.Drawing.Size(83, 13);
 			this.ResultTitleLabel.TabIndex = 0;
@@ -44,7 +44,7 @@
 			// ResultUnitLabel
 			// 
 			this.ResultUnitLabel.AutoSize = true;
-			this.ResultUnitLabel.Location = new System.Drawing.Point(78, 22);
+			this.ResultUnitLabel.Location = new System.Drawing.Point(78, 21);
 			this.ResultUnitLabel.Name = "ResultUnitLabel";
 			this.ResultUnitLabel.Size = new System.Drawing.Size(29, 13);
 			this.ResultUnitLabel.TabIndex = 1;
@@ -58,16 +58,16 @@
 			// ResultValueTextBox
 			// 
 			this.errorProvider1.SetIconAlignment(this.ResultValueTextBox, System.Windows.Forms.ErrorIconAlignment.TopRight);
-			this.ResultValueTextBox.Location = new System.Drawing.Point(30, 18);
+			this.ResultValueTextBox.Location = new System.Drawing.Point(30, 17);
 			this.ResultValueTextBox.Name = "ResultValueTextBox";
 			this.ResultValueTextBox.Size = new System.Drawing.Size(49, 20);
 			this.ResultValueTextBox.TabIndex = 3;
-			this.ResultValueTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
+			this.ResultValueTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateValue);
 			// 
 			// ZScoreLabel
 			// 
 			this.ZScoreLabel.AutoSize = true;
-			this.ZScoreLabel.Location = new System.Drawing.Point(146, 22);
+			this.ZScoreLabel.Location = new System.Drawing.Point(146, 21);
 			this.ZScoreLabel.Name = "ZScoreLabel";
 			this.ZScoreLabel.Size = new System.Drawing.Size(54, 13);
 			this.ZScoreLabel.TabIndex = 4;

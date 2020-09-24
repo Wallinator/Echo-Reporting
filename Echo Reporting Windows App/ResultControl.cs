@@ -11,7 +11,10 @@ using DICOMReporting.Data;
 
 namespace Echo_Reporting_Windows_App {
 	public partial class ResultControl : UserControl {
-		private Result result;
+		private readonly Result result;
+
+		public ResultControl(string name, string unitShortHand, double value = 0) : this(new Result(name, unitShortHand, value: value)) {
+		}
 		public ResultControl(Result result) {
 			InitializeComponent();
 			this.result = result;
@@ -26,7 +29,7 @@ namespace Echo_Reporting_Windows_App {
 			}
 		}
 
-		private void textBox1_Validating(object sender, EventArgs e) {
+		private void ValidateValue(object sender, EventArgs e) {
 			try {
 				double value = double.Parse(ResultValueTextBox.Text);
 				errorProvider1.SetError(ResultValueTextBox, "");
@@ -45,7 +48,7 @@ namespace Echo_Reporting_Windows_App {
 		}
 		private void TextBoxKeyUp(object sender, KeyEventArgs e) {
 			if (e.KeyCode == Keys.Enter) {
-				textBox1_Validating(sender, e);
+				ValidateValue(sender, e);
 				e.Handled = true;
 			}
 		}

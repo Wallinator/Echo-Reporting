@@ -1,25 +1,27 @@
-﻿namespace DICOMReporting.Formulas {
+﻿using DICOMReporting.Data;
+
+namespace DICOMReporting.Formulas {
 	public class EchoManualFormula : IFormula {
 		private Constants constants;
 		public double GetZScore(double measurement) {
 			return (measurement - constants.Average) / constants.SD;
 		}
-		public bool ZScoreable() => constants.Age >= 3;
-		public static EchoManualFormula MVDecelTime(double Age) {
+		public bool ZScoreable() => constants.Pd.PatientAge.Value >= 3;
+		public static EchoManualFormula MVDecelTime(PatientData pd) {
 			double[] averages = { 145, 157, 172 };
 			double[] sds = { 18, 19, 22 };
-			return new EchoManualFormula(new Constants(averages, sds, Age));
+			return new EchoManualFormula(new Constants(averages, sds, pd));
 		}
-		public static EchoManualFormula LVIVRT(double Age) {
+		public static EchoManualFormula LVIVRT(PatientData pd) {
 			double[] averages = { 62, 67, 74 };
 			double[] sds = { 10, 10, 13 };
-			return new EchoManualFormula(new Constants(averages, sds, Age));
+			return new EchoManualFormula(new Constants(averages, sds, pd));
 		}
 		private EchoManualFormula(Constants constants) {
 			this.constants = constants;
 		}
 		private struct Constants {
-			public double Age {
+			public PatientData Pd {
 				get; private set;
 			}
 			public double Average {
@@ -28,8 +30,9 @@
 			public double SD {
 				get; private set;
 			}
-			public Constants(double[] averages, double[] sds, double age) {
-				Age = age;
+			public Constants(double[] averages, double[] sds, PatientData pd) {
+				Pd = pd;
+				double age = pd.PatientAge.Value;
 				int bracket;
 				if (age <= 8) {
 					bracket = 0;

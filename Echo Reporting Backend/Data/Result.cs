@@ -23,6 +23,14 @@ namespace DICOMReporting.Data {
 			ZScoreable = formula != null && formula.ZScoreable();
 			Empty = empty;
 		}
+		public Result(IMeasurementHeader header) {
+			Name = header.Name;
+			UnitShorthand = header.UnitShorthand;
+			Value = header.Value;
+			Formula = null;
+			ZScoreable = false;
+			Empty = false;
+		}
 
 		public double ZScore => Formula.GetZScore(Value);
 

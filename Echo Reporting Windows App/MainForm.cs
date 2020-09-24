@@ -44,7 +44,26 @@ namespace Echo_Reporting_Windows_App {
 			}
 		}
 		private void ShowAllResults() {
-			MVDecelTimePanel.Controls.Add(new ResultControl(report.Results["Mitral valve annulus"]));
+			PatientIDBox.Text = report.PatientData.PatientID;
+			PatientNameBox.Text = report.PatientData.PatientName;
+			PatientSexBox.Text = report.PatientData.PatientSex;
+			AgePanel.Controls.Add(new ResultControl(new Result(report.PatientData.PatientAge)));
+			HeightPanel.Controls.Add(new ResultControl(new Result(report.PatientData.PatientSize)));
+			WeightPanel.Controls.Add(new ResultControl(new Result(report.PatientData.PatientWeight)));
+			DiastolicBPPanel.Controls.Add(new ResultControl(new Result(report.PatientData.DiastolicBloodPressure)));
+			SystolicBPPanel.Controls.Add(new ResultControl(new Result(report.PatientData.SystolicBloodPressure)));
+		}
+
+		private void MainForm_Load(object sender, EventArgs e) {
+
+		}
+
+		private void label1_Click(object sender, EventArgs e) {
+
+		}
+
+		private void textBox2_TextChanged(object sender, EventArgs e) {
+
 		}
 	}
 }
