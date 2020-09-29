@@ -21,8 +21,8 @@ namespace DICOMReporting.DicomFileReading {
 					pd = new PatientData(group);
 				}
 			}
-			var report = new StructuredReport(pd);
-			report.ResultsFromFindings(findings);
+			var report = new StructuredReport(pd, findings);
+
 			return report;
 		}
 
@@ -60,7 +60,7 @@ namespace DICOMReporting.DicomFileReading {
 				string name;
 				string value;
 
-				if (child.Relationship == DicomRelationship.HasConceptModifier) {
+				if (child.Relationship == DicomRelationship.HasConceptModifier || child.Relationship == DicomRelationship.HasProperties) {
 					if (!child.Code.Value.Equals("T5203-01")) {
 						name = child.Code.Meaning;
 						value = child.Dataset.GetDicomItem<DicomSequence>(DicomTag.ConceptCodeSequence).Items[0].GetString(DicomTag.CodeMeaning);

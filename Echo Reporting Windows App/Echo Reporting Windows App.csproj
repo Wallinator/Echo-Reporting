@@ -61,6 +61,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringFieldControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StringFieldControl.Designer.cs">
+      <DependentUpon>StringFieldControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="ResultControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -79,6 +85,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="StringFieldControl.resx">
+      <DependentUpon>StringFieldControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ResultControl.resx">
       <DependentUpon>ResultControl.cs</DependentUpon>
     </EmbeddedResource>

@@ -4,6 +4,7 @@ using DICOMReporting.Formulas;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using UnitsNet;
 using UnitsNet.Units;
 
@@ -16,20 +17,24 @@ namespace DICOMReporting.Data.Measurements {
 		public bool IncludeImageMode;
 		public Enum UnitEnum;
 		public IFormula Formula;
-		public bool NonMean;
+		//public bool NonMean;
 
-		public MeasurementSpecification(string name, string rawMeasurementName, Dictionary<string, string> properties, string defaultUnitShorthand, IFormula formula = null, bool includeImageMode = false, Enum unitEnum = null, bool nonMean = false) {
-			Name = name;
+		//public MeasurementSpecification(string name, string rawMeasurementName, Dictionary<string, string> properties, string defaultUnitShorthand, IFormula formula = null, bool includeImageMode = false, Enum unitEnum = null/*, bool nonMean = false*/) {
+		public MeasurementSpecification(string name, string rawMeasurementName, Dictionary<string, string> properties, string defaultUnitShorthand, IFormula formula = null, bool includeImageMode = false, Enum unitEnum = null) {
+				Name = name;
 			RawMeasurementName = rawMeasurementName;
 			Properties = properties;
 			DefaultUnitShorthand = defaultUnitShorthand;
 			Formula = formula;
 			IncludeImageMode = includeImageMode;
 			UnitEnum = unitEnum;
-			NonMean = nonMean;
+			//NonMean = nonMean;
 		}
 
 		public Result FindAndRemoveFromGroups(List<MeasurementGroup> groups) {
+			if (groups.Count == 0) {
+				return MeasurementToResult(null);
+			}
 			if (IncludeImageMode) {
 				Properties.Add("Image Mode", "M mode");
 			}
@@ -38,7 +43,9 @@ namespace DICOMReporting.Data.Measurements {
 			if (groupIndex > -1) {
 				var group = groups[groupIndex];
 				groups.RemoveAt(groupIndex);
-				return NonMean ? MeasurementToResult(group.SelectNonMean()) : MeasurementToResult(group.SelectMean());
+
+				return MeasurementToResult(group.SelectMean());
+				//return NonMean ? MeasurementToResult(group.SelectNonMean()) : MeasurementToResult(group.SelectMean());
 			}
 
 			else {
@@ -219,6 +226,12 @@ namespace DICOMReporting.Data.Measurements {
 			specs.Add(new MeasurementSpecification("Aortic valve peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
 			specs.Add(new MeasurementSpecification("Aortic valve peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
 			props.Clear();
+
+			props.Add("Flow Direction", "Regurgitant Flow");
+			props.Add("Selection Status", "Mean value chosen");
+			specs.Add(new MeasurementSpecification("Aortic valve pressure half-time", "Pressure Half-Time", new Dictionary<string, string>(props), "ms", unitEnum: DurationUnit.Millisecond));
+			props.Clear();
+
 			return specs;
 		}
 		private static List<MeasurementSpecification> StructureSinusOfValsalvaSpecs(PatientData pd) {
@@ -242,9 +255,9 @@ namespace DICOMReporting.Data.Measurements {
 			var specs = new List<MeasurementSpecification>();
 			Dictionary<string, string> props = new Dictionary<string, string>();
 
-			specs.Add(new MeasurementSpecification("Transverse aortic arch", "Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.TransverseAorticArch(pd), includeImageMode: true, unitEnum: LengthUnit.Centimeter, nonMean: true));
-			props.Clear();
-
+			props.Add("Selection Status", "User chosen value");
+			specs.Add(new MeasurementSpecification("Transverse aortic arch", "Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.TransverseAorticArch(pd), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			
 			props.Add("Topographical modifier", "Distal");
 			specs.Add(new MeasurementSpecification("Distal aortic arch", "Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.DistalAorticArch(pd), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
 			props.Clear();

@@ -13,19 +13,26 @@ namespace DICOMReporting.Data {
 			set;
 		}
 
-		public StructuredReport(PatientData patientData) {
+		public StructuredReport(PatientData patientData, Dictionary<string, List<MeasurementGroup>> findings) {
 			PatientData = patientData;
+			ResultsFromFindings(findings);
 		}
-		public void ResultsFromFindings(Dictionary<string, List<MeasurementGroup>> findings) {
+		public StructuredReport() : this(new PatientData(), new Dictionary<string, List<MeasurementGroup>>()) { }
+		private void ResultsFromFindings(Dictionary<string, List<MeasurementGroup>> findings) {
 			Dictionary<string, List<MeasurementSpecification>> specsbysite = MeasurementSpecification.SpecsBySite(PatientData);
 			foreach (var sitename in specsbysite.Keys) {
-				ResultsFromGroups(findings[sitename], specsbysite[sitename]);
+				if (findings.ContainsKey(sitename)) {
+					ResultsFromGroups(findings[sitename], specsbysite[sitename]);
+				}
+				else {
+					ResultsFromGroups(new List<MeasurementGroup>(), specsbysite[sitename]);
+				}
 			}
 		}
 
 		private void ResultsFromGroups(List<MeasurementGroup> groups, List<MeasurementSpecification> specs) {
 			foreach (var spec in specs) {
-				var r = spec.FindAndRemoveFromGroups(groups);
+				Result r = spec.FindAndRemoveFromGroups(groups);
 				Results.Add(r.Name, r);
 				Debug.WriteLine(r);
 			}

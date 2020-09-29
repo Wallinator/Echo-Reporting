@@ -14,9 +14,10 @@ using System.Windows.Forms;
 
 namespace Echo_Reporting_Windows_App {
 	public partial class MainForm : Form {
-		private StructuredReport report;
+		private StructuredReport report = new StructuredReport();
 		public MainForm() {
 			InitializeComponent();
+			ShowAllResults(false);
 		}
 
 		private void openFolderToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -43,15 +44,26 @@ namespace Echo_Reporting_Windows_App {
 				}
 			}
 		}
-		private void ShowAllResults() {
-			PatientIDBox.Text = report.PatientData.PatientID;
-			PatientNameBox.Text = report.PatientData.PatientName;
-			PatientSexBox.Text = report.PatientData.PatientSex;
-			AgePanel.Controls.Add(new ResultControl(new Result(report.PatientData.PatientAge)));
-			HeightPanel.Controls.Add(new ResultControl(new Result(report.PatientData.PatientSize)));
-			WeightPanel.Controls.Add(new ResultControl(new Result(report.PatientData.PatientWeight)));
-			DiastolicBPPanel.Controls.Add(new ResultControl(new Result(report.PatientData.DiastolicBloodPressure)));
-			SystolicBPPanel.Controls.Add(new ResultControl(new Result(report.PatientData.SystolicBloodPressure)));
+		private void ShowAllResults(bool showNotFoundError = true) {
+			ClearAllPanels();
+			PatientIDPanel.Controls.Add(new StringFieldControl("Patient ID", report.PatientData.PatientID));
+			PatientNamePanel.Controls.Add(new StringFieldControl("Patient Name", report.PatientData.PatientName));
+			PatientSexPanel.Controls.Add(new StringFieldControl("Patient Sex", report.PatientData.PatientSex));
+			AgePanel.Controls.Add(new ResultControl(report.PatientData.PatientAge, showNotFoundError));
+			HeightPanel.Controls.Add(new ResultControl(report.PatientData.PatientSize, showNotFoundError));
+			WeightPanel.Controls.Add(new ResultControl(report.PatientData.PatientWeight, showNotFoundError));
+			DiastolicBPPanel.Controls.Add(new ResultControl(report.PatientData.DiastolicBloodPressure, showNotFoundError));
+			SystolicBPPanel.Controls.Add(new ResultControl(report.PatientData.SystolicBloodPressure, showNotFoundError));
+		}
+		private void ClearAllPanels() {
+			PatientIDPanel.Controls.Clear();
+			PatientNamePanel.Controls.Clear();
+			PatientSexPanel.Controls.Clear();
+			AgePanel.Controls.Clear();
+			HeightPanel.Controls.Clear();
+			WeightPanel.Controls.Clear();
+			DiastolicBPPanel.Controls.Clear();
+			SystolicBPPanel.Controls.Clear();
 		}
 
 		private void MainForm_Load(object sender, EventArgs e) {
@@ -63,6 +75,10 @@ namespace Echo_Reporting_Windows_App {
 		}
 
 		private void textBox2_TextChanged(object sender, EventArgs e) {
+
+		}
+
+		private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
 
 		}
 	}

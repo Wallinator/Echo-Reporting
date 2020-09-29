@@ -6,6 +6,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
+using UnitsNet;
 using UnitsNet.Units;
 
 namespace DICOMReporting.Data {
@@ -16,29 +17,35 @@ namespace DICOMReporting.Data {
 		public string PatientName;
 		public string PatientSex;
 		//public DateTime PatientDOB;
-		public IMeasurementHeader PatientAge;
-		public IMeasurementHeader PatientWeight;
-		public IMeasurementHeader PatientSize;
-		public IMeasurementHeader SystolicBloodPressure;
-		public IMeasurementHeader DiastolicBloodPressure;
+		public Result PatientAge;
+		public Result PatientWeight;
+		public Result PatientSize;
+		public Result SystolicBloodPressure;
+		public Result DiastolicBloodPressure;
 
 		public double BSA => 
 			//height in cm
 			//weight in kg
 			0.024265 * Math.Pow(PatientSize.Value, 0.3964) * Math.Pow(PatientWeight.Value, 0.5378);
-		
 
 		public PatientData(DicomContentItem patientcontainer) {
 			foreach (var child in patientcontainer.Children()) {
 
 				DicomMeasuredValue measurementsequence;
+				IMeasurementHeader temp;
 				//Debug.WriteLine(child.Code + ": " + child.Get<string>());
 				switch (child.Code.Value) {
 					case "121033":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
-						PatientAge = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
-						SupportedUnitsHelpers.Convert(PatientAge, DurationUnit.Year365);
-						Debug.WriteLine(PatientAge);
+						try {
+							temp = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+							SupportedUnitsHelpers.Convert(temp, DurationUnit.Year365);
+						}
+						catch (Exception) {
+							temp = new UnitHeaderAdapter(child.Code.Meaning, new Duration((double) measurementsequence.Value, DurationUnit.Year365));
+						}
+						Debug.WriteLine(temp);
+						PatientAge = new Result(temp);
 						break;
 					case "121032":
 						PatientSex = child.Dataset.GetCodeItem(DicomTag.ConceptCodeSequence).Meaning;
@@ -46,25 +53,29 @@ namespace DICOMReporting.Data {
 						break;
 					case "8302-2":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
-						PatientSize = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
-						SupportedUnitsHelpers.Convert(PatientSize, LengthUnit.Centimeter);
-						Debug.WriteLine(PatientSize);
+						temp = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+						SupportedUnitsHelpers.Convert(temp, LengthUnit.Centimeter);
+						Debug.WriteLine(temp);
+						PatientSize = new Result(temp);
 						break;
 					case "29463-7":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
-						PatientWeight = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
-						SupportedUnitsHelpers.Convert(PatientWeight, MassUnit.Kilogram);
-						Debug.WriteLine(PatientWeight);
+						temp = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+						SupportedUnitsHelpers.Convert(temp, MassUnit.Kilogram);
+						Debug.WriteLine(temp);
+						PatientWeight = new Result(temp);
 						break;
 					case "F-008EC":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
-						SystolicBloodPressure = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
-						Debug.WriteLine(SystolicBloodPressure);
+						temp = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+						Debug.WriteLine(temp);
+						SystolicBloodPressure = new Result(temp);
 						break;
 					case "F-008ED":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
-						DiastolicBloodPressure = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
-						Debug.WriteLine(DiastolicBloodPressure);
+						temp = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+						Debug.WriteLine(temp);
+						DiastolicBloodPressure = new Result(temp);
 						break;
 					case "121029":
 						PatientName = child.Get<string>();
@@ -87,19 +98,33 @@ namespace DICOMReporting.Data {
 				}
 			}
 		}
+		public PatientData() {
 
-		public PatientData(string studyID, string studyDate, string patientID, string patientName, string patientSex, DateTime patientDOB, MeasurementHeader patientAge, MeasurementHeader patientWeight, MeasurementHeader patientSize, MeasurementHeader systolicBloodPressure, MeasurementHeader diastolicBloodPressure) {
-			//StudyID = studyID;
-			//StudyDate = studyDate;
-			PatientID = patientID;
-			PatientName = patientName;
-			PatientSex = patientSex;
-			//PatientDOB = patientDOB;
-			PatientAge = patientAge;
-			PatientWeight = patientWeight;
-			PatientSize = patientSize;
-			SystolicBloodPressure = systolicBloodPressure;
-			DiastolicBloodPressure = diastolicBloodPressure;
+			IMeasurementHeader temp;
+
+			temp = new UnitHeaderAdapter("Patient Age", new Duration(0, DurationUnit.Year365));
+			PatientAge = new Result(temp);
+
+			PatientSex = "";
+
+			temp = new UnitHeaderAdapter("Patient Size", new Length(0, LengthUnit.Centimeter));
+			PatientSize = new Result(temp);
+
+			temp = new UnitHeaderAdapter("Patient Size", new Mass(0, MassUnit.Kilogram));
+			PatientWeight = new Result(temp);
+
+			temp = new MeasurementHeader("Systolic Blood Pressure", 0, "", "mm[Hg]");
+			SystolicBloodPressure = new Result(temp);
+
+			temp = new MeasurementHeader("Diastolic Blood Pressure", 0, "", "mm[Hg]");
+			DiastolicBloodPressure = new Result(temp);
+
+
+			PatientName = "";
+
+			PatientID = "";
+
+
 		}
 	}
 }
