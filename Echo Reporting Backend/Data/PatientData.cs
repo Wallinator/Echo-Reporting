@@ -2,6 +2,7 @@
 using Dicom.StructuredReport;
 using DICOMReporting.Data.Measurements;
 using DICOMReporting.Data.Measurements.Units;
+using DICOMReporting.Data.Results;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -13,9 +14,9 @@ namespace DICOMReporting.Data {
 	public class PatientData {
 		//public string StudyID;
 		//public string StudyDate;
-		public string PatientID;
-		public string PatientName;
-		public string PatientSex;
+		public StringResult PatientID;
+		public StringResult PatientName;
+		public StringResult PatientSex;
 		//public DateTime PatientDOB;
 		public Result PatientAge;
 		public Result PatientWeight;
@@ -28,7 +29,7 @@ namespace DICOMReporting.Data {
 			//weight in kg
 			0.024265 * Math.Pow(PatientSize.Value, 0.3964) * Math.Pow(PatientWeight.Value, 0.5378);
 
-		public PatientData(DicomContentItem patientcontainer) {
+		public PatientData(DicomContentItem patientcontainer) : this() {
 			foreach (var child in patientcontainer.Children()) {
 
 				DicomMeasuredValue measurementsequence;
@@ -48,7 +49,7 @@ namespace DICOMReporting.Data {
 						PatientAge = new Result(temp);
 						break;
 					case "121032":
-						PatientSex = child.Dataset.GetCodeItem(DicomTag.ConceptCodeSequence).Meaning;
+						PatientSex = new StringResult("Patient Sex", child.Dataset.GetCodeItem(DicomTag.ConceptCodeSequence).Meaning);
 						Debug.WriteLine(PatientSex);
 						break;
 					case "8302-2":
@@ -78,11 +79,11 @@ namespace DICOMReporting.Data {
 						DiastolicBloodPressure = new Result(temp);
 						break;
 					case "121029":
-						PatientName = child.Get<string>();
+						PatientName = new StringResult("Patient Name", child.Get<string>());
 						Debug.WriteLine(PatientName);
 						break;
 					case "121030":
-						PatientID = child.Get<string>();
+						PatientID = new StringResult("Patient ID", child.Get<string>());
 						Debug.WriteLine(PatientID);
 						break;
 					case "121031":
@@ -103,26 +104,26 @@ namespace DICOMReporting.Data {
 			IMeasurementHeader temp;
 
 			temp = new UnitHeaderAdapter("Patient Age", new Duration(0, DurationUnit.Year365));
-			PatientAge = new Result(temp);
+			PatientAge = new Result(temp, true);
 
-			PatientSex = "";
+			PatientSex = new StringResult("Patient Sex");
 
 			temp = new UnitHeaderAdapter("Patient Size", new Length(0, LengthUnit.Centimeter));
-			PatientSize = new Result(temp);
+			PatientSize = new Result(temp, true);
 
 			temp = new UnitHeaderAdapter("Patient Size", new Mass(0, MassUnit.Kilogram));
-			PatientWeight = new Result(temp);
+			PatientWeight = new Result(temp, true);
 
 			temp = new MeasurementHeader("Systolic Blood Pressure", 0, "", "mm[Hg]");
-			SystolicBloodPressure = new Result(temp);
+			SystolicBloodPressure = new Result(temp, true);
 
 			temp = new MeasurementHeader("Diastolic Blood Pressure", 0, "", "mm[Hg]");
-			DiastolicBloodPressure = new Result(temp);
+			DiastolicBloodPressure = new Result(temp, true);
 
 
-			PatientName = "";
+			PatientName = new StringResult("Patient Name");
 
-			PatientID = "";
+			PatientID = new StringResult("Patient ID");
 
 
 		}

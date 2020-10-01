@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DICOMReporting.Data;
+using DICOMReporting.Data.Results;
 
 namespace Echo_Reporting_Windows_App {
 	public partial class ResultControl : UserControl {
@@ -21,8 +22,9 @@ namespace Echo_Reporting_Windows_App {
 			ResultTitleLabel.Text = result.Name;
 			ResultUnitLabel.Text = result.UnitShorthand;
 			ZScoreLabel.Text = "";
+			Anomaly.Text = "";
 			if (showNotFoundError && result.Empty) {
-				errorProvider1.SetError(this, result.Name + " value not found in file.");
+				errorProvider1.SetError(ResultUnitLabel, result.Name + " value not found in file.");
 			}
 			else {
 				ResultValueTextBox.Text = result.Value.ToString();
@@ -34,13 +36,12 @@ namespace Echo_Reporting_Windows_App {
 			try {
 				double value = double.Parse(ResultValueTextBox.Text);
 				errorProvider1.Clear();
-				errorProvider1.SetError(this, "");
+				errorProvider1.SetError(ResultUnitLabel, "");
 				result.Empty = false;
-				ResultValueTextBox.Text = value.ToString();
 				UpdateValue(value);
 			}
 			catch (Exception) {
-				errorProvider1.SetError(this, "Not a decimal value.");
+				errorProvider1.SetError(ResultUnitLabel, "Not a decimal value.");
 				result.Empty = true;
 				UpdateValue();
 			}
@@ -50,12 +51,15 @@ namespace Echo_Reporting_Windows_App {
 		}
 		private void UpdateValue(double value) {
 			result.Value = value;
+			ResultValueTextBox.Text = Math.Round(value, 3).ToString();
 			if (result.ZScoreable) {
 				if (result.Empty) {
 					ZScoreLabel.Text = "Z Score: Unavailable.";
+					Anomaly.Text = "";
 				}
 				else {
 					ZScoreLabel.Text = "Z Score: " + result.ZScore.ToString("N3");
+					Anomaly.Text = result.AnomalyText;
 				}
 			}
 		}
@@ -64,6 +68,10 @@ namespace Echo_Reporting_Windows_App {
 				ValidateValue(sender, e);
 				e.Handled = true;
 			}
+		}
+
+		private void ResultValueTextBox_TextChanged(object sender, EventArgs e) {
+
 		}
 	}
 }

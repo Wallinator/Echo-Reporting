@@ -1,4 +1,5 @@
 ﻿using DICOMReporting.Data.Measurements;
+using DICOMReporting.Data.Results;
 using DICOMReporting.Formulas;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace DICOMReporting.Data {
 		}
 		public StructuredReport() : this(new PatientData(), new Dictionary<string, List<MeasurementGroup>>()) { }
 		private void ResultsFromFindings(Dictionary<string, List<MeasurementGroup>> findings) {
-			Dictionary<string, List<MeasurementSpecification>> specsbysite = MeasurementSpecification.SpecsBySite(PatientData);
+			Dictionary<string, List<MeasurementSpecification>> specsbysite = SpecificationHelper.SpecsBySite(PatientData);
 			foreach (var sitename in specsbysite.Keys) {
 				if (findings.ContainsKey(sitename)) {
 					ResultsFromGroups(findings[sitename], specsbysite[sitename]);

@@ -8,14 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DICOMReporting.Data;
+using DICOMReporting.Data.Results;
 
 namespace Echo_Reporting_Windows_App {
 	public partial class StringFieldControl : UserControl {
-
-		public StringFieldControl(string name, string value) {
+		private readonly StringResult Result;
+		public StringFieldControl(StringResult result) {
 			InitializeComponent();
-			ResultTitleLabel.Text = name;
-			ResultValueTextBox.Text = value;
+			Result = result;
+			ResultTitleLabel.Text = result.Name;
+			ResultValueTextBox.Text = result.Value;
+		}
+		private void ResultValueTextBox_TextChanged(object sender, EventArgs e) {
+			Result.Value = ResultValueTextBox.Text;
 		}
 	}
 }

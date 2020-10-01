@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DICOMReporting.Data {
+namespace DICOMReporting.Data.Results {
 	public class Result {
 		public string Name;
 		public string UnitShorthand;
@@ -23,16 +23,17 @@ namespace DICOMReporting.Data {
 			ZScoreable = formula != null && formula.ZScoreable();
 			Empty = empty;
 		}
-		public Result(IMeasurementHeader header) {
+		public Result(IMeasurementHeader header, bool empty = false) {
 			Name = header.Name;
 			UnitShorthand = header.UnitShorthand;
 			Value = header.Value;
 			Formula = null;
 			ZScoreable = false;
-			Empty = false;
+			Empty = empty;
 		}
 
 		public double ZScore => Formula.GetZScore(Value);
+		public string AnomalyText => Formula.ReportAnomaly(ZScore);
 
 		public override string ToString() {
 			string emptyZscorestring = "";
