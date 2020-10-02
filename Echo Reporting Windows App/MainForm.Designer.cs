@@ -412,6 +412,7 @@
 			this.groupBox3.Size = new System.Drawing.Size(1058, 349);
 			this.groupBox3.TabIndex = 14;
 			this.groupBox3.TabStop = false;
+			this.groupBox3.Text = "Situs";
 			// 
 			// panel1
 			// 
