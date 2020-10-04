@@ -17,8 +17,16 @@ namespace Echo_Reporting_Windows_App {
 			InitializeComponent();
 			Result = result;
 			ResultTitleLabel.Text = result.Name;
-			ResultValueComboBox.SelectedIndex = 0;
+			ResultPostfixLabel.Text = result.Postfix;
 			ResultValueComboBox.Items.AddRange(result.Options.ToArray());
+			ResultValueComboBox.SelectedIndex = 0;
+			ResultValueComboBox.Width = 0;
+			foreach (var x in ResultValueComboBox.Items) {
+				int w = TextRenderer.MeasureText((string) x, Font).Width + 38;
+				if (ResultValueComboBox.Width < w) {
+					ResultValueComboBox.Width = w;
+				}
+			}
 		}
 
 		private void ResultValueComboBox_SelectedIndexChanged(object sender, EventArgs e) {

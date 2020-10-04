@@ -51,7 +51,12 @@ namespace Echo_Reporting_Windows_App {
 		}
 		private void UpdateValue(double value) {
 			result.Value = value;
-			ResultValueTextBox.Text = Math.Round(value, 3).ToString();
+			if (result.Empty) {
+				ResultValueTextBox.Text = "";
+			}
+			else {
+				ResultValueTextBox.Text = Math.Round(value, 3).ToString();
+			}
 			if (result.ZScoreable) {
 				if (result.Empty) {
 					ZScoreLabel.Text = "Z Score: Unavailable.";
@@ -71,6 +76,10 @@ namespace Echo_Reporting_Windows_App {
 		}
 
 		private void ResultValueTextBox_TextChanged(object sender, EventArgs e) {
+
+		}
+
+		private void ResultControl_Load(object sender, EventArgs e) {
 
 		}
 	}

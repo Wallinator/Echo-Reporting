@@ -85,6 +85,56 @@ namespace Echo_Reporting_Windows_App {
 			HeartRatePanel.Controls.Add(new ResultControl(report.Results["Heart Rate"], showNotFoundError));
 			MVCFcPanel.Controls.Add(new ResultControl(report.Results["MVCFc"], showNotFoundError));
 			LVOutputPanel.Controls.Add(new ResultControl(report.Results["Left ventricular cardiac output"], showNotFoundError));
+
+			SitusPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.Situs));
+			SystemicVeinsPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.SystemicVeins));
+
+			// Atria
+			NormalAtriaPanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.AtriaSize));
+			IntactAtrialSeptumPanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.AtriaSeptum));
+			DilatedLeftAtriumPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.AtriaLeft));
+			DilatedRightAtriumPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.AtriaRight));
+			DilatedBilaterallyAtriumPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.AtriaBilateral));
+			PatentForamenOvalePanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.AtriaPatentForamenOvale));
+			ASD1Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.ASD1));
+			ASD2Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.ASD2));
+			ASD3Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.ASD3));
+			ASDDimensionPanel.Controls.Add(new ResultControl(report.Results["Atrial Septal Defect dimension"], showNotFoundError));
+			ASDGradientPanel.Controls.Add(new ResultControl(report.Results["Atrial Septal Defect mean gradient"], showNotFoundError));
+
+			// AV Valves
+			AVConnectionPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.AVValves));
+			MV1Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.MitralValve1));
+			MV2Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.MitralValve2));
+			MV3Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.MitralValve3));
+			MitralProlapsePanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.MitralValveProlapse));
+
+			LAVV1Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.LAVV1));
+			LAVV2Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.LAVV2));
+			LAVV3Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.LAVV3));
+
+			MVAnnulusPanel.Controls.Add(new ResultControl(report.Results["Mitral valve annulus"], showNotFoundError));
+			MVEPanel.Controls.Add(new ResultControl(report.Results["Mitral valve E wave"], showNotFoundError));
+			MVAPanel.Controls.Add(new ResultControl(report.Results["Mitral valve A wave"], showNotFoundError));
+			MVEARatioPanel.Controls.Add(new ResultControl(report.Results["Mitral E/A ratio"], showNotFoundError));
+			MVInflowAPanel.Controls.Add(new ResultControl(report.Results["Mitral valve inflow A wave duration"], showNotFoundError));
+			MVDecelPanel.Controls.Add(new ResultControl(report.Results["MV decel time"], showNotFoundError));
+			MVInflowGradPanel.Controls.Add(new ResultControl(report.Results["Mitral valve inflow mean gradient"], showNotFoundError));
+			MVRegurgVelPanel.Controls.Add(new ResultControl(report.Results["Mitral valve regurgitation peak velocity"], showNotFoundError));
+			MVRegurgGradPanel.Controls.Add(new ResultControl(report.Results["Mitral valve regurgitation peak gradient"], showNotFoundError));
+
+			Tri1Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.TriscupidValve1));
+			Tri2Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.TriscupidValve2));
+			Tri3Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.TriscupidValve3));
+			RAVV1Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.RAVV1));
+			RAVV2Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.RAVV2));
+
+			InsufficentTRPanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.InsufficientTR));
+
+			TVAnnulusPanel.Controls.Add(new ResultControl(report.Results["Tricuspid valve annulus"], showNotFoundError));
+			TVInflowPanel.Controls.Add(new ResultControl(report.Results["Tricuspid valve inflow mean gradient"], showNotFoundError));
+			TVRegurgVelPanel.Controls.Add(new ResultControl(report.Results["Tricuspid valve regurgitation peak velocity"], showNotFoundError));
+			TVRegurgGradPanel.Controls.Add(new ResultControl(report.Results["Tricuspid valve regurgitation peak gradient"], showNotFoundError));
 		}
 		private void ClearAllPanels() {
 			PatientIDPanel.Controls.Clear();
@@ -118,6 +168,53 @@ namespace Echo_Reporting_Windows_App {
 			HeartRatePanel.Controls.Clear();
 			MVCFcPanel.Controls.Clear();
 			LVOutputPanel.Controls.Clear();
+
+			NormalAtriaPanel.Controls.Clear();
+			IntactAtrialSeptumPanel.Controls.Clear();
+			DilatedLeftAtriumPanel.Controls.Clear();
+			DilatedRightAtriumPanel.Controls.Clear();
+			DilatedBilaterallyAtriumPanel.Controls.Clear();
+			PatentForamenOvalePanel.Controls.Clear();
+			ASD1Panel.Controls.Clear();
+			ASD2Panel.Controls.Clear();
+			ASD3Panel.Controls.Clear();
+			ASDDimensionPanel.Controls.Clear();
+			ASDGradientPanel.Controls.Clear();
+
+			//AV Valves
+
+			AVConnectionPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.AVValves));
+			MV1Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.MitralValve1));
+			MV2Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.MitralValve2));
+			MV3Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.MitralValve3));
+			MitralProlapsePanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.MitralValveProlapse));
+
+			LAVV1Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.LAVV1));
+			LAVV2Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.LAVV2));
+			LAVV3Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.LAVV3));
+
+			MVAnnulusPanel.Controls.Clear();
+			MVEPanel.Controls.Clear();
+			MVAPanel.Controls.Clear();
+			MVEARatioPanel.Controls.Clear();
+			MVInflowAPanel.Controls.Clear();
+			MVDecelPanel.Controls.Clear();
+			MVInflowGradPanel.Controls.Clear();
+			MVRegurgVelPanel.Controls.Clear();
+			MVRegurgGradPanel.Controls.Clear();
+
+			Tri1Panel.Controls.Clear();
+			Tri2Panel.Controls.Clear();
+			Tri3Panel.Controls.Clear();
+			RAVV1Panel.Controls.Clear();
+			RAVV2Panel.Controls.Clear();
+
+			InsufficentTRPanel.Controls.Clear()
+				;
+			TVAnnulusPanel.Controls.Clear();
+			TVInflowPanel.Controls.Clear();
+			TVRegurgVelPanel.Controls.Clear();
+			TVRegurgGradPanel.Controls.Clear();
 		}
 
 		private void MainForm_Load(object sender, EventArgs e) {

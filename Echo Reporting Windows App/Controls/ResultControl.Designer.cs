@@ -100,6 +100,7 @@
 			this.Controls.Add(this.ResultTitleLabel);
 			this.Name = "ResultControl";
 			this.Size = new System.Drawing.Size(254, 54);
+			this.Load += new System.EventHandler(this.ResultControl_Load);
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
