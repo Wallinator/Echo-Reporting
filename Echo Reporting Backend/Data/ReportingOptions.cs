@@ -119,7 +119,7 @@ namespace DICOMReporting.Data {
 
 		//Ventricles
 
-		public MultipleChoiceResult VentricleFunction = new MultipleChoiceResult("and", new List<string>() {"Normal biventricular size and function",
+		public MultipleChoiceResult VentricleFunction = new MultipleChoiceResult("", new List<string>() {"Normal biventricular size and function",
 																											"Normal LV function",
 																											"Normal RV function" });
 		public BoolResult VentricularHypertrophy = new BoolResult("No ventricular hypertrophy");

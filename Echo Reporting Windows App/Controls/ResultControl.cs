@@ -51,6 +51,7 @@ namespace Echo_Reporting_Windows_App {
 		}
 		private void UpdateValue(double value) {
 			result.Value = value;
+			Anomaly.Text = result.AnomalyText;
 			if (result.Empty) {
 				ResultValueTextBox.Text = "";
 			}
@@ -60,11 +61,9 @@ namespace Echo_Reporting_Windows_App {
 			if (result.ZScoreable) {
 				if (result.Empty) {
 					ZScoreLabel.Text = "Z Score: Unavailable.";
-					Anomaly.Text = "";
 				}
 				else {
 					ZScoreLabel.Text = "Z Score: " + result.ZScore.ToString("N3");
-					Anomaly.Text = result.AnomalyText;
 				}
 			}
 		}

@@ -38,6 +38,7 @@ namespace DICOMReporting.Data {
 					ResultsFromGroups(new List<MeasurementGroup>(), specsbysite[sitename]);
 				}
 			}
+			AddCalculatedValues();
 		}
 
 		private void ResultsFromGroups(List<MeasurementGroup> groups, List<MeasurementSpecification> specs) {
@@ -46,6 +47,18 @@ namespace DICOMReporting.Data {
 				Results.Add(r.Name, r);
 				Debug.WriteLine(r);
 			}
+		}
+
+		private void AddCalculatedValues() {
+			var r = Results["Pulmonary valve end diastolic velocity"];
+			Result final;
+			if (!r.Empty) {
+				final = new Result("Pulmonary valve end diastolic peak gradient", "", empty: false, value: 4 * Math.Pow(r.Value, 2));
+			}
+			else {
+				final = new Result("Pulmonary valve end diastolic peak gradient", "");
+			}
+			Results["Pulmonary valve end diastolic peak gradient"] = final;
 		}
 	}
 }

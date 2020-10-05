@@ -33,7 +33,16 @@ namespace DICOMReporting.Data.Results {
 		}
 
 		public double ZScore => Formula.GetZScore(Value);
-		public string AnomalyText => Formula.ReportAnomaly(ZScore);
+		public string AnomalyText {
+			get {
+				if (Formula != null) {
+					if (!Empty) {
+						return Formula.ReportAnomaly(Value);
+					}
+				}
+				return "";
+			}
+		}
 
 		public override string ToString() {
 			string emptyZscorestring = "";

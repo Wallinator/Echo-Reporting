@@ -3,7 +3,8 @@
 namespace DICOMReporting.Formulas {
 	public class ImpactOfCardiacGrowthFormula : IFormula {
 		private Constants constants;
-		public string ReportAnomaly(double ZScore) {
+		public string ReportAnomaly(double measurement) {
+			double ZScore = GetZScore(measurement);
 			int bracket;
 			if (ZScore < -2) {
 				bracket = 0;
