@@ -38,7 +38,9 @@ namespace DICOMReporting.Data.Measurements {
 				return Measurements.First();
 			}
 			else {
-				return Measurements.Find(m => m.Properties.TryGetValue("Derivation", out string val) && val.Equals("Mean"));
+				return Measurements.Find(m => (m.Properties.TryGetValue("Derivation", out string val) && val.Equals("Mean")
+										   || (m.Properties.TryGetValue("Selection Status", out val) && val.Equals("Mean value chosen"))
+										   ));
 			}
 		}
 		/*

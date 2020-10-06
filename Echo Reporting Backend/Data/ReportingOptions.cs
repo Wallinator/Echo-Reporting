@@ -200,7 +200,7 @@ namespace DICOMReporting.Data {
 		public BoolResult AortaVSDOvveride = new BoolResult("Aorta overrides the VSD");
 		public BoolResult LossSinotubularJunction = new BoolResult("Loss of the sinotubular junction");
 
-		public MultipleChoiceResult AVMuscular = new MultipleChoiceResult("", new List<string>() {  "Muscular",
+		public MultipleChoiceResult SubPulmonaryStenosis = new MultipleChoiceResult("", new List<string>() {  "Muscular",
 																									"Fibromuscular"}, "sub-pulmonary stenosis");
 
 		public MultipleChoiceResult PulmonaryValve1 = new MultipleChoiceResult("", new List<string>() { "Normal pulmonary valve",

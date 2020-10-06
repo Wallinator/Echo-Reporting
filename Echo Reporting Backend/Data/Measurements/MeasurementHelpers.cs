@@ -20,6 +20,9 @@ namespace DICOMReporting.Data.Measurements {
 			if (p.TryGetValue("Derivation", out string val) && val.Equals("Mean")) {
 				p.Remove("Derivation");
 			}
+			if (p.TryGetValue("Selection Status", out val) && val.Equals("Mean value chosen")) {
+				p.Remove("Selection Status");
+			}
 		}
 	}
 }

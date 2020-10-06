@@ -163,7 +163,6 @@ namespace DICOMReporting.Data.Measurements {
 			props.Clear();
 
 			props.Add("Flow Direction", "Regurgitant Flow");
-			props.Add("Selection Status", "Mean value chosen");
 			specs.Add(new MeasurementSpecification("Aortic valve pressure half-time", "Pressure Half-Time", new Dictionary<string, string>(props), "ms", unitEnum: DurationUnit.Millisecond));
 			props.Clear();
 

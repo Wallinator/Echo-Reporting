@@ -144,7 +144,7 @@ namespace Echo_Reporting_Windows_App {
 			#region
 			VentricleSizeFunctionPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.VentricleFunction));
 			VentricularHypertrophyPanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.VentricularHypertrophy));
-				
+
 			IVSd2Panel.Controls.Add(new ResultControl(report.Results["IVSd"], showNotFoundError));
 			LVIDd2Panel.Controls.Add(new ResultControl(report.Results["LVIDd"], showNotFoundError));
 			LVPWd2Panel.Controls.Add(new ResultControl(report.Results["LVPWd"], showNotFoundError));
@@ -203,7 +203,121 @@ namespace Echo_Reporting_Windows_App {
 			VSDVelPanel.Controls.Add(new ResultControl(report.Results["Ventricular Septal Defect peak velocity"], showNotFoundError));
 			VSDGradPanel.Controls.Add(new ResultControl(report.Results["Ventricular Septal Defect peak gradient"], showNotFoundError));
 			#endregion
-			
+			// Outlets
+			#region
+			VentriculoarterialPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.Ventriculoarterial));
+			OutflowTractsPanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.OutflowTracts));
+			SubAorticMembranePanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.SubAorticMembrane));
+
+			LVODimensionPanel.Controls.Add(new ResultControl(report.Results["Left ventricle outflow dimension"], showNotFoundError));
+			LVOVelocityPanel.Controls.Add(new ResultControl(report.Results["Left ventricle outflow peak velocity"], showNotFoundError));
+			LVOPeakPanel.Controls.Add(new ResultControl(report.Results["Left ventricle outflow peak gradient"], showNotFoundError));
+			LVOMeanPanel.Controls.Add(new ResultControl(report.Results["Left ventricle outflow mean gradient"], showNotFoundError));
+
+			AorticValve1Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.AorticValve1));
+			AorticValve2Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.AorticValve2));
+			AorticValve3Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.AorticValve3));
+
+			AVAnnulusPanel.Controls.Add(new ResultControl(report.Results["Aortic valve annulus"], showNotFoundError));
+			AVVelocityPanel.Controls.Add(new ResultControl(report.Results["Aortic valve peak velocity"], showNotFoundError));
+			AVPeakPanel.Controls.Add(new ResultControl(report.Results["Aortic valve peak gradient"], showNotFoundError));
+			AVMeanPanel.Controls.Add(new ResultControl(report.Results["Aortic valve mean gradient"], showNotFoundError));
+			PressureHalfTimePanel.Controls.Add(new ResultControl(report.Results["Aortic valve pressure half-time"], showNotFoundError));
+
+			AVLeafletsPanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.AorticValveLeaflets));
+			AVProlapsePanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.AorticValveProlapse));
+			AortaVSDPanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.AortaVSDOvveride));
+			LossSinotubularPanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.LossSinotubularJunction));
+			SubPulmonaryStenosisPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.SubPulmonaryStenosis));
+
+			RVODimensionPanel.Controls.Add(new ResultControl(report.Results["Right ventricle outflow dimension"], showNotFoundError));
+			RVOVelocityPanel.Controls.Add(new ResultControl(report.Results["Right ventricle outflow peak velocity"], showNotFoundError));
+			RVOPeakPanel.Controls.Add(new ResultControl(report.Results["Right ventricle outflow peak gradient"], showNotFoundError));
+			RVOMeanPanel.Controls.Add(new ResultControl(report.Results["Right ventricle outflow mean gradient"], showNotFoundError));
+
+			PV1Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.PulmonaryValve1));
+			PV2Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.PulmonaryValve2));
+			PV3Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.PulmonaryValve3));
+
+			PVAnnulusPanel.Controls.Add(new ResultControl(report.Results["Pulmonary valve annulus"], showNotFoundError));
+			PVVelocityPanel.Controls.Add(new ResultControl(report.Results["Pulmonary valve peak velocity"], showNotFoundError));
+			PVPeakPanel.Controls.Add(new ResultControl(report.Results["Pulmonary valve peak gradient"], showNotFoundError));
+			PVMeanPanel.Controls.Add(new ResultControl(report.Results["Pulmonary valve mean gradient"], showNotFoundError));
+			PVEndDiaVelPanel.Controls.Add(new ResultControl(report.Results["Pulmonary valve end diastolic velocity"], showNotFoundError));
+			PVEndDiaGradPanel.Controls.Add(new ResultControl(report.Results["Pulmonary valve end diastolic peak gradient"], showNotFoundError));
+			#endregion
+			// Great Arteries
+			#region
+			LeftAorticArch1Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.LeftAorticArch1));
+			LeftAorticArch2Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.LeftAorticArch2));
+
+			SinusValsavaPanel.Controls.Add(new ResultControl(report.Results["Sinuses of Valsalva"], showNotFoundError));
+			SinotubularJunctionPanel.Controls.Add(new ResultControl(report.Results["Sinotubular junction"], showNotFoundError));
+			AscendingAortaPanel.Controls.Add(new ResultControl(report.Results["Ascending aorta"], showNotFoundError));
+			TransverseArchPanel.Controls.Add(new ResultControl(report.Results["Transverse aortic arch"], showNotFoundError));
+			DistalArchPanel.Controls.Add(new ResultControl(report.Results["Distal aortic arch"], showNotFoundError));
+			AorticIsthmusPanel.Controls.Add(new ResultControl(report.Results["Aortic isthmus"], showNotFoundError));
+			AscendingAortaVelocityPanel.Controls.Add(new ResultControl(report.Results["Ascending aorta peak velocity"], showNotFoundError));
+			AscendignAortaGradientPanel.Controls.Add(new ResultControl(report.Results["Ascending aorta peak gradient"], showNotFoundError));
+
+			RightAorticArch1Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.RightAorticArch1));
+			RightAorticArch2Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.RightAorticArch2));
+			NoCoarctationPanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.NoCoarctationAorta));
+			CoarctationPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.CoarctationAorta));
+
+			CoarctationAortaPanel.Controls.Add(new ResultControl(report.Results["Coarctation of the aorta"], showNotFoundError));
+			DescendindAortaVelPanel.Controls.Add(new ResultControl(report.Results["Descending aorta peak velocity"], showNotFoundError));
+			DescendindAortaGradPanel.Controls.Add(new ResultControl(report.Results["Descending aorta peak gradient"], showNotFoundError));
+
+			BranchPulmArteryPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.BranchPulmonaryArteries));
+
+			MainPulmArteryPanel.Controls.Add(new ResultControl(report.Results["Main pulmonary artery"], showNotFoundError));
+			MainPulmArteryVelPanel.Controls.Add(new ResultControl(report.Results["Main pulmonary artery peak velocity"], showNotFoundError));
+			MainPulmArteryGradPanel.Controls.Add(new ResultControl(report.Results["Main pulmonary artery peak gradient"], showNotFoundError));
+
+			RightPulmArteryPanel.Controls.Add(new ResultControl(report.Results["Right pulmonary artery"], showNotFoundError));
+			RightPulmArteryVelPanel.Controls.Add(new ResultControl(report.Results["Right pulmonary artery peak velocity"], showNotFoundError));
+			RightPulmArteryGradPanel.Controls.Add(new ResultControl(report.Results["Right pulmonary artery peak gradient"], showNotFoundError));
+
+			LeftPulmArteryPanel.Controls.Add(new ResultControl(report.Results["Left pulmonary artery"], showNotFoundError));
+			LeftPulmArteryVelPanel.Controls.Add(new ResultControl(report.Results["Left pulmonary artery peak velocity"], showNotFoundError));
+			LeftPulmArteryGradPanel.Controls.Add(new ResultControl(report.Results["Left pulmonary artery peak gradient"], showNotFoundError));
+
+			NoPatentDuctusArteriosusPanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.NoPatentDuctusArteriosus));
+			PatentDuctusArteriosus1Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.PatentDuctusArteriosus1));
+			PatentDuctusArteriosus2Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.PatentDuctusArteriosus2));
+
+			PatentDuctusArteriosusPanel.Controls.Add(new ResultControl(report.Results["Patent Ductus Arteriosus"], showNotFoundError));
+			PatentDuctusArteriosusSysPanel.Controls.Add(new ResultControl(report.Results["Patent Ductus Arteriosus peak velocity systole"], showNotFoundError));
+			PatentDuctusArteriosusDiaPanel.Controls.Add(new ResultControl(report.Results["Patent Ductus Arteriosus peak velocity diastole"], showNotFoundError));
+
+			#endregion
+			// Pulmonary Veins
+			#region
+			PulmonaryVeinsPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.PulmonaryVeins));
+
+			PulmVeinSWavePanel.Controls.Add(new ResultControl(report.Results["Pulm vein S wave"], showNotFoundError));
+			PulmVeinDWavePanel.Controls.Add(new ResultControl(report.Results["Pulm vein D wave"], showNotFoundError));
+			PulmVeinAWavePanel.Controls.Add(new ResultControl(report.Results["Pulm vein A wave"], showNotFoundError));
+			PulmVeinWaveDurationPanel.Controls.Add(new ResultControl(report.Results["Pulmonary vein A wave duration"], showNotFoundError));
+
+			#endregion
+			// Coronary Arteries
+			#region
+			CoronaryArteryPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.CoronaryArteries));
+
+			LeftMainCoronaryPanel.Controls.Add(new ResultControl(report.Results["Left Main Coronary Artery"], showNotFoundError));
+			AnteriorCoronaryPanel.Controls.Add(new ResultControl(report.Results["Anterior Descending Branch of Left Coronary Artery"], showNotFoundError));
+			RightCoronaryPanel.Controls.Add(new ResultControl(report.Results["Right Coronary Artery"], showNotFoundError));
+			LeftCircumflexPanel.Controls.Add(new ResultControl(report.Results["Left Circumflex"], showNotFoundError));
+
+			#endregion
+			// Other
+			#region
+			NoPercardialEffusionPanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.NoPercardialEffusion));
+			PercardialEffusionPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.PercardialEffusion));
+
+			#endregion
 		}
 		private void ClearAllPanels() {
 			// Patient Data
@@ -287,7 +401,7 @@ namespace Echo_Reporting_Windows_App {
 			TVInflowPanel.Controls.Clear();
 			TVRegurgVelPanel.Controls.Clear();
 			TVRegurgGradPanel.Controls.Clear();
-			
+
 			#endregion
 			// Ventricles
 			#region
@@ -350,15 +464,98 @@ namespace Echo_Reporting_Windows_App {
 			VSDVelPanel.Controls.Clear();
 			VSDGradPanel.Controls.Clear();
 			#endregion
+			// Outlets
+			#region
+			VentriculoarterialPanel.Controls.Clear();
+			OutflowTractsPanel.Controls.Clear();
+			SubAorticMembranePanel.Controls.Clear();
+
+			LVODimensionPanel.Controls.Clear();
+			LVOVelocityPanel.Controls.Clear();
+			LVOPeakPanel.Controls.Clear();
+			LVOMeanPanel.Controls.Clear();
+
+			AorticValve1Panel.Controls.Clear();
+			AorticValve2Panel.Controls.Clear();
+			AorticValve3Panel.Controls.Clear();
+
+			AVAnnulusPanel.Controls.Clear();
+			AVVelocityPanel.Controls.Clear();
+			AVPeakPanel.Controls.Clear();
+			AVMeanPanel.Controls.Clear();
+			PressureHalfTimePanel.Controls.Clear();
+
+			AVLeafletsPanel.Controls.Clear();
+			AVProlapsePanel.Controls.Clear();
+			AortaVSDPanel.Controls.Clear();
+			LossSinotubularPanel.Controls.Clear();
+			SubPulmonaryStenosisPanel.Controls.Clear();
+
+			RVODimensionPanel.Controls.Clear();
+			RVOVelocityPanel.Controls.Clear();
+			RVOPeakPanel.Controls.Clear();
+			RVOMeanPanel.Controls.Clear();
+
+			PV1Panel.Controls.Clear();
+			PV2Panel.Controls.Clear();
+			PV3Panel.Controls.Clear();
+
+			PVAnnulusPanel.Controls.Clear();
+			PVVelocityPanel.Controls.Clear();
+			PVPeakPanel.Controls.Clear();
+			PVMeanPanel.Controls.Clear();
+			PVEndDiaVelPanel.Controls.Clear();
+			PVEndDiaGradPanel.Controls.Clear();
+
+			#endregion
+			// Great Arteries
+			#region
+			LeftAorticArch1Panel.Controls.Clear();
+			LeftAorticArch2Panel.Controls.Clear();
+
+			SinusValsavaPanel.Controls.Clear();
+			SinotubularJunctionPanel.Controls.Clear();
+			AscendingAortaPanel.Controls.Clear();
+			TransverseArchPanel.Controls.Clear();
+			DistalArchPanel.Controls.Clear();
+			AorticIsthmusPanel.Controls.Clear();
+			AscendingAortaVelocityPanel.Controls.Clear();
+			AscendignAortaGradientPanel.Controls.Clear();
+
+			RightAorticArch1Panel.Controls.Clear();
+			RightAorticArch2Panel.Controls.Clear();
+			NoCoarctationPanel.Controls.Clear();
+			CoarctationPanel.Controls.Clear();
+
+			CoarctationAortaPanel.Controls.Clear();
+			DescendindAortaVelPanel.Controls.Clear();
+			DescendindAortaGradPanel.Controls.Clear();
+
+			BranchPulmArteryPanel.Controls.Clear();
+
+			MainPulmArteryPanel.Controls.Clear();
+			MainPulmArteryVelPanel.Controls.Clear();
+			MainPulmArteryGradPanel.Controls.Clear();
+
+			RightPulmArteryPanel.Controls.Clear();
+			RightPulmArteryVelPanel.Controls.Clear();
+			RightPulmArteryGradPanel.Controls.Clear();
+
+			LeftPulmArteryPanel.Controls.Clear();
+			LeftPulmArteryVelPanel.Controls.Clear();
+			LeftPulmArteryGradPanel.Controls.Clear();
+
+			NoPatentDuctusArteriosusPanel.Controls.Clear();
+			PatentDuctusArteriosus1Panel.Controls.Clear();
+			PatentDuctusArteriosus2Panel.Controls.Clear();
+
+			PatentDuctusArteriosusPanel.Controls.Clear();
+			PatentDuctusArteriosusSysPanel.Controls.Clear();
+			PatentDuctusArteriosusDiaPanel.Controls.Clear();
+
+			#endregion
 
 		}
 
-		private void MainForm_Load(object sender, EventArgs e) {
-
-		}
-
-		private void groupBox7_Enter(object sender, EventArgs e) {
-
-		}
 	}
 }
