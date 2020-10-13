@@ -554,6 +554,32 @@ namespace Echo_Reporting_Windows_App {
 			PatentDuctusArteriosusDiaPanel.Controls.Clear();
 
 			#endregion
+			// Pulmonary Veins
+			#region
+			PulmonaryVeinsPanel.Controls.Clear();
+
+			PulmVeinSWavePanel.Controls.Clear();
+			PulmVeinDWavePanel.Controls.Clear();
+			PulmVeinAWavePanel.Controls.Clear();
+			PulmVeinWaveDurationPanel.Controls.Clear();
+
+			#endregion
+			// Coronary Arteries
+			#region
+			CoronaryArteryPanel.Controls.Clear();
+
+			LeftMainCoronaryPanel.Controls.Clear();
+			AnteriorCoronaryPanel.Controls.Clear();
+			RightCoronaryPanel.Controls.Clear();
+			LeftCircumflexPanel.Controls.Clear();
+
+			#endregion
+			// Other
+			#region
+			NoPercardialEffusionPanel.Controls.Clear();
+			PercardialEffusionPanel.Controls.Clear();
+
+			#endregion
 
 		}
 
