@@ -4,6 +4,7 @@ using DICOMReporting.Data.Measurements;
 using DICOMReporting.Data.Measurements.Units;
 using DICOMReporting.Data.Results;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -17,17 +18,18 @@ namespace DICOMReporting.Data {
 		public StringResult PatientID;
 		public StringResult PatientName;
 		public StringResult PatientSex;
+		public StringResult ReasonForStudy;
+		public StringResult ReferringPhysician;
+		public MultipleChoiceResult EchoType;
+		public MultipleChoiceResult ReportingDoctor;
 		//public DateTime PatientDOB;
 		public Result PatientAge;
 		public Result PatientWeight;
 		public Result PatientSize;
 		public Result SystolicBloodPressure;
 		public Result DiastolicBloodPressure;
+		public Result BSA;
 
-		public double BSA => 
-			//height in cm
-			//weight in kg
-			0.024265 * Math.Pow(PatientSize.Value, 0.3964) * Math.Pow(PatientWeight.Value, 0.5378);
 
 		public PatientData(DicomContentItem patientcontainer) : this() {
 			foreach (var child in patientcontainer.Children()) {
@@ -98,6 +100,7 @@ namespace DICOMReporting.Data {
 						break;
 				}
 			}
+			BSA = new Result("BSA", "", value: 0.024265 * Math.Pow(PatientSize.Value, 0.3964) * Math.Pow(PatientWeight.Value, 0.5378));
 		}
 		public PatientData() {
 
@@ -124,6 +127,14 @@ namespace DICOMReporting.Data {
 			PatientName = new StringResult("Patient Name");
 
 			PatientID = new StringResult("Patient ID");
+
+			ReasonForStudy = new StringResult("Reason For Study");
+
+			ReferringPhysician = new StringResult("Referring Physician");
+
+			EchoType = new MultipleChoiceResult("Echo Type", new List<string>() { "Transthoracic echo" });
+
+			ReportingDoctor = new MultipleChoiceResult("Reporting Doctor", new List<string>() { "Dr Paul Brooks" });
 
 
 		}

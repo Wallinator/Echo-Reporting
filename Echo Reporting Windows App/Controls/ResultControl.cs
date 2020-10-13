@@ -63,7 +63,7 @@ namespace Echo_Reporting_Windows_App {
 					ZScoreLabel.Text = "Z Score: Unavailable.";
 				}
 				else {
-					ZScoreLabel.Text = "Z Score: " + result.ZScore.ToString("N3");
+					ZScoreLabel.Text = "Z Score: " + result.ZScore.ToString("N2");
 				}
 			}
 		}
