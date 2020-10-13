@@ -33,17 +33,20 @@ namespace DICOMReporting.Formulas {
 		public static ImpactOfCardiacGrowthFormula MitralValveEWave(PatientData pd, string name) {
 			double[] averages = { 79.7, 95.2, 94.4, 94.5, 90.3 };
 			double[] sds = { 18.8, 19.5, 14.8, 16, 17.8 };
-			return new ImpactOfCardiacGrowthFormula(new Constants(averages, sds, pd, name, new[] { "Reduced", "Normal", "Increased" }));
+			return new ImpactOfCardiacGrowthFormula(new Constants(averages, sds, pd, name, new[] { "Reduced", "", "Increased" }));
+			//return new ImpactOfCardiacGrowthFormula(new Constants(averages, sds, pd, name, new[] { "Reduced", "Normal", "Increased" }));
 		}
 		public static ImpactOfCardiacGrowthFormula MitralValveAWave(PatientData pd, string name) {
 			double[] averages = { 65.3, 61.3, 49.4, 49.5, 45.5 };
 			double[] sds = { 13.3, 12.1, 12.5, 13.8, 13.2 };
-			return new ImpactOfCardiacGrowthFormula(new Constants(averages, sds, pd, name, new[] { "Reduced", "Normal", "Increased" }));
+			return new ImpactOfCardiacGrowthFormula(new Constants(averages, sds, pd, name, new[] { "Reduced", "", "Increased" }));
+			//return new ImpactOfCardiacGrowthFormula(new Constants(averages, sds, pd, name, new[] { "Reduced", "Normal", "Increased" }));
 		}
 		public static ImpactOfCardiacGrowthFormula MitralEA_Ratio(PatientData pd, string name) {
 			double[] averages = { 1.24, 1.6, 1.99, 2.02, 2.13 };
 			double[] sds = { 0.3, 0.46, 0.51, 0.58, 0.65 };
-			return new ImpactOfCardiacGrowthFormula(new Constants(averages, sds, pd, name, new[] { "Reduced", "Normal", "Increased" }));
+			return new ImpactOfCardiacGrowthFormula(new Constants(averages, sds, pd, name, new[] { "Reduced", "", "Increased" }));
+			//return new ImpactOfCardiacGrowthFormula(new Constants(averages, sds, pd, name, new[] { "Reduced", "Normal", "Increased" }));
 		}
 		public static ImpactOfCardiacGrowthFormula LVMassIndex(PatientData pd, string name) {
 			double[] averages = { 18.9, 43.6, 82.3, 110.1, 158.4 };

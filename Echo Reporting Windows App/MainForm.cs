@@ -121,7 +121,7 @@ namespace Echo_Reporting_Windows_App {
 			MVEPanel.Controls.Add(new ResultControl(report.Results["Mitral valve E wave"], showNotFoundError));
 			MVAPanel.Controls.Add(new ResultControl(report.Results["Mitral valve A wave"], showNotFoundError));
 			MVEARatioPanel.Controls.Add(new ResultControl(report.Results["Mitral E/A ratio"], showNotFoundError));
-			MVInflowAPanel.Controls.Add(new ResultControl(report.Results["Mitral valve inflow A wave duration"], showNotFoundError));
+			//MVInflowAPanel.Controls.Add(new ResultControl(report.Results["Mitral valve inflow A wave duration"], showNotFoundError));
 			MVDecelPanel.Controls.Add(new ResultControl(report.Results["MV decel time"], showNotFoundError));
 			MVInflowGradPanel.Controls.Add(new ResultControl(report.Results["Mitral valve inflow mean gradient"], showNotFoundError));
 			MVRegurgVelPanel.Controls.Add(new ResultControl(report.Results["Mitral valve regurgitation peak velocity"], showNotFoundError));
@@ -384,7 +384,7 @@ namespace Echo_Reporting_Windows_App {
 			MVEPanel.Controls.Clear();
 			MVAPanel.Controls.Clear();
 			MVEARatioPanel.Controls.Clear();
-			MVInflowAPanel.Controls.Clear();
+			//MVInflowAPanel.Controls.Clear();
 			MVDecelPanel.Controls.Clear();
 			MVInflowGradPanel.Controls.Clear();
 			MVRegurgVelPanel.Controls.Clear();
@@ -574,7 +574,7 @@ namespace Echo_Reporting_Windows_App {
 			LeftCircumflexPanel.Controls.Clear();
 
 			#endregion
-			// Other
+			// Other	
 			#region
 			NoPercardialEffusionPanel.Controls.Clear();
 			PercardialEffusionPanel.Controls.Clear();
