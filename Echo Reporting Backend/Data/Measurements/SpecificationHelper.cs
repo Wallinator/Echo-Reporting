@@ -1,4 +1,5 @@
 ﻿using DICOMReporting.Formulas;
+using Echo_Reporting_Backend.Formulas;
 using System.Collections.Generic;
 using UnitsNet.Units;
 
@@ -126,7 +127,7 @@ namespace DICOMReporting.Data.Measurements {
 			props.Clear();
 
 			props.Add("Measurement Method", "Method of Disks, Biplane");
-			specs.Add(new MeasurementSpecification("Left Ventricular biplane EF", "Cardiac ejection fraction", new Dictionary<string, string>(props), "%", includeImageMode: true));
+			specs.Add(new MeasurementSpecification("Left Ventricular biplane EF", "Cardiac ejection fraction", new Dictionary<string, string>(props), "%", includeImageMode: true, formula: LVEFFormula.LVBiplaneEF()));
 			props.Clear();
 
 			props.Add("Measurement Method", "Teichholz");
@@ -139,7 +140,7 @@ namespace DICOMReporting.Data.Measurements {
 
 			props.Add("Measurement Method", "Method of Disks, Single Plane");
 			props.Add("Image View", "Apical four chamber");
-			specs.Add(new MeasurementSpecification("Left ventricular Apical 4 chamber EF", "Cardiac ejection fraction", new Dictionary<string, string>(props), "%", includeImageMode: true));
+			specs.Add(new MeasurementSpecification("Left ventricular Apical 4 chamber EF", "Cardiac ejection fraction", new Dictionary<string, string>(props), "%", includeImageMode: true, formula: LVEFFormula.LVBiplaneEF()));
 			props.Clear();
 
 			specs.Add(new MeasurementSpecification("MVCFc", "HR-Corrected Mean Velocity of Circumferential Fiber Shortening", new Dictionary<string, string>(props), "circ/sec", includeImageMode: true));
@@ -299,7 +300,7 @@ namespace DICOMReporting.Data.Measurements {
 			props.Clear();
 
 			props.Add("Flow Direction", "Regurgitant Flow");
-			specs.Add(new MeasurementSpecification("Tricuspid valve regurgitation peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Estimated RV systolic pressure", "Peak Gradient", new Dictionary<string, string>(props), "mmHg + RA pressure"));
 			specs.Add(new MeasurementSpecification("Tricuspid valve regurgitation peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
 			props.Clear();
 

@@ -15,8 +15,7 @@ namespace DICOMReporting.Formulas {
 			else {
 				bracket = 2;
 			}
-
-			if (constants.AnomalyPrefix) {
+			if (constants.AnomalyPrefix && !constants.Anomalies[bracket].Equals("")) {
 				return constants.Anomalies[bracket] + constants.MeasurementName;
 			}
 			else {

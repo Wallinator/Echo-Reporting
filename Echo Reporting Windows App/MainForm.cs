@@ -66,6 +66,13 @@ namespace Echo_Reporting_Windows_App {
 			DiastolicBPPanel.Controls.Add(new ResultControl(report.PatientData.DiastolicBloodPressure, showNotFoundError));
 			SystolicBPPanel.Controls.Add(new ResultControl(report.PatientData.SystolicBloodPressure, showNotFoundError));
 
+			ReasonForStudyPanel.Controls.Add(new StringFieldControl(report.PatientData.ReasonForStudy));
+			ReferringPhysicianPanel.Controls.Add(new StringFieldControl(report.PatientData.ReferringPhysician));
+			EchoTypePanel.Controls.Add(new StringDropDownControl(report.PatientData.EchoType));
+			ReportingDoctorPanel.Controls.Add(new StringDropDownControl(report.PatientData.ReportingDoctor));
+			#endregion
+			// Table
+			#region
 			IVSdPanel.Controls.Add(new ResultControl(report.Results["IVSd"], showNotFoundError));
 			LVIDdPanel.Controls.Add(new ResultControl(report.Results["LVIDd"], showNotFoundError));
 			LVPWdPanel.Controls.Add(new ResultControl(report.Results["LVPWd"], showNotFoundError));
@@ -87,7 +94,9 @@ namespace Echo_Reporting_Windows_App {
 			HeartRatePanel.Controls.Add(new ResultControl(report.Results["Heart Rate"], showNotFoundError));
 			MVCFcPanel.Controls.Add(new ResultControl(report.Results["MVCFc"], showNotFoundError));
 			LVOutputPanel.Controls.Add(new ResultControl(report.Results["Left ventricular cardiac output"], showNotFoundError));
-
+			#endregion
+			// Situs and Systemic Veins
+			#region
 			SitusPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.Situs));
 			SystemicVeinsPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.SystemicVeins));
 			#endregion
@@ -138,7 +147,9 @@ namespace Echo_Reporting_Windows_App {
 			TVAnnulusPanel.Controls.Add(new ResultControl(report.Results["Tricuspid valve annulus"], showNotFoundError));
 			TVInflowPanel.Controls.Add(new ResultControl(report.Results["Tricuspid valve inflow mean gradient"], showNotFoundError));
 			TVRegurgVelPanel.Controls.Add(new ResultControl(report.Results["Tricuspid valve regurgitation peak velocity"], showNotFoundError));
-			TVRegurgGradPanel.Controls.Add(new ResultControl(report.Results["Tricuspid valve regurgitation peak gradient"], showNotFoundError));
+			
+			//TVRegurgGradPanel.Controls.Add(new ResultControl(report.Results["Tricuspid valve regurgitation peak gradient"], showNotFoundError));
+			TVRegurgGradPanel.Controls.Add(new ResultControl(report.Results["Estimated RV systolic pressure"], showNotFoundError));
 			#endregion
 			// Ventricles
 			#region
@@ -167,9 +178,9 @@ namespace Echo_Reporting_Windows_App {
 			LVIVRTPanel.Controls.Add(new ResultControl(report.Results["LV IVRT"], showNotFoundError));
 			MyoPIPanel.Controls.Add(new ResultControl(report.Results["Myocardial Performance Index"], showNotFoundError));
 
-			PulmSWavePanel.Controls.Add(new ResultControl(report.Results["LVPWd"], showNotFoundError));
-			PulmDWavePanel.Controls.Add(new ResultControl(report.Results["IVSd"], showNotFoundError));
-			PulmAWavePanel.Controls.Add(new ResultControl(report.Results["LVIDd"], showNotFoundError));
+			PulmSWavePanel.Controls.Add(new ResultControl(report.Results["Pulm vein S wave"], showNotFoundError));
+			PulmDWavePanel.Controls.Add(new ResultControl(report.Results["Pulm vein D wave"], showNotFoundError));
+			PulmAWavePanel.Controls.Add(new ResultControl(report.Results["Pulm vein A wave"], showNotFoundError));
 
 			PulmWaveDurationPanel.Controls.Add(new ResultControl(report.Results["Pulmonary vein A wave duration"], showNotFoundError));
 			MitralWaveDurationPanel.Controls.Add(new ResultControl(report.Results["Mitral valve inflow A wave duration"], showNotFoundError));
@@ -296,10 +307,10 @@ namespace Echo_Reporting_Windows_App {
 			#region
 			PulmonaryVeinsPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.PulmonaryVeins));
 
-			PulmVeinSWavePanel.Controls.Add(new ResultControl(report.Results["Pulm vein S wave"], showNotFoundError));
-			PulmVeinDWavePanel.Controls.Add(new ResultControl(report.Results["Pulm vein D wave"], showNotFoundError));
-			PulmVeinAWavePanel.Controls.Add(new ResultControl(report.Results["Pulm vein A wave"], showNotFoundError));
-			PulmVeinWaveDurationPanel.Controls.Add(new ResultControl(report.Results["Pulmonary vein A wave duration"], showNotFoundError));
+			//PulmVeinSWavePanel.Controls.Add(new ResultControl(report.Results["Pulm vein S wave"], showNotFoundError));
+			//PulmVeinDWavePanel.Controls.Add(new ResultControl(report.Results["Pulm vein D wave"], showNotFoundError));
+			//PulmVeinAWavePanel.Controls.Add(new ResultControl(report.Results["Pulm vein A wave"], showNotFoundError));
+			//PulmVeinWaveDurationPanel.Controls.Add(new ResultControl(report.Results["Pulmonary vein A wave duration"], showNotFoundError));
 
 			#endregion
 			// Coronary Arteries
@@ -318,6 +329,10 @@ namespace Echo_Reporting_Windows_App {
 			PercardialEffusionPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.PercardialEffusion));
 
 			#endregion
+			// Conclusion	
+			#region
+			ConclusionPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.Conclusion));
+			#endregion
 		}
 		private void ClearAllPanels() {
 			// Patient Data
@@ -330,7 +345,13 @@ namespace Echo_Reporting_Windows_App {
 			WeightPanel.Controls.Clear();
 			DiastolicBPPanel.Controls.Clear();
 			SystolicBPPanel.Controls.Clear();
-
+			ReasonForStudyPanel.Controls.Clear();
+			ReferringPhysicianPanel.Controls.Clear();
+			EchoTypePanel.Controls.Clear();
+			ReportingDoctorPanel.Controls.Clear();
+			#endregion
+			// Table
+			#region
 			IVSdPanel.Controls.Clear();
 			LVIDdPanel.Controls.Clear();
 			LVPWdPanel.Controls.Clear();
@@ -353,6 +374,11 @@ namespace Echo_Reporting_Windows_App {
 			HeartRatePanel.Controls.Clear();
 			MVCFcPanel.Controls.Clear();
 			LVOutputPanel.Controls.Clear();
+			#endregion
+			// Situs and Systemic Veins
+			#region
+			SitusPanel.Controls.Clear();
+			SystemicVeinsPanel.Controls.Clear();
 			#endregion
 			// Atria
 			#region
@@ -558,10 +584,10 @@ namespace Echo_Reporting_Windows_App {
 			#region
 			PulmonaryVeinsPanel.Controls.Clear();
 
-			PulmVeinSWavePanel.Controls.Clear();
-			PulmVeinDWavePanel.Controls.Clear();
-			PulmVeinAWavePanel.Controls.Clear();
-			PulmVeinWaveDurationPanel.Controls.Clear();
+			//PulmVeinSWavePanel.Controls.Clear();
+			//PulmVeinDWavePanel.Controls.Clear();
+			//PulmVeinAWavePanel.Controls.Clear();
+			//PulmVeinWaveDurationPanel.Controls.Clear();
 
 			#endregion
 			// Coronary Arteries
@@ -580,8 +606,15 @@ namespace Echo_Reporting_Windows_App {
 			PercardialEffusionPanel.Controls.Clear();
 
 			#endregion
+			// Conclusion	
+			#region
+			ConclusionPanel.Controls.Clear();
+			#endregion
 
 		}
 
+		private void MainForm_Load(object sender, EventArgs e) {
+
+		}
 	}
 }

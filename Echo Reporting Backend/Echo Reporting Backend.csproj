@@ -78,6 +78,7 @@
     <Compile Include="Formulas\IFormula.cs" />
     <Compile Include="Formulas\ImpactOfCardiacGrowthFormula.cs" />
     <Compile Include="Formulas\RegressionEquationFormula.cs" />
+    <Compile Include="Formulas\LVEFFormula.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

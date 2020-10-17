@@ -247,7 +247,8 @@ namespace DICOMReporting.Data {
 																										"Unobstructed right sided aortic arch",
 																										"Right sided aortic arch"});
 
-		public MultipleChoiceResult RightAorticArch2 = new MultipleChoiceResult("", new List<string>() {"with mirror image branching",
+		public MultipleChoiceResult RightAorticArch2 = new MultipleChoiceResult("", new List<string>() {"Null",
+																										"with mirror image branching",
 																										"aberrant left subclavian artery (with a left sided ductal ligament this is the setup for a vascular ring)" });
 
 		public BoolResult NoCoarctationAorta = new BoolResult("No coarctation of the aorta", "", true);
@@ -289,5 +290,13 @@ namespace DICOMReporting.Data {
 																											"Small",
 																											"Moderate",
 																											"Large", "pericardial effusion" });
+		// Conclusion
+		public MultipleChoiceResult Conclusion = new MultipleChoiceResult("Conclusion:", new List<string>() {	"Normal",
+																												"Normal with PFO",
+																												"Muscular VSD",
+																												"Muscular VSD with PFO",
+																												"Perimembranous VSD",
+																												"Perimembranous VSD with PFO",
+																												"Pulmonary stenosis"});
 	}
 }

@@ -14,7 +14,6 @@ namespace DICOMReporting.Data.Results {
 		public bool ZScoreable;
 		public bool Empty;
 
-
 		public Result(string name, string unitShorthand, IFormula formula = null, bool empty = true, double value = 0) {
 			Name = name;
 			UnitShorthand = unitShorthand;

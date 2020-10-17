@@ -24,7 +24,7 @@ namespace DICOMReporting.Formulas {
 				bracket = 4;
 			}
 
-			if (constants.AnomalyPrefix) {
+			if (constants.AnomalyPrefix && !constants.Anomalies[bracket].Equals("")) {
 				return constants.Anomalies[bracket] + " " + constants.MeasurementName;
 			}
 			else {
@@ -118,7 +118,7 @@ namespace DICOMReporting.Formulas {
 			public double MSE {
 				get; private set;
 			}
-			public double BSA => Pd.BSA;
+			public double BSA => Pd.BSA.Value;
 			private PatientData Pd;
 			public Constants(double b0, double b1, double b2, double b3, double mse, PatientData pd, string name, string[] anomalies, bool prefix = true) {
 				AnomalyPrefix = prefix;

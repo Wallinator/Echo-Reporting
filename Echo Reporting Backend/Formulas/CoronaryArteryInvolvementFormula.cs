@@ -17,7 +17,7 @@ namespace DICOMReporting.Formulas {
 				bracket = 2;
 			}
 
-			if (constants.AnomalyPrefix) {
+			if (constants.AnomalyPrefix && !constants.Anomalies[bracket].Equals("")) {
 				return constants.Anomalies[bracket] + constants.MeasurementName;
 			}
 			else {
@@ -26,7 +26,7 @@ namespace DICOMReporting.Formulas {
 		}
 		public double GetZScore(double observed_y) {
 			double mean_y = (constants.Multiplier * Math.Pow(constants.BSA, constants.Power)) + constants.Intercept;
-			return ((observed_y / 10) - mean_y) / constants.SD;
+			return ((observed_y / 10) - mean_y) / (constants.SDIntercept + (constants.SDMultiplier * constants.BSA));
 		}
 		public bool ZScoreable() => true;
 		private CoronaryArteryInvolvementFormula(Constants constants) {
@@ -34,13 +34,13 @@ namespace DICOMReporting.Formulas {
 		}
 
 		public static CoronaryArteryInvolvementFormula LeftMainCoronary(PatientData pd, string name) {
-			return new CoronaryArteryInvolvementFormula(new Constants(0.31747, 0.36008, -0.02887, 0.03040 + (0.01514 * pd.BSA), pd, name, new[] { "Normal", "Normal", "Dilated" }));
+			return new CoronaryArteryInvolvementFormula(new Constants(0.31747, 0.36008, -0.02887, 0.03040, 0.01514, pd, name, new[] { "Normal", "Normal", "Dilated" }));
 		}
 		public static CoronaryArteryInvolvementFormula LeftAnteriorDescending(PatientData pd, string name) {
-			return new CoronaryArteryInvolvementFormula(new Constants(0.26108, 0.37893, -0.02852, 0.01465 + (0.01996 * pd.BSA), pd, name, new[] { "Normal", "Normal", "Dilated" }));
+			return new CoronaryArteryInvolvementFormula(new Constants(0.26108, 0.37893, -0.02852, 0.01465, 0.01996, pd, name, new[] { "Normal", "Normal", "Dilated" }));
 		}
 		public static CoronaryArteryInvolvementFormula RightCoronaryArtery(PatientData pd, string name) {
-			return new CoronaryArteryInvolvementFormula(new Constants(0.26117, 0.3992, -0.02756, 0.02407 + (0.01597 * pd.BSA), pd, name, new[] { "Normal", "Normal", "Dilated" }));
+			return new CoronaryArteryInvolvementFormula(new Constants(0.26117, 0.3992,  -0.02756, 0.02407, 0.01597, pd, name, new[] { "Normal", "Normal", "Dilated" }));
 		}
 
 
@@ -63,19 +63,23 @@ namespace DICOMReporting.Formulas {
 			public double Intercept {
 				get; private set;
 			}
-			public double SD {
+			public double SDIntercept {
 				get; private set;
 			}
-			public double BSA => Pd.BSA;
+			public double SDMultiplier {
+				get; private set;
+			}
+			public double BSA => Pd.BSA.Value;
 			private PatientData Pd;
-			public Constants(double multiplier, double power, double intercept, double sd, PatientData pd, string name, string[] anomalies, bool prefix = true) {
+			public Constants(double multiplier, double power, double intercept, double sdintercept, double sdmultiplier, PatientData pd, string name, string[] anomalies, bool prefix = true) {
 				AnomalyPrefix = prefix;
 				MeasurementName = name;
 				Anomalies = anomalies;
 				Multiplier = multiplier;
 				Power = power;
 				Intercept = intercept;
-				SD = sd;
+				SDIntercept = sdintercept;
+				SDMultiplier = sdmultiplier;
 				Pd = pd;
 			}
 		}

@@ -38,7 +38,5 @@ namespace DICOMReporting.Data.Measurements {
 		public override string ToString() {
 			return Name + ": " + Value + " " + UnitShorthand;
 		}
-
-
 	}
 }
