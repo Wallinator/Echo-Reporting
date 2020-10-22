@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using Echo_Reporting_Backend.Data;
 
 namespace Echo_Reporting_Windows_App {
 	public partial class MainForm : Form {
@@ -615,6 +616,11 @@ namespace Echo_Reporting_Windows_App {
 
 		private void MainForm_Load(object sender, EventArgs e) {
 
+		}
+
+		private void publishToolStripMenuItem_Click(object sender, EventArgs e) {
+			var x = new ReportForm(new ReportSections(report));
+			x.Show(this);
 		}
 	}
 }

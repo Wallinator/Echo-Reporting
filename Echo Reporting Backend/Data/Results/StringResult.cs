@@ -14,9 +14,17 @@ namespace DICOMReporting.Data.Results {
 			get;
 			set;
 		}
-		public StringResult(string name, string value = "") {
+		public string Postfix {
+			get;
+			set;
+		}
+		public StringResult(string name, string value = "", string postfix = "") {
 			Name = name;
 			Value = value;
+			Postfix = postfix;
+		}
+		public override string ToString() {
+			return Name + " " + Value + " " + Postfix;
 		}
 	}
 }

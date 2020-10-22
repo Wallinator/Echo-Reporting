@@ -38,6 +38,10 @@
 			this.PatientNamePanel = new System.Windows.Forms.Panel();
 			this.PatientSexPanel = new System.Windows.Forms.Panel();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.ReportingDoctorPanel = new System.Windows.Forms.Panel();
+			this.ReferringPhysicianPanel = new System.Windows.Forms.Panel();
+			this.ReasonForStudyPanel = new System.Windows.Forms.Panel();
+			this.EchoTypePanel = new System.Windows.Forms.Panel();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.MVCFcPanel = new System.Windows.Forms.Panel();
 			this.SeptalAnnulusEPanel = new System.Windows.Forms.Panel();
@@ -57,6 +61,8 @@
 			this.MitralAnnulusEPanel = new System.Windows.Forms.Panel();
 			this.IVSsPanel = new System.Windows.Forms.Panel();
 			this.panel3 = new System.Windows.Forms.Panel();
+			this.groupBox13 = new System.Windows.Forms.GroupBox();
+			this.ConclusionPanel = new System.Windows.Forms.Panel();
 			this.groupBox12 = new System.Windows.Forms.GroupBox();
 			this.PercardialEffusionPanel = new System.Windows.Forms.Panel();
 			this.NoPercardialEffusionPanel = new System.Windows.Forms.Panel();
@@ -225,16 +231,13 @@
 			this.SystemicVeinsPanel = new System.Windows.Forms.Panel();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.SitusPanel = new System.Windows.Forms.Panel();
-			this.ReferringPhysicianPanel = new System.Windows.Forms.Panel();
-			this.ReasonForStudyPanel = new System.Windows.Forms.Panel();
-			this.EchoTypePanel = new System.Windows.Forms.Panel();
-			this.ReportingDoctorPanel = new System.Windows.Forms.Panel();
-			this.groupBox13 = new System.Windows.Forms.GroupBox();
-			this.ConclusionPanel = new System.Windows.Forms.Panel();
+			this.publishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.menuStrip1.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.panel3.SuspendLayout();
+			this.groupBox13.SuspendLayout();
 			this.groupBox12.SuspendLayout();
 			this.groupBox11.SuspendLayout();
 			this.groupBox10.SuspendLayout();
@@ -245,7 +248,6 @@
 			this.groupBox5.SuspendLayout();
 			this.groupBox4.SuspendLayout();
 			this.groupBox3.SuspendLayout();
-			this.groupBox13.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -266,7 +268,9 @@
 			// 
 			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openFolderToolStripMenuItem,
-            this.openFileToolStripMenuItem});
+            this.openFileToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.publishToolStripMenuItem});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 19);
 			this.fileToolStripMenuItem.Text = "File";
@@ -274,14 +278,14 @@
 			// openFolderToolStripMenuItem
 			// 
 			this.openFolderToolStripMenuItem.Name = "openFolderToolStripMenuItem";
-			this.openFolderToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+			this.openFolderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.openFolderToolStripMenuItem.Text = "Open Folder...";
 			this.openFolderToolStripMenuItem.Click += new System.EventHandler(this.openFolderToolStripMenuItem_Click);
 			// 
 			// openFileToolStripMenuItem
 			// 
 			this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-			this.openFileToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+			this.openFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.openFileToolStripMenuItem.Text = "Open File...";
 			this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
 			// 
@@ -370,6 +374,38 @@
 			this.groupBox1.TabIndex = 6;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Patient Data";
+			// 
+			// ReportingDoctorPanel
+			// 
+			this.ReportingDoctorPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.ReportingDoctorPanel.Location = new System.Drawing.Point(784, 173);
+			this.ReportingDoctorPanel.Name = "ReportingDoctorPanel";
+			this.ReportingDoctorPanel.Size = new System.Drawing.Size(250, 50);
+			this.ReportingDoctorPanel.TabIndex = 8;
+			// 
+			// ReferringPhysicianPanel
+			// 
+			this.ReferringPhysicianPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.ReferringPhysicianPanel.Location = new System.Drawing.Point(272, 173);
+			this.ReferringPhysicianPanel.Name = "ReferringPhysicianPanel";
+			this.ReferringPhysicianPanel.Size = new System.Drawing.Size(250, 50);
+			this.ReferringPhysicianPanel.TabIndex = 5;
+			// 
+			// ReasonForStudyPanel
+			// 
+			this.ReasonForStudyPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.ReasonForStudyPanel.Location = new System.Drawing.Point(23, 173);
+			this.ReasonForStudyPanel.Name = "ReasonForStudyPanel";
+			this.ReasonForStudyPanel.Size = new System.Drawing.Size(250, 50);
+			this.ReasonForStudyPanel.TabIndex = 6;
+			// 
+			// EchoTypePanel
+			// 
+			this.EchoTypePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.EchoTypePanel.Location = new System.Drawing.Point(535, 173);
+			this.EchoTypePanel.Name = "EchoTypePanel";
+			this.EchoTypePanel.Size = new System.Drawing.Size(250, 50);
+			this.EchoTypePanel.TabIndex = 7;
 			// 
 			// groupBox2
 			// 
@@ -555,6 +591,25 @@
 			this.panel3.Name = "panel3";
 			this.panel3.Size = new System.Drawing.Size(1126, 450);
 			this.panel3.TabIndex = 8;
+			// 
+			// groupBox13
+			// 
+			this.groupBox13.Controls.Add(this.ConclusionPanel);
+			this.groupBox13.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.groupBox13.Location = new System.Drawing.Point(27, 5153);
+			this.groupBox13.Name = "groupBox13";
+			this.groupBox13.Size = new System.Drawing.Size(1058, 99);
+			this.groupBox13.TabIndex = 64;
+			this.groupBox13.TabStop = false;
+			this.groupBox13.Text = "Conclusion";
+			// 
+			// ConclusionPanel
+			// 
+			this.ConclusionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.ConclusionPanel.Location = new System.Drawing.Point(23, 41);
+			this.ConclusionPanel.Name = "ConclusionPanel";
+			this.ConclusionPanel.Size = new System.Drawing.Size(443, 26);
+			this.ConclusionPanel.TabIndex = 3;
 			// 
 			// groupBox12
 			// 
@@ -2076,56 +2131,17 @@
 			this.SitusPanel.Size = new System.Drawing.Size(533, 26);
 			this.SitusPanel.TabIndex = 3;
 			// 
-			// ReferringPhysicianPanel
+			// publishToolStripMenuItem
 			// 
-			this.ReferringPhysicianPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.ReferringPhysicianPanel.Location = new System.Drawing.Point(272, 173);
-			this.ReferringPhysicianPanel.Name = "ReferringPhysicianPanel";
-			this.ReferringPhysicianPanel.Size = new System.Drawing.Size(250, 50);
-			this.ReferringPhysicianPanel.TabIndex = 5;
+			this.publishToolStripMenuItem.Name = "publishToolStripMenuItem";
+			this.publishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.publishToolStripMenuItem.Text = "Publish...";
+			this.publishToolStripMenuItem.Click += new System.EventHandler(this.publishToolStripMenuItem_Click);
 			// 
-			// ReasonForStudyPanel
+			// toolStripSeparator1
 			// 
-			this.ReasonForStudyPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.ReasonForStudyPanel.Location = new System.Drawing.Point(23, 173);
-			this.ReasonForStudyPanel.Name = "ReasonForStudyPanel";
-			this.ReasonForStudyPanel.Size = new System.Drawing.Size(250, 50);
-			this.ReasonForStudyPanel.TabIndex = 6;
-			// 
-			// EchoTypePanel
-			// 
-			this.EchoTypePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.EchoTypePanel.Location = new System.Drawing.Point(535, 173);
-			this.EchoTypePanel.Name = "EchoTypePanel";
-			this.EchoTypePanel.Size = new System.Drawing.Size(250, 50);
-			this.EchoTypePanel.TabIndex = 7;
-			// 
-			// ReportingDoctorPanel
-			// 
-			this.ReportingDoctorPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.ReportingDoctorPanel.Location = new System.Drawing.Point(784, 173);
-			this.ReportingDoctorPanel.Name = "ReportingDoctorPanel";
-			this.ReportingDoctorPanel.Size = new System.Drawing.Size(250, 50);
-			this.ReportingDoctorPanel.TabIndex = 8;
-			// 
-			// groupBox13
-			// 
-			this.groupBox13.Controls.Add(this.ConclusionPanel);
-			this.groupBox13.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.groupBox13.Location = new System.Drawing.Point(27, 5153);
-			this.groupBox13.Name = "groupBox13";
-			this.groupBox13.Size = new System.Drawing.Size(1058, 99);
-			this.groupBox13.TabIndex = 64;
-			this.groupBox13.TabStop = false;
-			this.groupBox13.Text = "Conclusion";
-			// 
-			// ConclusionPanel
-			// 
-			this.ConclusionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.ConclusionPanel.Location = new System.Drawing.Point(23, 41);
-			this.ConclusionPanel.Name = "ConclusionPanel";
-			this.ConclusionPanel.Size = new System.Drawing.Size(443, 26);
-			this.ConclusionPanel.TabIndex = 3;
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
 			// 
 			// MainForm
 			// 
@@ -2145,6 +2161,7 @@
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox2.ResumeLayout(false);
 			this.panel3.ResumeLayout(false);
+			this.groupBox13.ResumeLayout(false);
 			this.groupBox12.ResumeLayout(false);
 			this.groupBox11.ResumeLayout(false);
 			this.groupBox10.ResumeLayout(false);
@@ -2155,7 +2172,6 @@
 			this.groupBox5.ResumeLayout(false);
 			this.groupBox4.ResumeLayout(false);
 			this.groupBox3.ResumeLayout(false);
-			this.groupBox13.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -2370,6 +2386,8 @@
 		private System.Windows.Forms.Panel EchoTypePanel;
 		private System.Windows.Forms.GroupBox groupBox13;
 		private System.Windows.Forms.Panel ConclusionPanel;
+		private System.Windows.Forms.ToolStripMenuItem publishToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 	}
 }
 
