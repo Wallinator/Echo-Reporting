@@ -23,8 +23,18 @@ namespace DICOMReporting.Data.Results {
 			Value = value;
 			Postfix = postfix;
 		}
-		public override string ToString() {
-			return Name + " " + Value + " " + Postfix;
+		public string AsString() {
+			string final = "";
+			if (!Name.Equals("")) {
+				final += Name;
+			}
+			if (!Value.Equals("")) {
+				final += " " + Value;
+			}
+			if (!Postfix.Equals("")) {
+				final += " " + Postfix;
+			}
+			return final;
 		}
 	}
 }

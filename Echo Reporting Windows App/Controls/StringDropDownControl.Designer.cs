@@ -29,8 +29,8 @@ namespace Echo_Reporting_Windows_App {
 			this.ResultTitleLabel = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.panel2 = new System.Windows.Forms.Panel();
-			this.ResultValueComboBox = new Echo_Reporting_Windows_App.Controls.ComboListBox();
 			this.ResultPostfixLabel = new System.Windows.Forms.Label();
+			this.ResultValueComboBox = new Echo_Reporting_Windows_App.Controls.ComboListBox();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			this.SuspendLayout();
@@ -66,6 +66,15 @@ namespace Echo_Reporting_Windows_App {
 			this.panel2.Size = new System.Drawing.Size(394, 26);
 			this.panel2.TabIndex = 3;
 			// 
+			// ResultPostfixLabel
+			// 
+			this.ResultPostfixLabel.AutoSize = true;
+			this.ResultPostfixLabel.Location = new System.Drawing.Point(279, 5);
+			this.ResultPostfixLabel.Name = "ResultPostfixLabel";
+			this.ResultPostfixLabel.Size = new System.Drawing.Size(94, 13);
+			this.ResultPostfixLabel.TabIndex = 1;
+			this.ResultPostfixLabel.Text = "ResultPostfixLabel";
+			// 
 			// ResultValueComboBox
 			// 
 			this.ResultValueComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
@@ -75,15 +84,7 @@ namespace Echo_Reporting_Windows_App {
 			this.ResultValueComboBox.Name = "ResultValueComboBox";
 			this.ResultValueComboBox.Size = new System.Drawing.Size(147, 21);
 			this.ResultValueComboBox.TabIndex = 1;
-			// 
-			// ResultPostfixLabel
-			// 
-			this.ResultPostfixLabel.AutoSize = true;
-			this.ResultPostfixLabel.Location = new System.Drawing.Point(279, 5);
-			this.ResultPostfixLabel.Name = "ResultPostfixLabel";
-			this.ResultPostfixLabel.Size = new System.Drawing.Size(94, 13);
-			this.ResultPostfixLabel.TabIndex = 1;
-			this.ResultPostfixLabel.Text = "ResultPostfixLabel";
+			this.ResultValueComboBox.SelectedIndexChanged += new System.EventHandler(this.ResultValueComboBox_SelectedIndexChanged);
 			// 
 			// StringDropDownControl
 			// 

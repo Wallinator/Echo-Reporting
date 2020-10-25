@@ -23,5 +23,8 @@ namespace DICOMReporting.Data.Results {
 			OptionName = optionName;
 			Value = value;
 		}
+		public string AsString() {
+			return Name;
+		}
 	}
 }

@@ -117,7 +117,7 @@ namespace Echo_Reporting_Windows_App {
 			#endregion
 			// AV Valves
 			#region
-			AVConnectionPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.AVValves));
+			AVConnectionPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.AVConnection));
 			MV1Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.MitralValve1));
 			MV2Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.MitralValve2));
 			MV3Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.MitralValve3));
@@ -168,9 +168,9 @@ namespace Echo_Reporting_Windows_App {
 			HeartRate2Panel.Controls.Add(new ResultControl(report.Results["Heart Rate"], showNotFoundError));
 
 
-			DilatedLVPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.LV1));
-			HypertrophyLVPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.LV2));
-			ReducedLVPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.LV3));
+			DilatedLVPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.DilatedLV));
+			HypertrophyLVPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.HypertrophiedLV));
+			ReducedLVPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.ReducedLVFunction));
 
 			LVSystolicPanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.LVSystolicFunction));
 			LVDiastolicPanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.NormalDiastolic));
@@ -199,9 +199,9 @@ namespace Echo_Reporting_Windows_App {
 			TriAnnulusS2Panel.Controls.Add(new ResultControl(report.Results["Tricuspid annulus S'"], showNotFoundError));
 
 
-			DilatedRVPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.RV1));
-			HypertrophyRVPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.RV2));
-			ReducedRVPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.RV3));
+			DilatedRVPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.DilatedRV));
+			HypertrophyRVPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.HypertrophiedRV));
+			ReducedRVPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.ReducedRVFunction));
 
 			SeptalMotionPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.SeptalMotion));
 			VentricularSeptumPanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.IntactVentricularSeptum));

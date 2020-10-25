@@ -12,6 +12,7 @@ namespace DICOMReporting.Data.Results {
 		public double Value;
 		public IFormula Formula;
 		public bool ZScoreable;
+		public bool HasComment;
 		public bool Empty;
 
 		public Result(string name, string unitShorthand, IFormula formula = null, bool empty = true, double value = 0) {
@@ -20,6 +21,7 @@ namespace DICOMReporting.Data.Results {
 			Value = value;
 			Formula = formula;
 			ZScoreable = formula != null && formula.ZScoreable();
+			HasComment = formula != null;
 			Empty = empty;
 		}
 		public Result(IMeasurementHeader header, bool empty = false) {
@@ -43,7 +45,7 @@ namespace DICOMReporting.Data.Results {
 			}
 		}
 
-		public override string ToString() {
+		public string DebugString() {
 			string emptyZscorestring = "";
 			if (Empty) {
 				emptyZscorestring = "\n\t!! MEASUREMENT NOT FOUND !!";
@@ -54,6 +56,23 @@ namespace DICOMReporting.Data.Results {
 				}
 			}
 			return Name + ": \n\t" + "Value: " + Value + " " + UnitShorthand + emptyZscorestring;
+		}
+		public string ReportString() {
+			string name;
+			string Zscorestring = "";
+			if (HasComment) {
+				if (AnomalyText.Equals("")) {
+					return "";
+				}
+				name = AnomalyText;
+			}
+			else {
+				name = Name;
+			}
+			if (ZScoreable) {
+				Zscorestring = ", Z-score=" + ZScore.ToString("N2");
+			}
+			return name + " (" + Value + " " + UnitShorthand + Zscorestring + ")";
 		}
 	}
 }

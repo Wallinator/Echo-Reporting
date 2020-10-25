@@ -21,7 +21,7 @@ namespace Echo_Reporting_Backend.Formulas {
 			}
 
 			if (constants.AnomalyPrefix && !constants.Anomalies[bracket].Equals("")) {
-				return constants.Anomalies[bracket] + constants.MeasurementName;
+				return constants.Anomalies[bracket] + " " + constants.MeasurementName;
 			}
 			else {
 				return constants.Anomalies[bracket];

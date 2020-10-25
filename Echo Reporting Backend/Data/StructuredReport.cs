@@ -45,7 +45,7 @@ namespace DICOMReporting.Data {
 			foreach (var spec in specs) {
 				Result r = spec.FindAndRemoveFromGroups(groups);
 				Results.Add(r.Name, r);
-				Debug.WriteLine(r);
+				Debug.WriteLine(r.DebugString());
 			}
 		}
 
