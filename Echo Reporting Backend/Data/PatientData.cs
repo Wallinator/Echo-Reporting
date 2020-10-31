@@ -25,7 +25,7 @@ namespace DICOMReporting.Data {
 		//public DateTime PatientDOB;
 		public Result PatientAge;
 		public Result PatientWeight;
-		public Result PatientSize;
+		public Result PatientHeight;
 		public Result SystolicBloodPressure;
 		public Result DiastolicBloodPressure;
 		public Result BSA;
@@ -59,7 +59,7 @@ namespace DICOMReporting.Data {
 						temp = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
 						SupportedUnitsHelpers.Convert(temp, LengthUnit.Centimeter);
 						Debug.WriteLine(temp);
-						PatientSize = new Result(temp);
+						PatientHeight = new Result(temp);
 						break;
 					case "29463-7":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
@@ -81,12 +81,20 @@ namespace DICOMReporting.Data {
 						DiastolicBloodPressure = new Result(temp);
 						break;
 					case "121029":
-						PatientName = new StringResult("Patient Name", child.Get<string>());
+						PatientName = new StringResult("Patient Name", child.Get<string>().Replace('^', ' ').Trim());
 						Debug.WriteLine(PatientName);
 						break;
 					case "121030":
 						PatientID = new StringResult("Patient ID", child.Get<string>());
 						Debug.WriteLine(PatientID);
+						break;
+					case "T9910-08":
+						ReferringPhysician = new StringResult("Referring Physician", child.Get<string>());
+						Debug.WriteLine(ReferringPhysician);
+						break;
+					case "T9910-04":
+						ReasonForStudy = new StringResult("Reason For Study", child.Get<string>());
+						Debug.WriteLine(ReasonForStudy);
 						break;
 					case "121031":
 						string input = child.Get<string>();
@@ -100,7 +108,10 @@ namespace DICOMReporting.Data {
 						break;
 				}
 			}
-			BSA = new Result("BSA", "", value: 0.024265 * Math.Pow(PatientSize.Value, 0.3964) * Math.Pow(PatientWeight.Value, 0.5378));
+			UpdateBSAResult();
+		}
+		public void UpdateBSAResult() {
+			BSA = new Result("Body Surface Area", "m2", value: 0.024265 * Math.Pow(PatientHeight.Value, 0.3964) * Math.Pow(PatientWeight.Value, 0.5378), empty: false);
 		}
 		public PatientData() {
 
@@ -112,7 +123,7 @@ namespace DICOMReporting.Data {
 			PatientSex = new StringResult("Patient Sex");
 
 			temp = new UnitHeaderAdapter("Patient Height", new Length(0, LengthUnit.Centimeter));
-			PatientSize = new Result(temp, true);
+			PatientHeight = new Result(temp, true);
 
 			temp = new UnitHeaderAdapter("Patient Weight", new Mass(0, MassUnit.Kilogram));
 			PatientWeight = new Result(temp, true);
@@ -136,6 +147,7 @@ namespace DICOMReporting.Data {
 
 			ReportingDoctor = new MultipleChoiceResult("Reporting Doctor", new List<string>() { "Dr Paul Brooks" });
 
+			UpdateBSAResult();
 
 		}
 	}

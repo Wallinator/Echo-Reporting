@@ -28,6 +28,8 @@
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.publishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 			this.AgePanel = new System.Windows.Forms.Panel();
 			this.WeightPanel = new System.Windows.Forms.Panel();
@@ -231,8 +233,7 @@
 			this.SystemicVeinsPanel = new System.Windows.Forms.Panel();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.SitusPanel = new System.Windows.Forms.Panel();
-			this.publishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.BSAPanel = new System.Windows.Forms.Panel();
 			this.menuStrip1.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -278,16 +279,28 @@
 			// openFolderToolStripMenuItem
 			// 
 			this.openFolderToolStripMenuItem.Name = "openFolderToolStripMenuItem";
-			this.openFolderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.openFolderToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
 			this.openFolderToolStripMenuItem.Text = "Open Folder...";
 			this.openFolderToolStripMenuItem.Click += new System.EventHandler(this.openFolderToolStripMenuItem_Click);
 			// 
 			// openFileToolStripMenuItem
 			// 
 			this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-			this.openFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.openFileToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
 			this.openFileToolStripMenuItem.Text = "Open File...";
 			this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(145, 6);
+			// 
+			// publishToolStripMenuItem
+			// 
+			this.publishToolStripMenuItem.Name = "publishToolStripMenuItem";
+			this.publishToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+			this.publishToolStripMenuItem.Text = "Publish...";
+			this.publishToolStripMenuItem.Click += new System.EventHandler(this.publishToolStripMenuItem_Click);
 			// 
 			// AgePanel
 			// 
@@ -355,6 +368,7 @@
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.BSAPanel);
 			this.groupBox1.Controls.Add(this.ReportingDoctorPanel);
 			this.groupBox1.Controls.Add(this.ReferringPhysicianPanel);
 			this.groupBox1.Controls.Add(this.ReasonForStudyPanel);
@@ -368,9 +382,9 @@
 			this.groupBox1.Controls.Add(this.DiastolicBPPanel);
 			this.groupBox1.Controls.Add(this.HeightPanel);
 			this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.groupBox1.Location = new System.Drawing.Point(27, 58);
+			this.groupBox1.Location = new System.Drawing.Point(27, 38);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(1058, 243);
+			this.groupBox1.Size = new System.Drawing.Size(1058, 272);
 			this.groupBox1.TabIndex = 6;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Patient Data";
@@ -378,7 +392,7 @@
 			// ReportingDoctorPanel
 			// 
 			this.ReportingDoctorPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.ReportingDoctorPanel.Location = new System.Drawing.Point(784, 173);
+			this.ReportingDoctorPanel.Location = new System.Drawing.Point(784, 202);
 			this.ReportingDoctorPanel.Name = "ReportingDoctorPanel";
 			this.ReportingDoctorPanel.Size = new System.Drawing.Size(250, 50);
 			this.ReportingDoctorPanel.TabIndex = 8;
@@ -386,7 +400,7 @@
 			// ReferringPhysicianPanel
 			// 
 			this.ReferringPhysicianPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.ReferringPhysicianPanel.Location = new System.Drawing.Point(272, 173);
+			this.ReferringPhysicianPanel.Location = new System.Drawing.Point(272, 202);
 			this.ReferringPhysicianPanel.Name = "ReferringPhysicianPanel";
 			this.ReferringPhysicianPanel.Size = new System.Drawing.Size(250, 50);
 			this.ReferringPhysicianPanel.TabIndex = 5;
@@ -394,7 +408,7 @@
 			// ReasonForStudyPanel
 			// 
 			this.ReasonForStudyPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.ReasonForStudyPanel.Location = new System.Drawing.Point(23, 173);
+			this.ReasonForStudyPanel.Location = new System.Drawing.Point(23, 202);
 			this.ReasonForStudyPanel.Name = "ReasonForStudyPanel";
 			this.ReasonForStudyPanel.Size = new System.Drawing.Size(250, 50);
 			this.ReasonForStudyPanel.TabIndex = 6;
@@ -402,7 +416,7 @@
 			// EchoTypePanel
 			// 
 			this.EchoTypePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.EchoTypePanel.Location = new System.Drawing.Point(535, 173);
+			this.EchoTypePanel.Location = new System.Drawing.Point(535, 202);
 			this.EchoTypePanel.Name = "EchoTypePanel";
 			this.EchoTypePanel.Size = new System.Drawing.Size(250, 50);
 			this.EchoTypePanel.TabIndex = 7;
@@ -2131,17 +2145,13 @@
 			this.SitusPanel.Size = new System.Drawing.Size(533, 26);
 			this.SitusPanel.TabIndex = 3;
 			// 
-			// publishToolStripMenuItem
+			// BSAPanel
 			// 
-			this.publishToolStripMenuItem.Name = "publishToolStripMenuItem";
-			this.publishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.publishToolStripMenuItem.Text = "Publish...";
-			this.publishToolStripMenuItem.Click += new System.EventHandler(this.publishToolStripMenuItem_Click);
-			// 
-			// toolStripSeparator1
-			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+			this.BSAPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.BSAPanel.Location = new System.Drawing.Point(535, 142);
+			this.BSAPanel.Name = "BSAPanel";
+			this.BSAPanel.Size = new System.Drawing.Size(250, 50);
+			this.BSAPanel.TabIndex = 5;
 			// 
 			// MainForm
 			// 
@@ -2388,6 +2398,7 @@
 		private System.Windows.Forms.Panel ConclusionPanel;
 		private System.Windows.Forms.ToolStripMenuItem publishToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.Panel BSAPanel;
 	}
 }
 

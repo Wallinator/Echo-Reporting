@@ -61,10 +61,12 @@
 			// 
 			this.errorProvider1.SetIconAlignment(this.ResultValueTextBox, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
 			this.errorProvider1.SetIconPadding(this.ResultValueTextBox, 5);
+			this.ResultValueTextBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
 			this.ResultValueTextBox.Location = new System.Drawing.Point(7, 21);
 			this.ResultValueTextBox.Name = "ResultValueTextBox";
 			this.ResultValueTextBox.Size = new System.Drawing.Size(49, 20);
 			this.ResultValueTextBox.TabIndex = 3;
+			this.ResultValueTextBox.KeyUp += TextBoxKeyUp;
 			this.ResultValueTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateValue);
 			// 
 			// ZScoreLabel

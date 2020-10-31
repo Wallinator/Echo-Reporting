@@ -57,8 +57,9 @@ namespace Echo_Reporting_Windows_App {
 			PatientNamePanel.Controls.Add(new StringFieldControl(report.PatientData.PatientName));
 			PatientSexPanel.Controls.Add(new StringFieldControl(report.PatientData.PatientSex));
 			AgePanel.Controls.Add(new ResultControl(report.PatientData.PatientAge, showNotFoundError));
-			HeightPanel.Controls.Add(new ResultControl(report.PatientData.PatientSize, showNotFoundError));
-			WeightPanel.Controls.Add(new ResultControl(report.PatientData.PatientWeight, showNotFoundError));
+			HeightPanel.Controls.Add(new ResultControl(report.PatientData.PatientHeight, showNotFoundError, HeightWeightUpdate));
+			WeightPanel.Controls.Add(new ResultControl(report.PatientData.PatientWeight, showNotFoundError, HeightWeightUpdate));
+			BSAPanel.Controls.Add(new ResultControl(report.PatientData.BSA, showNotFoundError));
 			DiastolicBPPanel.Controls.Add(new ResultControl(report.PatientData.DiastolicBloodPressure, showNotFoundError));
 			SystolicBPPanel.Controls.Add(new ResultControl(report.PatientData.SystolicBloodPressure, showNotFoundError));
 
@@ -339,6 +340,7 @@ namespace Echo_Reporting_Windows_App {
 			AgePanel.Controls.Clear();
 			HeightPanel.Controls.Clear();
 			WeightPanel.Controls.Clear();
+			BSAPanel.Controls.Clear();
 			DiastolicBPPanel.Controls.Clear();
 			SystolicBPPanel.Controls.Clear();
 			ReasonForStudyPanel.Controls.Clear();
@@ -608,7 +610,11 @@ namespace Echo_Reporting_Windows_App {
 			#endregion
 
 		}
-
+		private void HeightWeightUpdate() {
+			report.PatientData.UpdateBSAResult();
+			BSAPanel.Controls.Clear();
+			BSAPanel.Controls.Add(new ResultControl(report.PatientData.BSA, false));
+		}
 		private void MainForm_Load(object sender, EventArgs e) {
 
 		}

@@ -13,11 +13,13 @@ using DICOMReporting.Data.Results;
 namespace Echo_Reporting_Windows_App {
 	public partial class ResultControl : UserControl {
 		private readonly Result result;
+		private readonly Action OnUpdate;
 
-		public ResultControl(string name, string unitShortHand, double value = 0, bool showNotFoundError = true) : this(new Result(name, unitShortHand, value: value), showNotFoundError) {
-		}
-		public ResultControl(Result result, bool showNotFoundError = true) {
+		//public ResultControl(string name, string unitShortHand, double value = 0, bool showNotFoundError = true, Action OnUpdate = null) : this(new Result(name, unitShortHand, value: value), showNotFoundError, OnUpdate) {
+		//}
+		public ResultControl(Result result, bool showNotFoundError = true, Action OnUpdate = null) {
 			InitializeComponent();
+			this.OnUpdate = OnUpdate;
 			this.result = result;
 			ResultTitleLabel.Text = result.Name;
 			ResultUnitLabel.Text = result.UnitShorthand;
@@ -34,7 +36,7 @@ namespace Echo_Reporting_Windows_App {
 
 		private void ValidateValue(object sender, EventArgs e) {
 			try {
-				double value = double.Parse(ResultValueTextBox.Text);
+				double value = double.Parse(ResultValueTextBox.Text.Trim());
 				errorProvider1.Clear();
 				errorProvider1.SetError(ResultUnitLabel, "");
 				result.Empty = false;
@@ -45,6 +47,7 @@ namespace Echo_Reporting_Windows_App {
 				result.Empty = true;
 				UpdateValue();
 			}
+			OnUpdate?.Invoke();
 		}
 		public void UpdateValue() {
 			UpdateValue(result.Value);
