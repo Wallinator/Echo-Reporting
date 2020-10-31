@@ -121,8 +121,8 @@ namespace DICOMReporting.Data.Measurements {
 
 			props.Add("Finding Site", "Left Ventricle Outflow Tract");
 			specs.Add(new MeasurementSpecification("Left ventricle outflow peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
-			specs.Add(new MeasurementSpecification("Left ventricle outflow peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
-			specs.Add(new MeasurementSpecification("Left ventricle outflow mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Left ventricle outflow peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mmHg"));
+			specs.Add(new MeasurementSpecification("Left ventricle outflow mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mmHg"));
 			specs.Add(new MeasurementSpecification("Left ventricle outflow dimension", "Cardiovascular Orifice Diameter", new Dictionary<string, string>(props), "cm", unitEnum: LengthUnit.Centimeter));
 			props.Clear();
 
@@ -158,8 +158,8 @@ namespace DICOMReporting.Data.Measurements {
 			props.Clear();
 
 			props.Add("Flow Direction", "Antegrade Flow");
-			specs.Add(new MeasurementSpecification("Aortic valve mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
-			specs.Add(new MeasurementSpecification("Aortic valve peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Aortic valve mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mmHg"));
+			specs.Add(new MeasurementSpecification("Aortic valve peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mmHg"));
 			specs.Add(new MeasurementSpecification("Aortic valve peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
 			props.Clear();
 
@@ -216,8 +216,8 @@ namespace DICOMReporting.Data.Measurements {
 			props.Clear();
 
 			props.Add("Flow Direction", "Antegrade Flow");
-			specs.Add(new MeasurementSpecification("Pulmonary valve mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
-			specs.Add(new MeasurementSpecification("Pulmonary valve peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Pulmonary valve mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mmHg"));
+			specs.Add(new MeasurementSpecification("Pulmonary valve peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mmHg"));
 			specs.Add(new MeasurementSpecification("Pulmonary valve peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
 			props.Clear();
 
@@ -236,13 +236,13 @@ namespace DICOMReporting.Data.Measurements {
 
 			props.Add("Finding Site", "Left pulmonary artery");
 			specs.Add(new MeasurementSpecification("Left pulmonary artery", "Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.LeftPulmonaryArtery(pd, "Left pulmonary artery"), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
-			specs.Add(new MeasurementSpecification("Left pulmonary artery peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Left pulmonary artery peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mmHg"));
 			specs.Add(new MeasurementSpecification("Left pulmonary artery peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
 			props.Clear();
 
 			props.Add("Finding Site", "Right pulmonary artery");
 			specs.Add(new MeasurementSpecification("Right pulmonary artery", "Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.RightPulmonaryArtery(pd, "Right pulmonary artery"), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
-			specs.Add(new MeasurementSpecification("Right pulmonary artery peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Right pulmonary artery peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mmHg"));
 			specs.Add(new MeasurementSpecification("Right pulmonary artery peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
 			props.Clear();
 
@@ -272,11 +272,11 @@ namespace DICOMReporting.Data.Measurements {
 
 
 			props.Add("Flow Direction", "Antegrade Flow");
-			specs.Add(new MeasurementSpecification("Mitral valve inflow mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Mitral valve inflow mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mmHg"));
 			props.Clear();
 
 			props.Add("Flow Direction", "Regurgitant Flow");
-			specs.Add(new MeasurementSpecification("Mitral valve regurgitation peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Mitral valve regurgitation peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mmHg"));
 			specs.Add(new MeasurementSpecification("Mitral valve regurgitation peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
 			props.Clear();
 
@@ -296,7 +296,7 @@ namespace DICOMReporting.Data.Measurements {
 			props.Clear();
 
 			props.Add("Flow Direction", "Antegrade Flow");
-			specs.Add(new MeasurementSpecification("Tricuspid valve inflow mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Tricuspid valve inflow mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mmHg"));
 			props.Clear();
 
 			props.Add("Flow Direction", "Regurgitant Flow");
@@ -320,7 +320,7 @@ namespace DICOMReporting.Data.Measurements {
 			props.Clear();
 
 			specs.Add(new MeasurementSpecification("Ascending aorta peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
-			specs.Add(new MeasurementSpecification("Ascending aorta peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Ascending aorta peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mmHg"));
 			props.Clear();
 
 			return specs;
@@ -380,7 +380,7 @@ namespace DICOMReporting.Data.Measurements {
 			Dictionary<string, string> props = new Dictionary<string, string>();
 
 			specs.Add(new MeasurementSpecification("Atrial Septal Defect dimension", "Major Axis", new Dictionary<string, string>(props), "cm", includeImageMode: true, unitEnum: LengthUnit.Centimeter));
-			specs.Add(new MeasurementSpecification("Atrial Septal Defect mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Atrial Septal Defect mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mmHg"));
 
 			return specs;
 		}
@@ -389,8 +389,8 @@ namespace DICOMReporting.Data.Measurements {
 			var specs = new List<MeasurementSpecification>();
 			Dictionary<string, string> props = new Dictionary<string, string>();
 
-			specs.Add(new MeasurementSpecification("Ventricular Septal Defect peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
-			specs.Add(new MeasurementSpecification("Ventricular Septal Defect peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "cm/s", unitEnum: SpeedUnit.CentimeterPerSecond));
+			specs.Add(new MeasurementSpecification("Ventricular Septal Defect peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mmHg"));
+			specs.Add(new MeasurementSpecification("Ventricular Septal Defect peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
 			specs.Add(new MeasurementSpecification("Ventricular Septal Defect dimension", "Major Axis", new Dictionary<string, string>(props), "cm", includeImageMode: true, unitEnum: LengthUnit.Centimeter));
 
 			return specs;
@@ -402,8 +402,8 @@ namespace DICOMReporting.Data.Measurements {
 
 			props.Add("Finding Site", "Right Ventricle Outflow Tract");
 			specs.Add(new MeasurementSpecification("Right ventricle outflow peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
-			specs.Add(new MeasurementSpecification("Right ventricle outflow peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
-			specs.Add(new MeasurementSpecification("Right ventricle outflow mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Right ventricle outflow peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mmHg"));
+			specs.Add(new MeasurementSpecification("Right ventricle outflow mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mmHg"));
 			specs.Add(new MeasurementSpecification("Right ventricle outflow dimension", "Cardiovascular Orifice Diameter", new Dictionary<string, string>(props), "cm", includeImageMode: true, unitEnum: LengthUnit.Centimeter));
 			props.Clear();
 
@@ -414,7 +414,7 @@ namespace DICOMReporting.Data.Measurements {
 			var specs = new List<MeasurementSpecification>();
 			Dictionary<string, string> props = new Dictionary<string, string>();
 
-			specs.Add(new MeasurementSpecification("Main pulmonary artery peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Main pulmonary artery peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mmHg"));
 			specs.Add(new MeasurementSpecification("Main pulmonary artery peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
 			props.Clear();
 
@@ -436,7 +436,7 @@ namespace DICOMReporting.Data.Measurements {
 			Dictionary<string, string> props = new Dictionary<string, string>();
 
 			specs.Add(new MeasurementSpecification("Descending aorta peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
-			specs.Add(new MeasurementSpecification("Descending aorta peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mm[Hg]"));
+			specs.Add(new MeasurementSpecification("Descending aorta peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mmHg"));
 			props.Clear();
 
 			return specs;

@@ -65,7 +65,6 @@
 			this.ResultValueTextBox.Name = "ResultValueTextBox";
 			this.ResultValueTextBox.Size = new System.Drawing.Size(49, 20);
 			this.ResultValueTextBox.TabIndex = 3;
-			this.ResultValueTextBox.TextChanged += new System.EventHandler(this.ResultValueTextBox_TextChanged);
 			this.ResultValueTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateValue);
 			// 
 			// ZScoreLabel

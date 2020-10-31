@@ -238,11 +238,11 @@ namespace DICOMReporting.Data {
 																										"Left sided aortic arch",
 																										"Null" });
 
-		public MultipleChoiceResult LeftAorticArch2 = new MultipleChoiceResult("", new List<string>() { "Null",
-																										"with normal branching",
+		public MultipleChoiceResult LeftAorticArch2 = new MultipleChoiceResult("", new List<string>() { "with normal branching",
+																										"Null",
 																										"with bovine trunk (common origin of the brachiocephalic and LCCA)",
 																										"aberrant right subclavian artery" });
-		
+		// right aortic arch label
 		public MultipleChoiceResult RightAorticArch1 = new MultipleChoiceResult("", new List<string>() {"Null",
 																										"Unobstructed right sided aortic arch",
 																										"Right sided aortic arch"});

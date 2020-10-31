@@ -111,10 +111,10 @@ namespace DICOMReporting.Data {
 
 			PatientSex = new StringResult("Patient Sex");
 
-			temp = new UnitHeaderAdapter("Patient Size", new Length(0, LengthUnit.Centimeter));
+			temp = new UnitHeaderAdapter("Patient Height", new Length(0, LengthUnit.Centimeter));
 			PatientSize = new Result(temp, true);
 
-			temp = new UnitHeaderAdapter("Patient Size", new Mass(0, MassUnit.Kilogram));
+			temp = new UnitHeaderAdapter("Patient Weight", new Mass(0, MassUnit.Kilogram));
 			PatientWeight = new Result(temp, true);
 
 			temp = new MeasurementHeader("Systolic Blood Pressure", 0, "", "mm[Hg]");

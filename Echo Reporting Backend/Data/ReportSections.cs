@@ -32,7 +32,10 @@ namespace Echo_Reporting_Backend.Data {
 			PulmonaryVeins = OptionsToString(sr.ReportingOptions.PulmonaryVeins);
 			SetCoronaryArteriesText(sr);
 			Other += BoolResultToString(sr.ReportingOptions.NoPercardialEffusion);
-			Other += OptionsToString(sr.ReportingOptions.PercardialEffusion);
+			if (!sr.ReportingOptions.NoPercardialEffusion.Value) {
+				Other += OptionsToString(sr.ReportingOptions.PercardialEffusion);
+			}
+
 			Conclusion = Conclusions(sr.ReportingOptions.Conclusion.Value);
 			SignOff = SignOffs(sr.PatientData.ReportingDoctor.Value);
 		}
@@ -90,12 +93,12 @@ namespace Echo_Reporting_Backend.Data {
 			Ventricles += ResultToString(sr.Results["Fractional Shortening"]);
 			Ventricles += ResultToString(sr.Results["Left Ventricular Teichholz EF"]);
 			string ejectionfraction = ResultToString(sr.Results["Left Ventricular biplane EF"]);
-			if (ejectionfraction.Equals("")) {
+			if (ejectionfraction.Length == 0) {
 				ejectionfraction = ResultToString(sr.Results["Left ventricular Apical 4 chamber EF"]);
 			}
 			Ventricles += ejectionfraction;
 
-			Ventricles += ResultToString(sr.Results["Heart Rate"]);
+			Ventricles += ResultToString(sr.Results["Heart Rate"], false);
 
 			Ventricles += OptionsToString(sr.ReportingOptions.DilatedLV);
 			Ventricles += OptionsToString(sr.ReportingOptions.HypertrophiedLV);
@@ -195,8 +198,11 @@ namespace Echo_Reporting_Backend.Data {
 											 sr.ReportingOptions.RightAorticArch2);
 
 			GreatArteries += BoolResultToString(sr.ReportingOptions.NoCoarctationAorta);
-			GreatArteries += OptionsToString(sr.ReportingOptions.CoarctationAorta);
+			if (!sr.ReportingOptions.NoCoarctationAorta.Value) {
+				GreatArteries += OptionsToString(sr.ReportingOptions.CoarctationAorta);
+			}
 			GreatArteries += ResultToString(sr.Results["Coarctation of the aorta"]);
+
 			GreatArteries += ResultToString(sr.Results["Descending aorta peak velocity"]);
 			GreatArteries += ResultToString(sr.Results["Descending aorta peak gradient"]);
 
@@ -215,8 +221,10 @@ namespace Echo_Reporting_Backend.Data {
 			GreatArteries += ResultToString(sr.Results["Left pulmonary artery peak gradient"]);
 
 			GreatArteries += BoolResultToString(sr.ReportingOptions.NoPatentDuctusArteriosus);
-			GreatArteries += OptionsToString(sr.ReportingOptions.PatentDuctusArteriosus1,
-											 sr.ReportingOptions.PatentDuctusArteriosus2);
+			if (!sr.ReportingOptions.NoPatentDuctusArteriosus.Value) {
+				GreatArteries += OptionsToString(sr.ReportingOptions.PatentDuctusArteriosus1,
+												 sr.ReportingOptions.PatentDuctusArteriosus2);
+			}
 
 			GreatArteries += ResultToString(sr.Results["Patent Ductus Arteriosus"]);
 			GreatArteries += ResultToString(sr.Results["Patent Ductus Arteriosus peak velocity systole"]);
@@ -235,16 +243,16 @@ namespace Echo_Reporting_Backend.Data {
 			}
 			else {
 				string final = r.Name;
-				return final.Equals("") ? final : final + ". ";
+				return final.Length == 0 ? final : final + ". ";
 			}
 		}
-		private string ResultToString(Result r) {
+		private string ResultToString(Result r, bool includeZScore = true) {
 			if (r.Empty) {
 				return "";
 			}
 			else {
-				string final = r.ReportString();
-				return final.Equals("") ? final : final + ". ";
+				string final = r.ReportString(includeZScore);
+				return final.Length == 0 ? final : final + ". ";
 			}
 		}
 		private string OptionsToString(MultipleChoiceResult result1) {
@@ -267,7 +275,7 @@ namespace Echo_Reporting_Backend.Data {
 				}
 			}
 			final = final.Trim();
-			return final.Equals("") ? final : final + ". ";
+			return final.Length == 0 ? final : final + ". ";
 		}
 		private string Conclusions(string type) {
 			switch (type) {

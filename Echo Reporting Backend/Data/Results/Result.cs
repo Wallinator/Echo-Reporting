@@ -57,11 +57,11 @@ namespace DICOMReporting.Data.Results {
 			}
 			return Name + ": \n\t" + "Value: " + Value + " " + UnitShorthand + emptyZscorestring;
 		}
-		public string ReportString() {
+		public string ReportString(bool includeZScore = true) {
 			string name;
 			string Zscorestring = "";
 			if (HasComment) {
-				if (AnomalyText.Equals("")) {
+				if (AnomalyText.Length == 0) {
 					return "";
 				}
 				name = AnomalyText;
@@ -69,7 +69,7 @@ namespace DICOMReporting.Data.Results {
 			else {
 				name = Name;
 			}
-			if (ZScoreable) {
+			if (ZScoreable && includeZScore) {
 				Zscorestring = ", Z-score=" + ZScore.ToString("N2");
 			}
 			return name + " (" + Value + " " + UnitShorthand + Zscorestring + ")";

@@ -25,13 +25,13 @@ namespace DICOMReporting.Data.Results {
 		}
 		public string AsString() {
 			string final = "";
-			if (!Name.Equals("")) {
+			if (Name.Length != 0) {
 				final += Name;
 			}
-			if (!Value.Equals("")) {
+			if (Value.Length != 0) {
 				final += " " + Value;
 			}
-			if (!Postfix.Equals("")) {
+			if (Postfix.Length != 0) {
 				final += " " + Postfix;
 			}
 			return final;

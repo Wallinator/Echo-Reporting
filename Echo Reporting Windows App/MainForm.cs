@@ -11,7 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.WindowsAPICodePack.Dialogs;
 using Echo_Reporting_Backend.Data;
 
 namespace Echo_Reporting_Windows_App {
@@ -23,12 +22,8 @@ namespace Echo_Reporting_Windows_App {
 		}
 
 		private void openFolderToolStripMenuItem_Click(object sender, EventArgs e) {
-			CommonOpenFileDialog dialog = new CommonOpenFileDialog {
-				IsFolderPicker = true
-			};
-
-			if (dialog.ShowDialog() == CommonFileDialogResult.Ok) {
-				var folder = dialog.FileName;
+			if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) {
+				var folder = folderBrowserDialog1.SelectedPath;
 				var enumerator = new DicomFileEnumerator(new DirectoryInfo(folder));
 				while (enumerator.MoveNext()) {
 					Debug.WriteLine(enumerator.Current.File.Name);

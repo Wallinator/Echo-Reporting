@@ -56,14 +56,21 @@ namespace Echo_Reporting_Windows_App {
 				ResultValueTextBox.Text = "";
 			}
 			else {
-				ResultValueTextBox.Text = Math.Round(value, 3).ToString();
+				if (result.UnitShorthand.Equals("mmHg") ||
+					result.UnitShorthand.Equals("cm/s") ||
+					result.UnitShorthand.Equals("m/s")) {
+					ResultValueTextBox.Text = Math.Round(value, 1).ToString();
+				}
+				else {
+					ResultValueTextBox.Text = Math.Round(value, 3).ToString();
+				}
 			}
 			if (result.ZScoreable) {
 				if (result.Empty) {
 					ZScoreLabel.Text = "Z Score: Unavailable.";
 				}
 				else {
-					ZScoreLabel.Text = "Z Score: " + result.ZScore.ToString("N2");
+					ZScoreLabel.Text = "Z Score: " + Math.Round(result.ZScore, 2).ToString();
 				}
 			}
 		}
@@ -72,10 +79,6 @@ namespace Echo_Reporting_Windows_App {
 				ValidateValue(sender, e);
 				e.Handled = true;
 			}
-		}
-
-		private void ResultValueTextBox_TextChanged(object sender, EventArgs e) {
-
 		}
 
 		private void ResultControl_Load(object sender, EventArgs e) {
