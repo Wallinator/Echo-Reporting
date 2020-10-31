@@ -26,26 +26,26 @@ namespace DICOMReporting.Data {
 		public BoolResult AtriaSize = new BoolResult("Normally sized atria", "", true);
 		public BoolResult AtriaSeptum = new BoolResult("Intact atrial septum", "", true);
 
-		public MultipleChoiceResult AtriaLeft = new MultipleChoiceResult("", new List<string>() {   "Null",
+		public MultipleChoiceResult AtriaLeft = new MultipleChoiceResult("", new List<string>() {   "",
 																									"Mildly",
 																									"Moderately",
 																									"Severely" }, "dilated left atrium");
 
-		public MultipleChoiceResult AtriaRight = new MultipleChoiceResult("", new List<string>() {  "Null",
+		public MultipleChoiceResult AtriaRight = new MultipleChoiceResult("", new List<string>() {  "",
 																									"Mildly",
 																									"Moderately",
 																									"Severely" }, "dilated right atrium");
 
-		public MultipleChoiceResult AtriaBilateral = new MultipleChoiceResult("", new List<string>() {  "Null",
+		public MultipleChoiceResult AtriaBilateral = new MultipleChoiceResult("", new List<string>() {  "",
 																										"Mildly",
 																										"Moderately",
 																										"Severely" }, "dilated atria bilaterally");
 		
-		public MultipleChoiceResult AtriaPatentForamenOvale = new MultipleChoiceResult("Patent foramen ovale with", new List<string>() {"Null",
+		public MultipleChoiceResult AtriaPatentForamenOvale = new MultipleChoiceResult("Patent foramen ovale with", new List<string>() {"",
 																																		"L-R shunt",
 																																		"R-L shunt",
 																																		"bidirectional shunt" });
-		public MultipleChoiceResult ASD1 = new MultipleChoiceResult("", new List<string>() {"Null",
+		public MultipleChoiceResult ASD1 = new MultipleChoiceResult("", new List<string>() {"",
 																							"Small",
 																							"Moderate",
 																							"Large" });
@@ -64,7 +64,7 @@ namespace DICOMReporting.Data {
 		
 		
 		public MultipleChoiceResult MitralValve1 = new MultipleChoiceResult("", new List<string>() {"Normal mitral valve",
-																									"Null",
+																									"",
 																									"Cleft in the anterior leaflet of the mitral valve",
 																									"Prolapse of the anterior leaflet of the mitral valve"});
 		
@@ -81,7 +81,7 @@ namespace DICOMReporting.Data {
 		public BoolResult MitralValveProlapse = new BoolResult("No mitral valve prolapse");
 
 		public MultipleChoiceResult TriscupidValve1 = new MultipleChoiceResult("", new List<string>() {     "Normal tricuspid valve",
-																											"Null",
+																											"",
 																											"Tethered tricuspid valve septal leaflet",
 																											"Dysplastic tricuspid valve leaflets"});
 		
@@ -99,7 +99,7 @@ namespace DICOMReporting.Data {
 
 		
 
-		public MultipleChoiceResult LAVV1 = new MultipleChoiceResult("", new List<string>() {   "Null",
+		public MultipleChoiceResult LAVV1 = new MultipleChoiceResult("", new List<string>() {   "",
 																								"Common atrioventricular valve",
 																								"Partial AVSD with separate AV valve orifices"});
 
@@ -114,7 +114,7 @@ namespace DICOMReporting.Data {
 																									"moderate left AV valve stenosis",
 																									"severe left AV valve stenosis" });
 
-		public MultipleChoiceResult RAVV1 = new MultipleChoiceResult("", new List<string>() {   "Null",
+		public MultipleChoiceResult RAVV1 = new MultipleChoiceResult("", new List<string>() {   "",
 																								"No right AV valve regurgitation",
 																								"Trivial right AV valve regurgitation",
 																								"Mild right AV valve regurgitation",
@@ -134,17 +134,17 @@ namespace DICOMReporting.Data {
 		public BoolResult VentricularHypertrophy = new BoolResult("No ventricular hypertrophy");
 
 
-		public MultipleChoiceResult DilatedLV = new MultipleChoiceResult("", new List<string>() { "Null",
+		public MultipleChoiceResult DilatedLV = new MultipleChoiceResult("", new List<string>() { "",
 																							"Mildly",
 																							"Moderately",
 																							"Severely" }, "dilated LV");
 
-		public MultipleChoiceResult HypertrophiedLV = new MultipleChoiceResult("", new List<string>() { "Null",
+		public MultipleChoiceResult HypertrophiedLV = new MultipleChoiceResult("", new List<string>() { "",
 																							"Mildly",
 																							"Moderately",
 																							"Severely" }, "hypertrophied LV");
 
-		public MultipleChoiceResult ReducedLVFunction = new MultipleChoiceResult("", new List<string>() { "Null",
+		public MultipleChoiceResult ReducedLVFunction = new MultipleChoiceResult("", new List<string>() { "",
 																							"Mildly",
 																							"Moderately",
 																							"Severely" }, "reduced LV function");
@@ -152,17 +152,17 @@ namespace DICOMReporting.Data {
 		public BoolResult LVSystolicFunction = new BoolResult("Hyperdynamic LV systolic function");
 		public BoolResult NormalDiastolic = new BoolResult("Normal diastolic functional parameters");
 
-		public MultipleChoiceResult DilatedRV = new MultipleChoiceResult("", new List<string>() { "Null",
+		public MultipleChoiceResult DilatedRV = new MultipleChoiceResult("", new List<string>() { "",
 																							"Mildly",
 																							"Moderately",
 																							"Severely" }, "dilated RV");
 
-		public MultipleChoiceResult HypertrophiedRV = new MultipleChoiceResult("", new List<string>() { "Null",
+		public MultipleChoiceResult HypertrophiedRV = new MultipleChoiceResult("", new List<string>() { "",
 																							"Mildly",
 																							"Moderately",
 																							"Severely" }, "hypertrophied RV");
 
-		public MultipleChoiceResult ReducedRVFunction = new MultipleChoiceResult("", new List<string>() { "Null",
+		public MultipleChoiceResult ReducedRVFunction = new MultipleChoiceResult("", new List<string>() { "",
 																							"Mildly",
 																							"Moderately",
 																							"Severely" }, "reduced RV function");
@@ -175,7 +175,7 @@ namespace DICOMReporting.Data {
 		public BoolResult IntactVentricularSeptum = new BoolResult("Intact ventricular septum", "", true);
 		public BoolResult ResidualVSD = new BoolResult("No residual VSD");
 
-		public MultipleChoiceResult VSD1 = new MultipleChoiceResult("", new List<string>() {"Null",
+		public MultipleChoiceResult VSD1 = new MultipleChoiceResult("", new List<string>() {"",
 																							"Small",
 																							"Moderate",
 																							"Large" });
@@ -216,7 +216,7 @@ namespace DICOMReporting.Data {
 		public BoolResult AortaVSDOvveride = new BoolResult("Aorta overrides the VSD");
 		public BoolResult LossSinotubularJunction = new BoolResult("Loss of the sinotubular junction");
 
-		public MultipleChoiceResult SubPulmonaryStenosis = new MultipleChoiceResult("", new List<string>() {    "Null",
+		public MultipleChoiceResult SubPulmonaryStenosis = new MultipleChoiceResult("", new List<string>() {    "",
 																												"Muscular",
 																												"Fibromuscular"}, "sub-pulmonary stenosis");
 
@@ -236,18 +236,18 @@ namespace DICOMReporting.Data {
 		//Great Arteries
 		public MultipleChoiceResult LeftAorticArch1 = new MultipleChoiceResult("", new List<string>() { "Unobstructed left sided aortic arch",
 																										"Left sided aortic arch",
-																										"Null" });
+																										"" });
 
 		public MultipleChoiceResult LeftAorticArch2 = new MultipleChoiceResult("", new List<string>() { "with normal branching",
-																										"Null",
+																										"",
 																										"with bovine trunk (common origin of the brachiocephalic and LCCA)",
 																										"aberrant right subclavian artery" });
 		// right aortic arch label
-		public MultipleChoiceResult RightAorticArch1 = new MultipleChoiceResult("", new List<string>() {"Null",
+		public MultipleChoiceResult RightAorticArch1 = new MultipleChoiceResult("", new List<string>() {"",
 																										"Unobstructed right sided aortic arch",
 																										"Right sided aortic arch"});
 
-		public MultipleChoiceResult RightAorticArch2 = new MultipleChoiceResult("", new List<string>() {"Null",
+		public MultipleChoiceResult RightAorticArch2 = new MultipleChoiceResult("", new List<string>() {"",
 																										"with mirror image branching",
 																										"aberrant left subclavian artery (with a left sided ductal ligament this is the setup for a vascular ring)" });
 
@@ -257,12 +257,12 @@ namespace DICOMReporting.Data {
 																																		"no diastolic run-off" });
 
 		public MultipleChoiceResult BranchPulmonaryArteries = new MultipleChoiceResult("", new List<string>() { "Normal branch pulmonary arteries",
-																												"Null",
+																												"",
 																												"Physiological branch pulmonary artery narrowing" });
 		
 		public BoolResult NoPatentDuctusArteriosus = new BoolResult("No patent ductus arteriosus", "", true);
 
-		public MultipleChoiceResult PatentDuctusArteriosus1 = new MultipleChoiceResult("", new List<string>() {	"Null",
+		public MultipleChoiceResult PatentDuctusArteriosus1 = new MultipleChoiceResult("", new List<string>() {	"",
 																												"Small",
 																												"Moderate",
 																												"Large" });
@@ -285,7 +285,7 @@ namespace DICOMReporting.Data {
 		//Other
 		public BoolResult NoPercardialEffusion = new BoolResult("No percardial effusion", "", true);
 
-		public MultipleChoiceResult PercardialEffusion = new MultipleChoiceResult("", new List<string>() {  "Null",
+		public MultipleChoiceResult PercardialEffusion = new MultipleChoiceResult("", new List<string>() {  "",
 																											"Small",
 																											"Moderate",
 																											"Large" }, "pericardial effusion" );

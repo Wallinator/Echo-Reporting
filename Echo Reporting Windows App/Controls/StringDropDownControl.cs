@@ -16,7 +16,12 @@ namespace Echo_Reporting_Windows_App {
 		public StringDropDownControl(MultipleChoiceResult result) {
 			InitializeComponent();
 			Result = result;
-			ResultTitleLabel.Text = result.Name;
+			if (result.Name.Length == 0) {
+				ResultTitleLabel.Text = result.Name;
+			}
+			else {
+				ResultTitleLabel.Text = result.DisplayName;
+			}
 			ResultPostfixLabel.Text = result.Postfix;
 			ResultValueComboBox.Items.AddRange(result.Options.ToArray());
 			ResultValueComboBox.SelectedIndex = 0;
@@ -31,6 +36,10 @@ namespace Echo_Reporting_Windows_App {
 
 		private void ResultValueComboBox_SelectedIndexChanged(object sender, EventArgs e) {
 			Result.Value = (string) ResultValueComboBox.SelectedItem;
+		}
+
+		private void panel2_Paint(object sender, PaintEventArgs e) {
+
 		}
 	}
 }

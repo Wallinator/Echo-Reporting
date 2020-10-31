@@ -267,7 +267,7 @@ namespace Echo_Reporting_Backend.Data {
 		private string OptionsToString(List<MultipleChoiceResult> list) {
 			string final = "";
 			foreach(var result in list) {
-				if (result.Value.Equals("Null")) {
+				if (result.Value.Length == 0) {
 					break;
 				}
 				else {
