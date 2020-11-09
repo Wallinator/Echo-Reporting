@@ -16,20 +16,21 @@ namespace Echo_Reporting_Windows_App {
 		public StringDropDownControl(MultipleChoiceResult result) {
 			InitializeComponent();
 			Result = result;
-			if (result.Name.Length == 0) {
+			if (result.Name.Length != 0) {
 				ResultTitleLabel.Text = result.Name;
 			}
 			else {
 				ResultTitleLabel.Text = result.DisplayName;
 			}
 			ResultPostfixLabel.Text = result.Postfix;
+			ResultValueComboBox.Items.Clear();
 			ResultValueComboBox.Items.AddRange(result.Options.ToArray());
 			ResultValueComboBox.SelectedIndex = 0;
-			ResultValueComboBox.Width = 0;
+			ResultValueComboBox.DropDownWidth = 1;
 			foreach (var x in ResultValueComboBox.Items) {
 				int w = TextRenderer.MeasureText((string) x, Font).Width + 38;
-				if (ResultValueComboBox.Width < w) {
-					ResultValueComboBox.Width = w;
+				if (ResultValueComboBox.DropDownWidth < w) {
+					ResultValueComboBox.DropDownWidth = w;
 				}
 			}
 		}
@@ -39,6 +40,10 @@ namespace Echo_Reporting_Windows_App {
 		}
 
 		private void panel2_Paint(object sender, PaintEventArgs e) {
+
+		}
+
+		private void ResultTitleLabel_Click(object sender, EventArgs e) {
 
 		}
 	}

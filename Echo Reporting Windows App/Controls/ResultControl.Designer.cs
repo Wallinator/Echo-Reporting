@@ -46,7 +46,7 @@
 			// 
 			this.ResultUnitLabel.AutoSize = true;
 			this.errorProvider1.SetIconPadding(this.ResultUnitLabel, 4);
-			this.ResultUnitLabel.Location = new System.Drawing.Point(55, 25);
+			this.ResultUnitLabel.Location = new System.Drawing.Point(62, 22);
 			this.ResultUnitLabel.Name = "ResultUnitLabel";
 			this.ResultUnitLabel.Size = new System.Drawing.Size(29, 13);
 			this.ResultUnitLabel.TabIndex = 1;
@@ -62,17 +62,16 @@
 			this.errorProvider1.SetIconAlignment(this.ResultValueTextBox, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
 			this.errorProvider1.SetIconPadding(this.ResultValueTextBox, 5);
 			this.ResultValueTextBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.ResultValueTextBox.Location = new System.Drawing.Point(7, 21);
+			this.ResultValueTextBox.Location = new System.Drawing.Point(7, 19);
 			this.ResultValueTextBox.Name = "ResultValueTextBox";
 			this.ResultValueTextBox.Size = new System.Drawing.Size(49, 20);
 			this.ResultValueTextBox.TabIndex = 3;
-			this.ResultValueTextBox.KeyUp += TextBoxKeyUp;
 			this.ResultValueTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateValue);
 			// 
 			// ZScoreLabel
 			// 
 			this.ZScoreLabel.AutoSize = true;
-			this.ZScoreLabel.Location = new System.Drawing.Point(116, 3);
+			this.ZScoreLabel.Location = new System.Drawing.Point(185, 3);
 			this.ZScoreLabel.Name = "ZScoreLabel";
 			this.ZScoreLabel.Size = new System.Drawing.Size(54, 13);
 			this.ZScoreLabel.TabIndex = 4;
@@ -83,7 +82,7 @@
 			this.Anomaly.AutoSize = true;
 			this.Anomaly.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Anomaly.ForeColor = System.Drawing.Color.DarkRed;
-			this.Anomaly.Location = new System.Drawing.Point(116, 25);
+			this.Anomaly.Location = new System.Drawing.Point(4, 42);
 			this.Anomaly.Name = "Anomaly";
 			this.Anomaly.Size = new System.Drawing.Size(54, 13);
 			this.Anomaly.TabIndex = 5;
@@ -100,7 +99,7 @@
 			this.Controls.Add(this.ResultUnitLabel);
 			this.Controls.Add(this.ResultTitleLabel);
 			this.Name = "ResultControl";
-			this.Size = new System.Drawing.Size(254, 54);
+			this.Size = new System.Drawing.Size(254, 59);
 			this.Load += new System.EventHandler(this.ResultControl_Load);
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.ResumeLayout(false);

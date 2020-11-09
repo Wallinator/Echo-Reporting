@@ -623,5 +623,9 @@ namespace Echo_Reporting_Windows_App {
 			var x = new ReportForm(new ReportSections(report));
 			x.Show(this);
 		}
+
+		private void PatientIDPanel_Paint(object sender, PaintEventArgs e) {
+
+		}
 	}
 }

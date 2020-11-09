@@ -22,7 +22,7 @@ namespace DICOMReporting.Data.Measurements {
 
 		//public MeasurementSpecification(string name, string rawMeasurementName, Dictionary<string, string> properties, string defaultUnitShorthand, IFormula formula = null, bool includeImageMode = false, Enum unitEnum = null/*, bool nonMean = false*/) {
 		public MeasurementSpecification(string name, string rawMeasurementName, Dictionary<string, string> properties, string defaultUnitShorthand, IFormula formula = null, bool includeImageMode = false, Enum unitEnum = null) {
-				Name = name;
+			Name = name;
 			RawMeasurementName = rawMeasurementName;
 			Properties = properties;
 			DefaultUnitShorthand = defaultUnitShorthand;
