@@ -70,7 +70,7 @@ namespace Echo_Reporting_Windows_App {
 			}
 			if (result.ZScoreable) {
 				if (result.Empty) {
-					ZScoreLabel.Text = "Z Score: Unavailable.";
+					ZScoreLabel.Text = "Z Score: N/A.";
 				}
 				else {
 					ZScoreLabel.Text = "Z Score: " + Math.Round(result.ZScore, 2).ToString();
