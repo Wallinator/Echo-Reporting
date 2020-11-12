@@ -30,7 +30,7 @@
 			// ResultTitleLabel
 			// 
 			this.ResultTitleLabel.AutoSize = true;
-			this.ResultTitleLabel.Location = new System.Drawing.Point(-1, 3);
+			this.ResultTitleLabel.Location = new System.Drawing.Point(3, 3);
 			this.ResultTitleLabel.Name = "ResultTitleLabel";
 			this.ResultTitleLabel.Size = new System.Drawing.Size(83, 13);
 			this.ResultTitleLabel.TabIndex = 0;
@@ -38,7 +38,7 @@
 			// 
 			// ResultValueTextBox
 			// 
-			this.ResultValueTextBox.Location = new System.Drawing.Point(30, 21);
+			this.ResultValueTextBox.Location = new System.Drawing.Point(7, 19);
 			this.ResultValueTextBox.Name = "ResultValueTextBox";
 			this.ResultValueTextBox.Size = new System.Drawing.Size(96, 20);
 			this.ResultValueTextBox.TabIndex = 3;

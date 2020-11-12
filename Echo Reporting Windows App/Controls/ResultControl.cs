@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DICOMReporting.Data;
 using DICOMReporting.Data.Results;
+using System.Security.Cryptography.X509Certificates;
+using System.Diagnostics;
 
 namespace Echo_Reporting_Windows_App {
 	public partial class ResultControl : UserControl {
@@ -17,10 +19,11 @@ namespace Echo_Reporting_Windows_App {
 
 		//public ResultControl(string name, string unitShortHand, double value = 0, bool showNotFoundError = true, Action OnUpdate = null) : this(new Result(name, unitShortHand, value: value), showNotFoundError, OnUpdate) {
 		//}
-		public ResultControl(Result result, bool showNotFoundError = true, Action OnUpdate = null) {
+		public ResultControl(Result result, bool showNotFoundError, MainForm form, Action OnUpdate = null) {
 			InitializeComponent();
-			this.OnUpdate = OnUpdate;
+
 			this.result = result;
+			this.OnUpdate = OnUpdate;
 			ResultTitleLabel.Text = result.Name;
 			ResultUnitLabel.Text = result.UnitShorthand;
 			ZScoreLabel.Text = "";
@@ -35,6 +38,13 @@ namespace Echo_Reporting_Windows_App {
 		}
 
 		private void ValidateValue(object sender, EventArgs e) {
+
+			if (OnUpdate != null) {
+				if (MessageBox.Show("Updating " + result.Name + " will update all values in the form.", "Warning", MessageBoxButtons.OKCancel) == DialogResult.Cancel) {
+					UpdateValue();
+					return;
+				}
+			}
 			try {
 				double value = double.Parse(ResultValueTextBox.Text.Trim());
 				errorProvider1.Clear();

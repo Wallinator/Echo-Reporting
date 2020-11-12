@@ -11,7 +11,6 @@ namespace DICOMReporting.Data.Results {
 		public string UnitShorthand;
 		public double Value;
 		public IFormula Formula;
-		public bool ZScoreable;
 		public bool HasComment;
 		public bool Empty;
 
@@ -20,7 +19,6 @@ namespace DICOMReporting.Data.Results {
 			UnitShorthand = unitShorthand;
 			Value = value;
 			Formula = formula;
-			ZScoreable = formula != null && formula.ZScoreable();
 			HasComment = formula != null;
 			Empty = empty;
 		}
@@ -29,10 +27,10 @@ namespace DICOMReporting.Data.Results {
 			UnitShorthand = header.UnitShorthand;
 			Value = header.Value;
 			Formula = null;
-			ZScoreable = false;
 			Empty = empty;
 		}
 
+		public bool ZScoreable => Formula != null && Formula.ZScoreable();
 		public double ZScore => Formula.GetZScore(Value);
 		public string AnomalyText {
 			get {
@@ -73,6 +71,13 @@ namespace DICOMReporting.Data.Results {
 				Zscorestring = ", Z-score=" + ZScore.ToString("N2");
 			}
 			return name + " (" + Value + " " + UnitShorthand + Zscorestring + ")";
+		}
+		public string AsString() {
+			string Zscorestring = "";
+			if (ZScoreable) {
+				Zscorestring = ", Z-score=" + ZScore.ToString("N2");
+			}
+			return Name + " (" + Value + " " + UnitShorthand + Zscorestring + ")";
 		}
 	}
 }

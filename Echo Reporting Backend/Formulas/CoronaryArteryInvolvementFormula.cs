@@ -25,8 +25,8 @@ namespace DICOMReporting.Formulas {
 			}
 		}
 		public double GetZScore(double observed_y) {
-			double mean_y = (constants.Multiplier * Math.Pow(constants.BSA, constants.Power)) + constants.Intercept;
-			return ((observed_y / 10) - mean_y) / (constants.SDIntercept + (constants.SDMultiplier * constants.BSA));
+			double mean_y = (constants.Multiplier * Math.Pow(constants.Pd.BSA.Value, constants.Power)) + constants.Intercept;
+			return ((observed_y / 10) - mean_y) / (constants.SDIntercept + (constants.SDMultiplier * constants.Pd.BSA.Value));
 		}
 		public bool ZScoreable() => true;
 		private CoronaryArteryInvolvementFormula(Constants constants) {
@@ -69,8 +69,7 @@ namespace DICOMReporting.Formulas {
 			public double SDMultiplier {
 				get; private set;
 			}
-			public double BSA => Pd.BSA.Value;
-			private PatientData Pd;
+			public PatientData Pd;
 			public Constants(double multiplier, double power, double intercept, double sdintercept, double sdmultiplier, PatientData pd, string name, string[] anomalies, bool prefix = true) {
 				AnomalyPrefix = prefix;
 				MeasurementName = name;

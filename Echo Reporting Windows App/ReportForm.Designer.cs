@@ -51,8 +51,13 @@
 			this.SystemicVeinsTextbox = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.generateReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.panel1.SuspendLayout();
+			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// contextMenuStrip1
@@ -411,19 +416,56 @@
 			this.panel1.Size = new System.Drawing.Size(888, 404);
 			this.panel1.TabIndex = 6;
 			// 
+			// menuStrip1
+			// 
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(888, 24);
+			this.menuStrip1.TabIndex = 7;
+			this.menuStrip1.Text = "menuStrip1";
+			// 
+			// fileToolStripMenuItem
+			// 
+			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.generateReportToolStripMenuItem});
+			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+			this.fileToolStripMenuItem.Text = "File";
+			// 
+			// generateReportToolStripMenuItem
+			// 
+			this.generateReportToolStripMenuItem.Name = "generateReportToolStripMenuItem";
+			this.generateReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.generateReportToolStripMenuItem.Text = "Generate Report...";
+			this.generateReportToolStripMenuItem.Click += new System.EventHandler(this.generateReportToolStripMenuItem_Click);
+			// 
+			// saveFileDialog1
+			// 
+			this.saveFileDialog1.DefaultExt = "txt";
+			this.saveFileDialog1.Filter = "Text Files(*.txt)| *.txt | All files | *.*";
+			this.saveFileDialog1.FilterIndex = 2;
+			this.saveFileDialog1.Title = "Generate Report...";
+			// 
 			// ReportForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(888, 404);
+			this.Controls.Add(this.menuStrip1);
 			this.Controls.Add(this.panel1);
+			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "ReportForm";
 			this.Text = "ReportForm";
 			this.Load += new System.EventHandler(this.ReportForm_Load);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			this.panel1.ResumeLayout(false);
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -455,5 +497,9 @@
 		private System.Windows.Forms.TextBox SystemicVeinsTextbox;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem generateReportToolStripMenuItem;
+		private System.Windows.Forms.SaveFileDialog saveFileDialog1;
 	}
 }

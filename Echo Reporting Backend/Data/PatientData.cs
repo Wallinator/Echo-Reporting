@@ -13,16 +13,16 @@ using UnitsNet.Units;
 
 namespace DICOMReporting.Data {
 	public class PatientData {
-		//public string StudyID;
 		//public string StudyDate;
+		//public StringResult StudyID;
 		public StringResult PatientID;
 		public StringResult PatientName;
+		public StringResult PatientDOB;
 		public StringResult PatientSex;
 		public StringResult ReasonForStudy;
 		public StringResult ReferringPhysician;
 		public MultipleChoiceResult EchoType;
 		public MultipleChoiceResult ReportingDoctor;
-		//public DateTime PatientDOB;
 		public Result PatientAge;
 		public Result PatientWeight;
 		public Result PatientHeight;
@@ -70,13 +70,13 @@ namespace DICOMReporting.Data {
 						break;
 					case "F-008EC":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
-						temp = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+						temp = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, "mmHg");
 						Debug.WriteLine(temp);
 						SystolicBloodPressure = new Result(temp);
 						break;
 					case "F-008ED":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
-						temp = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+						temp = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, "mmHg");
 						Debug.WriteLine(temp);
 						DiastolicBloodPressure = new Result(temp);
 						break;
@@ -98,17 +98,20 @@ namespace DICOMReporting.Data {
 						break;
 					case "121031":
 						string input = child.Get<string>();
+						Debug.WriteLine("dob input: "+ input);
 
 						var numbers = Regex.Split(input, @"\D+").ToList().GetRange(1, 3).Select(x => int.Parse(x)).ToArray();
 
-						//PatientDOB = new DateTime(numbers[0], numbers[1], numbers[2]);
-						//Debug.WriteLine(PatientDOB);
+						PatientDOB = new StringResult("Patient DOB", new DateTime(numbers[0], numbers[1], numbers[2]).Date.ToShortDateString());
+
+						Debug.WriteLine(PatientDOB.Value);
 						break;
 					default:
 						break;
 				}
 			}
 			UpdateBSAResult();
+			Debug.WriteLine(PatientDOB.Value);
 		}
 		public void UpdateBSAResult() {
 			BSA = new Result("Body Surface Area", "m2", value: 0.024265 * Math.Pow(PatientHeight.Value, 0.3964) * Math.Pow(PatientWeight.Value, 0.5378), empty: false);
@@ -128,16 +131,18 @@ namespace DICOMReporting.Data {
 			temp = new UnitHeaderAdapter("Patient Weight", new Mass(0, MassUnit.Kilogram));
 			PatientWeight = new Result(temp, true);
 
-			temp = new MeasurementHeader("Systolic Blood Pressure", 0, "", "mm[Hg]");
+			temp = new MeasurementHeader("Systolic Blood Pressure", 0, "", "mmHg");
 			SystolicBloodPressure = new Result(temp, true);
 
-			temp = new MeasurementHeader("Diastolic Blood Pressure", 0, "", "mm[Hg]");
+			temp = new MeasurementHeader("Diastolic Blood Pressure", 0, "", "mmHg");
 			DiastolicBloodPressure = new Result(temp, true);
 
 
 			PatientName = new StringResult("Patient Name");
-
+			
 			PatientID = new StringResult("Patient ID");
+			//StudyID = new StringResult("Study ID");
+			PatientDOB = new StringResult("Patient DOB");
 
 			ReasonForStudy = new StringResult("Reason For Study");
 

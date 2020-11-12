@@ -31,7 +31,7 @@ namespace DICOMReporting.Formulas {
 			}
 		}
 		public double GetZScore(double observed_y) {
-			double mean_y = (constants.Multiplier * Math.Log(constants.BSA)) + constants.Intercept;
+			double mean_y = (constants.Multiplier * Math.Log(constants.Pd.BSA.Value)) + constants.Intercept;
 			return (Math.Log(observed_y) - mean_y) / constants.MSE;
 		}
 		public bool ZScoreable() => true;
@@ -51,7 +51,7 @@ namespace DICOMReporting.Formulas {
 			this.constants = constants;
 		}
 		private struct Constants {
-			private PatientData Pd;
+			public PatientData Pd;
 			public string MeasurementName {
 				get; set;
 			}
@@ -70,7 +70,6 @@ namespace DICOMReporting.Formulas {
 			public double MSE {
 				get; private set;
 			}
-			public double BSA => Pd.BSA.Value;
 			public Constants(double multiplier, double intercept, double mse, PatientData pd, string name, string[] anomalies, bool prefix = true) {
 				AnomalyPrefix = prefix;
 				MeasurementName = name;

@@ -26,7 +26,24 @@ namespace DICOMReporting.Formulas {
 			this.constants = constants;
 		}
 		public double GetZScore(double measurement) {
-			return (measurement - constants.Average) / constants.SD;
+			double age = constants.PD.PatientAge.Value;
+			int bracket;
+			if (age < 1) {
+				bracket = 0;
+			}
+			else if (age <= 5) {
+				bracket = 1;
+			}
+			else if (age <= 9) {
+				bracket = 2;
+			}
+			else if (age <= 13) {
+				bracket = 3;
+			}
+			else {
+				bracket = 4;
+			}
+			return (measurement - constants.Averages[bracket]) / constants.SDs[bracket];
 		}
 		public bool ZScoreable() => true;
 		public static ImpactOfCardiacGrowthFormula MitralValveEWave(PatientData pd, string name) {
@@ -132,35 +149,22 @@ namespace DICOMReporting.Formulas {
 			public string MeasurementName {
 				get; set;
 			}
-			public double Average {
+			public double[] Averages {
 				get; private set;
 			}
-			public double SD {
+			public double[] SDs {
 				get; private set;
 			}
-			public Constants(double[] averages, double[] sds, PatientData Pd, string name, string[] anomalies, bool prefix = true) {
+			public PatientData PD {
+				get; private set;
+			}
+			public Constants(double[] averages, double[] sds, PatientData pd, string name, string[] anomalies, bool prefix = true) {
 				AnomalyPrefix = prefix;
 				MeasurementName = name;
 				Anomalies = anomalies;
-				double age = Pd.PatientAge.Value;
-				int bracket;
-				if (age < 1) {
-					bracket = 0;
-				}
-				else if (age <= 5) {
-					bracket = 1;
-				}
-				else if (age <= 9) {
-					bracket = 2;
-				}
-				else if (age <= 13) {
-					bracket = 3;
-				}
-				else {
-					bracket = 4;
-				}
-				Average = averages[bracket];
-				SD = sds[bracket];
+				PD = pd;
+				Averages = averages;
+				SDs = sds;
 			}
 		}
 	}

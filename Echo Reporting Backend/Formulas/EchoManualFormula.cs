@@ -24,7 +24,18 @@ namespace DICOMReporting.Formulas {
 			}
 		}
 		public double GetZScore(double measurement) {
-			return (measurement - constants.Average) / constants.SD;
+			double age = constants.Pd.PatientAge.Value;
+			int bracket;
+			if (age <= 8) {
+				bracket = 0;
+			}
+			else if (age <= 12) {
+				bracket = 1;
+			}
+			else {
+				bracket = 2;
+			}
+			return (measurement - constants.Averages[bracket]) / constants.SDs[bracket];
 		}
 		public bool ZScoreable() => constants.Pd.PatientAge.Value >= 3;
 		public static EchoManualFormula MVDecelTime(PatientData pd, string name) {
@@ -53,10 +64,10 @@ namespace DICOMReporting.Formulas {
 			public bool AnomalyPrefix {
 				get; private set;
 			}
-			public double Average {
+			public double[] Averages {
 				get; private set;
 			}
-			public double SD {
+			public double[] SDs {
 				get; private set;
 			}
 			public Constants(double[] averages, double[] sds, PatientData pd, string name, string[] anomalies, bool prefix = true) {
@@ -64,19 +75,8 @@ namespace DICOMReporting.Formulas {
 				MeasurementName = name;
 				Anomalies = anomalies;
 				Pd = pd;
-				double age = pd.PatientAge.Value;
-				int bracket;
-				if (age <= 8) {
-					bracket = 0;
-				}
-				else if (age <= 12) {
-					bracket = 1;
-				}
-				else {
-					bracket = 2;
-				}
-				Average = averages[bracket];
-				SD = sds[bracket];
+				Averages = averages;
+				SDs = sds;
 			}
 		}
 	}
