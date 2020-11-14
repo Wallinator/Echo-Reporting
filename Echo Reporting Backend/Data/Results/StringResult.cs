@@ -23,6 +23,11 @@ namespace DICOMReporting.Data.Results {
 			Value = value;
 			Postfix = postfix;
 		}
+
+		public List<string> TableString() {
+			return new List<string>() { Name, Value + " " + Postfix };
+		}
+
 		public string AsString() {
 			string final = "";
 			if (Name.Length != 0) {

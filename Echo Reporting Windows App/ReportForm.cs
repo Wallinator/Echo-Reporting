@@ -14,61 +14,59 @@ using DICOMReporting.Data;
 namespace Echo_Reporting_Windows_App {
 	public partial class ReportForm : Form {
 		private StructuredReport _report;
-		private ReportSections _rs;
 		public ReportForm(StructuredReport report) {
 			InitializeComponent();
 			_report = report;
-			_rs = new ReportSections(report);
-			SitusTextBox.Text = _rs.Situs;
+			SitusTextBox.Text = _report.Sections.Situs;
 			SitusTextBox.TextChanged += new EventHandler(_TextChanged);
 
-			SystemicVeinsTextbox.Text = _rs.SystemicVeins;
+			SystemicVeinsTextbox.Text = _report.Sections.SystemicVeins;
 			SystemicVeinsTextbox.TextChanged += new EventHandler(_TextChanged);
 
-			AtriaTextBox.Text = _rs.Atria;
+			AtriaTextBox.Text = _report.Sections.Atria;
 			AtriaTextBox.TextChanged += new EventHandler(_TextChanged);
 
-			AVValvesTextBox.Text = _rs.AVValves;
+			AVValvesTextBox.Text = _report.Sections.AVValves;
 			AVValvesTextBox.TextChanged += new EventHandler(_TextChanged);
 
-			VentriclesTextBox.Text = _rs.Ventricles;
+			VentriclesTextBox.Text = _report.Sections.Ventricles;
 			VentriclesTextBox.TextChanged += new EventHandler(_TextChanged);
 
-			OutletsTextBox.Text = _rs.Outlets;
+			OutletsTextBox.Text = _report.Sections.Outlets;
 			OutletsTextBox.TextChanged += new EventHandler(_TextChanged);
 
-			GreatArteriesTextBox.Text = _rs.GreatArteries;
+			GreatArteriesTextBox.Text = _report.Sections.GreatArteries;
 			GreatArteriesTextBox.TextChanged += new EventHandler(_TextChanged);
 
-			PulmonaryVeinsTextBox.Text = _rs.PulmonaryVeins;
+			PulmonaryVeinsTextBox.Text = _report.Sections.PulmonaryVeins;
 			PulmonaryVeinsTextBox.TextChanged += new EventHandler(_TextChanged);
 
-			CoronaryArteriesTextBox.Text = _rs.CoronaryArteries;
+			CoronaryArteriesTextBox.Text = _report.Sections.CoronaryArteries;
 			CoronaryArteriesTextBox.TextChanged += new EventHandler(_TextChanged);
 
-			OtherTextBox.Text = _rs.Other;
+			OtherTextBox.Text = _report.Sections.Other;
 			OtherTextBox.TextChanged += new EventHandler(_TextChanged);
 
-			ConclusionTextBox.Text = _rs.Conclusion;
+			ConclusionTextBox.Text = _report.Sections.Conclusion;
 			ConclusionTextBox.TextChanged += new EventHandler(_TextChanged);
 
-			ReportingTextBox.Text = _rs.SignOff;
+			ReportingTextBox.Text = _report.Sections.SignOff;
 			ReportingTextBox.TextChanged += new EventHandler(_TextChanged);
 		}
 
 		private void _TextChanged(object sender, EventArgs e) {
-			_rs.Situs = SitusTextBox.Text;
-			_rs.SystemicVeins = SystemicVeinsTextbox.Text;
-			_rs.Atria = AtriaTextBox.Text;
-			_rs.AVValves = AVValvesTextBox.Text;
-			_rs.Ventricles = VentriclesTextBox.Text;
-			_rs.Outlets = OutletsTextBox.Text;
-			_rs.GreatArteries = GreatArteriesTextBox.Text;
-			_rs.PulmonaryVeins = PulmonaryVeinsTextBox.Text;
-			_rs.CoronaryArteries = CoronaryArteriesTextBox.Text;
-			_rs.Other = OtherTextBox.Text;
-			_rs.Conclusion = ConclusionTextBox.Text;
-			_rs.SignOff = ReportingTextBox.Text;
+			_report.Sections.Situs = SitusTextBox.Text;
+			_report.Sections.SystemicVeins = SystemicVeinsTextbox.Text;
+			_report.Sections.Atria = AtriaTextBox.Text;
+			_report.Sections.AVValves = AVValvesTextBox.Text;
+			_report.Sections.Ventricles = VentriclesTextBox.Text;
+			_report.Sections.Outlets = OutletsTextBox.Text;
+			_report.Sections.GreatArteries = GreatArteriesTextBox.Text;
+			_report.Sections.PulmonaryVeins = PulmonaryVeinsTextBox.Text;
+			_report.Sections.CoronaryArteries = CoronaryArteriesTextBox.Text;
+			_report.Sections.Other = OtherTextBox.Text;
+			_report.Sections.Conclusion = ConclusionTextBox.Text;
+			_report.Sections.SignOff = ReportingTextBox.Text;
 		}
 
 		private void ReportForm_Load(object sender, EventArgs e) {
@@ -86,65 +84,7 @@ namespace Echo_Reporting_Windows_App {
 			if (saveFileDialog1.ShowDialog() == DialogResult.OK) {
 				var stream = saveFileDialog1.OpenFile();
 				if (stream != null) {
-					var writer = new StreamWriter(stream);
-					writer.WriteLine("Patient Data - ");
-					writer.WriteLine(_report.PatientData.PatientID.AsString());
-					writer.WriteLine(_report.PatientData.PatientName.AsString());
-					writer.WriteLine(_report.PatientData.PatientDOB.AsString());
-					writer.WriteLine(_report.PatientData.PatientSex.AsString());
-					writer.WriteLine(_report.PatientData.ReasonForStudy.AsString());
-					writer.WriteLine(_report.PatientData.ReferringPhysician.AsString());
-					writer.WriteLine(_report.PatientData.EchoType.AsString());
-					writer.WriteLine(_report.PatientData.ReportingDoctor.AsString());
-					writer.WriteLine(_report.PatientData.PatientAge.AsString());
-					writer.WriteLine(_report.PatientData.PatientWeight.AsString());
-					writer.WriteLine(_report.PatientData.PatientHeight.AsString());
-					writer.WriteLine(_report.PatientData.SystolicBloodPressure.AsString());
-					writer.WriteLine(_report.PatientData.DiastolicBloodPressure.AsString());
-					writer.WriteLine(_report.PatientData.BSA.AsString());
-					writer.WriteLine("");
-
-
-					writer.WriteLine("Table - ");
-					writer.WriteLine(_report.Results["IVSd"].AsString());
-					writer.WriteLine(_report.Results["LVIDd"].AsString());
-					writer.WriteLine(_report.Results["LVPWd"].AsString());
-
-					writer.WriteLine(_report.Results["IVSs"].AsString());
-					writer.WriteLine(_report.Results["LVIDs"].AsString());
-					writer.WriteLine(_report.Results["LVPWs"].AsString());
-
-					writer.WriteLine(_report.Results["Mitral valve E wave"].AsString());
-					writer.WriteLine(_report.Results["Mitral valve A wave"].AsString());
-					writer.WriteLine(_report.Results["MV decel time"].AsString());
-					writer.WriteLine(_report.Results["Mitral annulus E'"].AsString());
-					writer.WriteLine(_report.Results["Septal annulus E'"].AsString());
-
-					writer.WriteLine(_report.Results["Fractional Shortening"].AsString());
-					writer.WriteLine(_report.Results["Left Ventricular Teichholz EF"].AsString());
-					writer.WriteLine(_report.Results["LV mass index"].AsString());
-					writer.WriteLine(_report.Results["Heart Rate"].AsString());
-					writer.WriteLine(_report.Results["MVCFc"].AsString());
-					writer.WriteLine(_report.Results["Left ventricular cardiac output"].AsString());
-
-					writer.WriteLine("");
-
-					writer.WriteLine("Situs - " + _rs.Situs);
-					writer.WriteLine("Systemic Veins - " + _rs.SystemicVeins);
-					writer.WriteLine("AV Valves - " + _rs.AVValves);
-					writer.WriteLine("Atria - " + _rs.Atria);
-					writer.WriteLine("Ventricles - " + _rs.Ventricles);
-					writer.WriteLine("Outlets - " + _rs.Outlets);
-					writer.WriteLine("Great Arteries - " + _rs.GreatArteries);
-					writer.WriteLine("Pulmonary Veins - " + _rs.PulmonaryVeins);
-					writer.WriteLine("Coronary Arteries - " + _rs.CoronaryArteries);
-					writer.WriteLine("Other - " + _rs.Other);
-					writer.WriteLine("");
-					writer.WriteLine("Conclusions - " + _report.ReportingOptions.Conclusion.Value);
-					writer.WriteLine(_rs.Conclusion);
-					writer.WriteLine("");
-					writer.WriteLine("Reporting - " + _rs.SignOff);
-					writer.Close();
+					_report.WriteGeneratedReport(stream);
 					stream.Close();
 				}
 				else {

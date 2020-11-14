@@ -629,6 +629,7 @@ namespace Echo_Reporting_Windows_App {
 		}
 
 		private void publishToolStripMenuItem_Click(object sender, EventArgs e) {
+			report.GenerateSections();
 			var x = new ReportForm(report);
 			x.Show(this);
 		}

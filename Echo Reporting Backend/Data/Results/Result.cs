@@ -3,6 +3,7 @@ using DICOMReporting.Data.Measurements.Units;
 using DICOMReporting.Formulas;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DICOMReporting.Data.Results {
@@ -72,12 +73,38 @@ namespace DICOMReporting.Data.Results {
 			}
 			return name + " (" + Value + " " + UnitShorthand + Zscorestring + ")";
 		}
-		public string AsString() {
-			string Zscorestring = "";
-			if (ZScoreable) {
-				Zscorestring = ", Z-score=" + ZScore.ToString("N2");
+
+		public List<string> TableString() {
+			return new List<string>() { Name, Value + " " + UnitShorthand };
+		}
+
+		public List<string> AsString() {
+			string value;
+			string zscore;
+			int rounding;
+			if (UnitShorthand.Equals("mmHg") ||
+				UnitShorthand.Equals("cm/s") ||
+				UnitShorthand.Equals("m/s")) {
+				rounding = 1;
 			}
-			return Name + " (" + Value + " " + UnitShorthand + Zscorestring + ")";
+			else {
+				rounding = 2;
+			}
+			value = Math.Round(Value, rounding).ToString();
+
+			if (ZScoreable) {
+				zscore = ZScore.ToString("N2");
+			}
+			else {
+				zscore = "";
+			}
+
+			return new List<string> {
+				Name,
+				value,
+				UnitShorthand,
+				zscore
+			};
 		}
 	}
 }

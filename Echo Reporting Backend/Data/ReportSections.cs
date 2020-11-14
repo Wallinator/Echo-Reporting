@@ -21,7 +21,7 @@ namespace Echo_Reporting_Backend.Data {
 		public string Conclusion = "";
 		public string SignOff = "";
 
-		public ReportSections(StructuredReport sr) {
+		internal ReportSections(StructuredReport sr) {
 			Situs = OptionsToString(sr.ReportingOptions.Situs);
 			SystemicVeins = OptionsToString(sr.ReportingOptions.SystemicVeins);
 			SetAtriaText(sr);
