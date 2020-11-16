@@ -17,6 +17,7 @@ using System.Data.Odbc;
 namespace Echo_Reporting_Windows_App {
 	public partial class MainForm : Form {
 		private StructuredReport report = new StructuredReport();
+		private ReportForm reportForm = null;
 
 		public MainForm() {
 			InitializeComponent();
@@ -630,11 +631,25 @@ namespace Echo_Reporting_Windows_App {
 
 		private void publishToolStripMenuItem_Click(object sender, EventArgs e) {
 			report.GenerateSections();
-			var x = new ReportForm(report);
-			x.Show(this);
+			if (reportForm == null) {
+				reportForm = new ReportForm(report);
+				reportForm.FormClosed += (x, y) => { this.reportForm = null; };
+				reportForm.Show(this);
+			}
+			else {
+				reportForm.Activate();
+			}
 		}
 
 		private void PatientIDPanel_Paint(object sender, PaintEventArgs e) {
+
+		}
+
+		private void groupBox2_Enter(object sender, EventArgs e) {
+
+		}
+
+		private void panel3_Paint(object sender, PaintEventArgs e) {
 
 		}
 	}

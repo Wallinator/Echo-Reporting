@@ -40,6 +40,7 @@
 			this.PatientNamePanel = new System.Windows.Forms.Panel();
 			this.PatientSexPanel = new System.Windows.Forms.Panel();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.DOBPanel = new System.Windows.Forms.Panel();
 			this.BSAPanel = new System.Windows.Forms.Panel();
 			this.ReportingDoctorPanel = new System.Windows.Forms.Panel();
 			this.ReferringPhysicianPanel = new System.Windows.Forms.Panel();
@@ -234,7 +235,6 @@
 			this.SystemicVeinsPanel = new System.Windows.Forms.Panel();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.SitusPanel = new System.Windows.Forms.Panel();
-			this.DOBPanel = new System.Windows.Forms.Panel();
 			this.menuStrip1.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -393,6 +393,14 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Patient Data";
 			// 
+			// DOBPanel
+			// 
+			this.DOBPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.DOBPanel.Location = new System.Drawing.Point(272, 37);
+			this.DOBPanel.Name = "DOBPanel";
+			this.DOBPanel.Size = new System.Drawing.Size(254, 59);
+			this.DOBPanel.TabIndex = 4;
+			// 
 			// BSAPanel
 			// 
 			this.BSAPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -458,58 +466,59 @@
 			this.groupBox2.Size = new System.Drawing.Size(1058, 412);
 			this.groupBox2.TabIndex = 7;
 			this.groupBox2.TabStop = false;
+			this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
 			// 
 			// MVCFcPanel
 			// 
-			this.MVCFcPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.MVCFcPanel.Location = new System.Drawing.Point(772, 279);
+			this.MVCFcPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.MVCFcPanel.Location = new System.Drawing.Point(795, 279);
 			this.MVCFcPanel.Name = "MVCFcPanel";
 			this.MVCFcPanel.Size = new System.Drawing.Size(254, 59);
 			this.MVCFcPanel.TabIndex = 11;
 			// 
 			// SeptalAnnulusEPanel
 			// 
-			this.SeptalAnnulusEPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.SeptalAnnulusEPanel.Location = new System.Drawing.Point(465, 279);
+			this.SeptalAnnulusEPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.SeptalAnnulusEPanel.Location = new System.Drawing.Point(450, 279);
 			this.SeptalAnnulusEPanel.Name = "SeptalAnnulusEPanel";
 			this.SeptalAnnulusEPanel.Size = new System.Drawing.Size(254, 59);
 			this.SeptalAnnulusEPanel.TabIndex = 5;
 			// 
 			// FractionalShorteningPanel
 			// 
-			this.FractionalShorteningPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.FractionalShorteningPanel.Location = new System.Drawing.Point(772, 19);
+			this.FractionalShorteningPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.FractionalShorteningPanel.Location = new System.Drawing.Point(795, 19);
 			this.FractionalShorteningPanel.Name = "FractionalShorteningPanel";
 			this.FractionalShorteningPanel.Size = new System.Drawing.Size(254, 59);
 			this.FractionalShorteningPanel.TabIndex = 12;
 			// 
 			// LVOutputPanel
 			// 
-			this.LVOutputPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.LVOutputPanel.Location = new System.Drawing.Point(772, 344);
+			this.LVOutputPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.LVOutputPanel.Location = new System.Drawing.Point(795, 344);
 			this.LVOutputPanel.Name = "LVOutputPanel";
 			this.LVOutputPanel.Size = new System.Drawing.Size(254, 59);
 			this.LVOutputPanel.TabIndex = 13;
 			// 
 			// MVEWavePanel
 			// 
-			this.MVEWavePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.MVEWavePanel.Location = new System.Drawing.Point(465, 19);
+			this.MVEWavePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.MVEWavePanel.Location = new System.Drawing.Point(450, 19);
 			this.MVEWavePanel.Name = "MVEWavePanel";
 			this.MVEWavePanel.Size = new System.Drawing.Size(254, 59);
 			this.MVEWavePanel.TabIndex = 5;
 			// 
 			// LVMassIndexPanel
 			// 
-			this.LVMassIndexPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.LVMassIndexPanel.Location = new System.Drawing.Point(772, 149);
+			this.LVMassIndexPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.LVMassIndexPanel.Location = new System.Drawing.Point(795, 149);
 			this.LVMassIndexPanel.Name = "LVMassIndexPanel";
 			this.LVMassIndexPanel.Size = new System.Drawing.Size(254, 59);
 			this.LVMassIndexPanel.TabIndex = 9;
 			// 
 			// LVIDsPanel
 			// 
-			this.LVIDsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LVIDsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LVIDsPanel.Location = new System.Drawing.Point(23, 279);
 			this.LVIDsPanel.Name = "LVIDsPanel";
 			this.LVIDsPanel.Size = new System.Drawing.Size(254, 59);
@@ -517,31 +526,31 @@
 			// 
 			// LVTeichholzEFPanel
 			// 
-			this.LVTeichholzEFPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.LVTeichholzEFPanel.Location = new System.Drawing.Point(772, 84);
+			this.LVTeichholzEFPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.LVTeichholzEFPanel.Location = new System.Drawing.Point(795, 84);
 			this.LVTeichholzEFPanel.Name = "LVTeichholzEFPanel";
 			this.LVTeichholzEFPanel.Size = new System.Drawing.Size(254, 59);
 			this.LVTeichholzEFPanel.TabIndex = 8;
 			// 
 			// HeartRatePanel
 			// 
-			this.HeartRatePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.HeartRatePanel.Location = new System.Drawing.Point(772, 215);
+			this.HeartRatePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.HeartRatePanel.Location = new System.Drawing.Point(795, 215);
 			this.HeartRatePanel.Name = "HeartRatePanel";
 			this.HeartRatePanel.Size = new System.Drawing.Size(254, 59);
 			this.HeartRatePanel.TabIndex = 10;
 			// 
 			// MVDecelTimePanel
 			// 
-			this.MVDecelTimePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.MVDecelTimePanel.Location = new System.Drawing.Point(465, 149);
+			this.MVDecelTimePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.MVDecelTimePanel.Location = new System.Drawing.Point(450, 149);
 			this.MVDecelTimePanel.Name = "MVDecelTimePanel";
 			this.MVDecelTimePanel.Size = new System.Drawing.Size(254, 59);
 			this.MVDecelTimePanel.TabIndex = 3;
 			// 
 			// LVPWsPanel
 			// 
-			this.LVPWsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LVPWsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LVPWsPanel.Location = new System.Drawing.Point(23, 344);
 			this.LVPWsPanel.Name = "LVPWsPanel";
 			this.LVPWsPanel.Size = new System.Drawing.Size(254, 59);
@@ -549,7 +558,7 @@
 			// 
 			// IVSdPanel
 			// 
-			this.IVSdPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.IVSdPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.IVSdPanel.Location = new System.Drawing.Point(23, 19);
 			this.IVSdPanel.Name = "IVSdPanel";
 			this.IVSdPanel.Size = new System.Drawing.Size(254, 59);
@@ -557,7 +566,7 @@
 			// 
 			// LVPWdPanel
 			// 
-			this.LVPWdPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LVPWdPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LVPWdPanel.Location = new System.Drawing.Point(23, 149);
 			this.LVPWdPanel.Name = "LVPWdPanel";
 			this.LVPWdPanel.Size = new System.Drawing.Size(254, 59);
@@ -565,15 +574,15 @@
 			// 
 			// MVAWavePanel
 			// 
-			this.MVAWavePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.MVAWavePanel.Location = new System.Drawing.Point(465, 84);
+			this.MVAWavePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.MVAWavePanel.Location = new System.Drawing.Point(450, 84);
 			this.MVAWavePanel.Name = "MVAWavePanel";
 			this.MVAWavePanel.Size = new System.Drawing.Size(254, 59);
 			this.MVAWavePanel.TabIndex = 2;
 			// 
 			// LVIDdPanel
 			// 
-			this.LVIDdPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LVIDdPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LVIDdPanel.Location = new System.Drawing.Point(23, 84);
 			this.LVIDdPanel.Name = "LVIDdPanel";
 			this.LVIDdPanel.Size = new System.Drawing.Size(254, 59);
@@ -581,15 +590,15 @@
 			// 
 			// MitralAnnulusEPanel
 			// 
-			this.MitralAnnulusEPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.MitralAnnulusEPanel.Location = new System.Drawing.Point(465, 215);
+			this.MitralAnnulusEPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.MitralAnnulusEPanel.Location = new System.Drawing.Point(450, 215);
 			this.MitralAnnulusEPanel.Name = "MitralAnnulusEPanel";
 			this.MitralAnnulusEPanel.Size = new System.Drawing.Size(254, 59);
 			this.MitralAnnulusEPanel.TabIndex = 3;
 			// 
 			// IVSsPanel
 			// 
-			this.IVSsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.IVSsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.IVSsPanel.Location = new System.Drawing.Point(23, 215);
 			this.IVSsPanel.Name = "IVSsPanel";
 			this.IVSsPanel.Size = new System.Drawing.Size(254, 59);
@@ -617,6 +626,7 @@
 			this.panel3.Name = "panel3";
 			this.panel3.Size = new System.Drawing.Size(1126, 445);
 			this.panel3.TabIndex = 8;
+			this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
 			// 
 			// groupBox9
 			// 
@@ -663,7 +673,7 @@
 			// 
 			// PatentDuctusArteriosusDiaPanel
 			// 
-			this.PatentDuctusArteriosusDiaPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PatentDuctusArteriosusDiaPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.PatentDuctusArteriosusDiaPanel.Location = new System.Drawing.Point(535, 747);
 			this.PatentDuctusArteriosusDiaPanel.Name = "PatentDuctusArteriosusDiaPanel";
 			this.PatentDuctusArteriosusDiaPanel.Size = new System.Drawing.Size(254, 59);
@@ -671,7 +681,7 @@
 			// 
 			// PatentDuctusArteriosusSysPanel
 			// 
-			this.PatentDuctusArteriosusSysPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PatentDuctusArteriosusSysPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.PatentDuctusArteriosusSysPanel.Location = new System.Drawing.Point(279, 747);
 			this.PatentDuctusArteriosusSysPanel.Name = "PatentDuctusArteriosusSysPanel";
 			this.PatentDuctusArteriosusSysPanel.Size = new System.Drawing.Size(254, 59);
@@ -679,7 +689,7 @@
 			// 
 			// RightPulmArteryGradPanel
 			// 
-			this.RightPulmArteryGradPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.RightPulmArteryGradPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.RightPulmArteryGradPanel.Location = new System.Drawing.Point(535, 543);
 			this.RightPulmArteryGradPanel.Name = "RightPulmArteryGradPanel";
 			this.RightPulmArteryGradPanel.Size = new System.Drawing.Size(254, 59);
@@ -687,7 +697,7 @@
 			// 
 			// PatentDuctusArteriosusPanel
 			// 
-			this.PatentDuctusArteriosusPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PatentDuctusArteriosusPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.PatentDuctusArteriosusPanel.Location = new System.Drawing.Point(23, 747);
 			this.PatentDuctusArteriosusPanel.Name = "PatentDuctusArteriosusPanel";
 			this.PatentDuctusArteriosusPanel.Size = new System.Drawing.Size(254, 59);
@@ -695,7 +705,7 @@
 			// 
 			// PatentDuctusArteriosus2Panel
 			// 
-			this.PatentDuctusArteriosus2Panel.Location = new System.Drawing.Point(472, 707);
+			this.PatentDuctusArteriosus2Panel.Location = new System.Drawing.Point(192, 707);
 			this.PatentDuctusArteriosus2Panel.Name = "PatentDuctusArteriosus2Panel";
 			this.PatentDuctusArteriosus2Panel.Size = new System.Drawing.Size(443, 26);
 			this.PatentDuctusArteriosus2Panel.TabIndex = 35;
@@ -704,12 +714,12 @@
 			// 
 			this.PatentDuctusArteriosus1Panel.Location = new System.Drawing.Point(23, 707);
 			this.PatentDuctusArteriosus1Panel.Name = "PatentDuctusArteriosus1Panel";
-			this.PatentDuctusArteriosus1Panel.Size = new System.Drawing.Size(443, 26);
+			this.PatentDuctusArteriosus1Panel.Size = new System.Drawing.Size(163, 26);
 			this.PatentDuctusArteriosus1Panel.TabIndex = 36;
 			// 
 			// LeftPulmArteryGradPanel
 			// 
-			this.LeftPulmArteryGradPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LeftPulmArteryGradPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LeftPulmArteryGradPanel.Location = new System.Drawing.Point(535, 606);
 			this.LeftPulmArteryGradPanel.Name = "LeftPulmArteryGradPanel";
 			this.LeftPulmArteryGradPanel.Size = new System.Drawing.Size(254, 59);
@@ -724,7 +734,7 @@
 			// 
 			// MainPulmArteryGradPanel
 			// 
-			this.MainPulmArteryGradPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.MainPulmArteryGradPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.MainPulmArteryGradPanel.Location = new System.Drawing.Point(535, 479);
 			this.MainPulmArteryGradPanel.Name = "MainPulmArteryGradPanel";
 			this.MainPulmArteryGradPanel.Size = new System.Drawing.Size(254, 59);
@@ -732,7 +742,7 @@
 			// 
 			// LeftPulmArteryVelPanel
 			// 
-			this.LeftPulmArteryVelPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LeftPulmArteryVelPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LeftPulmArteryVelPanel.Location = new System.Drawing.Point(279, 606);
 			this.LeftPulmArteryVelPanel.Name = "LeftPulmArteryVelPanel";
 			this.LeftPulmArteryVelPanel.Size = new System.Drawing.Size(254, 59);
@@ -740,7 +750,7 @@
 			// 
 			// LeftPulmArteryPanel
 			// 
-			this.LeftPulmArteryPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LeftPulmArteryPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LeftPulmArteryPanel.Location = new System.Drawing.Point(23, 606);
 			this.LeftPulmArteryPanel.Name = "LeftPulmArteryPanel";
 			this.LeftPulmArteryPanel.Size = new System.Drawing.Size(254, 59);
@@ -748,7 +758,7 @@
 			// 
 			// RightPulmArteryVelPanel
 			// 
-			this.RightPulmArteryVelPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.RightPulmArteryVelPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.RightPulmArteryVelPanel.Location = new System.Drawing.Point(279, 543);
 			this.RightPulmArteryVelPanel.Name = "RightPulmArteryVelPanel";
 			this.RightPulmArteryVelPanel.Size = new System.Drawing.Size(254, 59);
@@ -756,7 +766,7 @@
 			// 
 			// RightPulmArteryPanel
 			// 
-			this.RightPulmArteryPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.RightPulmArteryPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.RightPulmArteryPanel.Location = new System.Drawing.Point(23, 543);
 			this.RightPulmArteryPanel.Name = "RightPulmArteryPanel";
 			this.RightPulmArteryPanel.Size = new System.Drawing.Size(254, 59);
@@ -764,7 +774,7 @@
 			// 
 			// MainPulmArteryVelPanel
 			// 
-			this.MainPulmArteryVelPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.MainPulmArteryVelPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.MainPulmArteryVelPanel.Location = new System.Drawing.Point(279, 479);
 			this.MainPulmArteryVelPanel.Name = "MainPulmArteryVelPanel";
 			this.MainPulmArteryVelPanel.Size = new System.Drawing.Size(254, 59);
@@ -772,7 +782,7 @@
 			// 
 			// MainPulmArteryPanel
 			// 
-			this.MainPulmArteryPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.MainPulmArteryPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.MainPulmArteryPanel.Location = new System.Drawing.Point(23, 479);
 			this.MainPulmArteryPanel.Name = "MainPulmArteryPanel";
 			this.MainPulmArteryPanel.Size = new System.Drawing.Size(254, 59);
@@ -787,7 +797,7 @@
 			// 
 			// DescendindAortaGradPanel
 			// 
-			this.DescendindAortaGradPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.DescendindAortaGradPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.DescendindAortaGradPanel.Location = new System.Drawing.Point(279, 375);
 			this.DescendindAortaGradPanel.Name = "DescendindAortaGradPanel";
 			this.DescendindAortaGradPanel.Size = new System.Drawing.Size(254, 59);
@@ -795,7 +805,7 @@
 			// 
 			// DescendindAortaVelPanel
 			// 
-			this.DescendindAortaVelPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.DescendindAortaVelPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.DescendindAortaVelPanel.Location = new System.Drawing.Point(23, 375);
 			this.DescendindAortaVelPanel.Name = "DescendindAortaVelPanel";
 			this.DescendindAortaVelPanel.Size = new System.Drawing.Size(254, 59);
@@ -803,14 +813,14 @@
 			// 
 			// CoarctationPanel
 			// 
-			this.CoarctationPanel.Location = new System.Drawing.Point(472, 278);
+			this.CoarctationPanel.Location = new System.Drawing.Point(221, 278);
 			this.CoarctationPanel.Name = "CoarctationPanel";
 			this.CoarctationPanel.Size = new System.Drawing.Size(443, 26);
 			this.CoarctationPanel.TabIndex = 8;
 			// 
 			// CoarctationAortaPanel
 			// 
-			this.CoarctationAortaPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.CoarctationAortaPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.CoarctationAortaPanel.Location = new System.Drawing.Point(23, 310);
 			this.CoarctationAortaPanel.Name = "CoarctationAortaPanel";
 			this.CoarctationAortaPanel.Size = new System.Drawing.Size(254, 59);
@@ -820,19 +830,19 @@
 			// 
 			this.NoCoarctationPanel.Location = new System.Drawing.Point(23, 278);
 			this.NoCoarctationPanel.Name = "NoCoarctationPanel";
-			this.NoCoarctationPanel.Size = new System.Drawing.Size(443, 26);
+			this.NoCoarctationPanel.Size = new System.Drawing.Size(171, 26);
 			this.NoCoarctationPanel.TabIndex = 7;
 			// 
 			// RightAorticArch2Panel
 			// 
-			this.RightAorticArch2Panel.Location = new System.Drawing.Point(472, 246);
+			this.RightAorticArch2Panel.Location = new System.Drawing.Point(272, 246);
 			this.RightAorticArch2Panel.Name = "RightAorticArch2Panel";
 			this.RightAorticArch2Panel.Size = new System.Drawing.Size(443, 26);
 			this.RightAorticArch2Panel.TabIndex = 6;
 			// 
 			// AscendignAortaGradientPanel
 			// 
-			this.AscendignAortaGradientPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.AscendignAortaGradientPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.AscendignAortaGradientPanel.Location = new System.Drawing.Point(535, 181);
 			this.AscendignAortaGradientPanel.Name = "AscendignAortaGradientPanel";
 			this.AscendignAortaGradientPanel.Size = new System.Drawing.Size(254, 59);
@@ -842,12 +852,12 @@
 			// 
 			this.RightAorticArch1Panel.Location = new System.Drawing.Point(23, 246);
 			this.RightAorticArch1Panel.Name = "RightAorticArch1Panel";
-			this.RightAorticArch1Panel.Size = new System.Drawing.Size(443, 26);
+			this.RightAorticArch1Panel.Size = new System.Drawing.Size(243, 26);
 			this.RightAorticArch1Panel.TabIndex = 5;
 			// 
 			// AscendingAortaPanel
 			// 
-			this.AscendingAortaPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.AscendingAortaPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.AscendingAortaPanel.Location = new System.Drawing.Point(535, 51);
 			this.AscendingAortaPanel.Name = "AscendingAortaPanel";
 			this.AscendingAortaPanel.Size = new System.Drawing.Size(254, 59);
@@ -855,7 +865,7 @@
 			// 
 			// AscendingAortaVelocityPanel
 			// 
-			this.AscendingAortaVelocityPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.AscendingAortaVelocityPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.AscendingAortaVelocityPanel.Location = new System.Drawing.Point(279, 181);
 			this.AscendingAortaVelocityPanel.Name = "AscendingAortaVelocityPanel";
 			this.AscendingAortaVelocityPanel.Size = new System.Drawing.Size(254, 59);
@@ -863,7 +873,7 @@
 			// 
 			// AorticIsthmusPanel
 			// 
-			this.AorticIsthmusPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.AorticIsthmusPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.AorticIsthmusPanel.Location = new System.Drawing.Point(23, 181);
 			this.AorticIsthmusPanel.Name = "AorticIsthmusPanel";
 			this.AorticIsthmusPanel.Size = new System.Drawing.Size(254, 59);
@@ -871,7 +881,7 @@
 			// 
 			// DistalArchPanel
 			// 
-			this.DistalArchPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.DistalArchPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.DistalArchPanel.Location = new System.Drawing.Point(279, 116);
 			this.DistalArchPanel.Name = "DistalArchPanel";
 			this.DistalArchPanel.Size = new System.Drawing.Size(254, 59);
@@ -879,7 +889,7 @@
 			// 
 			// TransverseArchPanel
 			// 
-			this.TransverseArchPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.TransverseArchPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.TransverseArchPanel.Location = new System.Drawing.Point(23, 116);
 			this.TransverseArchPanel.Name = "TransverseArchPanel";
 			this.TransverseArchPanel.Size = new System.Drawing.Size(254, 59);
@@ -887,7 +897,7 @@
 			// 
 			// SinotubularJunctionPanel
 			// 
-			this.SinotubularJunctionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.SinotubularJunctionPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.SinotubularJunctionPanel.Location = new System.Drawing.Point(279, 51);
 			this.SinotubularJunctionPanel.Name = "SinotubularJunctionPanel";
 			this.SinotubularJunctionPanel.Size = new System.Drawing.Size(254, 59);
@@ -895,7 +905,7 @@
 			// 
 			// SinusValsavaPanel
 			// 
-			this.SinusValsavaPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.SinusValsavaPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.SinusValsavaPanel.Location = new System.Drawing.Point(23, 51);
 			this.SinusValsavaPanel.Name = "SinusValsavaPanel";
 			this.SinusValsavaPanel.Size = new System.Drawing.Size(254, 59);
@@ -903,7 +913,7 @@
 			// 
 			// LeftAorticArch2Panel
 			// 
-			this.LeftAorticArch2Panel.Location = new System.Drawing.Point(472, 19);
+			this.LeftAorticArch2Panel.Location = new System.Drawing.Point(192, 19);
 			this.LeftAorticArch2Panel.Name = "LeftAorticArch2Panel";
 			this.LeftAorticArch2Panel.Size = new System.Drawing.Size(443, 26);
 			this.LeftAorticArch2Panel.TabIndex = 4;
@@ -912,7 +922,7 @@
 			// 
 			this.LeftAorticArch1Panel.Location = new System.Drawing.Point(23, 19);
 			this.LeftAorticArch1Panel.Name = "LeftAorticArch1Panel";
-			this.LeftAorticArch1Panel.Size = new System.Drawing.Size(443, 26);
+			this.LeftAorticArch1Panel.Size = new System.Drawing.Size(163, 26);
 			this.LeftAorticArch1Panel.TabIndex = 3;
 			// 
 			// groupBox8
@@ -960,7 +970,7 @@
 			// 
 			// PVEndDiaGradPanel
 			// 
-			this.PVEndDiaGradPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PVEndDiaGradPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.PVEndDiaGradPanel.Location = new System.Drawing.Point(279, 869);
 			this.PVEndDiaGradPanel.Name = "PVEndDiaGradPanel";
 			this.PVEndDiaGradPanel.Size = new System.Drawing.Size(254, 59);
@@ -968,7 +978,7 @@
 			// 
 			// PVEndDiaVelPanel
 			// 
-			this.PVEndDiaVelPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PVEndDiaVelPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.PVEndDiaVelPanel.Location = new System.Drawing.Point(23, 869);
 			this.PVEndDiaVelPanel.Name = "PVEndDiaVelPanel";
 			this.PVEndDiaVelPanel.Size = new System.Drawing.Size(254, 59);
@@ -976,14 +986,14 @@
 			// 
 			// PV3Panel
 			// 
-			this.PV3Panel.Location = new System.Drawing.Point(472, 705);
+			this.PV3Panel.Location = new System.Drawing.Point(192, 705);
 			this.PV3Panel.Name = "PV3Panel";
 			this.PV3Panel.Size = new System.Drawing.Size(443, 26);
 			this.PV3Panel.TabIndex = 58;
 			// 
 			// PVMeanPanel
 			// 
-			this.PVMeanPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PVMeanPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.PVMeanPanel.Location = new System.Drawing.Point(279, 806);
 			this.PVMeanPanel.Name = "PVMeanPanel";
 			this.PVMeanPanel.Size = new System.Drawing.Size(254, 59);
@@ -991,7 +1001,7 @@
 			// 
 			// PV2Panel
 			// 
-			this.PV2Panel.Location = new System.Drawing.Point(472, 673);
+			this.PV2Panel.Location = new System.Drawing.Point(192, 673);
 			this.PV2Panel.Name = "PV2Panel";
 			this.PV2Panel.Size = new System.Drawing.Size(443, 26);
 			this.PV2Panel.TabIndex = 59;
@@ -1000,12 +1010,12 @@
 			// 
 			this.PV1Panel.Location = new System.Drawing.Point(23, 673);
 			this.PV1Panel.Name = "PV1Panel";
-			this.PV1Panel.Size = new System.Drawing.Size(443, 26);
+			this.PV1Panel.Size = new System.Drawing.Size(163, 26);
 			this.PV1Panel.TabIndex = 57;
 			// 
 			// PVPeakPanel
 			// 
-			this.PVPeakPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PVPeakPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.PVPeakPanel.Location = new System.Drawing.Point(23, 806);
 			this.PVPeakPanel.Name = "PVPeakPanel";
 			this.PVPeakPanel.Size = new System.Drawing.Size(254, 59);
@@ -1013,7 +1023,7 @@
 			// 
 			// PVVelocityPanel
 			// 
-			this.PVVelocityPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PVVelocityPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.PVVelocityPanel.Location = new System.Drawing.Point(279, 741);
 			this.PVVelocityPanel.Name = "PVVelocityPanel";
 			this.PVVelocityPanel.Size = new System.Drawing.Size(254, 59);
@@ -1021,7 +1031,7 @@
 			// 
 			// PVAnnulusPanel
 			// 
-			this.PVAnnulusPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PVAnnulusPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.PVAnnulusPanel.Location = new System.Drawing.Point(23, 741);
 			this.PVAnnulusPanel.Name = "PVAnnulusPanel";
 			this.PVAnnulusPanel.Size = new System.Drawing.Size(254, 59);
@@ -1031,26 +1041,26 @@
 			// 
 			this.LossSinotubularPanel.Location = new System.Drawing.Point(23, 511);
 			this.LossSinotubularPanel.Name = "LossSinotubularPanel";
-			this.LossSinotubularPanel.Size = new System.Drawing.Size(443, 26);
+			this.LossSinotubularPanel.Size = new System.Drawing.Size(195, 26);
 			this.LossSinotubularPanel.TabIndex = 51;
 			// 
 			// SubPulmonaryStenosisPanel
 			// 
-			this.SubPulmonaryStenosisPanel.Location = new System.Drawing.Point(472, 511);
+			this.SubPulmonaryStenosisPanel.Location = new System.Drawing.Point(221, 511);
 			this.SubPulmonaryStenosisPanel.Name = "SubPulmonaryStenosisPanel";
 			this.SubPulmonaryStenosisPanel.Size = new System.Drawing.Size(443, 26);
 			this.SubPulmonaryStenosisPanel.TabIndex = 50;
 			// 
 			// AortaVSDPanel
 			// 
-			this.AortaVSDPanel.Location = new System.Drawing.Point(472, 479);
+			this.AortaVSDPanel.Location = new System.Drawing.Point(233, 479);
 			this.AortaVSDPanel.Name = "AortaVSDPanel";
 			this.AortaVSDPanel.Size = new System.Drawing.Size(443, 26);
 			this.AortaVSDPanel.TabIndex = 48;
 			// 
 			// AVProlapsePanel
 			// 
-			this.AVProlapsePanel.Location = new System.Drawing.Point(472, 447);
+			this.AVProlapsePanel.Location = new System.Drawing.Point(233, 447);
 			this.AVProlapsePanel.Name = "AVProlapsePanel";
 			this.AVProlapsePanel.Size = new System.Drawing.Size(443, 26);
 			this.AVProlapsePanel.TabIndex = 49;
@@ -1059,12 +1069,12 @@
 			// 
 			this.AVLeafletsPanel.Location = new System.Drawing.Point(23, 447);
 			this.AVLeafletsPanel.Name = "AVLeafletsPanel";
-			this.AVLeafletsPanel.Size = new System.Drawing.Size(443, 26);
+			this.AVLeafletsPanel.Size = new System.Drawing.Size(195, 26);
 			this.AVLeafletsPanel.TabIndex = 47;
 			// 
 			// PressureHalfTimePanel
 			// 
-			this.PressureHalfTimePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PressureHalfTimePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.PressureHalfTimePanel.Location = new System.Drawing.Point(535, 382);
 			this.PressureHalfTimePanel.Name = "PressureHalfTimePanel";
 			this.PressureHalfTimePanel.Size = new System.Drawing.Size(254, 59);
@@ -1079,14 +1089,14 @@
 			// 
 			// AorticValve3Panel
 			// 
-			this.AorticValve3Panel.Location = new System.Drawing.Point(472, 284);
+			this.AorticValve3Panel.Location = new System.Drawing.Point(192, 284);
 			this.AorticValve3Panel.Name = "AorticValve3Panel";
 			this.AorticValve3Panel.Size = new System.Drawing.Size(443, 26);
 			this.AorticValve3Panel.TabIndex = 44;
 			// 
 			// AVMeanPanel
 			// 
-			this.AVMeanPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.AVMeanPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.AVMeanPanel.Location = new System.Drawing.Point(279, 382);
 			this.AVMeanPanel.Name = "AVMeanPanel";
 			this.AVMeanPanel.Size = new System.Drawing.Size(254, 59);
@@ -1094,7 +1104,7 @@
 			// 
 			// AorticValve2Panel
 			// 
-			this.AorticValve2Panel.Location = new System.Drawing.Point(472, 252);
+			this.AorticValve2Panel.Location = new System.Drawing.Point(192, 252);
 			this.AorticValve2Panel.Name = "AorticValve2Panel";
 			this.AorticValve2Panel.Size = new System.Drawing.Size(443, 26);
 			this.AorticValve2Panel.TabIndex = 45;
@@ -1103,12 +1113,12 @@
 			// 
 			this.AorticValve1Panel.Location = new System.Drawing.Point(23, 252);
 			this.AorticValve1Panel.Name = "AorticValve1Panel";
-			this.AorticValve1Panel.Size = new System.Drawing.Size(443, 26);
+			this.AorticValve1Panel.Size = new System.Drawing.Size(163, 26);
 			this.AorticValve1Panel.TabIndex = 43;
 			// 
 			// AVPeakPanel
 			// 
-			this.AVPeakPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.AVPeakPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.AVPeakPanel.Location = new System.Drawing.Point(23, 382);
 			this.AVPeakPanel.Name = "AVPeakPanel";
 			this.AVPeakPanel.Size = new System.Drawing.Size(254, 59);
@@ -1116,7 +1126,7 @@
 			// 
 			// AVVelocityPanel
 			// 
-			this.AVVelocityPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.AVVelocityPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.AVVelocityPanel.Location = new System.Drawing.Point(279, 317);
 			this.AVVelocityPanel.Name = "AVVelocityPanel";
 			this.AVVelocityPanel.Size = new System.Drawing.Size(254, 59);
@@ -1124,7 +1134,7 @@
 			// 
 			// AVAnnulusPanel
 			// 
-			this.AVAnnulusPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.AVAnnulusPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.AVAnnulusPanel.Location = new System.Drawing.Point(23, 317);
 			this.AVAnnulusPanel.Name = "AVAnnulusPanel";
 			this.AVAnnulusPanel.Size = new System.Drawing.Size(254, 59);
@@ -1132,7 +1142,7 @@
 			// 
 			// RVOMeanPanel
 			// 
-			this.RVOMeanPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.RVOMeanPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.RVOMeanPanel.Location = new System.Drawing.Point(279, 605);
 			this.RVOMeanPanel.Name = "RVOMeanPanel";
 			this.RVOMeanPanel.Size = new System.Drawing.Size(254, 59);
@@ -1140,7 +1150,7 @@
 			// 
 			// RVOPeakPanel
 			// 
-			this.RVOPeakPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.RVOPeakPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.RVOPeakPanel.Location = new System.Drawing.Point(23, 605);
 			this.RVOPeakPanel.Name = "RVOPeakPanel";
 			this.RVOPeakPanel.Size = new System.Drawing.Size(254, 59);
@@ -1148,7 +1158,7 @@
 			// 
 			// RVOVelocityPanel
 			// 
-			this.RVOVelocityPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.RVOVelocityPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.RVOVelocityPanel.Location = new System.Drawing.Point(279, 542);
 			this.RVOVelocityPanel.Name = "RVOVelocityPanel";
 			this.RVOVelocityPanel.Size = new System.Drawing.Size(254, 59);
@@ -1156,7 +1166,7 @@
 			// 
 			// RVODimensionPanel
 			// 
-			this.RVODimensionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.RVODimensionPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.RVODimensionPanel.Location = new System.Drawing.Point(23, 542);
 			this.RVODimensionPanel.Name = "RVODimensionPanel";
 			this.RVODimensionPanel.Size = new System.Drawing.Size(254, 59);
@@ -1164,7 +1174,7 @@
 			// 
 			// LVOMeanPanel
 			// 
-			this.LVOMeanPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LVOMeanPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LVOMeanPanel.Location = new System.Drawing.Point(279, 180);
 			this.LVOMeanPanel.Name = "LVOMeanPanel";
 			this.LVOMeanPanel.Size = new System.Drawing.Size(254, 59);
@@ -1172,7 +1182,7 @@
 			// 
 			// LVOPeakPanel
 			// 
-			this.LVOPeakPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LVOPeakPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LVOPeakPanel.Location = new System.Drawing.Point(23, 180);
 			this.LVOPeakPanel.Name = "LVOPeakPanel";
 			this.LVOPeakPanel.Size = new System.Drawing.Size(254, 59);
@@ -1180,7 +1190,7 @@
 			// 
 			// LVOVelocityPanel
 			// 
-			this.LVOVelocityPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LVOVelocityPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LVOVelocityPanel.Location = new System.Drawing.Point(279, 115);
 			this.LVOVelocityPanel.Name = "LVOVelocityPanel";
 			this.LVOVelocityPanel.Size = new System.Drawing.Size(254, 59);
@@ -1188,7 +1198,7 @@
 			// 
 			// LVODimensionPanel
 			// 
-			this.LVODimensionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LVODimensionPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LVODimensionPanel.Location = new System.Drawing.Point(23, 115);
 			this.LVODimensionPanel.Name = "LVODimensionPanel";
 			this.LVODimensionPanel.Size = new System.Drawing.Size(254, 59);
@@ -1203,7 +1213,7 @@
 			// 
 			// VentriculoarterialPanel
 			// 
-			this.VentriculoarterialPanel.Location = new System.Drawing.Point(23, 19);
+			this.VentriculoarterialPanel.Location = new System.Drawing.Point(19, 19);
 			this.VentriculoarterialPanel.Name = "VentriculoarterialPanel";
 			this.VentriculoarterialPanel.Size = new System.Drawing.Size(443, 26);
 			this.VentriculoarterialPanel.TabIndex = 3;
@@ -1271,7 +1281,7 @@
 			// 
 			// VSDGradPanel
 			// 
-			this.VSDGradPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.VSDGradPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.VSDGradPanel.Location = new System.Drawing.Point(535, 1011);
 			this.VSDGradPanel.Name = "VSDGradPanel";
 			this.VSDGradPanel.Size = new System.Drawing.Size(254, 59);
@@ -1279,14 +1289,14 @@
 			// 
 			// VSD3Panel
 			// 
-			this.VSD3Panel.Location = new System.Drawing.Point(472, 982);
+			this.VSD3Panel.Location = new System.Drawing.Point(192, 980);
 			this.VSD3Panel.Name = "VSD3Panel";
 			this.VSD3Panel.Size = new System.Drawing.Size(443, 26);
 			this.VSD3Panel.TabIndex = 44;
 			// 
 			// VSDVelPanel
 			// 
-			this.VSDVelPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.VSDVelPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.VSDVelPanel.Location = new System.Drawing.Point(279, 1011);
 			this.VSDVelPanel.Name = "VSDVelPanel";
 			this.VSDVelPanel.Size = new System.Drawing.Size(254, 59);
@@ -1294,7 +1304,7 @@
 			// 
 			// VSDDimensionPanel
 			// 
-			this.VSDDimensionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.VSDDimensionPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.VSDDimensionPanel.Location = new System.Drawing.Point(23, 1011);
 			this.VSDDimensionPanel.Name = "VSDDimensionPanel";
 			this.VSDDimensionPanel.Size = new System.Drawing.Size(254, 59);
@@ -1316,14 +1326,14 @@
 			// 
 			// ReducedRVPanel
 			// 
-			this.ReducedRVPanel.Location = new System.Drawing.Point(472, 815);
+			this.ReducedRVPanel.Location = new System.Drawing.Point(298, 818);
 			this.ReducedRVPanel.Name = "ReducedRVPanel";
 			this.ReducedRVPanel.Size = new System.Drawing.Size(443, 26);
 			this.ReducedRVPanel.TabIndex = 41;
 			// 
 			// VSD2Panel
 			// 
-			this.VSD2Panel.Location = new System.Drawing.Point(472, 950);
+			this.VSD2Panel.Location = new System.Drawing.Point(221, 950);
 			this.VSD2Panel.Name = "VSD2Panel";
 			this.VSD2Panel.Size = new System.Drawing.Size(443, 26);
 			this.VSD2Panel.TabIndex = 45;
@@ -1332,12 +1342,12 @@
 			// 
 			this.VSD1Panel.Location = new System.Drawing.Point(23, 950);
 			this.VSD1Panel.Name = "VSD1Panel";
-			this.VSD1Panel.Size = new System.Drawing.Size(443, 26);
+			this.VSD1Panel.Size = new System.Drawing.Size(163, 26);
 			this.VSD1Panel.TabIndex = 43;
 			// 
 			// TriAnnulusS2Panel
 			// 
-			this.TriAnnulusS2Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.TriAnnulusS2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.TriAnnulusS2Panel.Location = new System.Drawing.Point(535, 721);
 			this.TriAnnulusS2Panel.Name = "TriAnnulusS2Panel";
 			this.TriAnnulusS2Panel.Size = new System.Drawing.Size(254, 59);
@@ -1345,7 +1355,7 @@
 			// 
 			// HypertrophyRVPanel
 			// 
-			this.HypertrophyRVPanel.Location = new System.Drawing.Point(472, 783);
+			this.HypertrophyRVPanel.Location = new System.Drawing.Point(298, 786);
 			this.HypertrophyRVPanel.Name = "HypertrophyRVPanel";
 			this.HypertrophyRVPanel.Size = new System.Drawing.Size(443, 26);
 			this.HypertrophyRVPanel.TabIndex = 42;
@@ -1354,12 +1364,12 @@
 			// 
 			this.DilatedRVPanel.Location = new System.Drawing.Point(23, 783);
 			this.DilatedRVPanel.Name = "DilatedRVPanel";
-			this.DilatedRVPanel.Size = new System.Drawing.Size(443, 26);
+			this.DilatedRVPanel.Size = new System.Drawing.Size(216, 26);
 			this.DilatedRVPanel.TabIndex = 40;
 			// 
 			// MitralAnnulusS2Panel
 			// 
-			this.MitralAnnulusS2Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.MitralAnnulusS2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.MitralAnnulusS2Panel.Location = new System.Drawing.Point(535, 595);
 			this.MitralAnnulusS2Panel.Name = "MitralAnnulusS2Panel";
 			this.MitralAnnulusS2Panel.Size = new System.Drawing.Size(254, 59);
@@ -1367,7 +1377,7 @@
 			// 
 			// SeptalAnnulusS2Panel
 			// 
-			this.SeptalAnnulusS2Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.SeptalAnnulusS2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.SeptalAnnulusS2Panel.Location = new System.Drawing.Point(535, 658);
 			this.SeptalAnnulusS2Panel.Name = "SeptalAnnulusS2Panel";
 			this.SeptalAnnulusS2Panel.Size = new System.Drawing.Size(254, 59);
@@ -1375,7 +1385,7 @@
 			// 
 			// PulmAWavePanel
 			// 
-			this.PulmAWavePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PulmAWavePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.PulmAWavePanel.Location = new System.Drawing.Point(535, 467);
 			this.PulmAWavePanel.Name = "PulmAWavePanel";
 			this.PulmAWavePanel.Size = new System.Drawing.Size(254, 59);
@@ -1383,7 +1393,7 @@
 			// 
 			// TriAnnulusA2Panel
 			// 
-			this.TriAnnulusA2Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.TriAnnulusA2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.TriAnnulusA2Panel.Location = new System.Drawing.Point(279, 721);
 			this.TriAnnulusA2Panel.Name = "TriAnnulusA2Panel";
 			this.TriAnnulusA2Panel.Size = new System.Drawing.Size(254, 59);
@@ -1391,7 +1401,7 @@
 			// 
 			// MitralWaveDurationPanel
 			// 
-			this.MitralWaveDurationPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.MitralWaveDurationPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.MitralWaveDurationPanel.Location = new System.Drawing.Point(279, 532);
 			this.MitralWaveDurationPanel.Name = "MitralWaveDurationPanel";
 			this.MitralWaveDurationPanel.Size = new System.Drawing.Size(254, 59);
@@ -1399,7 +1409,7 @@
 			// 
 			// TriAnnulusE2Panel
 			// 
-			this.TriAnnulusE2Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.TriAnnulusE2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.TriAnnulusE2Panel.Location = new System.Drawing.Point(23, 721);
 			this.TriAnnulusE2Panel.Name = "TriAnnulusE2Panel";
 			this.TriAnnulusE2Panel.Size = new System.Drawing.Size(254, 59);
@@ -1407,7 +1417,7 @@
 			// 
 			// PulmWaveDurationPanel
 			// 
-			this.PulmWaveDurationPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PulmWaveDurationPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.PulmWaveDurationPanel.Location = new System.Drawing.Point(23, 532);
 			this.PulmWaveDurationPanel.Name = "PulmWaveDurationPanel";
 			this.PulmWaveDurationPanel.Size = new System.Drawing.Size(254, 59);
@@ -1415,7 +1425,7 @@
 			// 
 			// SeptalAnnulusA2Panel
 			// 
-			this.SeptalAnnulusA2Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.SeptalAnnulusA2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.SeptalAnnulusA2Panel.Location = new System.Drawing.Point(279, 658);
 			this.SeptalAnnulusA2Panel.Name = "SeptalAnnulusA2Panel";
 			this.SeptalAnnulusA2Panel.Size = new System.Drawing.Size(254, 59);
@@ -1423,7 +1433,7 @@
 			// 
 			// PulmDWavePanel
 			// 
-			this.PulmDWavePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PulmDWavePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.PulmDWavePanel.Location = new System.Drawing.Point(279, 467);
 			this.PulmDWavePanel.Name = "PulmDWavePanel";
 			this.PulmDWavePanel.Size = new System.Drawing.Size(254, 59);
@@ -1431,7 +1441,7 @@
 			// 
 			// SeptalAnnulusE2Panel
 			// 
-			this.SeptalAnnulusE2Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.SeptalAnnulusE2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.SeptalAnnulusE2Panel.Location = new System.Drawing.Point(23, 658);
 			this.SeptalAnnulusE2Panel.Name = "SeptalAnnulusE2Panel";
 			this.SeptalAnnulusE2Panel.Size = new System.Drawing.Size(254, 59);
@@ -1439,7 +1449,7 @@
 			// 
 			// PulmSWavePanel
 			// 
-			this.PulmSWavePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PulmSWavePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.PulmSWavePanel.Location = new System.Drawing.Point(23, 467);
 			this.PulmSWavePanel.Name = "PulmSWavePanel";
 			this.PulmSWavePanel.Size = new System.Drawing.Size(254, 59);
@@ -1447,7 +1457,7 @@
 			// 
 			// MitralAnnulusA2Panel
 			// 
-			this.MitralAnnulusA2Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.MitralAnnulusA2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.MitralAnnulusA2Panel.Location = new System.Drawing.Point(279, 595);
 			this.MitralAnnulusA2Panel.Name = "MitralAnnulusA2Panel";
 			this.MitralAnnulusA2Panel.Size = new System.Drawing.Size(254, 59);
@@ -1455,7 +1465,7 @@
 			// 
 			// MyoPIPanel
 			// 
-			this.MyoPIPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.MyoPIPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.MyoPIPanel.Location = new System.Drawing.Point(279, 402);
 			this.MyoPIPanel.Name = "MyoPIPanel";
 			this.MyoPIPanel.Size = new System.Drawing.Size(254, 59);
@@ -1463,7 +1473,7 @@
 			// 
 			// MitralAnnulusE2Panel
 			// 
-			this.MitralAnnulusE2Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.MitralAnnulusE2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.MitralAnnulusE2Panel.Location = new System.Drawing.Point(23, 595);
 			this.MitralAnnulusE2Panel.Name = "MitralAnnulusE2Panel";
 			this.MitralAnnulusE2Panel.Size = new System.Drawing.Size(254, 59);
@@ -1471,7 +1481,7 @@
 			// 
 			// LVIVRTPanel
 			// 
-			this.LVIVRTPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LVIVRTPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LVIVRTPanel.Location = new System.Drawing.Point(23, 402);
 			this.LVIVRTPanel.Name = "LVIVRTPanel";
 			this.LVIVRTPanel.Size = new System.Drawing.Size(254, 59);
@@ -1481,12 +1491,12 @@
 			// 
 			this.LVSystolicPanel.Location = new System.Drawing.Point(23, 357);
 			this.LVSystolicPanel.Name = "LVSystolicPanel";
-			this.LVSystolicPanel.Size = new System.Drawing.Size(443, 26);
+			this.LVSystolicPanel.Size = new System.Drawing.Size(195, 26);
 			this.LVSystolicPanel.TabIndex = 10;
 			// 
 			// HeartRate2Panel
 			// 
-			this.HeartRate2Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.HeartRate2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.HeartRate2Panel.Location = new System.Drawing.Point(535, 213);
 			this.HeartRate2Panel.Name = "HeartRate2Panel";
 			this.HeartRate2Panel.Size = new System.Drawing.Size(254, 59);
@@ -1494,7 +1504,7 @@
 			// 
 			// LVPWd2Panel
 			// 
-			this.LVPWd2Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LVPWd2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LVPWd2Panel.Location = new System.Drawing.Point(535, 83);
 			this.LVPWd2Panel.Name = "LVPWd2Panel";
 			this.LVPWd2Panel.Size = new System.Drawing.Size(254, 59);
@@ -1502,7 +1512,7 @@
 			// 
 			// LVTeichholz2Panel
 			// 
-			this.LVTeichholz2Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LVTeichholz2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LVTeichholz2Panel.Location = new System.Drawing.Point(535, 148);
 			this.LVTeichholz2Panel.Name = "LVTeichholz2Panel";
 			this.LVTeichholz2Panel.Size = new System.Drawing.Size(254, 59);
@@ -1510,7 +1520,7 @@
 			// 
 			// LVApical42Panel
 			// 
-			this.LVApical42Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LVApical42Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LVApical42Panel.Location = new System.Drawing.Point(279, 213);
 			this.LVApical42Panel.Name = "LVApical42Panel";
 			this.LVApical42Panel.Size = new System.Drawing.Size(254, 59);
@@ -1518,7 +1528,7 @@
 			// 
 			// LVBiplaneEFPanel
 			// 
-			this.LVBiplaneEFPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LVBiplaneEFPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LVBiplaneEFPanel.Location = new System.Drawing.Point(23, 213);
 			this.LVBiplaneEFPanel.Name = "LVBiplaneEFPanel";
 			this.LVBiplaneEFPanel.Size = new System.Drawing.Size(254, 59);
@@ -1526,7 +1536,7 @@
 			// 
 			// FractionalShortening2Panel
 			// 
-			this.FractionalShortening2Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.FractionalShortening2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.FractionalShortening2Panel.Location = new System.Drawing.Point(279, 148);
 			this.FractionalShortening2Panel.Name = "FractionalShortening2Panel";
 			this.FractionalShortening2Panel.Size = new System.Drawing.Size(254, 59);
@@ -1534,7 +1544,7 @@
 			// 
 			// LVMassIndex2Panel
 			// 
-			this.LVMassIndex2Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LVMassIndex2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LVMassIndex2Panel.Location = new System.Drawing.Point(23, 148);
 			this.LVMassIndex2Panel.Name = "LVMassIndex2Panel";
 			this.LVMassIndex2Panel.Size = new System.Drawing.Size(254, 59);
@@ -1542,21 +1552,21 @@
 			// 
 			// ReducedLVPanel
 			// 
-			this.ReducedLVPanel.Location = new System.Drawing.Point(472, 310);
+			this.ReducedLVPanel.Location = new System.Drawing.Point(298, 310);
 			this.ReducedLVPanel.Name = "ReducedLVPanel";
 			this.ReducedLVPanel.Size = new System.Drawing.Size(443, 26);
 			this.ReducedLVPanel.TabIndex = 7;
 			// 
 			// LVDiastolicPanel
 			// 
-			this.LVDiastolicPanel.Location = new System.Drawing.Point(472, 357);
+			this.LVDiastolicPanel.Location = new System.Drawing.Point(272, 357);
 			this.LVDiastolicPanel.Name = "LVDiastolicPanel";
 			this.LVDiastolicPanel.Size = new System.Drawing.Size(443, 26);
 			this.LVDiastolicPanel.TabIndex = 9;
 			// 
 			// IVSd2Panel
 			// 
-			this.IVSd2Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.IVSd2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.IVSd2Panel.Location = new System.Drawing.Point(279, 83);
 			this.IVSd2Panel.Name = "IVSd2Panel";
 			this.IVSd2Panel.Size = new System.Drawing.Size(254, 59);
@@ -1564,14 +1574,14 @@
 			// 
 			// HypertrophyLVPanel
 			// 
-			this.HypertrophyLVPanel.Location = new System.Drawing.Point(472, 278);
+			this.HypertrophyLVPanel.Location = new System.Drawing.Point(298, 278);
 			this.HypertrophyLVPanel.Name = "HypertrophyLVPanel";
 			this.HypertrophyLVPanel.Size = new System.Drawing.Size(443, 26);
 			this.HypertrophyLVPanel.TabIndex = 8;
 			// 
 			// LVIDd2Panel
 			// 
-			this.LVIDd2Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LVIDd2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LVIDd2Panel.Location = new System.Drawing.Point(23, 83);
 			this.LVIDd2Panel.Name = "LVIDd2Panel";
 			this.LVIDd2Panel.Size = new System.Drawing.Size(254, 59);
@@ -1581,7 +1591,7 @@
 			// 
 			this.DilatedLVPanel.Location = new System.Drawing.Point(23, 278);
 			this.DilatedLVPanel.Name = "DilatedLVPanel";
-			this.DilatedLVPanel.Size = new System.Drawing.Size(443, 26);
+			this.DilatedLVPanel.Size = new System.Drawing.Size(216, 26);
 			this.DilatedLVPanel.TabIndex = 4;
 			// 
 			// VentricularHypertrophyPanel
@@ -1659,7 +1669,7 @@
 			// 
 			// LeftCircumflexPanel
 			// 
-			this.LeftCircumflexPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LeftCircumflexPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LeftCircumflexPanel.Location = new System.Drawing.Point(279, 127);
 			this.LeftCircumflexPanel.Name = "LeftCircumflexPanel";
 			this.LeftCircumflexPanel.Size = new System.Drawing.Size(254, 59);
@@ -1667,7 +1677,7 @@
 			// 
 			// RightCoronaryPanel
 			// 
-			this.RightCoronaryPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.RightCoronaryPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.RightCoronaryPanel.Location = new System.Drawing.Point(23, 127);
 			this.RightCoronaryPanel.Name = "RightCoronaryPanel";
 			this.RightCoronaryPanel.Size = new System.Drawing.Size(254, 59);
@@ -1675,7 +1685,7 @@
 			// 
 			// AnteriorCoronaryPanel
 			// 
-			this.AnteriorCoronaryPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.AnteriorCoronaryPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.AnteriorCoronaryPanel.Location = new System.Drawing.Point(279, 62);
 			this.AnteriorCoronaryPanel.Name = "AnteriorCoronaryPanel";
 			this.AnteriorCoronaryPanel.Size = new System.Drawing.Size(254, 59);
@@ -1683,7 +1693,7 @@
 			// 
 			// LeftMainCoronaryPanel
 			// 
-			this.LeftMainCoronaryPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LeftMainCoronaryPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.LeftMainCoronaryPanel.Location = new System.Drawing.Point(23, 62);
 			this.LeftMainCoronaryPanel.Name = "LeftMainCoronaryPanel";
 			this.LeftMainCoronaryPanel.Size = new System.Drawing.Size(254, 59);
@@ -1759,7 +1769,7 @@
 			// 
 			// TVRegurgGradPanel
 			// 
-			this.TVRegurgGradPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.TVRegurgGradPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.TVRegurgGradPanel.Location = new System.Drawing.Point(306, 756);
 			this.TVRegurgGradPanel.Name = "TVRegurgGradPanel";
 			this.TVRegurgGradPanel.Size = new System.Drawing.Size(254, 59);
@@ -1774,7 +1784,7 @@
 			// 
 			// TVRegurgVelPanel
 			// 
-			this.TVRegurgVelPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.TVRegurgVelPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.TVRegurgVelPanel.Location = new System.Drawing.Point(23, 756);
 			this.TVRegurgVelPanel.Name = "TVRegurgVelPanel";
 			this.TVRegurgVelPanel.Size = new System.Drawing.Size(254, 59);
@@ -1782,14 +1792,14 @@
 			// 
 			// RAVV2Panel
 			// 
-			this.RAVV2Panel.Location = new System.Drawing.Point(472, 607);
+			this.RAVV2Panel.Location = new System.Drawing.Point(192, 607);
 			this.RAVV2Panel.Name = "RAVV2Panel";
 			this.RAVV2Panel.Size = new System.Drawing.Size(443, 26);
 			this.RAVV2Panel.TabIndex = 20;
 			// 
 			// TVInflowPanel
 			// 
-			this.TVInflowPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.TVInflowPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.TVInflowPanel.Location = new System.Drawing.Point(306, 691);
 			this.TVInflowPanel.Name = "TVInflowPanel";
 			this.TVInflowPanel.Size = new System.Drawing.Size(254, 59);
@@ -1797,7 +1807,7 @@
 			// 
 			// TVAnnulusPanel
 			// 
-			this.TVAnnulusPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.TVAnnulusPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.TVAnnulusPanel.Location = new System.Drawing.Point(23, 691);
 			this.TVAnnulusPanel.Name = "TVAnnulusPanel";
 			this.TVAnnulusPanel.Size = new System.Drawing.Size(254, 59);
@@ -1807,26 +1817,26 @@
 			// 
 			this.RAVV1Panel.Location = new System.Drawing.Point(23, 607);
 			this.RAVV1Panel.Name = "RAVV1Panel";
-			this.RAVV1Panel.Size = new System.Drawing.Size(443, 26);
+			this.RAVV1Panel.Size = new System.Drawing.Size(163, 26);
 			this.RAVV1Panel.TabIndex = 21;
 			// 
 			// Tri2Panel
 			// 
-			this.Tri2Panel.Location = new System.Drawing.Point(472, 532);
+			this.Tri2Panel.Location = new System.Drawing.Point(192, 532);
 			this.Tri2Panel.Name = "Tri2Panel";
 			this.Tri2Panel.Size = new System.Drawing.Size(443, 26);
 			this.Tri2Panel.TabIndex = 7;
 			// 
 			// Tri3Panel
 			// 
-			this.Tri3Panel.Location = new System.Drawing.Point(472, 564);
+			this.Tri3Panel.Location = new System.Drawing.Point(192, 564);
 			this.Tri3Panel.Name = "Tri3Panel";
 			this.Tri3Panel.Size = new System.Drawing.Size(443, 26);
 			this.Tri3Panel.TabIndex = 9;
 			// 
 			// MVRegurgGradPanel
 			// 
-			this.MVRegurgGradPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.MVRegurgGradPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.MVRegurgGradPanel.Location = new System.Drawing.Point(279, 439);
 			this.MVRegurgGradPanel.Name = "MVRegurgGradPanel";
 			this.MVRegurgGradPanel.Size = new System.Drawing.Size(254, 59);
@@ -1836,12 +1846,12 @@
 			// 
 			this.Tri1Panel.Location = new System.Drawing.Point(23, 532);
 			this.Tri1Panel.Name = "Tri1Panel";
-			this.Tri1Panel.Size = new System.Drawing.Size(443, 26);
+			this.Tri1Panel.Size = new System.Drawing.Size(163, 26);
 			this.Tri1Panel.TabIndex = 8;
 			// 
 			// MVAPanel
 			// 
-			this.MVAPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.MVAPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.MVAPanel.Location = new System.Drawing.Point(279, 309);
 			this.MVAPanel.Name = "MVAPanel";
 			this.MVAPanel.Size = new System.Drawing.Size(254, 59);
@@ -1849,7 +1859,7 @@
 			// 
 			// MVDecelPanel
 			// 
-			this.MVDecelPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.MVDecelPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.MVDecelPanel.Location = new System.Drawing.Point(23, 374);
 			this.MVDecelPanel.Name = "MVDecelPanel";
 			this.MVDecelPanel.Size = new System.Drawing.Size(254, 59);
@@ -1857,7 +1867,7 @@
 			// 
 			// MVRegurgVelPanel
 			// 
-			this.MVRegurgVelPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.MVRegurgVelPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.MVRegurgVelPanel.Location = new System.Drawing.Point(23, 439);
 			this.MVRegurgVelPanel.Name = "MVRegurgVelPanel";
 			this.MVRegurgVelPanel.Size = new System.Drawing.Size(254, 59);
@@ -1865,7 +1875,7 @@
 			// 
 			// MVInflowGradPanel
 			// 
-			this.MVInflowGradPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.MVInflowGradPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.MVInflowGradPanel.Location = new System.Drawing.Point(279, 374);
 			this.MVInflowGradPanel.Name = "MVInflowGradPanel";
 			this.MVInflowGradPanel.Size = new System.Drawing.Size(254, 59);
@@ -1873,7 +1883,7 @@
 			// 
 			// MVEARatioPanel
 			// 
-			this.MVEARatioPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.MVEARatioPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.MVEARatioPanel.Location = new System.Drawing.Point(535, 309);
 			this.MVEARatioPanel.Name = "MVEARatioPanel";
 			this.MVEARatioPanel.Size = new System.Drawing.Size(254, 59);
@@ -1881,21 +1891,21 @@
 			// 
 			// LAVV2Panel
 			// 
-			this.LAVV2Panel.Location = new System.Drawing.Point(472, 178);
+			this.LAVV2Panel.Location = new System.Drawing.Point(192, 178);
 			this.LAVV2Panel.Name = "LAVV2Panel";
 			this.LAVV2Panel.Size = new System.Drawing.Size(443, 26);
 			this.LAVV2Panel.TabIndex = 7;
 			// 
 			// LAVV3Panel
 			// 
-			this.LAVV3Panel.Location = new System.Drawing.Point(472, 210);
+			this.LAVV3Panel.Location = new System.Drawing.Point(192, 210);
 			this.LAVV3Panel.Name = "LAVV3Panel";
 			this.LAVV3Panel.Size = new System.Drawing.Size(443, 26);
 			this.LAVV3Panel.TabIndex = 9;
 			// 
 			// MVEPanel
 			// 
-			this.MVEPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.MVEPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.MVEPanel.Location = new System.Drawing.Point(23, 309);
 			this.MVEPanel.Name = "MVEPanel";
 			this.MVEPanel.Size = new System.Drawing.Size(254, 59);
@@ -1905,12 +1915,12 @@
 			// 
 			this.LAVV1Panel.Location = new System.Drawing.Point(23, 178);
 			this.LAVV1Panel.Name = "LAVV1Panel";
-			this.LAVV1Panel.Size = new System.Drawing.Size(443, 26);
+			this.LAVV1Panel.Size = new System.Drawing.Size(163, 26);
 			this.LAVV1Panel.TabIndex = 8;
 			// 
 			// MVAnnulusPanel
 			// 
-			this.MVAnnulusPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.MVAnnulusPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.MVAnnulusPanel.Location = new System.Drawing.Point(23, 244);
 			this.MVAnnulusPanel.Name = "MVAnnulusPanel";
 			this.MVAnnulusPanel.Size = new System.Drawing.Size(254, 59);
@@ -1918,14 +1928,14 @@
 			// 
 			// MV2Panel
 			// 
-			this.MV2Panel.Location = new System.Drawing.Point(472, 51);
+			this.MV2Panel.Location = new System.Drawing.Point(192, 51);
 			this.MV2Panel.Name = "MV2Panel";
 			this.MV2Panel.Size = new System.Drawing.Size(443, 26);
 			this.MV2Panel.TabIndex = 4;
 			// 
 			// MV3Panel
 			// 
-			this.MV3Panel.Location = new System.Drawing.Point(472, 83);
+			this.MV3Panel.Location = new System.Drawing.Point(192, 83);
 			this.MV3Panel.Name = "MV3Panel";
 			this.MV3Panel.Size = new System.Drawing.Size(443, 26);
 			this.MV3Panel.TabIndex = 6;
@@ -1934,21 +1944,21 @@
 			// 
 			this.MitralProlapsePanel.Location = new System.Drawing.Point(23, 129);
 			this.MitralProlapsePanel.Name = "MitralProlapsePanel";
-			this.MitralProlapsePanel.Size = new System.Drawing.Size(443, 26);
+			this.MitralProlapsePanel.Size = new System.Drawing.Size(147, 26);
 			this.MitralProlapsePanel.TabIndex = 4;
 			// 
 			// MV1Panel
 			// 
 			this.MV1Panel.Location = new System.Drawing.Point(23, 51);
 			this.MV1Panel.Name = "MV1Panel";
-			this.MV1Panel.Size = new System.Drawing.Size(443, 26);
+			this.MV1Panel.Size = new System.Drawing.Size(163, 26);
 			this.MV1Panel.TabIndex = 4;
 			// 
 			// AVConnectionPanel
 			// 
 			this.AVConnectionPanel.Location = new System.Drawing.Point(23, 19);
 			this.AVConnectionPanel.Name = "AVConnectionPanel";
-			this.AVConnectionPanel.Size = new System.Drawing.Size(443, 26);
+			this.AVConnectionPanel.Size = new System.Drawing.Size(163, 26);
 			this.AVConnectionPanel.TabIndex = 3;
 			// 
 			// groupBox5
@@ -1995,15 +2005,15 @@
 			// 
 			// ASDGradientPanel
 			// 
-			this.ASDGradientPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.ASDGradientPanel.Location = new System.Drawing.Point(326, 202);
+			this.ASDGradientPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.ASDGradientPanel.Location = new System.Drawing.Point(279, 202);
 			this.ASDGradientPanel.Name = "ASDGradientPanel";
 			this.ASDGradientPanel.Size = new System.Drawing.Size(254, 59);
 			this.ASDGradientPanel.TabIndex = 15;
 			// 
 			// ASDDimensionPanel
 			// 
-			this.ASDDimensionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.ASDDimensionPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.ASDDimensionPanel.Location = new System.Drawing.Point(19, 202);
 			this.ASDDimensionPanel.Name = "ASDDimensionPanel";
 			this.ASDDimensionPanel.Size = new System.Drawing.Size(254, 59);
@@ -2087,14 +2097,6 @@
 			this.SitusPanel.Size = new System.Drawing.Size(533, 26);
 			this.SitusPanel.TabIndex = 3;
 			// 
-			// DOBPanel
-			// 
-			this.DOBPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.DOBPanel.Location = new System.Drawing.Point(272, 37);
-			this.DOBPanel.Name = "DOBPanel";
-			this.DOBPanel.Size = new System.Drawing.Size(254, 59);
-			this.DOBPanel.TabIndex = 4;
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2106,7 +2108,7 @@
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "MainForm";
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-			this.Text = "Form1";
+			this.Text = "Echo Report Generator";
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();

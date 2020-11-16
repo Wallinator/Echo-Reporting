@@ -24,7 +24,12 @@ namespace Echo_Reporting_Windows_App {
 
 			this.result = result;
 			this.OnUpdate = OnUpdate;
-			ResultTitleLabel.Text = result.Name;
+			if (result.AltName.Length != 0) {
+				ResultTitleLabel.Text = result.AltName;
+			}
+			else {
+				ResultTitleLabel.Text = result.Name;
+			}
 			ResultUnitLabel.Text = result.UnitShorthand;
 			ZScoreLabel.Text = "";
 			Anomaly.Text = "";

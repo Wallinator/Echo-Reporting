@@ -71,7 +71,7 @@
 			// ZScoreLabel
 			// 
 			this.ZScoreLabel.AutoSize = true;
-			this.ZScoreLabel.Location = new System.Drawing.Point(182, 3);
+			this.ZScoreLabel.Location = new System.Drawing.Point(178, 3);
 			this.ZScoreLabel.Name = "ZScoreLabel";
 			this.ZScoreLabel.Size = new System.Drawing.Size(68, 13);
 			this.ZScoreLabel.TabIndex = 4;

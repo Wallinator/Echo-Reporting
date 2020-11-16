@@ -14,14 +14,16 @@ namespace DICOMReporting.Data.Results {
 		public IFormula Formula;
 		public bool HasComment;
 		public bool Empty;
+		public string AltName;
 
-		public Result(string name, string unitShorthand, IFormula formula = null, bool empty = true, double value = 0) {
+		public Result(string name, string unitShorthand, IFormula formula = null, bool empty = true, double value = 0, string altName = "") {
 			Name = name;
 			UnitShorthand = unitShorthand;
 			Value = value;
 			Formula = formula;
 			HasComment = formula != null;
 			Empty = empty;
+			AltName = altName;
 		}
 		public Result(IMeasurementHeader header, bool empty = false) {
 			Name = header.Name;
@@ -29,6 +31,7 @@ namespace DICOMReporting.Data.Results {
 			Value = header.Value;
 			Formula = null;
 			Empty = empty;
+			AltName = "";
 		}
 
 		public bool ZScoreable => Formula != null && Formula.ZScoreable();

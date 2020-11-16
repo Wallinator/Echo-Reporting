@@ -340,7 +340,7 @@ namespace DICOMReporting.Data.Measurements {
 			var specs = new List<MeasurementSpecification>();
 			Dictionary<string, string> props = new Dictionary<string, string>();
 
-			specs.Add(new MeasurementSpecification("Anterior Descending Branch of Left Coronary Artery", "Diameter", new Dictionary<string, string>(props), "mm", formula: CoronaryArteryInvolvementFormula.LeftAnteriorDescending(pd, "left anterior descending coronary artery"), includeImageMode: true, unitEnum: LengthUnit.Millimeter));
+			specs.Add(new MeasurementSpecification("Anterior Descending Branch of Left Coronary Artery", "Diameter", new Dictionary<string, string>(props), "mm", formula: CoronaryArteryInvolvementFormula.LeftAnteriorDescending(pd, "left anterior descending artery"), includeImageMode: true, unitEnum: LengthUnit.Millimeter, altName: "Left Anterior Descending Artery"));
 			props.Clear();
 
 			return specs;

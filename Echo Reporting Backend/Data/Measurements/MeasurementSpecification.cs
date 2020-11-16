@@ -18,10 +18,11 @@ namespace DICOMReporting.Data.Measurements {
 		public bool IncludeImageMode;
 		public Enum UnitEnum;
 		public IFormula Formula;
+		public string AltName;
 		//public bool NonMean;
 
 		//public MeasurementSpecification(string name, string rawMeasurementName, Dictionary<string, string> properties, string defaultUnitShorthand, IFormula formula = null, bool includeImageMode = false, Enum unitEnum = null/*, bool nonMean = false*/) {
-		public MeasurementSpecification(string name, string rawMeasurementName, Dictionary<string, string> properties, string defaultUnitShorthand, IFormula formula = null, bool includeImageMode = false, Enum unitEnum = null) {
+		public MeasurementSpecification(string name, string rawMeasurementName, Dictionary<string, string> properties, string defaultUnitShorthand, IFormula formula = null, bool includeImageMode = false, Enum unitEnum = null, string altName = "") {
 			Name = name;
 			RawMeasurementName = rawMeasurementName;
 			Properties = properties;
@@ -29,6 +30,7 @@ namespace DICOMReporting.Data.Measurements {
 			Formula = formula;
 			IncludeImageMode = includeImageMode;
 			UnitEnum = unitEnum;
+			AltName = altName;
 			//NonMean = nonMean;
 		}
 
@@ -60,12 +62,12 @@ namespace DICOMReporting.Data.Measurements {
 		}
 		private Result MeasurementToResult(Measurement measurement) {
 			if (measurement == null) {
-				return new Result(Name, DefaultUnitShorthand, Formula);
+				return new Result(Name, DefaultUnitShorthand, Formula, altName: AltName);
 			}
 			if (UnitEnum != null) {
 				SupportedUnitsHelpers.Convert(measurement.Header, UnitEnum);
 			}
-			return new Result(Name, DefaultUnitShorthand, Formula, empty: false, value: measurement.Header.Value);
+			return new Result(Name, DefaultUnitShorthand, Formula, empty: false, value: measurement.Header.Value, altName: AltName);
 
 		}
 	}

@@ -245,7 +245,7 @@ namespace DICOMReporting.Data {
 		// right aortic arch label
 		public MultipleChoiceResult RightAorticArch1 = new MultipleChoiceResult("", new List<string>() {"",
 																										"Unobstructed right sided aortic arch",
-																										"Right sided aortic arch"}, displayname: "Right Aortic Arch");
+																										"Right sided aortic arch"}, displayname: "Right aortic arch");
 
 		public MultipleChoiceResult RightAorticArch2 = new MultipleChoiceResult("", new List<string>() {"",
 																										"with mirror image branching",

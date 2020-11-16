@@ -56,31 +56,31 @@ namespace DICOMReporting.Data {
 
 			writer.WriteLine("Findings - ");
 
-			writer.WriteLine(string.Format("{0,-10}{1,-8}{2,-12}{3,-15}{4,-13}{5,-25}{6,-10}", "Measure", "(cm)", "Z Score", "Measure", "", "Calculation", ""));
+			writer.WriteLine(string.Format("{0,-10}{1,-8}{2,7}     {3,-15}{4,-13}{5,-25}{6,-10}", "Measure", "(cm)", "Z Score", "Measure", "", "Calculation", ""));
 			l1 = Results["IVSd"].AsString();
 			l2 = Results["Mitral valve E wave"].AsString();
 			l3 = Results["Fractional Shortening"].AsString();
-			writer.WriteLine(string.Format("{0,-10}{1,-8}{2,-12}{3,-15}{4,-13}{5,-25}{6,-10}", l1[0], l1[1], l1[3], "MV Peak E", l2[1] + " " + l2[2], "FS%", l3[1] + " " + l3[2]));
+			writer.WriteLine(string.Format("{0,-10}{1,-8}{2,7}     {3,-15}{4,-13}{5,-25}{6,-10}", l1[0], l1[1], l1[3], "MV Peak E", l2[1] + " " + l2[2], "FS%", l3[1] + " " + l3[2]));
 			l1 = Results["LVIDd"].AsString();
 			l2 = Results["Mitral valve A wave"].AsString();
 			l3 = Results["Left Ventricular Teichholz EF"].AsString();
-			writer.WriteLine(string.Format("{0,-10}{1,-8}{2,-12}{3,-15}{4,-13}{5,-25}{6,-10}", l1[0], l1[1], l1[3], "MV Peak A", l2[1] + " " + l2[2], "EF (Teich)", l3[1] + " " + l3[2]));
+			writer.WriteLine(string.Format("{0,-10}{1,-8}{2,7}     {3,-15}{4,-13}{5,-25}{6,-10}", l1[0], l1[1], l1[3], "MV Peak A", l2[1] + " " + l2[2], "EF (Teich)", l3[1] + " " + l3[2]));
 			l1 = Results["LVPWd"].AsString();
 			l2 = Results["MV decel time"].AsString();
 			l3 = Results["LV mass index"].AsString();
-			writer.WriteLine(string.Format("{0,-10}{1,-8}{2,-12}{3,-15}{4,-13}{5,-25}{6,-10}", l1[0], l1[1], l1[3], "MV decel time", l2[1] + " " + l2[2], "LV Mass Index (Cubed)", l3[1] + " " + l3[2]));
+			writer.WriteLine(string.Format("{0,-10}{1,-8}{2,7}     {3,-15}{4,-13}{5,-25}{6,-10}", l1[0], l1[1], l1[3], "MV decel time", l2[1] + " " + l2[2], "LV Mass Index (Cubed)", l3[1] + " " + l3[2]));
 			l1 = Results["IVSs"].AsString();
 			l2 = Results["Mitral annulus E'"].AsString();
 			l3 = Results["Heart Rate"].AsString();
-			writer.WriteLine(string.Format("{0,-10}{1,-8}{2,-12}{3,-15}{4,-13}{5,-25}{6,-10}", l1[0], l1[1], l1[3], "LV E'", l2[1] + " " + l2[2], "HR", l3[1] + " " + l3[2]));
+			writer.WriteLine(string.Format("{0,-10}{1,-8}{2,7}     {3,-15}{4,-13}{5,-25}{6,-10}", l1[0], l1[1], l1[3], "LV E'", l2[1] + " " + l2[2], "HR", l3[1] + " " + l3[2]));
 			l1 = Results["LVIDs"].AsString();
 			l2 = Results["Septal annulus E'"].AsString();
 			l3 = Results["MVCFc"].AsString();
-			writer.WriteLine(string.Format("{0,-10}{1,-8}{2,-12}{3,-15}{4,-13}{5,-25}{6,-10}", l1[0], l1[1], l1[3], "Septal E'", l2[1] + " " + l2[2], "MVCFc", l3[1] + " " + l3[2]));
+			writer.WriteLine(string.Format("{0,-10}{1,-8}{2,7}     {3,-15}{4,-13}{5,-25}{6,-10}", l1[0], l1[1], l1[3], "Septal E'", l2[1] + " " + l2[2], "MVCFc", l3[1] + " " + l3[2]));
 			l1 = Results["LVPWs"].AsString();
 			l2 = new List<string>() { "", "", "", "" };
 			l3 = Results["Left ventricular cardiac output"].AsString();
-			writer.WriteLine(string.Format("{0,-10}{1,-8}{2,-12}{3,-15}{4,-13}{5,-25}{6,-10}", l1[0], l1[1], l1[3], "", l2[1] + " " + l2[2], "LV output", l3[1] + " " + l3[2]));
+			writer.WriteLine(string.Format("{0,-10}{1,-8}{2,7}     {3,-15}{4,-13}{5,-25}{6,-10}", l1[0], l1[1], l1[3], "", l2[1] + " " + l2[2], "LV output", l3[1] + " " + l3[2]));
 
 
 			writer.WriteLine("");

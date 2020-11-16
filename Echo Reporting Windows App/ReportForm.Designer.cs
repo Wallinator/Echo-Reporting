@@ -437,7 +437,7 @@
 			// generateReportToolStripMenuItem
 			// 
 			this.generateReportToolStripMenuItem.Name = "generateReportToolStripMenuItem";
-			this.generateReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.generateReportToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
 			this.generateReportToolStripMenuItem.Text = "Generate Report...";
 			this.generateReportToolStripMenuItem.Click += new System.EventHandler(this.generateReportToolStripMenuItem_Click);
 			// 
@@ -457,7 +457,7 @@
 			this.Controls.Add(this.panel1);
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "ReportForm";
-			this.Text = "ReportForm";
+			this.Text = "Report Sections";
 			this.Load += new System.EventHandler(this.ReportForm_Load);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
