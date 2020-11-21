@@ -18,6 +18,7 @@ namespace DICOMReporting.Data {
 		public StringResult PatientID;
 		public StringResult PatientName;
 		public StringResult PatientDOB;
+		public StringResult StudyDate;
 		public StringResult PatientSex;
 		public StringResult ReasonForStudy;
 		public StringResult ReferringPhysician;
@@ -82,6 +83,7 @@ namespace DICOMReporting.Data {
 						break;
 					case "121029":
 						PatientName = new StringResult("Patient Name", child.Get<string>().Replace('^', ' ').Trim());
+						PatientName.Value = PatientName.Value.Split(' ').Reverse().Aggregate((x, y) => { return (x + " " + y).Trim(); });
 						Debug.WriteLine(PatientName);
 						break;
 					case "121030":
@@ -98,13 +100,23 @@ namespace DICOMReporting.Data {
 						break;
 					case "121031":
 						string input = child.Get<string>();
-						Debug.WriteLine("dob input: "+ input);
+						Debug.WriteLine("dob input: " + input);
 
 						var numbers = Regex.Split(input, @"\D+").ToList().GetRange(1, 3).Select(x => int.Parse(x)).ToArray();
 
 						PatientDOB = new StringResult("Patient DOB", new DateTime(numbers[0], numbers[1], numbers[2]).Date.ToShortDateString());
 
 						Debug.WriteLine(PatientDOB.Value);
+						break;
+					case "T9910-09":
+						string dateinput = child.Get<string>();
+						Debug.WriteLine("exam date input: " + dateinput);
+
+						var numbers2 = Regex.Split(dateinput, @"\D+").ToList().GetRange(1, 3).Select(x => int.Parse(x)).ToArray();
+
+						StudyDate = new StringResult("Study Date", new DateTime(numbers2[0], numbers2[1], numbers2[2]).Date.ToShortDateString());
+
+						Debug.WriteLine(StudyDate.Value);
 						break;
 					default:
 						break;
@@ -137,12 +149,13 @@ namespace DICOMReporting.Data {
 			temp = new MeasurementHeader("Diastolic Blood Pressure", 0, "", "mmHg");
 			DiastolicBloodPressure = new Result(temp, true);
 
-
 			PatientName = new StringResult("Patient Name");
 			
 			PatientID = new StringResult("Patient ID");
-			//StudyID = new StringResult("Study ID");
+
 			PatientDOB = new StringResult("Patient DOB");
+
+			StudyDate = new StringResult("Study Date");
 
 			ReasonForStudy = new StringResult("Reason For Study");
 
@@ -153,7 +166,6 @@ namespace DICOMReporting.Data {
 			ReportingDoctor = new MultipleChoiceResult("Reporting Doctor", new List<string>() { "Dr Paul Brooks" });
 
 			UpdateBSAResult();
-
 		}
 	}
 }

@@ -79,8 +79,9 @@ namespace Echo_Reporting_Windows_App {
 
 		private void generateReportToolStripMenuItem_Click(object sender, EventArgs e) {
 			var name = _report.PatientData.PatientID.Value;
-			var date = DateTime.Now.Date.ToShortDateString().Replace('/', '-');
-			saveFileDialog1.FileName = date + "_generated_report_for_patient_" + name;
+			// ch
+			var date = _report.PatientData.StudyDate.Value.Replace("/","-");
+			saveFileDialog1.FileName = name + " Echo " + date;
 			if (saveFileDialog1.ShowDialog() == DialogResult.OK) {
 				var stream = saveFileDialog1.OpenFile();
 				if (stream != null) {
@@ -91,6 +92,10 @@ namespace Echo_Reporting_Windows_App {
 					MessageBox.Show("The selected file is invalid or in an unsupported format.", "Error - Invalid DICOM File", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
+		}
+
+		private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
+
 		}
 	}
 }

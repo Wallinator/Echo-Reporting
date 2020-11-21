@@ -91,7 +91,7 @@ namespace Echo_Reporting_Backend.Data {
 			Ventricles += ResultToString(sr.Results["LVPWd"]);
 			Ventricles += ResultToString(sr.Results["LV mass index"]);
 			Ventricles += ResultToString(sr.Results["Fractional Shortening"]);
-			Ventricles += ResultToString(sr.Results["Left Ventricular Teichholz EF"]);
+			//Ventricles += ResultToString(sr.Results["Left Ventricular Teichholz EF"]);
 			string ejectionfraction = ResultToString(sr.Results["Left Ventricular biplane EF"]);
 			if (ejectionfraction.Length == 0) {
 				ejectionfraction = ResultToString(sr.Results["Left ventricular Apical 4 chamber EF"]);
@@ -156,7 +156,9 @@ namespace Echo_Reporting_Backend.Data {
 
 			Outlets += ResultToString(sr.Results["Aortic valve annulus"]);
 			Outlets += ResultToString(sr.Results["Aortic valve peak velocity"]);
-			Outlets += ResultToString(sr.Results["Aortic valve peak gradient"]);
+			if (sr.Results["Aortic valve peak gradient"].Value < 12.96) {
+				Outlets += ResultToString(sr.Results["Aortic valve peak gradient"]);
+			}
 			Outlets += ResultToString(sr.Results["Aortic valve mean gradient"]);
 			Outlets += ResultToString(sr.Results["Aortic valve pressure half-time"]);
 
@@ -177,7 +179,9 @@ namespace Echo_Reporting_Backend.Data {
 
 			Outlets += ResultToString(sr.Results["Pulmonary valve annulus"]);
 			Outlets += ResultToString(sr.Results["Pulmonary valve peak velocity"]);
-			Outlets += ResultToString(sr.Results["Pulmonary valve peak gradient"]);
+			if (sr.Results["Pulmonary valve peak gradient"].Value < 12.96) {
+				Outlets += ResultToString(sr.Results["Pulmonary valve peak gradient"]);
+			}
 			Outlets += ResultToString(sr.Results["Pulmonary valve mean gradient"]);
 			Outlets += ResultToString(sr.Results["Pulmonary valve end diastolic velocity"]);
 			Outlets += ResultToString(sr.Results["Pulmonary valve end diastolic peak gradient"]);
@@ -204,7 +208,9 @@ namespace Echo_Reporting_Backend.Data {
 			GreatArteries += ResultToString(sr.Results["Coarctation of the aorta"]);
 
 			GreatArteries += ResultToString(sr.Results["Descending aorta peak velocity"]);
-			GreatArteries += ResultToString(sr.Results["Descending aorta peak gradient"]);
+			if (sr.Results["Descending aorta peak gradient"].Value < 12.96) {
+				GreatArteries += ResultToString(sr.Results["Descending aorta peak gradient"]);
+			}
 
 			GreatArteries += OptionsToString(sr.ReportingOptions.BranchPulmonaryArteries);
 
@@ -214,11 +220,15 @@ namespace Echo_Reporting_Backend.Data {
 
 			GreatArteries += ResultToString(sr.Results["Right pulmonary artery"]);
 			GreatArteries += ResultToString(sr.Results["Right pulmonary artery peak velocity"]);
-			GreatArteries += ResultToString(sr.Results["Right pulmonary artery peak gradient"]);
+			if (sr.Results["Right pulmonary artery peak gradient"].Value < 12.96) {
+				GreatArteries += ResultToString(sr.Results["Right pulmonary artery peak gradient"]);
+			}
 
 			GreatArteries += ResultToString(sr.Results["Left pulmonary artery"]);
 			GreatArteries += ResultToString(sr.Results["Left pulmonary artery peak velocity"]);
-			GreatArteries += ResultToString(sr.Results["Left pulmonary artery peak gradient"]);
+			if (sr.Results["Left pulmonary artery peak gradient"].Value < 12.96) {
+				GreatArteries += ResultToString(sr.Results["Left pulmonary artery peak gradient"]);
+			}
 
 			GreatArteries += BoolResultToString(sr.ReportingOptions.NoPatentDuctusArteriosus);
 			if (!sr.ReportingOptions.NoPatentDuctusArteriosus.Value) {

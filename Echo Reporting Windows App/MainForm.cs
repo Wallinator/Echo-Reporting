@@ -68,6 +68,7 @@ namespace Echo_Reporting_Windows_App {
 			PatientNamePanel.Controls.Add(new StringFieldControl(report.PatientData.PatientName));
 			PatientSexPanel.Controls.Add(new StringFieldControl(report.PatientData.PatientSex));
 			DOBPanel.Controls.Add(new StringFieldControl(report.PatientData.PatientDOB));
+			StudyDatePanel.Controls.Add(new StringFieldControl(report.PatientData.StudyDate));
 			AgePanel.Controls.Add(new ResultControl(report.PatientData.PatientAge, showNotFoundError, this, ShowAllResults));
 			HeightPanel.Controls.Add(new ResultControl(report.PatientData.PatientHeight, showNotFoundError, this, UpdateBSA));
 			WeightPanel.Controls.Add(new ResultControl(report.PatientData.PatientWeight, showNotFoundError, this, UpdateBSA));
@@ -136,11 +137,11 @@ namespace Echo_Reporting_Windows_App {
 			LAVV3Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.LAVV3));
 
 			MVAnnulusPanel.Controls.Add(new ResultControl(report.Results["Mitral valve annulus"], showNotFoundError, this));
-			MVEPanel.Controls.Add(new ResultControl(report.Results["Mitral valve E wave"], showNotFoundError, this));
-			MVAPanel.Controls.Add(new ResultControl(report.Results["Mitral valve A wave"], showNotFoundError, this));
+			//MVEPanel.Controls.Add(new ResultControl(report.Results["Mitral valve E wave"], showNotFoundError, this));
+			//MVAPanel.Controls.Add(new ResultControl(report.Results["Mitral valve A wave"], showNotFoundError, this));
 			MVEARatioPanel.Controls.Add(new ResultControl(report.Results["Mitral E/A ratio"], showNotFoundError, this));
 			//MVInflowAPanel.Controls.Add(new ResultControl(report.Results["Mitral valve inflow A wave duration"], showNotFoundError, this));
-			MVDecelPanel.Controls.Add(new ResultControl(report.Results["MV decel time"], showNotFoundError, this));
+			//MVDecelPanel.Controls.Add(new ResultControl(report.Results["MV decel time"], showNotFoundError, this));
 			MVInflowGradPanel.Controls.Add(new ResultControl(report.Results["Mitral valve inflow mean gradient"], showNotFoundError, this));
 			MVRegurgVelPanel.Controls.Add(new ResultControl(report.Results["Mitral valve regurgitation peak velocity"], showNotFoundError, this));
 			MVRegurgGradPanel.Controls.Add(new ResultControl(report.Results["Mitral valve regurgitation peak gradient"], showNotFoundError, this));
@@ -165,15 +166,15 @@ namespace Echo_Reporting_Windows_App {
 			VentricleSizeFunctionPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.VentricleFunction));
 			VentricularHypertrophyPanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.VentricularHypertrophy));
 
-			IVSd2Panel.Controls.Add(new ResultControl(report.Results["IVSd"], showNotFoundError, this));
-			LVIDd2Panel.Controls.Add(new ResultControl(report.Results["LVIDd"], showNotFoundError, this));
-			LVPWd2Panel.Controls.Add(new ResultControl(report.Results["LVPWd"], showNotFoundError, this));
-			LVMassIndex2Panel.Controls.Add(new ResultControl(report.Results["LV mass index"], showNotFoundError, this));
-			FractionalShortening2Panel.Controls.Add(new ResultControl(report.Results["Fractional Shortening"], showNotFoundError, this));
-			LVTeichholz2Panel.Controls.Add(new ResultControl(report.Results["Left Ventricular Teichholz EF"], showNotFoundError, this));
+			//IVSd2Panel.Controls.Add(new ResultControl(report.Results["IVSd"], showNotFoundError, this));
+			//LVIDd2Panel.Controls.Add(new ResultControl(report.Results["LVIDd"], showNotFoundError, this));
+			//LVPWd2Panel.Controls.Add(new ResultControl(report.Results["LVPWd"], showNotFoundError, this));
+			//LVMassIndex2Panel.Controls.Add(new ResultControl(report.Results["LV mass index"], showNotFoundError, this));
+			//FractionalShortening2Panel.Controls.Add(new ResultControl(report.Results["Fractional Shortening"], showNotFoundError, this));
+			//LVTeichholz2Panel.Controls.Add(new ResultControl(report.Results["Left Ventricular Teichholz EF"], showNotFoundError, this));
 			LVBiplaneEFPanel.Controls.Add(new ResultControl(report.Results["Left Ventricular biplane EF"], showNotFoundError, this));
 			LVApical42Panel.Controls.Add(new ResultControl(report.Results["Left ventricular Apical 4 chamber EF"], showNotFoundError, this));
-			HeartRate2Panel.Controls.Add(new ResultControl(report.Results["Heart Rate"], showNotFoundError, this));
+			//HeartRate2Panel.Controls.Add(new ResultControl(report.Results["Heart Rate"], showNotFoundError, this));
 
 
 			DilatedLVPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.DilatedLV));
@@ -194,11 +195,11 @@ namespace Echo_Reporting_Windows_App {
 			PulmWaveDurationPanel.Controls.Add(new ResultControl(report.Results["Pulmonary vein A wave duration"], showNotFoundError, this));
 			MitralWaveDurationPanel.Controls.Add(new ResultControl(report.Results["Mitral valve inflow A wave duration"], showNotFoundError, this));
 
-			MitralAnnulusE2Panel.Controls.Add(new ResultControl(report.Results["Mitral annulus E'"], showNotFoundError, this));
+			//MitralAnnulusE2Panel.Controls.Add(new ResultControl(report.Results["Mitral annulus E'"], showNotFoundError, this));
 			MitralAnnulusA2Panel.Controls.Add(new ResultControl(report.Results["Mitral annulus A'"], showNotFoundError, this));
 			MitralAnnulusS2Panel.Controls.Add(new ResultControl(report.Results["Mitral annulus S'"], showNotFoundError, this));
 
-			SeptalAnnulusE2Panel.Controls.Add(new ResultControl(report.Results["Septal annulus E'"], showNotFoundError, this));
+			//SeptalAnnulusE2Panel.Controls.Add(new ResultControl(report.Results["Septal annulus E'"], showNotFoundError, this));
 			SeptalAnnulusA2Panel.Controls.Add(new ResultControl(report.Results["Septal annulus A'"], showNotFoundError, this));
 			SeptalAnnulusS2Panel.Controls.Add(new ResultControl(report.Results["Septal annulus S'"], showNotFoundError, this));
 
@@ -352,6 +353,7 @@ namespace Echo_Reporting_Windows_App {
 			PatientNamePanel.Controls.Clear();
 			PatientSexPanel.Controls.Clear();
 			DOBPanel.Controls.Clear();
+			StudyDatePanel.Controls.Clear();
 			AgePanel.Controls.Clear();
 			HeightPanel.Controls.Clear();
 			WeightPanel.Controls.Clear();
@@ -420,11 +422,11 @@ namespace Echo_Reporting_Windows_App {
 			LAVV3Panel.Controls.Clear();
 
 			MVAnnulusPanel.Controls.Clear();
-			MVEPanel.Controls.Clear();
-			MVAPanel.Controls.Clear();
+			//MVEPanel.Controls.Clear();
+			//MVAPanel.Controls.Clear();
 			MVEARatioPanel.Controls.Clear();
 			//MVInflowAPanel.Controls.Clear();
-			MVDecelPanel.Controls.Clear();
+			//MVDecelPanel.Controls.Clear();
 			MVInflowGradPanel.Controls.Clear();
 			MVRegurgVelPanel.Controls.Clear();
 			MVRegurgGradPanel.Controls.Clear();
@@ -447,15 +449,15 @@ namespace Echo_Reporting_Windows_App {
 			VentricleSizeFunctionPanel.Controls.Clear();
 			VentricularHypertrophyPanel.Controls.Clear();
 
-			IVSd2Panel.Controls.Clear();
-			LVIDd2Panel.Controls.Clear();
-			LVPWd2Panel.Controls.Clear();
-			LVMassIndex2Panel.Controls.Clear();
-			FractionalShortening2Panel.Controls.Clear();
-			LVTeichholz2Panel.Controls.Clear();
+			//IVSd2Panel.Controls.Clear();
+			//LVIDd2Panel.Controls.Clear();
+			//LVPWd2Panel.Controls.Clear();
+			//LVMassIndex2Panel.Controls.Clear();
+			//FractionalShortening2Panel.Controls.Clear();
+			//LVTeichholz2Panel.Controls.Clear();
 			LVBiplaneEFPanel.Controls.Clear();
 			LVApical42Panel.Controls.Clear();
-			HeartRate2Panel.Controls.Clear();
+			//HeartRate2Panel.Controls.Clear();
 
 
 			DilatedLVPanel.Controls.Clear();
@@ -475,11 +477,11 @@ namespace Echo_Reporting_Windows_App {
 			PulmWaveDurationPanel.Controls.Clear();
 			MitralWaveDurationPanel.Controls.Clear();
 
-			MitralAnnulusE2Panel.Controls.Clear();
+			//MitralAnnulusE2Panel.Controls.Clear();
 			MitralAnnulusA2Panel.Controls.Clear();
 			MitralAnnulusS2Panel.Controls.Clear();
 
-			SeptalAnnulusE2Panel.Controls.Clear();
+			//SeptalAnnulusE2Panel.Controls.Clear();
 			SeptalAnnulusA2Panel.Controls.Clear();
 			SeptalAnnulusS2Panel.Controls.Clear();
 

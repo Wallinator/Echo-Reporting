@@ -61,6 +61,7 @@ namespace DICOMReporting.Data.Results {
 		}
 		public string ReportString(bool includeZScore = true) {
 			string name;
+			string value;
 			string Zscorestring = "";
 			if (HasComment) {
 				if (AnomalyText.Length == 0) {
@@ -71,14 +72,31 @@ namespace DICOMReporting.Data.Results {
 			else {
 				name = Name;
 			}
+
+			if (UnitShorthand.Equals("mmHg") ||
+				UnitShorthand.Equals("cm/s") ||
+				UnitShorthand.Equals("m/s")) {
+				value = Math.Round(Value, 1).ToString();
+			}
+			else {
+				value = Math.Round(Value, 2).ToString();
+			}
+
 			if (ZScoreable && includeZScore) {
 				Zscorestring = ", Z-score=" + ZScore.ToString("N2");
 			}
-			return name + " (" + Value + " " + UnitShorthand + Zscorestring + ")";
+			return name + " (" + value + " " + UnitShorthand + Zscorestring + ")";
 		}
 
 		public List<string> TableString() {
-			return new List<string>() { Name, Value + " " + UnitShorthand };
+			string value;
+			if (UnitShorthand.Equals("m2")) {
+				value = Math.Round(Value, 2).ToString();
+			}
+			else {
+				value = Math.Round(Value, 1).ToString();
+			}
+			return new List<string>() { Name, value + " " + UnitShorthand };
 		}
 
 		public List<string> AsString() {

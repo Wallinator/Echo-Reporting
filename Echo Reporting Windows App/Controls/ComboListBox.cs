@@ -10,7 +10,7 @@ namespace Echo_Reporting_Windows_App.Controls {
     public class ComboListBox : ComboBox {
         public ComboListBox() {
             base.DropDownStyle = ComboBoxStyle.DropDownList;
-            base.DrawMode = DrawMode.OwnerDrawFixed;
+            base.DrawMode = DrawMode.OwnerDrawVariable;
         }
 
         protected override void OnDrawItem(DrawItemEventArgs e) {

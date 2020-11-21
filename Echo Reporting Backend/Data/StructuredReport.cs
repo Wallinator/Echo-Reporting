@@ -29,7 +29,11 @@ namespace DICOMReporting.Data {
 			List<string> l1, l2, l3;
 			writer.WriteLine("Patient Data - ");
 			l1 = pd.PatientID.TableString();
-			l2 = pd.PatientAge.TableString();
+			string age = pd.PatientAge.Value.ToString("N0");
+			if (pd.PatientAge.Value < 1) {
+				age = (pd.PatientAge.Value * 12).ToString("N0") + " mo";
+			}
+			l2 = new List<string>() { pd.PatientAge.Name, age };
 			writer.WriteLine(string.Format("{0,-20} - {1,20}{5,9}{2,-20} - {3,10}", l1[0], l1[1], l2[0], l2[1], " - ", ""));
 			l1 = pd.PatientName.TableString();
 			l2 = pd.PatientHeight.TableString();
@@ -38,10 +42,14 @@ namespace DICOMReporting.Data {
 			l2 = pd.PatientWeight.TableString();
 			writer.WriteLine(string.Format("{0,-20} - {1,20}{5,9}{2,-20} - {3,10}", l1[0], l1[1], l2[0], l2[1], " - ", ""));
 			l1 = pd.PatientDOB.TableString();
-			l2 = pd.PatientWeight.TableString();
+			l2 = pd.BSA.TableString();
 			writer.WriteLine(string.Format("{0,-20} - {1,20}{5,9}{2,-20} - {3,10}", l1[0], l1[1], l2[0], l2[1], " - ", ""));
 			l1 = new List<string>() { "", "" };
-			l2 = new List<string>() { "Blood Pressure", pd.SystolicBloodPressure.Value.ToString("N0") + "/" + pd.DiastolicBloodPressure.Value.ToString("N0") };
+			string bp = "";
+			if (!pd.SystolicBloodPressure.Empty && !pd.DiastolicBloodPressure.Empty) {
+				bp = pd.SystolicBloodPressure.Value.ToString("N0") + "/" + pd.DiastolicBloodPressure.Value.ToString("N0") + " mmHg";
+			}
+			l2 = new List<string>() { "Blood Pressure", bp };
 			writer.WriteLine(string.Format("{0,-20} - {1,20}{5,9}{2,-20} - {3,10}", l1[0], l1[1], l2[0], l2[1], " - ", ""));
 			writer.WriteLine("");
 
@@ -49,7 +57,7 @@ namespace DICOMReporting.Data {
 			l2 = pd.EchoType.TableString();
 			writer.WriteLine(string.Format("{0,-20} - {1,20}{5,9}{2,-20} - {3,20}", l1[0], l1[1], l2[0], l2[1], " - ", ""));
 			l1 = pd.ReasonForStudy.TableString();
-			l2 = pd.ReportingDoctor.TableString();
+			l2 = new List<string>() { "", "" };
 			writer.WriteLine(string.Format("{0,-20} - {1,20}{5,9}{2,-20} - {3,20}", l1[0], l1[1], l2[0], l2[1], " - ", ""));
 			writer.WriteLine("");
 			writer.WriteLine("");
@@ -88,8 +96,8 @@ namespace DICOMReporting.Data {
 
 			writer.WriteLine("Situs - " + Sections.Situs);
 			writer.WriteLine("Systemic Veins - " + Sections.SystemicVeins);
-			writer.WriteLine("AV Valves - " + Sections.AVValves);
 			writer.WriteLine("Atria - " + Sections.Atria);
+			writer.WriteLine("AV Valves - " + Sections.AVValves);
 			writer.WriteLine("Ventricles - " + Sections.Ventricles);
 			writer.WriteLine("Outlets - " + Sections.Outlets);
 			writer.WriteLine("Great Arteries - " + Sections.GreatArteries);
@@ -98,7 +106,7 @@ namespace DICOMReporting.Data {
 			writer.WriteLine("Other - " + Sections.Other);
 			writer.WriteLine("");
 			writer.WriteLine("");
-			writer.WriteLine("Conclusions - " + ReportingOptions.Conclusion.Value);
+			writer.WriteLine("Conclusions -");
 			writer.WriteLine(Sections.Conclusion);
 			writer.WriteLine("");
 			writer.WriteLine("");

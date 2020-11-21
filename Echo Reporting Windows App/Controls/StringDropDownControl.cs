@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DICOMReporting.Data;
 using DICOMReporting.Data.Results;
+using System.Windows.Forms.VisualStyles;
 
 namespace Echo_Reporting_Windows_App {
 	public partial class StringDropDownControl : UserControl {
@@ -24,15 +25,18 @@ namespace Echo_Reporting_Windows_App {
 			}
 			ResultPostfixLabel.Text = result.Postfix;
 			ResultValueComboBox.Items.Clear();
-			ResultValueComboBox.Items.AddRange(result.Options.ToArray());
-			ResultValueComboBox.SelectedIndex = 0;
-			ResultValueComboBox.DropDownWidth = 1;
-			foreach (var x in ResultValueComboBox.Items) {
-				int w = TextRenderer.MeasureText((string) x, Font).Width + 38;
-				if (ResultValueComboBox.DropDownWidth < w) {
-					ResultValueComboBox.DropDownWidth = w;
+			ResultValueComboBox.Width = 1;
+			foreach (var x in result.Options) {
+				int w = TextRenderer.MeasureText(x, ResultValueComboBox.Font).Width;
+				//int w = TextRenderer.MeasureText(x, ResultValueComboBox.Font, new Size(int.MaxValue, int.MaxValue), TextFormatFlags.WordEllipsis).Width;
+				//w += (int) (w * 0);
+				w += 30;
+				if (ResultValueComboBox.Width < w) {
+					ResultValueComboBox.Width = w;
 				}
 			}
+			ResultValueComboBox.Items.AddRange(result.Options.ToArray());
+			ResultValueComboBox.SelectedIndex = 0;
 		}
 
 		private void ResultValueComboBox_SelectedIndexChanged(object sender, EventArgs e) {
@@ -44,6 +48,10 @@ namespace Echo_Reporting_Windows_App {
 		}
 
 		private void ResultTitleLabel_Click(object sender, EventArgs e) {
+
+		}
+
+		private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e) {
 
 		}
 	}

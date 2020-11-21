@@ -288,7 +288,7 @@ namespace DICOMReporting.Data {
 		public MultipleChoiceResult PercardialEffusion = new MultipleChoiceResult("", new List<string>() {  "",
 																											"Small",
 																											"Moderate",
-																											"Large" }, "pericardial effusion" );
+																											"Large" }, "percardial effusion" );
 		// Conclusion
 		public MultipleChoiceResult Conclusion = new MultipleChoiceResult("Conclusion:", new List<string>() {	"Normal",
 																												"Normal with PFO",
