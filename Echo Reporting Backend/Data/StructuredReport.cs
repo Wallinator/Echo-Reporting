@@ -1,6 +1,5 @@
 ﻿using DICOMReporting.Data.Measurements;
 using DICOMReporting.Data.Results;
-using DICOMReporting.Formulas;
 using Echo_Reporting_Backend.Data;
 using System;
 using System.Collections.Generic;
@@ -23,9 +22,14 @@ namespace DICOMReporting.Data {
 			get;
 			set;
 		}
-		public void WriteGeneratedReport(Stream stream) {
+		public void WriteGeneratedReport(Stream stream, string html) {
 			var writer = new StreamWriter(stream);
-			var pd = PatientData;
+			writer.WriteLine(html);
+			writer.Close();
+		}
+		/*public void WriteGeneratedReport(Stream stream) {
+				var writer = new StreamWriter(stream);
+				var pd = PatientData;
 			List<string> l1, l2, l3;
 			writer.WriteLine("Patient Data - ");
 			l1 = pd.PatientID.TableString();
@@ -113,7 +117,7 @@ namespace DICOMReporting.Data {
 			writer.WriteLine("Reporting - " + Sections.SignOff);
 			writer.Close();
 		}
-
+*/
 		public StructuredReport(PatientData patientData, Dictionary<string, List<MeasurementGroup>> findings, ReportingOptions options) {
 			ReportingOptions = options;
 			PatientData = patientData;

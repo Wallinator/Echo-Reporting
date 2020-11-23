@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 using DICOMReporting.Data;
+using PuppeteerSharp;
+using System.Diagnostics;
 
 namespace Echo_Reporting_Windows_App {
 	public partial class ReportForm : Form {
@@ -78,22 +80,39 @@ namespace Echo_Reporting_Windows_App {
 		}
 
 		private void generateReportToolStripMenuItem_Click(object sender, EventArgs e) {
+
+
 			var name = _report.PatientData.PatientID.Value;
 			// ch
 			var date = _report.PatientData.StudyDate.Value.Replace("/","-");
 			saveFileDialog1.FileName = name + " Echo " + date;
+			saveFileDialog1.DefaultExt = "pdf";
+			saveFileDialog1.Filter = "Pdf Files(*.pdf)| *.pdf | All files | *.*";
 			if (saveFileDialog1.ShowDialog() == DialogResult.OK) {
 				var stream = saveFileDialog1.OpenFile();
 				if (stream != null) {
-					_report.WriteGeneratedReport(stream);
+					//_report.WriteGeneratedReport(stream);
 					stream.Close();
+					var html = ReportGenerator.GenerateHTML(_report);
+					ToPDF(html, saveFileDialog1.FileName);
 				}
 				else {
 					MessageBox.Show("The selected file is invalid or in an unsupported format.", "Error - Invalid DICOM File", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 		}
-
+		private async void ToPDF(string html, string fileName) {
+			await new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision);
+			var browser = await Puppeteer.LaunchAsync(new LaunchOptions {
+				Headless = true
+			});
+			using (var page = await browser.NewPageAsync()) {
+				await page.SetContentAsync(html);
+				var result = await page.GetContentAsync();
+				Debug.WriteLine("browser result: " + result);
+				await page.PdfAsync(fileName);
+			}
+		}
 		private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
 
 		}
