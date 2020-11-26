@@ -128,6 +128,7 @@ namespace Echo_Reporting_Backend.Data {
 			html += string.Format(@"<div><span style = ""font-weight: bold;""> Great Arteries - </span>{0}</div> ", report.Sections.GreatArteries);
 			html += string.Format(@"<div><span style = ""font-weight: bold;""> Pulmonary Veins - </span>{0}</div> ", report.Sections.PulmonaryVeins);
 			html += string.Format(@"<div><span style = ""font-weight: bold;""> Coronary Arteries - </span>{0}</div> ", report.Sections.CoronaryArteries);
+			html += string.Format(@"<div><span style = ""font-weight: bold;""> Other - </span>{0}</div> ", report.Sections.Other);
 
 			html += @"<div></div><br/><div><span style = ""font-weight: bold; text-decoration-line: underline;""> Conclusions </span></div>";
 			html += string.Format(@"<div>{0}</div><div><br/>", report.Sections.Conclusion);
@@ -141,7 +142,10 @@ namespace Echo_Reporting_Backend.Data {
 			html += string.Format("<tr><td style = \"height: 0px; width: 0px;\">{0}</td>", l1[0]);
 			html += "<td style = \"text-align: center; height: 0px; width: 0px;\"> -</td>";
 			html += string.Format("<td style = \"text-align: right; height: 0px; width: 0px;\">{0}</td>", l1[1]);
-			html += @" <td style = ""height: 0px; width: 0px; text-align: center;""> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			html += @" <td style = ""height: 0px; width: 0px; text-align: center;""> 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<span style = ""white-space:pre""></span></td>";
 			html += string.Format("<td style = \"height: 0px; width: 0px;\">{0}</td>", l2[0]);
 			html += "<td style = \"text-align: center; height: 0px; width: 0px;\"> -</td>";

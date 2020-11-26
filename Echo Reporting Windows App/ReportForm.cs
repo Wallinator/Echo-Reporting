@@ -11,7 +11,7 @@ using System.IO;
 using System.Windows.Forms;
 using DICOMReporting.Data;
 using PuppeteerSharp;
-using System.Diagnostics;
+using System.Diagnostics;	
 
 namespace Echo_Reporting_Windows_App {
 	public partial class ReportForm : Form {
@@ -79,30 +79,54 @@ namespace Echo_Reporting_Windows_App {
 
 		}
 
-		private void generateReportToolStripMenuItem_Click(object sender, EventArgs e) {
-
-
+		private void GenerateReport(bool asPDF) {
 			var name = _report.PatientData.PatientID.Value;
 			// ch
 			var date = _report.PatientData.StudyDate.Value.Replace("/","-");
 			saveFileDialog1.FileName = name + " Echo " + date;
-			saveFileDialog1.DefaultExt = "pdf";
-			saveFileDialog1.Filter = "Pdf Files(*.pdf)| *.pdf | All files | *.*";
+			if (asPDF) {
+				saveFileDialog1.DefaultExt = "pdf";
+				saveFileDialog1.Filter = "Pdf Files(*.pdf)| *.pdf | All files | *.*";
+			}
+			else {
+				saveFileDialog1.DefaultExt = "html";
+				saveFileDialog1.Filter = "Html Files(*.html)| *.html | All files | *.*";
+			}
+			var html = ReportGenerator.GenerateHTML(_report);
 			if (saveFileDialog1.ShowDialog() == DialogResult.OK) {
 				var stream = saveFileDialog1.OpenFile();
 				if (stream != null) {
-					//_report.WriteGeneratedReport(stream);
-					stream.Close();
-					var html = ReportGenerator.GenerateHTML(_report);
-					ToPDF(html, saveFileDialog1.FileName);
+					if (asPDF) {
+						stream.Close();
+						PuppeteerToPDF(html, saveFileDialog1.FileName);
+					}
+					else {
+						_report.WriteGeneratedReport(stream, html);
+						stream.Close();
+					}
 				}
 				else {
-					MessageBox.Show("The selected file is invalid or in an unsupported format.", "Error - Invalid DICOM File", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("The File Saving has failed.", "Error - Cannot Save File", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
+		}/*
+		private void SpireToPDF(string html, Stream stream) {
+			var doc = new PdfDocument();
+			var format = new PdfHtmlLayoutFormat();
+			format.IsWaiting = false;
+			var settings = new PdfPageSettings();
+			settings.Size = PdfPageSize.A4;
+			doc.LoadFromHTML(html, false, settings, format);
+			doc.SaveToStream(stream, FileFormat.PDF);
+
 		}
-		private async void ToPDF(string html, string fileName) {
-			await new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision);
+		private void GemBoxToPDF(string html, Stream stream) {
+			var doc = new DocumentModel();
+			//doc.Content.LoadText(html, new HtmlLoadOptions());
+			doc.Save(stream, new PdfSaveOptions());
+		}*/
+		private async void PuppeteerToPDF(string html, string fileName) {
+				await new BrowserFetcher().DownloadAsync(BrowserFetcher.DefaultRevision);
 			var browser = await Puppeteer.LaunchAsync(new LaunchOptions {
 				Headless = true
 			});
@@ -115,6 +139,14 @@ namespace Echo_Reporting_Windows_App {
 		}
 		private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
 
+		}
+
+		private void asPDFToolStripMenuItem_Click(object sender, EventArgs e) {
+			GenerateReport(true);
+		}
+
+		private void asHTMLToolStripMenuItem_Click(object sender, EventArgs e) {
+			GenerateReport(false);
 		}
 	}
 }

@@ -335,8 +335,8 @@ namespace Echo_Reporting_Windows_App {
 			#endregion
 			// Other
 			#region
-			NoPercardialEffusionPanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.NoPercardialEffusion));
-			PercardialEffusionPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.PercardialEffusion));
+			NoPerciardialEffusionPanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.NoPerciardialEffusion));
+			PerciardialEffusionPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.PerciardialEffusion));
 
 			#endregion
 			// Conclusion	
@@ -617,8 +617,8 @@ namespace Echo_Reporting_Windows_App {
 			#endregion
 			// Other	
 			#region
-			NoPercardialEffusionPanel.Controls.Clear();
-			PercardialEffusionPanel.Controls.Clear();
+			NoPerciardialEffusionPanel.Controls.Clear();
+			PerciardialEffusionPanel.Controls.Clear();
 
 			#endregion
 			// Conclusion	

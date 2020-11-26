@@ -283,12 +283,12 @@ namespace DICOMReporting.Data {
 																										"RCA not well seen",
 																										"Not evaluated" }, "", true );
 		//Other
-		public BoolResult NoPercardialEffusion = new BoolResult("No percardial effusion", "", true);
+		public BoolResult NoPerciardialEffusion = new BoolResult("No perciardial effusion", "", true);
 
-		public MultipleChoiceResult PercardialEffusion = new MultipleChoiceResult("", new List<string>() {  "",
+		public MultipleChoiceResult PerciardialEffusion = new MultipleChoiceResult("", new List<string>() {  "",
 																											"Small",
 																											"Moderate",
-																											"Large" }, "percardial effusion" );
+																											"Large" }, "perciardial effusion" );
 		// Conclusion
 		public MultipleChoiceResult Conclusion = new MultipleChoiceResult("Conclusion:", new List<string>() {	"Normal",
 																												"Normal with PFO",

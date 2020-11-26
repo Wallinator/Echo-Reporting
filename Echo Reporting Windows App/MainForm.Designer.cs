@@ -172,8 +172,8 @@
 			this.groupBox13 = new System.Windows.Forms.GroupBox();
 			this.ConclusionPanel = new System.Windows.Forms.Panel();
 			this.groupBox12 = new System.Windows.Forms.GroupBox();
-			this.PercardialEffusionPanel = new System.Windows.Forms.Panel();
-			this.NoPercardialEffusionPanel = new System.Windows.Forms.Panel();
+			this.PerciardialEffusionPanel = new System.Windows.Forms.Panel();
+			this.NoPerciardialEffusionPanel = new System.Windows.Forms.Panel();
 			this.groupBox11 = new System.Windows.Forms.GroupBox();
 			this.LeftCircumflexPanel = new System.Windows.Forms.Panel();
 			this.RightCoronaryPanel = new System.Windows.Forms.Panel();
@@ -1537,8 +1537,8 @@
 			// 
 			// groupBox12
 			// 
-			this.groupBox12.Controls.Add(this.PercardialEffusionPanel);
-			this.groupBox12.Controls.Add(this.NoPercardialEffusionPanel);
+			this.groupBox12.Controls.Add(this.PerciardialEffusionPanel);
+			this.groupBox12.Controls.Add(this.NoPerciardialEffusionPanel);
 			this.groupBox12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.groupBox12.Location = new System.Drawing.Point(27, 4835);
 			this.groupBox12.Name = "groupBox12";
@@ -1547,19 +1547,19 @@
 			this.groupBox12.TabStop = false;
 			this.groupBox12.Text = "Other";
 			// 
-			// PercardialEffusionPanel
+			// PerciardialEffusionPanel
 			// 
-			this.PercardialEffusionPanel.Location = new System.Drawing.Point(23, 73);
-			this.PercardialEffusionPanel.Name = "PercardialEffusionPanel";
-			this.PercardialEffusionPanel.Size = new System.Drawing.Size(443, 26);
-			this.PercardialEffusionPanel.TabIndex = 4;
+			this.PerciardialEffusionPanel.Location = new System.Drawing.Point(23, 73);
+			this.PerciardialEffusionPanel.Name = "PerciardialEffusionPanel";
+			this.PerciardialEffusionPanel.Size = new System.Drawing.Size(443, 26);
+			this.PerciardialEffusionPanel.TabIndex = 4;
 			// 
-			// NoPercardialEffusionPanel
+			// NoPerciardialEffusionPanel
 			// 
-			this.NoPercardialEffusionPanel.Location = new System.Drawing.Point(23, 41);
-			this.NoPercardialEffusionPanel.Name = "NoPercardialEffusionPanel";
-			this.NoPercardialEffusionPanel.Size = new System.Drawing.Size(443, 26);
-			this.NoPercardialEffusionPanel.TabIndex = 3;
+			this.NoPerciardialEffusionPanel.Location = new System.Drawing.Point(23, 41);
+			this.NoPerciardialEffusionPanel.Name = "NoPerciardialEffusionPanel";
+			this.NoPerciardialEffusionPanel.Size = new System.Drawing.Size(443, 26);
+			this.NoPerciardialEffusionPanel.TabIndex = 3;
 			// 
 			// groupBox11
 			// 
@@ -2204,8 +2204,8 @@
 		private System.Windows.Forms.GroupBox groupBox10;
 		private System.Windows.Forms.Panel PulmonaryVeinsPanel;
 		private System.Windows.Forms.GroupBox groupBox12;
-		private System.Windows.Forms.Panel PercardialEffusionPanel;
-		private System.Windows.Forms.Panel NoPercardialEffusionPanel;
+		private System.Windows.Forms.Panel PerciardialEffusionPanel;
+		private System.Windows.Forms.Panel NoPerciardialEffusionPanel;
 		private System.Windows.Forms.GroupBox groupBox11;
 		private System.Windows.Forms.Panel AnteriorCoronaryPanel;
 		private System.Windows.Forms.Panel LeftMainCoronaryPanel;

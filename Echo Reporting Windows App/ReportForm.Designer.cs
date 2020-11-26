@@ -55,6 +55,8 @@
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.generateReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+			this.asPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.asHTMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
@@ -437,10 +439,12 @@
 			// 
 			// generateReportToolStripMenuItem
 			// 
+			this.generateReportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.asPDFToolStripMenuItem,
+            this.asHTMLToolStripMenuItem});
 			this.generateReportToolStripMenuItem.Name = "generateReportToolStripMenuItem";
-			this.generateReportToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-			this.generateReportToolStripMenuItem.Text = "Generate Report...";
-			this.generateReportToolStripMenuItem.Click += new System.EventHandler(this.generateReportToolStripMenuItem_Click);
+			this.generateReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.generateReportToolStripMenuItem.Text = "Generate Report";
 			// 
 			// saveFileDialog1
 			// 
@@ -448,6 +452,20 @@
 			this.saveFileDialog1.Filter = "Text Files(*.txt)| *.txt | All files | *.*";
 			this.saveFileDialog1.FilterIndex = 2;
 			this.saveFileDialog1.Title = "Generate Report...";
+			// 
+			// asPDFToolStripMenuItem
+			// 
+			this.asPDFToolStripMenuItem.Name = "asPDFToolStripMenuItem";
+			this.asPDFToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.asPDFToolStripMenuItem.Text = "As PDF...";
+			this.asPDFToolStripMenuItem.Click += new System.EventHandler(this.asPDFToolStripMenuItem_Click);
+			// 
+			// asHTMLToolStripMenuItem
+			// 
+			this.asHTMLToolStripMenuItem.Name = "asHTMLToolStripMenuItem";
+			this.asHTMLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.asHTMLToolStripMenuItem.Text = "As HTML...";
+			this.asHTMLToolStripMenuItem.Click += new System.EventHandler(this.asHTMLToolStripMenuItem_Click);
 			// 
 			// ReportForm
 			// 
@@ -502,5 +520,7 @@
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem generateReportToolStripMenuItem;
 		private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+		private System.Windows.Forms.ToolStripMenuItem asPDFToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem asHTMLToolStripMenuItem;
 	}
 }
