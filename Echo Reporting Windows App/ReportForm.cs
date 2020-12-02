@@ -11,7 +11,9 @@ using System.IO;
 using System.Windows.Forms;
 using DICOMReporting.Data;
 using PuppeteerSharp;
-using System.Diagnostics;	
+using System.Diagnostics;
+using PuppeteerSharp.Media;
+using System.Windows.Forms.VisualStyles;
 
 namespace Echo_Reporting_Windows_App {
 	public partial class ReportForm : Form {
@@ -134,7 +136,11 @@ namespace Echo_Reporting_Windows_App {
 				await page.SetContentAsync(html);
 				var result = await page.GetContentAsync();
 				Debug.WriteLine("browser result: " + result);
-				await page.PdfAsync(fileName);
+				var options = new PdfOptions();
+				var margins = new MarginOptions();
+				options.MarginOptions.Left = "25";
+				options.MarginOptions.Right = "25";
+				await page.PdfAsync(fileName, options);
 			}
 		}
 		private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
@@ -147,6 +153,122 @@ namespace Echo_Reporting_Windows_App {
 
 		private void asHTMLToolStripMenuItem_Click(object sender, EventArgs e) {
 			GenerateReport(false);
+		}
+
+		private void contextMenuStrip1_Opening(object sender, CancelEventArgs e) {
+
+		}
+
+		private void SitusTextBox_TextChanged(object sender, EventArgs e) {
+
+		}
+
+		private void ConclusionTextBox_TextChanged(object sender, EventArgs e) {
+
+		}
+
+		private void label12_Click(object sender, EventArgs e) {
+
+		}
+
+		private void ReportingTextBox_TextChanged(object sender, EventArgs e) {
+
+		}
+
+		private void label99_Click(object sender, EventArgs e) {
+
+		}
+
+		private void OtherTextBox_TextChanged(object sender, EventArgs e) {
+
+		}
+
+		private void label10_Click(object sender, EventArgs e) {
+
+		}
+
+		private void CoronaryArteriesTextBox_TextChanged(object sender, EventArgs e) {
+
+		}
+
+		private void label9_Click(object sender, EventArgs e) {
+
+		}
+
+		private void PulmonaryVeinsTextBox_TextChanged(object sender, EventArgs e) {
+
+		}
+
+		private void label8_Click(object sender, EventArgs e) {
+
+		}
+
+		private void GreatArteriesTextBox_TextChanged(object sender, EventArgs e) {
+
+		}
+
+		private void label6_Click(object sender, EventArgs e) {
+
+		}
+
+		private void OutletsTextBox_TextChanged(object sender, EventArgs e) {
+
+		}
+
+		private void label7_Click(object sender, EventArgs e) {
+
+		}
+
+		private void VentriclesTextBox_TextChanged(object sender, EventArgs e) {
+
+		}
+
+		private void label5_Click(object sender, EventArgs e) {
+
+		}
+
+		private void AVValvesTextBox_TextChanged(object sender, EventArgs e) {
+
+		}
+
+		private void label4_Click(object sender, EventArgs e) {
+
+		}
+
+		private void AtriaTextBox_TextChanged(object sender, EventArgs e) {
+
+		}
+
+		private void label1_Click(object sender, EventArgs e) {
+
+		}
+
+		private void label2_Click(object sender, EventArgs e) {
+
+		}
+
+		private void SystemicVeinsTextbox_TextChanged(object sender, EventArgs e) {
+
+		}
+
+		private void label3_Click(object sender, EventArgs e) {
+
+		}
+
+		private void panel1_Paint(object sender, PaintEventArgs e) {
+
+		}
+
+		private void fileToolStripMenuItem_Click(object sender, EventArgs e) {
+
+		}
+
+		private void generateReportToolStripMenuItem_Click(object sender, EventArgs e) {
+
+		}
+
+		private void saveFileDialog1_FileOk(object sender, CancelEventArgs e) {
+
 		}
 	}
 }

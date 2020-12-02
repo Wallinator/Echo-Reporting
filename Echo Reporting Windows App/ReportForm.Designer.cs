@@ -54,9 +54,9 @@
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.generateReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
 			this.asPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.asHTMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
@@ -66,6 +66,7 @@
 			// 
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
 			this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+			this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
 			// 
 			// tableLayoutPanel1
 			// 
@@ -97,8 +98,8 @@
 			this.tableLayoutPanel1.Controls.Add(this.SystemicVeinsTextbox, 0, 3);
 			this.tableLayoutPanel1.Controls.Add(this.label3, 0, 4);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel1.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+			this.tableLayoutPanel1.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 30);
 			this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
@@ -128,7 +129,7 @@
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(888, 404);
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(871, 387);
 			this.tableLayoutPanel1.TabIndex = 6;
 			this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
 			// 
@@ -141,227 +142,247 @@
 			this.SitusTextBox.Multiline = true;
 			this.SitusTextBox.Name = "SitusTextBox";
 			this.SitusTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.SitusTextBox.Size = new System.Drawing.Size(845, 97);
+			this.SitusTextBox.Size = new System.Drawing.Size(845, 43);
 			this.SitusTextBox.TabIndex = 30;
+			this.SitusTextBox.TextChanged += new System.EventHandler(this.SitusTextBox_TextChanged);
 			// 
 			// ReportingTextBox
 			// 
 			this.ReportingTextBox.AcceptsReturn = true;
 			this.ReportingTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.ReportingTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.ReportingTextBox.Location = new System.Drawing.Point(3, 1290);
+			this.ReportingTextBox.Location = new System.Drawing.Point(3, 1120);
 			this.ReportingTextBox.Multiline = true;
 			this.ReportingTextBox.Name = "ReportingTextBox";
 			this.ReportingTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.ReportingTextBox.Size = new System.Drawing.Size(845, 46);
 			this.ReportingTextBox.TabIndex = 29;
+			this.ReportingTextBox.TextChanged += new System.EventHandler(this.ReportingTextBox_TextChanged);
 			// 
 			// label12
 			// 
 			this.label12.AutoSize = true;
 			this.label12.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label12.Location = new System.Drawing.Point(3, 1274);
+			this.label12.Location = new System.Drawing.Point(3, 1104);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(845, 13);
 			this.label12.TabIndex = 28;
 			this.label12.Text = "Reporting";
+			this.label12.Click += new System.EventHandler(this.label12_Click);
 			// 
 			// ConclusionTextBox
 			// 
 			this.ConclusionTextBox.AcceptsReturn = true;
 			this.ConclusionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.ConclusionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.ConclusionTextBox.Location = new System.Drawing.Point(3, 1186);
+			this.ConclusionTextBox.Location = new System.Drawing.Point(3, 1016);
 			this.ConclusionTextBox.Multiline = true;
 			this.ConclusionTextBox.Name = "ConclusionTextBox";
 			this.ConclusionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.ConclusionTextBox.Size = new System.Drawing.Size(845, 78);
 			this.ConclusionTextBox.TabIndex = 27;
+			this.ConclusionTextBox.TextChanged += new System.EventHandler(this.ConclusionTextBox_TextChanged);
 			// 
 			// label99
 			// 
 			this.label99.AutoSize = true;
 			this.label99.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.label99.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label99.Location = new System.Drawing.Point(3, 1170);
+			this.label99.Location = new System.Drawing.Point(3, 1000);
 			this.label99.Name = "label99";
 			this.label99.Size = new System.Drawing.Size(845, 13);
 			this.label99.TabIndex = 26;
 			this.label99.Text = "Conclusion";
+			this.label99.Click += new System.EventHandler(this.label99_Click);
 			// 
 			// OtherTextBox
 			// 
 			this.OtherTextBox.AcceptsReturn = true;
 			this.OtherTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.OtherTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.OtherTextBox.Location = new System.Drawing.Point(3, 1113);
+			this.OtherTextBox.Location = new System.Drawing.Point(3, 943);
 			this.OtherTextBox.Multiline = true;
 			this.OtherTextBox.Name = "OtherTextBox";
 			this.OtherTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.OtherTextBox.Size = new System.Drawing.Size(845, 47);
 			this.OtherTextBox.TabIndex = 25;
+			this.OtherTextBox.TextChanged += new System.EventHandler(this.OtherTextBox_TextChanged);
 			// 
 			// label10
 			// 
 			this.label10.AutoSize = true;
 			this.label10.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label10.Location = new System.Drawing.Point(3, 1097);
+			this.label10.Location = new System.Drawing.Point(3, 927);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(845, 13);
 			this.label10.TabIndex = 24;
 			this.label10.Text = "Other";
+			this.label10.Click += new System.EventHandler(this.label10_Click);
 			// 
 			// CoronaryArteriesTextBox
 			// 
 			this.CoronaryArteriesTextBox.AcceptsReturn = true;
 			this.CoronaryArteriesTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.CoronaryArteriesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.CoronaryArteriesTextBox.Location = new System.Drawing.Point(3, 1028);
+			this.CoronaryArteriesTextBox.Location = new System.Drawing.Point(3, 858);
 			this.CoronaryArteriesTextBox.Multiline = true;
 			this.CoronaryArteriesTextBox.Name = "CoronaryArteriesTextBox";
 			this.CoronaryArteriesTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.CoronaryArteriesTextBox.Size = new System.Drawing.Size(845, 59);
 			this.CoronaryArteriesTextBox.TabIndex = 23;
+			this.CoronaryArteriesTextBox.TextChanged += new System.EventHandler(this.CoronaryArteriesTextBox_TextChanged);
 			// 
 			// label9
 			// 
 			this.label9.AutoSize = true;
 			this.label9.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label9.Location = new System.Drawing.Point(3, 1012);
+			this.label9.Location = new System.Drawing.Point(3, 842);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(845, 13);
 			this.label9.TabIndex = 22;
 			this.label9.Text = "Coronary Arteries";
+			this.label9.Click += new System.EventHandler(this.label9_Click);
 			// 
 			// PulmonaryVeinsTextBox
 			// 
 			this.PulmonaryVeinsTextBox.AcceptsReturn = true;
 			this.PulmonaryVeinsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PulmonaryVeinsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.PulmonaryVeinsTextBox.Location = new System.Drawing.Point(3, 948);
+			this.PulmonaryVeinsTextBox.Location = new System.Drawing.Point(3, 778);
 			this.PulmonaryVeinsTextBox.Multiline = true;
 			this.PulmonaryVeinsTextBox.Name = "PulmonaryVeinsTextBox";
 			this.PulmonaryVeinsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.PulmonaryVeinsTextBox.Size = new System.Drawing.Size(845, 54);
 			this.PulmonaryVeinsTextBox.TabIndex = 21;
+			this.PulmonaryVeinsTextBox.TextChanged += new System.EventHandler(this.PulmonaryVeinsTextBox_TextChanged);
 			// 
 			// label8
 			// 
 			this.label8.AutoSize = true;
 			this.label8.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label8.Location = new System.Drawing.Point(3, 932);
+			this.label8.Location = new System.Drawing.Point(3, 762);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(845, 13);
 			this.label8.TabIndex = 20;
 			this.label8.Text = "Pulmonary Veins";
+			this.label8.Click += new System.EventHandler(this.label8_Click);
 			// 
 			// GreatArteriesTextBox
 			// 
 			this.GreatArteriesTextBox.AcceptsReturn = true;
 			this.GreatArteriesTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.GreatArteriesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.GreatArteriesTextBox.Location = new System.Drawing.Point(3, 808);
+			this.GreatArteriesTextBox.Location = new System.Drawing.Point(3, 638);
 			this.GreatArteriesTextBox.Multiline = true;
 			this.GreatArteriesTextBox.Name = "GreatArteriesTextBox";
 			this.GreatArteriesTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.GreatArteriesTextBox.Size = new System.Drawing.Size(845, 114);
 			this.GreatArteriesTextBox.TabIndex = 19;
+			this.GreatArteriesTextBox.TextChanged += new System.EventHandler(this.GreatArteriesTextBox_TextChanged);
 			// 
 			// label6
 			// 
 			this.label6.AutoSize = true;
 			this.label6.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label6.Location = new System.Drawing.Point(3, 792);
+			this.label6.Location = new System.Drawing.Point(3, 622);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(845, 13);
 			this.label6.TabIndex = 18;
 			this.label6.Text = "Great Arteries";
+			this.label6.Click += new System.EventHandler(this.label6_Click);
 			// 
 			// OutletsTextBox
 			// 
 			this.OutletsTextBox.AcceptsReturn = true;
 			this.OutletsTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.OutletsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.OutletsTextBox.Location = new System.Drawing.Point(3, 680);
+			this.OutletsTextBox.Location = new System.Drawing.Point(3, 510);
 			this.OutletsTextBox.Multiline = true;
 			this.OutletsTextBox.Name = "OutletsTextBox";
 			this.OutletsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.OutletsTextBox.Size = new System.Drawing.Size(845, 102);
 			this.OutletsTextBox.TabIndex = 17;
+			this.OutletsTextBox.TextChanged += new System.EventHandler(this.OutletsTextBox_TextChanged);
 			// 
 			// label7
 			// 
 			this.label7.AutoSize = true;
 			this.label7.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label7.Location = new System.Drawing.Point(3, 664);
+			this.label7.Location = new System.Drawing.Point(3, 494);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(845, 13);
 			this.label7.TabIndex = 16;
 			this.label7.Text = "Outlets";
+			this.label7.Click += new System.EventHandler(this.label7_Click);
 			// 
 			// VentriclesTextBox
 			// 
 			this.VentriclesTextBox.AcceptsReturn = true;
 			this.VentriclesTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.VentriclesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.VentriclesTextBox.Location = new System.Drawing.Point(3, 554);
+			this.VentriclesTextBox.Location = new System.Drawing.Point(3, 384);
 			this.VentriclesTextBox.Multiline = true;
 			this.VentriclesTextBox.Name = "VentriclesTextBox";
 			this.VentriclesTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.VentriclesTextBox.Size = new System.Drawing.Size(845, 100);
 			this.VentriclesTextBox.TabIndex = 15;
+			this.VentriclesTextBox.TextChanged += new System.EventHandler(this.VentriclesTextBox_TextChanged);
 			// 
 			// label5
 			// 
 			this.label5.AutoSize = true;
 			this.label5.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label5.Location = new System.Drawing.Point(3, 538);
+			this.label5.Location = new System.Drawing.Point(3, 368);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(845, 13);
 			this.label5.TabIndex = 14;
 			this.label5.Text = "Ventricles";
+			this.label5.Click += new System.EventHandler(this.label5_Click);
 			// 
 			// AVValvesTextBox
 			// 
 			this.AVValvesTextBox.AcceptsReturn = true;
 			this.AVValvesTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.AVValvesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.AVValvesTextBox.Location = new System.Drawing.Point(3, 426);
+			this.AVValvesTextBox.Location = new System.Drawing.Point(3, 256);
 			this.AVValvesTextBox.Multiline = true;
 			this.AVValvesTextBox.Name = "AVValvesTextBox";
 			this.AVValvesTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.AVValvesTextBox.Size = new System.Drawing.Size(845, 102);
 			this.AVValvesTextBox.TabIndex = 8;
+			this.AVValvesTextBox.TextChanged += new System.EventHandler(this.AVValvesTextBox_TextChanged);
 			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
 			this.label4.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label4.Location = new System.Drawing.Point(3, 410);
+			this.label4.Location = new System.Drawing.Point(3, 240);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(845, 13);
 			this.label4.TabIndex = 7;
 			this.label4.Text = "AV Valves";
+			this.label4.Click += new System.EventHandler(this.label4_Click);
 			// 
 			// AtriaTextBox
 			// 
 			this.AtriaTextBox.AcceptsReturn = true;
 			this.AtriaTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.AtriaTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.AtriaTextBox.Location = new System.Drawing.Point(3, 266);
+			this.AtriaTextBox.Location = new System.Drawing.Point(3, 163);
 			this.AtriaTextBox.Multiline = true;
 			this.AtriaTextBox.Name = "AtriaTextBox";
 			this.AtriaTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.AtriaTextBox.Size = new System.Drawing.Size(845, 134);
+			this.AtriaTextBox.Size = new System.Drawing.Size(845, 67);
 			this.AtriaTextBox.TabIndex = 4;
+			this.AtriaTextBox.TextChanged += new System.EventHandler(this.AtriaTextBox_TextChanged);
 			// 
 			// label1
 			// 
@@ -372,40 +393,44 @@
 			this.label1.Size = new System.Drawing.Size(79, 20);
 			this.label1.TabIndex = 1;
 			this.label1.Text = "Situs";
+			this.label1.Click += new System.EventHandler(this.label1_Click);
 			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
 			this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label2.Location = new System.Drawing.Point(3, 130);
+			this.label2.Location = new System.Drawing.Point(3, 76);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(845, 13);
 			this.label2.TabIndex = 3;
 			this.label2.Text = "Systemic Veins";
+			this.label2.Click += new System.EventHandler(this.label2_Click);
 			// 
 			// SystemicVeinsTextbox
 			// 
 			this.SystemicVeinsTextbox.AcceptsReturn = true;
 			this.SystemicVeinsTextbox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.SystemicVeinsTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.SystemicVeinsTextbox.Location = new System.Drawing.Point(3, 146);
+			this.SystemicVeinsTextbox.Location = new System.Drawing.Point(3, 92);
 			this.SystemicVeinsTextbox.Multiline = true;
 			this.SystemicVeinsTextbox.Name = "SystemicVeinsTextbox";
 			this.SystemicVeinsTextbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.SystemicVeinsTextbox.Size = new System.Drawing.Size(845, 94);
+			this.SystemicVeinsTextbox.Size = new System.Drawing.Size(845, 45);
 			this.SystemicVeinsTextbox.TabIndex = 2;
+			this.SystemicVeinsTextbox.TextChanged += new System.EventHandler(this.SystemicVeinsTextbox_TextChanged);
 			// 
 			// label3
 			// 
 			this.label3.AutoSize = true;
 			this.label3.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label3.Location = new System.Drawing.Point(3, 250);
+			this.label3.Location = new System.Drawing.Point(3, 147);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(845, 13);
 			this.label3.TabIndex = 5;
 			this.label3.Text = "Atria";
+			this.label3.Click += new System.EventHandler(this.label3_Click);
 			// 
 			// panel1
 			// 
@@ -415,16 +440,19 @@
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(888, 404);
+			this.panel1.Padding = new System.Windows.Forms.Padding(20, 30, 0, 0);
+			this.panel1.Size = new System.Drawing.Size(891, 417);
 			this.panel1.TabIndex = 6;
+			this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
 			// 
 			// menuStrip1
 			// 
+			this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlLight;
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(888, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(891, 24);
 			this.menuStrip1.TabIndex = 7;
 			this.menuStrip1.Text = "menuStrip1";
 			this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -436,6 +464,7 @@
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
 			this.fileToolStripMenuItem.Text = "File";
+			this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
 			// 
 			// generateReportToolStripMenuItem
 			// 
@@ -443,8 +472,23 @@
             this.asPDFToolStripMenuItem,
             this.asHTMLToolStripMenuItem});
 			this.generateReportToolStripMenuItem.Name = "generateReportToolStripMenuItem";
-			this.generateReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.generateReportToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
 			this.generateReportToolStripMenuItem.Text = "Generate Report";
+			this.generateReportToolStripMenuItem.Click += new System.EventHandler(this.generateReportToolStripMenuItem_Click);
+			// 
+			// asPDFToolStripMenuItem
+			// 
+			this.asPDFToolStripMenuItem.Name = "asPDFToolStripMenuItem";
+			this.asPDFToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+			this.asPDFToolStripMenuItem.Text = "As PDF...";
+			this.asPDFToolStripMenuItem.Click += new System.EventHandler(this.asPDFToolStripMenuItem_Click);
+			// 
+			// asHTMLToolStripMenuItem
+			// 
+			this.asHTMLToolStripMenuItem.Name = "asHTMLToolStripMenuItem";
+			this.asHTMLToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+			this.asHTMLToolStripMenuItem.Text = "As HTML...";
+			this.asHTMLToolStripMenuItem.Click += new System.EventHandler(this.asHTMLToolStripMenuItem_Click);
 			// 
 			// saveFileDialog1
 			// 
@@ -452,26 +496,13 @@
 			this.saveFileDialog1.Filter = "Text Files(*.txt)| *.txt | All files | *.*";
 			this.saveFileDialog1.FilterIndex = 2;
 			this.saveFileDialog1.Title = "Generate Report...";
-			// 
-			// asPDFToolStripMenuItem
-			// 
-			this.asPDFToolStripMenuItem.Name = "asPDFToolStripMenuItem";
-			this.asPDFToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.asPDFToolStripMenuItem.Text = "As PDF...";
-			this.asPDFToolStripMenuItem.Click += new System.EventHandler(this.asPDFToolStripMenuItem_Click);
-			// 
-			// asHTMLToolStripMenuItem
-			// 
-			this.asHTMLToolStripMenuItem.Name = "asHTMLToolStripMenuItem";
-			this.asHTMLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.asHTMLToolStripMenuItem.Text = "As HTML...";
-			this.asHTMLToolStripMenuItem.Click += new System.EventHandler(this.asHTMLToolStripMenuItem_Click);
+			this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
 			// 
 			// ReportForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(888, 404);
+			this.ClientSize = new System.Drawing.Size(891, 417);
 			this.Controls.Add(this.menuStrip1);
 			this.Controls.Add(this.panel1);
 			this.MainMenuStrip = this.menuStrip1;

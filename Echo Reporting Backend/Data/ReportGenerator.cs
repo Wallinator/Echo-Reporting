@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace Echo_Reporting_Backend.Data {
 	public static class ReportGenerator {
 		public static string GenerateHTML(StructuredReport report) {
+			int fontSize = 18;
 
 			List<string> l1, l2, l3;
 			var html = @"<html>
@@ -16,10 +17,18 @@ namespace Echo_Reporting_Backend.Data {
 				<link rel=""stylesheet"" href=""https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"" integrity=""sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"" crossorigin=""anonymous"">
 				<script src = ""https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"" integrity = ""sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"" crossorigin = ""anonymous""></script>
 				</head>";
-			html += @"<body>
-			<p></p>
-			<table style = ""border-collapse: collapse; width: 100%;"" cellpadding = ""0"">
-				<tbody>";
+
+			html += string.Format("<body style = \"font-size: {0}px;\">", fontSize);
+			html += @"<p></p><img src=""https://i.ibb.co/rH9fnT8/letterheadplain.jpg"" width=""100%"">";
+			/*html += @"<p></p>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>";*/
+			html += string.Format("<table style = \"border-collapse: collapse; font-size: {0}px; width: 100%;\" cellpadding = \"0\"><tbody>", fontSize);
 			var pd = report.PatientData;
 			string age = pd.PatientAge.Value.ToString("N0");
 			if (pd.PatientAge.Value < 1) {
@@ -56,19 +65,22 @@ namespace Echo_Reporting_Backend.Data {
 			html += @"
 			</tbody>
 			</table><br/>
-			<p><span style = ""font-size: 18.6667px; font-weight: 700; text-decoration-line: underline;""> Findings </span><br />
-			</p>
-			<table style = ""border-collapse: collapse;"" class=""table table-bordered"">
-				<tbody>
-					<tr>
-						<td style = ""text-align: left;""> Measure </td>
-						<td style=""text-align: left;"">(cm)<span style = ""white-space:pre""></span></td>
-						<td style=""text-align: left;"">Z Score</td>
-						<td style = ""text-align: left;""> Measure </td>
-						<td style= ""text-align: left;""></td>
-						<td style= ""text-align: left;""> Calculation </td>
-						<td style= ""text-align: left;""></td>
-					</tr>";
+			<p><span style = ""font-size: 24px; font-weight: 700; text-decoration-line: underline;"">Findings</span><br />
+			</p>";
+			html += string.Format("<table style = \"border-collapse: collapse; font-size: {0}px;\" class=\"table table-bordered table-sm\">", fontSize);
+			html += @"
+				<thead class=""thead-light"">
+					  <tr>
+						<th style = ""text-align: left;""> Measure </th>
+						<th style=""text-align: left;"">(cm)<span style = ""white-space:pre""></span></th>
+						<th style=""text-align: left;"">Z Score</th>
+						<th style = ""text-align: left;""> Measure </th>
+						<th style= ""text-align: left;""></th>
+						<th style= ""text-align: left;""> Calculation </th>
+						<th style= ""text-align: left;""></th>
+					</tr>
+				</thead>
+				<tbody>";
 			l1 = report.Results["IVSd"].AsString();
 			l2 = report.Results["Mitral valve E wave"].AsString();
 			l3 = report.Results["Fractional Shortening"].AsString();
@@ -116,9 +128,7 @@ namespace Echo_Reporting_Backend.Data {
 				</tbody>
 			</table>
 			<p></p>
-			<p><span style = ""font-weight: bold;""></span></p>
-			<p><br />
-				</p>";
+			<p></p>";
 			html += string.Format(@"<div><span style = ""font-weight: bold;""> Situs - </span>{0}", report.Sections.Situs);
 			html += string.Format(@"<div><span style = ""font-weight: bold;""> Systemic Veins - </span>{0}</div> ", report.Sections.SystemicVeins);
 			html += string.Format(@"<div><span style = ""font-weight: bold;""> Atria - </span>{0}</div> ", report.Sections.Atria);
@@ -143,6 +153,7 @@ namespace Echo_Reporting_Backend.Data {
 			html += "<td style = \"text-align: center; height: 0px; width: 0px;\"> -</td>";
 			html += string.Format("<td style = \"text-align: right; height: 0px; width: 0px;\">{0}</td>", l1[1]);
 			html += @" <td style = ""height: 0px; width: 0px; text-align: center;""> 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

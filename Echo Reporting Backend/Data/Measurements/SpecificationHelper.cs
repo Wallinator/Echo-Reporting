@@ -262,7 +262,7 @@ namespace DICOMReporting.Data.Measurements {
 			props.Clear();
 
 			props.Add("Image Mode", "Tissue Doppler Imaging");
-			specs.Add(new MeasurementSpecification("Mitral E/A ratio", "Peak E wave/Peak A wave by US", new Dictionary<string, string>(props), "%", formula: ImpactOfCardiacGrowthFormula.MitralEA_Ratio(pd, "Mitral E/A ratio")));
+			specs.Add(new MeasurementSpecification("Mitral E/A ratio", "Peak E wave/Peak A wave by US", new Dictionary<string, string>(props), "", formula: ImpactOfCardiacGrowthFormula.MitralEA_Ratio(pd, "Mitral E/A ratio")));
 			props.Clear();
 
 

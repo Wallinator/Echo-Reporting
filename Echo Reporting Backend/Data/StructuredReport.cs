@@ -155,15 +155,26 @@ namespace DICOMReporting.Data {
 		}
 
 		private void AddCalculatedValues() {
-			var r = Results["Pulmonary valve end diastolic velocity"];
-			Result final;
-			if (!r.Empty) {
-				final = new Result("Pulmonary valve end diastolic peak gradient", "", empty: false, value: 4 * Math.Pow(r.Value, 2));
+			var r1 = Results["Pulmonary valve end diastolic velocity"];
+			Result final1;
+			if (!r1.Empty) {
+				final1 = new Result("Pulmonary valve end diastolic peak gradient", "mmHg", empty: false, value: 4 * Math.Pow(r1.Value, 2));
 			}
 			else {
-				final = new Result("Pulmonary valve end diastolic peak gradient", "");
+				final1 = new Result("Pulmonary valve end diastolic peak gradient", "mmHg");
 			}
-			Results["Pulmonary valve end diastolic peak gradient"] = final;
+			Results["Pulmonary valve end diastolic peak gradient"] = final1;
+
+
+			var r2 = Results["Patent Ductus Arteriosus peak velocity systole"];
+			Result final2;
+			if (!r2.Empty) {
+				final2 = new Result("Patent Ductus Arteriosus peak gradient", "mmHg", empty: false, value: 4 * Math.Pow(r2.Value, 2));
+			}
+			else {
+				final2 = new Result("Patent Ductus Arteriosus peak gradient", "mmHg");
+			}
+			Results["Patent Ductus Arteriosus peak gradient"] = final2;
 		}
 	}
 }

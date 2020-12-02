@@ -42,29 +42,29 @@ namespace DICOMReporting.Data {
 					case "121033":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
 						try {
-							temp = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+							temp = HeaderFactory.Parse("Age", (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
 							SupportedUnitsHelpers.Convert(temp, DurationUnit.Year365);
 						}
 						catch (Exception) {
-							temp = new UnitHeaderAdapter(child.Code.Meaning, new Duration((double) measurementsequence.Value, DurationUnit.Year365));
+							temp = new UnitHeaderAdapter("Age", new Duration((double) measurementsequence.Value, DurationUnit.Year365));
 						}
 						Debug.WriteLine(temp);
 						PatientAge = new Result(temp);
 						break;
 					case "121032":
-						PatientSex = new StringResult("Patient Sex", child.Dataset.GetCodeItem(DicomTag.ConceptCodeSequence).Meaning);
+						PatientSex = new StringResult("Sex", child.Dataset.GetCodeItem(DicomTag.ConceptCodeSequence).Meaning);
 						Debug.WriteLine(PatientSex);
 						break;
 					case "8302-2":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
-						temp = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+						temp = HeaderFactory.Parse("Height", (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
 						SupportedUnitsHelpers.Convert(temp, LengthUnit.Centimeter);
 						Debug.WriteLine(temp);
 						PatientHeight = new Result(temp);
 						break;
 					case "29463-7":
 						measurementsequence = child.Dataset.GetMeasuredValue(DicomTag.MeasuredValueSequence);
-						temp = HeaderFactory.Parse(child.Code.Meaning, (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
+						temp = HeaderFactory.Parse("Weight", (double) measurementsequence.Value, measurementsequence.Code.Meaning, measurementsequence.Code.Value);
 						SupportedUnitsHelpers.Convert(temp, MassUnit.Kilogram);
 						Debug.WriteLine(temp);
 						PatientWeight = new Result(temp);
@@ -104,7 +104,7 @@ namespace DICOMReporting.Data {
 
 						var numbers = Regex.Split(input, @"\D+").ToList().GetRange(1, 3).Select(x => int.Parse(x)).ToArray();
 
-						PatientDOB = new StringResult("Patient DOB", new DateTime(numbers[0], numbers[1], numbers[2]).Date.ToShortDateString());
+						PatientDOB = new StringResult("DOB", new DateTime(numbers[0], numbers[1], numbers[2]).Date.ToShortDateString());
 
 						Debug.WriteLine(PatientDOB.Value);
 						break;
@@ -132,15 +132,15 @@ namespace DICOMReporting.Data {
 
 			IMeasurementHeader temp;
 
-			temp = new UnitHeaderAdapter("Patient Age", new Duration(0, DurationUnit.Year365));
+			temp = new UnitHeaderAdapter("Age", new Duration(0, DurationUnit.Year365));
 			PatientAge = new Result(temp, true);
 
-			PatientSex = new StringResult("Patient Sex");
+			PatientSex = new StringResult("Sex");
 
-			temp = new UnitHeaderAdapter("Patient Height", new Length(0, LengthUnit.Centimeter));
+			temp = new UnitHeaderAdapter("Height", new Length(0, LengthUnit.Centimeter));
 			PatientHeight = new Result(temp, true);
 
-			temp = new UnitHeaderAdapter("Patient Weight", new Mass(0, MassUnit.Kilogram));
+			temp = new UnitHeaderAdapter("Weight", new Mass(0, MassUnit.Kilogram));
 			PatientWeight = new Result(temp, true);
 
 			temp = new MeasurementHeader("Systolic Blood Pressure", 0, "", "mmHg");
@@ -153,7 +153,7 @@ namespace DICOMReporting.Data {
 			
 			PatientID = new StringResult("Patient ID");
 
-			PatientDOB = new StringResult("Patient DOB");
+			PatientDOB = new StringResult("DOB");
 
 			StudyDate = new StringResult("Study Date");
 

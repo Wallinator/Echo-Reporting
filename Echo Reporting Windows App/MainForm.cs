@@ -310,6 +310,7 @@ namespace Echo_Reporting_Windows_App {
 
 			PatentDuctusArteriosusPanel.Controls.Add(new ResultControl(report.Results["Patent Ductus Arteriosus"], showNotFoundError, this));
 			PatentDuctusArteriosusSysPanel.Controls.Add(new ResultControl(report.Results["Patent Ductus Arteriosus peak velocity systole"], showNotFoundError, this));
+			PDAGradientPanel.Controls.Add(new ResultControl(report.Results["Patent Ductus Arteriosus peak gradient"], showNotFoundError, this));
 			PatentDuctusArteriosusDiaPanel.Controls.Add(new ResultControl(report.Results["Patent Ductus Arteriosus peak velocity diastole"], showNotFoundError, this));
 
 			#endregion
@@ -592,6 +593,7 @@ namespace Echo_Reporting_Windows_App {
 
 			PatentDuctusArteriosusPanel.Controls.Clear();
 			PatentDuctusArteriosusSysPanel.Controls.Clear();
+			PDAGradientPanel.Controls.Clear();
 			PatentDuctusArteriosusDiaPanel.Controls.Clear();
 
 			#endregion

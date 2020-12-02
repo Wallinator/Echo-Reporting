@@ -239,6 +239,7 @@ namespace Echo_Reporting_Backend.Data {
 			GreatArteries += ResultToString(sr.Results["Patent Ductus Arteriosus"]);
 			GreatArteries += ResultToString(sr.Results["Patent Ductus Arteriosus peak velocity systole"]);
 			GreatArteries += ResultToString(sr.Results["Patent Ductus Arteriosus peak velocity diastole"]);
+			GreatArteries += ResultToString(sr.Results["Patent Ductus Arteriosus peak gradient"]);
 		}
 		private void SetCoronaryArteriesText(StructuredReport sr) {
 			CoronaryArteries = OptionsToString(sr.ReportingOptions.CoronaryArteries);
