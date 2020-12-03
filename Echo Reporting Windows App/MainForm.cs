@@ -13,14 +13,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Echo_Reporting_Backend.Data;
 using System.Data.Odbc;
+using System.Net.Http.Headers;
 
 namespace Echo_Reporting_Windows_App {
 	public partial class MainForm : Form {
 		private StructuredReport report = new StructuredReport();
 		private ReportForm reportForm = null;
-
+			
 		public MainForm() {
 			InitializeComponent();
+			foreach(var control in panel3.Controls) {
+				if (control is GroupBox g) {
+					var font = g.Font;
+					g.Font = new Font(Font.FontFamily, 12, Font.Style | FontStyle.Bold | FontStyle.Underline);
+					foreach (var child in g.Controls) {
+						if (child is Panel p) {
+							p.Font = font;
+						}
+					}
+				}
+			}
 			ShowAllResults();
 		}
 
@@ -96,7 +108,7 @@ namespace Echo_Reporting_Windows_App {
 			MVDecelTimePanel.Controls.Add(new ResultControl(report.Results["MV decel time"], showNotFoundError, this));
 			MitralAnnulusEPanel.Controls.Add(new ResultControl(report.Results["Mitral annulus E'"], showNotFoundError, this));
 			SeptalAnnulusEPanel.Controls.Add(new ResultControl(report.Results["Septal annulus E'"], showNotFoundError, this));
-			// RV E' LVPWsPanel.Controls.Add(new ResultControl(report.Results["LVPWs"], showNotFoundError, this)); 
+			RVEPanel.Controls.Add(new ResultControl(report.Results["RV E'"], showNotFoundError, this)); 
 
 			FractionalShorteningPanel.Controls.Add(new ResultControl(report.Results["Fractional Shortening"], showNotFoundError, this));
 			LVTeichholzEFPanel.Controls.Add(new ResultControl(report.Results["Left Ventricular Teichholz EF"], showNotFoundError, this));
@@ -382,7 +394,7 @@ namespace Echo_Reporting_Windows_App {
 			MVDecelTimePanel.Controls.Clear();
 			MitralAnnulusEPanel.Controls.Clear();
 			SeptalAnnulusEPanel.Controls.Clear();
-			// RV E' panel7.Controls.Clear();
+			RVEPanel.Controls.Clear();
 
 			FractionalShorteningPanel.Controls.Clear();
 			LVTeichholzEFPanel.Controls.Clear();

@@ -57,9 +57,14 @@
 			this.asPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.asHTMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+			this.panel2 = new System.Windows.Forms.Panel();
+			this.FontSizeBox = new System.Windows.Forms.NumericUpDown();
+			this.label11 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
+			this.panel2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.FontSizeBox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// contextMenuStrip1
@@ -97,6 +102,7 @@
 			this.tableLayoutPanel1.Controls.Add(this.label2, 0, 2);
 			this.tableLayoutPanel1.Controls.Add(this.SystemicVeinsTextbox, 0, 3);
 			this.tableLayoutPanel1.Controls.Add(this.label3, 0, 4);
+			this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 24);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel1.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 30);
@@ -498,6 +504,37 @@
 			this.saveFileDialog1.Title = "Generate Report...";
 			this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
 			// 
+			// panel2
+			// 
+			this.panel2.Controls.Add(this.label11);
+			this.panel2.Controls.Add(this.FontSizeBox);
+			this.panel2.Location = new System.Drawing.Point(3, 1172);
+			this.panel2.Name = "panel2";
+			this.panel2.Size = new System.Drawing.Size(845, 94);
+			this.panel2.TabIndex = 31;
+			this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+			// 
+			// FontSizeBox
+			// 
+			this.FontSizeBox.Location = new System.Drawing.Point(79, 32);
+			this.FontSizeBox.Name = "FontSizeBox";
+			this.FontSizeBox.Size = new System.Drawing.Size(45, 20);
+			this.FontSizeBox.TabIndex = 0;
+			this.FontSizeBox.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(22, 34);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(51, 13);
+			this.label11.TabIndex = 1;
+			this.label11.Text = "Font Size";
+			// 
 			// ReportForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -514,6 +551,9 @@
 			this.panel1.ResumeLayout(false);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
+			this.panel2.ResumeLayout(false);
+			this.panel2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.FontSizeBox)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -553,5 +593,8 @@
 		private System.Windows.Forms.SaveFileDialog saveFileDialog1;
 		private System.Windows.Forms.ToolStripMenuItem asPDFToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem asHTMLToolStripMenuItem;
+		private System.Windows.Forms.Panel panel2;
+		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.NumericUpDown FontSizeBox;
 	}
 }

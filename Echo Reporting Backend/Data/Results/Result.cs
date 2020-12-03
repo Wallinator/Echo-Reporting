@@ -103,6 +103,15 @@ namespace DICOMReporting.Data.Results {
 			string value;
 			string zscore;
 			int rounding;
+			if (Empty) {
+				return new List<string> {
+					Name,
+					"",
+					"",
+					""
+					};
+			}
+
 			if (UnitShorthand.Equals("mmHg") ||
 				UnitShorthand.Equals("cm/s") ||
 				UnitShorthand.Equals("m/s")) {

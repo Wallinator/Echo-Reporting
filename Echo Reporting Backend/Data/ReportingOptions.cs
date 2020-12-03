@@ -241,7 +241,7 @@ namespace DICOMReporting.Data {
 		public MultipleChoiceResult LeftAorticArch2 = new MultipleChoiceResult("", new List<string>() { "with normal branching",
 																										"",
 																										"with bovine trunk (common origin of the brachiocephalic and LCCA)",
-																										"aberrant right subclavian artery" });
+																										"with aberrant right subclavian artery" });
 		// right aortic arch label
 		public MultipleChoiceResult RightAorticArch1 = new MultipleChoiceResult("", new List<string>() {"",
 																										"Unobstructed right sided aortic arch",
@@ -249,7 +249,7 @@ namespace DICOMReporting.Data {
 
 		public MultipleChoiceResult RightAorticArch2 = new MultipleChoiceResult("", new List<string>() {"",
 																										"with mirror image branching",
-																										"aberrant left subclavian artery (with a left sided ductal ligament this is the setup for a vascular ring)" });
+																										"with aberrant left subclavian artery (with a left sided ductal ligament this is the setup for a vascular ring)" });
 
 		public BoolResult NoCoarctationAorta = new BoolResult("No coarctation of the aorta", "", true);
 

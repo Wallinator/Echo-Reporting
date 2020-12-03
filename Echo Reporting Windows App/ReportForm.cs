@@ -94,7 +94,7 @@ namespace Echo_Reporting_Windows_App {
 				saveFileDialog1.DefaultExt = "html";
 				saveFileDialog1.Filter = "Html Files(*.html)| *.html | All files | *.*";
 			}
-			var html = ReportGenerator.GenerateHTML(_report);
+			var html = ReportGenerator.GenerateHTML(_report, (int) FontSizeBox.Value);
 			if (saveFileDialog1.ShowDialog() == DialogResult.OK) {
 				var stream = saveFileDialog1.OpenFile();
 				if (stream != null) {
@@ -268,6 +268,10 @@ namespace Echo_Reporting_Windows_App {
 		}
 
 		private void saveFileDialog1_FileOk(object sender, CancelEventArgs e) {
+
+		}
+
+		private void panel2_Paint(object sender, PaintEventArgs e) {
 
 		}
 	}

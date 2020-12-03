@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace Echo_Reporting_Backend.Data {
 	public static class ReportGenerator {
-		public static string GenerateHTML(StructuredReport report) {
-			int fontSize = 18;
+		public static string GenerateHTML(StructuredReport report, int fontSize) {
 
 			List<string> l1, l2, l3;
 			var html = @"<html>
@@ -19,7 +18,8 @@ namespace Echo_Reporting_Backend.Data {
 				</head>";
 
 			html += string.Format("<body style = \"font-size: {0}px;\">", fontSize);
-			html += @"<p></p><img src=""https://i.ibb.co/rH9fnT8/letterheadplain.jpg"" width=""100%"">";
+			html += @"<p></p><img src=""https://i.ibb.co/rH9fnT8/letterheadplain.jpg"" width=""100%"">
+			<p><span style = ""font-size: 24px; font-weight: 700; text-decoration-line: underline;"">Echocardiogram Report</span><br />";
 			/*html += @"<p></p>
 			<br/>
 			<br/>
@@ -30,9 +30,9 @@ namespace Echo_Reporting_Backend.Data {
 			<br/>";*/
 			html += string.Format("<table style = \"border-collapse: collapse; font-size: {0}px; width: 100%;\" cellpadding = \"0\"><tbody>", fontSize);
 			var pd = report.PatientData;
-			string age = pd.PatientAge.Value.ToString("N0");
+			string age = Math.Floor(pd.PatientAge.Value).ToString();
 			if (pd.PatientAge.Value < 1) {
-				age = (pd.PatientAge.Value * 12).ToString("N0") + " mo";
+				age = Math.Floor(pd.PatientAge.Value * 12).ToString() + " mo";
 			}
 			string bp = "";
 			if (!pd.SystolicBloodPressure.Empty && !pd.DiastolicBloodPressure.Empty) {
@@ -117,9 +117,9 @@ namespace Echo_Reporting_Backend.Data {
 			html += AddTableRow(l1, l2, l3);
 
 			l1 = report.Results["LVPWs"].AsString();
-			l2 = new List<string>() { "", "", "", "" };
+			l2 = report.Results["RV E'"].AsString();
 			l3 = report.Results["Left ventricular cardiac output"].AsString();
-			l2[0] = "";
+			l2[0] = "RV E'";
 			l3[0] = "LV output";
 			html += AddTableRow(l1, l2, l3);
 
