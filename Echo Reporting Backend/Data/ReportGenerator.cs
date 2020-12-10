@@ -18,7 +18,7 @@ namespace Echo_Reporting_Backend.Data {
 				</head>";
 
 			html += string.Format("<body style = \"font-size: {0}px;\">", fontSize);
-			html += @"<p></p><img src=""https://i.ibb.co/rH9fnT8/letterheadplain.jpg"" width=""100%"">
+			html += @"<p></p><img src=""https://i.ibb.co/k5KJw8p/letterheadplain2.jpg"" width=""100%"">
 			<p><span style = ""font-size: 24px; font-weight: 700; text-decoration-line: underline;"">Echocardiogram Report</span><br />";
 			/*html += @"<p></p>
 			<br/>
