@@ -31,12 +31,14 @@
 			// 
 			// ResultTitleLabel
 			// 
+			this.ResultTitleLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.ResultTitleLabel.AutoSize = true;
-			this.ResultTitleLabel.Location = new System.Drawing.Point(3, 0);
+			this.ResultTitleLabel.Location = new System.Drawing.Point(3, 5);
 			this.ResultTitleLabel.Name = "ResultTitleLabel";
 			this.ResultTitleLabel.Size = new System.Drawing.Size(83, 13);
 			this.ResultTitleLabel.TabIndex = 0;
 			this.ResultTitleLabel.Text = "ResultTitleLabel";
+			this.ResultTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// ResultCheckBox
 			// 
@@ -58,6 +60,7 @@
 			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
 			this.flowLayoutPanel1.Size = new System.Drawing.Size(254, 26);
 			this.flowLayoutPanel1.TabIndex = 2;
+			this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
 			// 
 			// BoolCheckControl
 			// 

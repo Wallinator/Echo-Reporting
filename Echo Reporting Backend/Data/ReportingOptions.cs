@@ -9,11 +9,11 @@ namespace DICOMReporting.Data {
 	public class ReportingOptions {
 		//Situs
 		public MultipleChoiceResult Situs = new MultipleChoiceResult("", new List<string>() {	"Usual atrial arrangement (situs solitus)",
-																									"Mirror image arrangement (situs inversus)",
-																									"Left atrial isomerism",
-																									"Right atrial isomerism",
-																									"Situs ambiguous",
-																									"Not evaluated" });
+																								"Mirror image arrangement (situs inversus)",
+																								"Left atrial isomerism",
+																								"Right atrial isomerism",
+																								"Situs ambiguous",
+																								"Not evaluated" });
 
 		//Systemic Veins
 		public MultipleChoiceResult SystemicVeins = new MultipleChoiceResult("", new List<string>() { "Normal systemic venous connections",
@@ -190,6 +190,9 @@ namespace DICOMReporting.Data {
 		public MultipleChoiceResult VSD3 = new MultipleChoiceResult(" with", new List<string>() {"L-R shunt",
 																								"R-L shunt",
 																								"bidirectional shunt" });
+
+		public BoolResult VSDDescription = new BoolResult("PMVSD partly closed", "", false, "", "VSD partly closed by a pouch of tricuspid valvular aneurysmal tissue.");
+		
 		//Outlets
 
 		public MultipleChoiceResult Ventriculoarterial = new MultipleChoiceResult("", new List<string>() {  "Ventriculoarterial concordance",
@@ -241,7 +244,7 @@ namespace DICOMReporting.Data {
 		public MultipleChoiceResult LeftAorticArch2 = new MultipleChoiceResult("", new List<string>() { "with normal branching",
 																										"",
 																										"with bovine trunk (common origin of the brachiocephalic and LCCA)",
-																										"with aberrant right subclavian artery" });
+																										"with aberrant right subclavian artery (this is not a vascular ring)" });
 		// right aortic arch label
 		public MultipleChoiceResult RightAorticArch1 = new MultipleChoiceResult("", new List<string>() {"",
 																										"Unobstructed right sided aortic arch",
@@ -281,7 +284,8 @@ namespace DICOMReporting.Data {
 																										"LAD not well seen",
 																										"Circumflex not well seen",
 																										"RCA not well seen",
-																										"Not evaluated" }, "", true );
+																										"Not evaluated",
+																										"" }, "", true );
 		//Other
 		public BoolResult NoPerciardialEffusion = new BoolResult("No perciardial effusion", "", true);
 

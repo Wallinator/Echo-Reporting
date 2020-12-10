@@ -118,7 +118,6 @@ namespace DICOMReporting.Data.Measurements {
 			specs.Add(new MeasurementSpecification("LV IVRT", "Isovolumic Relaxation Time", new Dictionary<string, string>(props), "ms", formula: EchoManualFormula.LVIVRT(pd, "LV IVRT"), unitEnum: DurationUnit.Millisecond));
 			props.Clear();
 
-
 			props.Add("Finding Site", "Left Ventricle Outflow Tract");
 			specs.Add(new MeasurementSpecification("Left ventricle outflow peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
 			specs.Add(new MeasurementSpecification("Left ventricle outflow peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mmHg"));

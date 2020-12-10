@@ -135,6 +135,7 @@ namespace Echo_Reporting_Backend.Data {
 			Ventricles += OptionsToString(sr.ReportingOptions.VSD1,
 										  sr.ReportingOptions.VSD2,
 										  sr.ReportingOptions.VSD3);
+			Ventricles += BoolResultToString(sr.ReportingOptions.VSDDescription);
 			Ventricles += ResultToString(sr.Results["Ventricular Septal Defect dimension"]);
 			Ventricles += ResultToString(sr.Results["Ventricular Septal Defect peak velocity"]);
 			Ventricles += ResultToString(sr.Results["Ventricular Septal Defect peak gradient"]);
@@ -249,13 +250,8 @@ namespace Echo_Reporting_Backend.Data {
 			CoronaryArteries += ResultToString(sr.Results["Left Circumflex"]);
 		}
 		private string BoolResultToString(BoolResult r) {
-			if (!r.Value) {
-				return "";
-			}
-			else {
-				string final = r.Name;
-				return final.Length == 0 ? final : final + ". ";
-			}
+			string final = r.Value ? r.TrueText : r.FalseText;
+			return final.Length == 0 ? final : final + ". ";
 		}
 		private string ResultToString(Result r, bool includeZScore = true) {
 			if (r.Empty) {

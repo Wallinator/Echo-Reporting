@@ -41,7 +41,7 @@ namespace DICOMReporting.Formulas {
 		public static EchoManualFormula MVDecelTime(PatientData pd, string name) {
 			double[] averages = { 145, 157, 172 };
 			double[] sds = { 18, 19, 22 };
-			return new EchoManualFormula(new Constants(averages, sds, pd, name, new[] { "Shortened", "Normal", "Prolonged" }));
+			return new EchoManualFormula(new Constants(averages, sds, pd, name, new[] { "Shortened", "", "Prolonged" }));
 		}
 		public static EchoManualFormula LVIVRT(PatientData pd, string name) {
 			double[] averages = { 62, 67, 74 };

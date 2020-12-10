@@ -24,5 +24,9 @@ namespace Echo_Reporting_Windows_App {
 		private void ResultCheckBox_CheckedChanged(object sender, EventArgs e) {
 			Result.Value = ResultCheckBox.Checked;
 		}
+
+		private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e) {
+
+		}
 	}
 }

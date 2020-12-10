@@ -231,6 +231,7 @@ namespace Echo_Reporting_Windows_App {
 			VSD1Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.VSD1));
 			VSD2Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.VSD2));
 			VSD3Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.VSD3));
+			VSDDescPanel.Controls.Add(new BoolCheckControl(report.ReportingOptions.VSDDescription));
 
 			VSDDimensionPanel.Controls.Add(new ResultControl(report.Results["Ventricular Septal Defect dimension"], showNotFoundError, this));
 			VSDVelPanel.Controls.Add(new ResultControl(report.Results["Ventricular Septal Defect peak velocity"], showNotFoundError, this));
@@ -513,6 +514,7 @@ namespace Echo_Reporting_Windows_App {
 			VSD1Panel.Controls.Clear();
 			VSD2Panel.Controls.Clear();
 			VSD3Panel.Controls.Clear();
+			VSDDescPanel.Controls.Clear();
 
 			VSDDimensionPanel.Controls.Clear();
 			VSDVelPanel.Controls.Clear();
@@ -666,6 +668,10 @@ namespace Echo_Reporting_Windows_App {
 		}
 
 		private void panel3_Paint(object sender, PaintEventArgs e) {
+
+		}
+
+		private void groupBox7_Enter(object sender, EventArgs e) {
 
 		}
 	}

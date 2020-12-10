@@ -48,6 +48,7 @@
 			this.ReasonForStudyPanel = new System.Windows.Forms.Panel();
 			this.EchoTypePanel = new System.Windows.Forms.Panel();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.RVEPanel = new System.Windows.Forms.Panel();
 			this.MVCFcPanel = new System.Windows.Forms.Panel();
 			this.SeptalAnnulusEPanel = new System.Windows.Forms.Panel();
 			this.FractionalShorteningPanel = new System.Windows.Forms.Panel();
@@ -225,7 +226,7 @@
 			this.SystemicVeinsPanel = new System.Windows.Forms.Panel();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.SitusPanel = new System.Windows.Forms.Panel();
-			this.RVEPanel = new System.Windows.Forms.Panel();
+			this.VSDDescPanel = new System.Windows.Forms.Panel();
 			this.menuStrip1.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -469,6 +470,14 @@
 			this.groupBox2.TabIndex = 7;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+			// 
+			// RVEPanel
+			// 
+			this.RVEPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.RVEPanel.Location = new System.Drawing.Point(450, 344);
+			this.RVEPanel.Name = "RVEPanel";
+			this.RVEPanel.Size = new System.Drawing.Size(254, 59);
+			this.RVEPanel.TabIndex = 6;
 			// 
 			// MVCFcPanel
 			// 
@@ -1233,6 +1242,7 @@
 			// 
 			// groupBox7
 			// 
+			this.groupBox7.Controls.Add(this.VSDDescPanel);
 			this.groupBox7.Controls.Add(this.SeptalMotionPanel);
 			this.groupBox7.Controls.Add(this.VSDGradPanel);
 			this.groupBox7.Controls.Add(this.VSD3Panel);
@@ -1276,6 +1286,7 @@
 			this.groupBox7.TabIndex = 24;
 			this.groupBox7.TabStop = false;
 			this.groupBox7.Text = "Ventricles";
+			this.groupBox7.Enter += new System.EventHandler(this.groupBox7_Enter);
 			// 
 			// SeptalMotionPanel
 			// 
@@ -1296,7 +1307,7 @@
 			// 
 			this.VSD3Panel.Location = new System.Drawing.Point(113, 858);
 			this.VSD3Panel.Name = "VSD3Panel";
-			this.VSD3Panel.Size = new System.Drawing.Size(443, 26);
+			this.VSD3Panel.Size = new System.Drawing.Size(164, 26);
 			this.VSD3Panel.TabIndex = 44;
 			// 
 			// VSDVelPanel
@@ -1340,7 +1351,7 @@
 			// 
 			this.VSD2Panel.Location = new System.Drawing.Point(142, 828);
 			this.VSD2Panel.Name = "VSD2Panel";
-			this.VSD2Panel.Size = new System.Drawing.Size(443, 26);
+			this.VSD2Panel.Size = new System.Drawing.Size(181, 26);
 			this.VSD2Panel.TabIndex = 45;
 			// 
 			// VSD1Panel
@@ -2011,13 +2022,12 @@
 			this.SitusPanel.Size = new System.Drawing.Size(533, 26);
 			this.SitusPanel.TabIndex = 3;
 			// 
-			// RVEPanel
+			// VSDDescPanel
 			// 
-			this.RVEPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.RVEPanel.Location = new System.Drawing.Point(450, 344);
-			this.RVEPanel.Name = "RVEPanel";
-			this.RVEPanel.Size = new System.Drawing.Size(254, 59);
-			this.RVEPanel.TabIndex = 6;
+			this.VSDDescPanel.Location = new System.Drawing.Point(285, 858);
+			this.VSDDescPanel.Name = "VSDDescPanel";
+			this.VSDDescPanel.Size = new System.Drawing.Size(391, 26);
+			this.VSDDescPanel.TabIndex = 46;
 			// 
 			// MainForm
 			// 
@@ -2257,6 +2267,7 @@
 		private System.Windows.Forms.Panel StudyDatePanel;
 		private System.Windows.Forms.Panel PDAGradientPanel;
 		private System.Windows.Forms.Panel RVEPanel;
+		private System.Windows.Forms.Panel VSDDescPanel;
 	}
 }
 
