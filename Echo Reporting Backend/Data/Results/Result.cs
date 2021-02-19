@@ -59,11 +59,11 @@ namespace DICOMReporting.Data.Results {
 			}
 			return Name + ": \n\t" + "Value: " + Value + " " + UnitShorthand + emptyZscorestring;
 		}
-		public string ReportString(bool includeZScore = true) {
+		public string ReportString(bool includeZScore = true, bool includeComment = true) {
 			string name;
 			string value;
 			string Zscorestring = "";
-			if (HasComment) {
+			if (HasComment && includeComment) {
 				if (AnomalyText.Length == 0) {
 					return "";
 				}

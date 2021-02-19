@@ -89,7 +89,9 @@ namespace Echo_Reporting_Backend.Data {
 			Ventricles += ResultToString(sr.Results["IVSd"]);
 			Ventricles += ResultToString(sr.Results["LVIDd"]);
 			Ventricles += ResultToString(sr.Results["LVPWd"]);
-			Ventricles += ResultToString(sr.Results["LV mass index"]);
+			if (sr.PatientData.PatientAge.Value >= 1) {
+				Ventricles += ResultToString(sr.Results["LV mass index"]);
+			}
 			Ventricles += ResultToString(sr.Results["Fractional Shortening"]);
 			//Ventricles += ResultToString(sr.Results["Left Ventricular Teichholz EF"]);
 			string ejectionfraction = ResultToString(sr.Results["Left Ventricular biplane EF"]);
@@ -253,12 +255,12 @@ namespace Echo_Reporting_Backend.Data {
 			string final = r.Value ? r.TrueText : r.FalseText;
 			return final.Length == 0 ? final : final + ". ";
 		}
-		private string ResultToString(Result r, bool includeZScore = true) {
+		private string ResultToString(Result r, bool includeZScore = true, bool includeComment = true) {
 			if (r.Empty) {
 				return "";
 			}
 			else {
-				string final = r.ReportString(includeZScore);
+				string final = r.ReportString(includeZScore, includeComment);
 				return final.Length == 0 ? final : final + ". ";
 			}
 		}
