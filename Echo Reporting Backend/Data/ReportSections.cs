@@ -35,7 +35,6 @@ namespace Echo_Reporting_Backend.Data {
 			if (!sr.ReportingOptions.NoPerciardialEffusion.Value) {
 				Other += OptionsToString(sr.ReportingOptions.PerciardialEffusion);
 			}
-
 			Conclusion = Conclusions(sr.ReportingOptions.Conclusion.Value);
 			SignOff = SignOffs(sr.PatientData.ReportingDoctor.Value);
 		}
