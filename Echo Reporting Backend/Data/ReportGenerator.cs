@@ -140,7 +140,7 @@ namespace Echo_Reporting_Backend.Data {
 			html += string.Format(@"<div><span style = ""font-weight: bold;""> Coronary Arteries - </span>{0}</div> ", report.Sections.CoronaryArteries);
 			html += string.Format(@"<div><span style = ""font-weight: bold;""> Other - </span>{0}</div> ", report.Sections.Other);
 
-			html += @"<div></div><br/><div><span style = ""font-weight: bold; text-decoration-line: underline;""> Conclusions </span></div>";
+			html += @"<div></div><br/><div><span style = ""font-weight: bold; text-decoration-line: underline;""> Conclusion </span></div>";
 			html += string.Format(@"<div>{0}</div><div><br/>", report.Sections.Conclusion);
 			html += string.Format(@"<div><span style = ""font-weight: bold;""> Reporting - </span>{0}</div>", report.Sections.SignOff);
 			html += "<br/></div></div><p></p><p></p></body></html>";
