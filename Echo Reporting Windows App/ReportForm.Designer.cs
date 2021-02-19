@@ -50,6 +50,9 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.SystemicVeinsTextbox = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
+			this.panel2 = new System.Windows.Forms.Panel();
+			this.label11 = new System.Windows.Forms.Label();
+			this.FontSizeBox = new System.Windows.Forms.NumericUpDown();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,14 +60,14 @@
 			this.asPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.asHTMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-			this.panel2 = new System.Windows.Forms.Panel();
-			this.FontSizeBox = new System.Windows.Forms.NumericUpDown();
-			this.label11 = new System.Windows.Forms.Label();
+			this.label13 = new System.Windows.Forms.Label();
+			this.MarginValueBox = new System.Windows.Forms.NumericUpDown();
 			this.tableLayoutPanel1.SuspendLayout();
-			this.panel1.SuspendLayout();
-			this.menuStrip1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.FontSizeBox)).BeginInit();
+			this.panel1.SuspendLayout();
+			this.menuStrip1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.MarginValueBox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// contextMenuStrip1
@@ -438,6 +441,39 @@
 			this.label3.Text = "Atria";
 			this.label3.Click += new System.EventHandler(this.label3_Click);
 			// 
+			// panel2
+			// 
+			this.panel2.Controls.Add(this.label13);
+			this.panel2.Controls.Add(this.MarginValueBox);
+			this.panel2.Controls.Add(this.label11);
+			this.panel2.Controls.Add(this.FontSizeBox);
+			this.panel2.Location = new System.Drawing.Point(3, 1172);
+			this.panel2.Name = "panel2";
+			this.panel2.Size = new System.Drawing.Size(845, 94);
+			this.panel2.TabIndex = 31;
+			this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(22, 34);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(51, 13);
+			this.label11.TabIndex = 1;
+			this.label11.Text = "Font Size";
+			// 
+			// FontSizeBox
+			// 
+			this.FontSizeBox.Location = new System.Drawing.Point(79, 32);
+			this.FontSizeBox.Name = "FontSizeBox";
+			this.FontSizeBox.Size = new System.Drawing.Size(45, 20);
+			this.FontSizeBox.TabIndex = 0;
+			this.FontSizeBox.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+			// 
 			// panel1
 			// 
 			this.panel1.AutoScroll = true;
@@ -504,36 +540,26 @@
 			this.saveFileDialog1.Title = "Generate Report...";
 			this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
 			// 
-			// panel2
+			// label13
 			// 
-			this.panel2.Controls.Add(this.label11);
-			this.panel2.Controls.Add(this.FontSizeBox);
-			this.panel2.Location = new System.Drawing.Point(3, 1172);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(845, 94);
-			this.panel2.TabIndex = 31;
-			this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+			this.label13.AutoSize = true;
+			this.label13.Location = new System.Drawing.Point(11, 65);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(62, 13);
+			this.label13.TabIndex = 3;
+			this.label13.Text = "Margin Size";
 			// 
-			// FontSizeBox
+			// MarginValueBox
 			// 
-			this.FontSizeBox.Location = new System.Drawing.Point(79, 32);
-			this.FontSizeBox.Name = "FontSizeBox";
-			this.FontSizeBox.Size = new System.Drawing.Size(45, 20);
-			this.FontSizeBox.TabIndex = 0;
-			this.FontSizeBox.Value = new decimal(new int[] {
-            20,
+			this.MarginValueBox.Location = new System.Drawing.Point(79, 63);
+			this.MarginValueBox.Name = "MarginValueBox";
+			this.MarginValueBox.Size = new System.Drawing.Size(45, 20);
+			this.MarginValueBox.TabIndex = 2;
+			this.MarginValueBox.Value = new decimal(new int[] {
+            40,
             0,
             0,
             0});
-			// 
-			// label11
-			// 
-			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(22, 34);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(51, 13);
-			this.label11.TabIndex = 1;
-			this.label11.Text = "Font Size";
 			// 
 			// ReportForm
 			// 
@@ -548,12 +574,13 @@
 			this.Load += new System.EventHandler(this.ReportForm_Load);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
-			this.panel1.ResumeLayout(false);
-			this.menuStrip1.ResumeLayout(false);
-			this.menuStrip1.PerformLayout();
 			this.panel2.ResumeLayout(false);
 			this.panel2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.FontSizeBox)).EndInit();
+			this.panel1.ResumeLayout(false);
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.MarginValueBox)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -596,5 +623,7 @@
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.NumericUpDown FontSizeBox;
+		private System.Windows.Forms.Label label13;
+		private System.Windows.Forms.NumericUpDown MarginValueBox;
 	}
 }

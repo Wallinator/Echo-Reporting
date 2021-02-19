@@ -138,8 +138,9 @@ namespace Echo_Reporting_Windows_App {
 				Debug.WriteLine("browser result: " + result);
 				var options = new PdfOptions();
 				var margins = new MarginOptions();
-				options.MarginOptions.Left = "25";
-				options.MarginOptions.Right = "25";
+				string margin = ((int) MarginValueBox.Value).ToString();
+				options.MarginOptions.Left = margin;
+				options.MarginOptions.Right = margin;
 				await page.PdfAsync(fileName, options);
 			}
 		}
