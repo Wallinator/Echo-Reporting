@@ -287,7 +287,7 @@ namespace DICOMReporting.Data {
 																										"Not evaluated",
 																										"" }, "", true );
 		//Other
-		public BoolResult NoPerciardialEffusion = new BoolResult("No perciardial effusion", "", true);
+		public BoolResult NoPerciardialEffusion = new BoolResult("No perciardial effusion", "", false);
 
 		public MultipleChoiceResult PerciardialEffusion = new MultipleChoiceResult("", new List<string>() {  "",
 																											"Small",
