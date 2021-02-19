@@ -270,7 +270,7 @@ namespace DICOMReporting.Data {
 																												"Moderate",
 																												"Large" });
 
-		public MultipleChoiceResult PatentDuctusArteriosus2 = new MultipleChoiceResult("patent ductus arteriosus with", new List<string>() {"L-R shunt",
+		public MultipleChoiceResult PatentDuctusArteriosus2 = new MultipleChoiceResult(" patent ductus arteriosus with", new List<string>() {"L-R shunt",
 																																			"R-L shunt",
 																																			"bidirectional shunt" });
 		//Pulmonary Veins
