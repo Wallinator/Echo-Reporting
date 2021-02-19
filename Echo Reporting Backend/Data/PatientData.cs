@@ -127,6 +127,9 @@ namespace DICOMReporting.Data {
 		}
 		public void UpdateBSAResult() {
 			BSA = new Result("Body Surface Area", "m2", value: 0.024265 * Math.Pow(PatientHeight.Value, 0.3964) * Math.Pow(PatientWeight.Value, 0.5378), empty: false);
+			if (PatientHeight.Empty || PatientWeight.Empty) {
+				BSA.Empty = true;
+			}
 		}
 		public PatientData() {
 

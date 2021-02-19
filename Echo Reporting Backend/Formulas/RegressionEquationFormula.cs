@@ -35,10 +35,10 @@ namespace DICOMReporting.Formulas {
 			this.constants = constants;
 		}
 		public double GetZScore(double observed_y) {
-			double mean_y = constants.b0 + (constants.b1 * constants.BSA) + (constants.b2 * Math.Pow(constants.BSA, 2)) + (constants.b3 * Math.Pow(constants.BSA, 3));
+			double mean_y = constants.b0 + (constants.b1 * constants.Pd.BSA.Value) + (constants.b2 * Math.Pow(constants.Pd.BSA.Value, 2)) + (constants.b3 * Math.Pow(constants.Pd.BSA.Value, 3));
 			return (Math.Log(observed_y) - mean_y) / Math.Sqrt(constants.MSE);
 		}
-		public bool ZScoreable() => true;
+		public bool ZScoreable() => !constants.Pd.BSA.Empty;
 		public static RegressionEquationFormula IVSd(PatientData pd, string name) {
 			return new RegressionEquationFormula(new Constants(-1.242, 1.272, -0.762, 0.208, 0.046, pd, name, new[] { "", "", "Mild septal hypertrophy", "Moderate septal hypertrophy", "Severe septal hypertrophy" }, false));
 		}
@@ -118,8 +118,9 @@ namespace DICOMReporting.Formulas {
 			public double MSE {
 				get; private set;
 			}
-			public double BSA => Pd.BSA.Value;
-			private PatientData Pd;
+			public PatientData Pd {
+				get; private set;
+			}
 			public Constants(double b0, double b1, double b2, double b3, double mse, PatientData pd, string name, string[] anomalies, bool prefix = true) {
 				AnomalyPrefix = prefix;
 				MeasurementName = name;

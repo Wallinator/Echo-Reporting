@@ -34,7 +34,7 @@ namespace DICOMReporting.Formulas {
 			double mean_y = (constants.Multiplier * Math.Log(constants.Pd.BSA.Value)) + constants.Intercept;
 			return (Math.Log(observed_y) - mean_y) / constants.MSE;
 		}
-		public bool ZScoreable() => true;
+		public bool ZScoreable() => !constants.Pd.BSA.Empty;
 		public static DilationOfAscendingAortaFormula AscendingAorta(PatientData pd, string name) {
 			return new DilationOfAscendingAortaFormula(new Constants(0.421, 2.898, 0.09111, pd, name, new[] { "Hypoplastic", "Normal", "Mildly dilated", "Moderately dilated", "Severely dilated" }));
 		}/*

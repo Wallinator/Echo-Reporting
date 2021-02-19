@@ -28,7 +28,7 @@ namespace DICOMReporting.Formulas {
 			double mean_y = (constants.Multiplier * Math.Pow(constants.Pd.BSA.Value, constants.Power)) + constants.Intercept;
 			return ((observed_y / 10) - mean_y) / (constants.SDIntercept + (constants.SDMultiplier * constants.Pd.BSA.Value));
 		}
-		public bool ZScoreable() => true;
+		public bool ZScoreable() => !constants.Pd.BSA.Empty;
 		private CoronaryArteryInvolvementFormula(Constants constants) {
 			this.constants = constants;
 		}
