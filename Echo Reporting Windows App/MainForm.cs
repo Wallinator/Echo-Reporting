@@ -108,7 +108,7 @@ namespace Echo_Reporting_Windows_App {
 			MVDecelTimePanel.Controls.Add(new ResultControl(report.Results["MV decel time"], showNotFoundError, this));
 			MitralAnnulusEPanel.Controls.Add(new ResultControl(report.Results["Mitral annulus E'"], showNotFoundError, this));
 			SeptalAnnulusEPanel.Controls.Add(new ResultControl(report.Results["Septal annulus E'"], showNotFoundError, this));
-			RVEPanel.Controls.Add(new ResultControl(report.Results["RV E'"], showNotFoundError, this)); 
+			RVEPanel.Controls.Add(new ResultControl(report.Results["Tricuspid annulus E'"], showNotFoundError, this)); 
 
 			FractionalShorteningPanel.Controls.Add(new ResultControl(report.Results["Fractional Shortening"], showNotFoundError, this));
 			LVTeichholzEFPanel.Controls.Add(new ResultControl(report.Results["Left Ventricular Teichholz EF"], showNotFoundError, this));
@@ -215,7 +215,7 @@ namespace Echo_Reporting_Windows_App {
 			SeptalAnnulusA2Panel.Controls.Add(new ResultControl(report.Results["Septal annulus A'"], showNotFoundError, this));
 			SeptalAnnulusS2Panel.Controls.Add(new ResultControl(report.Results["Septal annulus S'"], showNotFoundError, this));
 
-			TriAnnulusE2Panel.Controls.Add(new ResultControl(report.Results["Tricuspid annulus E'"], showNotFoundError, this));
+			//TriAnnulusE2Panel.Controls.Add(new ResultControl(report.Results["Tricuspid annulus E'"], showNotFoundError, this));
 			TriAnnulusA2Panel.Controls.Add(new ResultControl(report.Results["Tricuspid annulus A'"], showNotFoundError, this));
 			TriAnnulusS2Panel.Controls.Add(new ResultControl(report.Results["Tricuspid annulus S'"], showNotFoundError, this));
 
@@ -499,7 +499,7 @@ namespace Echo_Reporting_Windows_App {
 			SeptalAnnulusA2Panel.Controls.Clear();
 			SeptalAnnulusS2Panel.Controls.Clear();
 
-			TriAnnulusE2Panel.Controls.Clear();
+			//TriAnnulusE2Panel.Controls.Clear();
 			TriAnnulusA2Panel.Controls.Clear();
 			TriAnnulusS2Panel.Controls.Clear();
 
@@ -672,6 +672,10 @@ namespace Echo_Reporting_Windows_App {
 		}
 
 		private void groupBox7_Enter(object sender, EventArgs e) {
+
+		}
+
+		private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
 
 		}
 	}

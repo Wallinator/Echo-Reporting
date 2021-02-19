@@ -137,6 +137,7 @@
 			this.OutflowTractsPanel = new System.Windows.Forms.Panel();
 			this.VentriculoarterialPanel = new System.Windows.Forms.Panel();
 			this.groupBox7 = new System.Windows.Forms.GroupBox();
+			this.VSDDescPanel = new System.Windows.Forms.Panel();
 			this.SeptalMotionPanel = new System.Windows.Forms.Panel();
 			this.VSDGradPanel = new System.Windows.Forms.Panel();
 			this.VSD3Panel = new System.Windows.Forms.Panel();
@@ -155,7 +156,6 @@
 			this.PulmAWavePanel = new System.Windows.Forms.Panel();
 			this.TriAnnulusA2Panel = new System.Windows.Forms.Panel();
 			this.MitralWaveDurationPanel = new System.Windows.Forms.Panel();
-			this.TriAnnulusE2Panel = new System.Windows.Forms.Panel();
 			this.PulmWaveDurationPanel = new System.Windows.Forms.Panel();
 			this.SeptalAnnulusA2Panel = new System.Windows.Forms.Panel();
 			this.PulmDWavePanel = new System.Windows.Forms.Panel();
@@ -226,7 +226,6 @@
 			this.SystemicVeinsPanel = new System.Windows.Forms.Panel();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.SitusPanel = new System.Windows.Forms.Panel();
-			this.VSDDescPanel = new System.Windows.Forms.Panel();
 			this.menuStrip1.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -258,6 +257,7 @@
 			this.menuStrip1.Size = new System.Drawing.Size(1126, 25);
 			this.menuStrip1.TabIndex = 1;
 			this.menuStrip1.Text = "menuStrip1";
+			this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
 			// 
 			// fileToolStripMenuItem
 			// 
@@ -1261,7 +1261,6 @@
 			this.groupBox7.Controls.Add(this.PulmAWavePanel);
 			this.groupBox7.Controls.Add(this.TriAnnulusA2Panel);
 			this.groupBox7.Controls.Add(this.MitralWaveDurationPanel);
-			this.groupBox7.Controls.Add(this.TriAnnulusE2Panel);
 			this.groupBox7.Controls.Add(this.PulmWaveDurationPanel);
 			this.groupBox7.Controls.Add(this.SeptalAnnulusA2Panel);
 			this.groupBox7.Controls.Add(this.PulmDWavePanel);
@@ -1287,6 +1286,13 @@
 			this.groupBox7.TabStop = false;
 			this.groupBox7.Text = "Ventricles";
 			this.groupBox7.Enter += new System.EventHandler(this.groupBox7_Enter);
+			// 
+			// VSDDescPanel
+			// 
+			this.VSDDescPanel.Location = new System.Drawing.Point(285, 858);
+			this.VSDDescPanel.Name = "VSDDescPanel";
+			this.VSDDescPanel.Size = new System.Drawing.Size(391, 26);
+			this.VSDDescPanel.TabIndex = 46;
 			// 
 			// SeptalMotionPanel
 			// 
@@ -1364,7 +1370,7 @@
 			// TriAnnulusS2Panel
 			// 
 			this.TriAnnulusS2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.TriAnnulusS2Panel.Location = new System.Drawing.Point(535, 591);
+			this.TriAnnulusS2Panel.Location = new System.Drawing.Point(279, 591);
 			this.TriAnnulusS2Panel.Name = "TriAnnulusS2Panel";
 			this.TriAnnulusS2Panel.Size = new System.Drawing.Size(254, 59);
 			this.TriAnnulusS2Panel.TabIndex = 38;
@@ -1386,7 +1392,7 @@
 			// MitralAnnulusS2Panel
 			// 
 			this.MitralAnnulusS2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.MitralAnnulusS2Panel.Location = new System.Drawing.Point(535, 465);
+			this.MitralAnnulusS2Panel.Location = new System.Drawing.Point(279, 465);
 			this.MitralAnnulusS2Panel.Name = "MitralAnnulusS2Panel";
 			this.MitralAnnulusS2Panel.Size = new System.Drawing.Size(254, 59);
 			this.MitralAnnulusS2Panel.TabIndex = 35;
@@ -1394,7 +1400,7 @@
 			// SeptalAnnulusS2Panel
 			// 
 			this.SeptalAnnulusS2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.SeptalAnnulusS2Panel.Location = new System.Drawing.Point(535, 528);
+			this.SeptalAnnulusS2Panel.Location = new System.Drawing.Point(279, 528);
 			this.SeptalAnnulusS2Panel.Name = "SeptalAnnulusS2Panel";
 			this.SeptalAnnulusS2Panel.Size = new System.Drawing.Size(254, 59);
 			this.SeptalAnnulusS2Panel.TabIndex = 39;
@@ -1410,7 +1416,7 @@
 			// TriAnnulusA2Panel
 			// 
 			this.TriAnnulusA2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.TriAnnulusA2Panel.Location = new System.Drawing.Point(279, 591);
+			this.TriAnnulusA2Panel.Location = new System.Drawing.Point(23, 591);
 			this.TriAnnulusA2Panel.Name = "TriAnnulusA2Panel";
 			this.TriAnnulusA2Panel.Size = new System.Drawing.Size(254, 59);
 			this.TriAnnulusA2Panel.TabIndex = 36;
@@ -1423,14 +1429,6 @@
 			this.MitralWaveDurationPanel.Size = new System.Drawing.Size(254, 59);
 			this.MitralWaveDurationPanel.TabIndex = 27;
 			// 
-			// TriAnnulusE2Panel
-			// 
-			this.TriAnnulusE2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.TriAnnulusE2Panel.Location = new System.Drawing.Point(23, 591);
-			this.TriAnnulusE2Panel.Name = "TriAnnulusE2Panel";
-			this.TriAnnulusE2Panel.Size = new System.Drawing.Size(254, 59);
-			this.TriAnnulusE2Panel.TabIndex = 33;
-			// 
 			// PulmWaveDurationPanel
 			// 
 			this.PulmWaveDurationPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -1442,7 +1440,7 @@
 			// SeptalAnnulusA2Panel
 			// 
 			this.SeptalAnnulusA2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.SeptalAnnulusA2Panel.Location = new System.Drawing.Point(279, 528);
+			this.SeptalAnnulusA2Panel.Location = new System.Drawing.Point(23, 528);
 			this.SeptalAnnulusA2Panel.Name = "SeptalAnnulusA2Panel";
 			this.SeptalAnnulusA2Panel.Size = new System.Drawing.Size(254, 59);
 			this.SeptalAnnulusA2Panel.TabIndex = 37;
@@ -1466,7 +1464,7 @@
 			// MitralAnnulusA2Panel
 			// 
 			this.MitralAnnulusA2Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.MitralAnnulusA2Panel.Location = new System.Drawing.Point(279, 465);
+			this.MitralAnnulusA2Panel.Location = new System.Drawing.Point(23, 465);
 			this.MitralAnnulusA2Panel.Name = "MitralAnnulusA2Panel";
 			this.MitralAnnulusA2Panel.Size = new System.Drawing.Size(254, 59);
 			this.MitralAnnulusA2Panel.TabIndex = 32;
@@ -2022,13 +2020,6 @@
 			this.SitusPanel.Size = new System.Drawing.Size(533, 26);
 			this.SitusPanel.TabIndex = 3;
 			// 
-			// VSDDescPanel
-			// 
-			this.VSDDescPanel.Location = new System.Drawing.Point(285, 858);
-			this.VSDDescPanel.Name = "VSDDescPanel";
-			this.VSDDescPanel.Size = new System.Drawing.Size(391, 26);
-			this.VSDDescPanel.TabIndex = 46;
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2155,7 +2146,6 @@
 		private System.Windows.Forms.Panel PulmAWavePanel;
 		private System.Windows.Forms.Panel TriAnnulusA2Panel;
 		private System.Windows.Forms.Panel MitralWaveDurationPanel;
-		private System.Windows.Forms.Panel TriAnnulusE2Panel;
 		private System.Windows.Forms.Panel PulmWaveDurationPanel;
 		private System.Windows.Forms.Panel SeptalAnnulusA2Panel;
 		private System.Windows.Forms.Panel PulmDWavePanel;

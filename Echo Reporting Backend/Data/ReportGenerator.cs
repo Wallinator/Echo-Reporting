@@ -117,7 +117,7 @@ namespace Echo_Reporting_Backend.Data {
 			html += AddTableRow(l1, l2, l3);
 
 			l1 = report.Results["LVPWs"].AsString();
-			l2 = report.Results["RV E'"].AsString();
+			l2 = report.Results["Tricuspid annulus E'"].AsString();
 			l3 = report.Results["Left ventricular cardiac output"].AsString();
 			l2[0] = "RV E'";
 			l3[0] = "LV output";

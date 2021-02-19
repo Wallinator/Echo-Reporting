@@ -405,7 +405,7 @@ namespace DICOMReporting.Data.Measurements {
 			specs.Add(new MeasurementSpecification("Right ventricle outflow mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mmHg"));
 			specs.Add(new MeasurementSpecification("Right ventricle outflow dimension", "Cardiovascular Orifice Diameter", new Dictionary<string, string>(props), "cm", includeImageMode: true, unitEnum: LengthUnit.Centimeter));
 			props.Clear();
-			specs.Add(new MeasurementSpecification("RV E'", "", new Dictionary<string, string>(props), "cm/s", unitEnum: SpeedUnit.CentimeterPerSecond));
+			//specs.Add(new MeasurementSpecification("RV E'", "", new Dictionary<string, string>(props), "cm/s", unitEnum: SpeedUnit.CentimeterPerSecond));
 			props.Clear();
 
 			return specs;
