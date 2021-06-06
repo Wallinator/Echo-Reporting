@@ -166,7 +166,7 @@ namespace DICOMReporting.Data {
 
 			EchoType = new MultipleChoiceResult("Echo Type", new List<string>() { "Transthoracic echo" });
 
-			ReportingDoctor = new MultipleChoiceResult("Reporting Doctor", new List<string>() { "Dr Paul Brooks" });
+			ReportingDoctor = new MultipleChoiceResult("Reporting Doctor", new List<string>() { "Dr Paul Brooks", "Dr Hannah Bourne" });
 
 			UpdateBSAResult();
 		}

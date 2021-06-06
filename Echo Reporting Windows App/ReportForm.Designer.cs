@@ -51,6 +51,8 @@
 			this.SystemicVeinsTextbox = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.panel2 = new System.Windows.Forms.Panel();
+			this.label13 = new System.Windows.Forms.Label();
+			this.MarginValueBox = new System.Windows.Forms.NumericUpDown();
 			this.label11 = new System.Windows.Forms.Label();
 			this.FontSizeBox = new System.Windows.Forms.NumericUpDown();
 			this.panel1 = new System.Windows.Forms.Panel();
@@ -60,14 +62,12 @@
 			this.asPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.asHTMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-			this.label13 = new System.Windows.Forms.Label();
-			this.MarginValueBox = new System.Windows.Forms.NumericUpDown();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.panel2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.MarginValueBox)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.FontSizeBox)).BeginInit();
 			this.panel1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.MarginValueBox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// contextMenuStrip1
@@ -453,6 +453,27 @@
 			this.panel2.TabIndex = 31;
 			this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
 			// 
+			// label13
+			// 
+			this.label13.AutoSize = true;
+			this.label13.Location = new System.Drawing.Point(11, 65);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(62, 13);
+			this.label13.TabIndex = 3;
+			this.label13.Text = "Margin Size";
+			// 
+			// MarginValueBox
+			// 
+			this.MarginValueBox.Location = new System.Drawing.Point(79, 63);
+			this.MarginValueBox.Name = "MarginValueBox";
+			this.MarginValueBox.Size = new System.Drawing.Size(45, 20);
+			this.MarginValueBox.TabIndex = 2;
+			this.MarginValueBox.Value = new decimal(new int[] {
+            40,
+            0,
+            0,
+            0});
+			// 
 			// label11
 			// 
 			this.label11.AutoSize = true;
@@ -469,7 +490,7 @@
 			this.FontSizeBox.Size = new System.Drawing.Size(45, 20);
 			this.FontSizeBox.TabIndex = 0;
 			this.FontSizeBox.Value = new decimal(new int[] {
-            20,
+            19,
             0,
             0,
             0});
@@ -540,27 +561,6 @@
 			this.saveFileDialog1.Title = "Generate Report...";
 			this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
 			// 
-			// label13
-			// 
-			this.label13.AutoSize = true;
-			this.label13.Location = new System.Drawing.Point(11, 65);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(62, 13);
-			this.label13.TabIndex = 3;
-			this.label13.Text = "Margin Size";
-			// 
-			// MarginValueBox
-			// 
-			this.MarginValueBox.Location = new System.Drawing.Point(79, 63);
-			this.MarginValueBox.Name = "MarginValueBox";
-			this.MarginValueBox.Size = new System.Drawing.Size(45, 20);
-			this.MarginValueBox.TabIndex = 2;
-			this.MarginValueBox.Value = new decimal(new int[] {
-            40,
-            0,
-            0,
-            0});
-			// 
 			// ReportForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -576,11 +576,11 @@
 			this.tableLayoutPanel1.PerformLayout();
 			this.panel2.ResumeLayout(false);
 			this.panel2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.MarginValueBox)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.FontSizeBox)).EndInit();
 			this.panel1.ResumeLayout(false);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.MarginValueBox)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

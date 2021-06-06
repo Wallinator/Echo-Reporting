@@ -313,6 +313,8 @@ namespace Echo_Reporting_Backend.Data {
 			switch (doctor) {
 				case "Dr Paul Brooks":
 					return "Dr Paul Brooks MBBS (Hons) FRACP. Provider number 223704PX. LSPN 0008492";
+				case "Dr Hannah Bourne":
+					return "Dr Hannah Bourne MBBS BMedSc (Hons) FRACP. Provider number 432923CL LSPN 0008492";
 				default:
 					return "";
 			}
