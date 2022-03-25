@@ -3,6 +3,7 @@ using Dicom.StructuredReport;
 using DICOMReporting.Data;
 using DICOMReporting.Data.Measurements;
 using DICOMReporting.Data.Measurements.Units;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -11,7 +12,7 @@ namespace DICOMReporting.DicomFileReading {
 	public class DicomReader {
 		public static StructuredReport GetStructuredReport(DicomDataset ds) {
 			var sr = new DicomStructuredReport(ds);
-			PatientData pd = null;
+			PatientData pd = new PatientData();
 			var findings = new Dictionary<string, List<MeasurementGroup>>();
 			foreach (var group in sr.Children()) {
 				if (group.Type == DicomValueType.Container && group.Code.Value.Equals("121070")) {
@@ -22,7 +23,7 @@ namespace DICOMReporting.DicomFileReading {
 				}
 			}
 			var report = new StructuredReport(pd, findings);
-
+			pd.GetPatientDataFromDataset(ds);
 			return report;
 		}
 
@@ -36,8 +37,13 @@ namespace DICOMReporting.DicomFileReading {
 				else {
 					var measurements = new List<Measurement>();
 					foreach (var rawmeasurement in site.Children()) {
-						Measurement measurement = GetMeasurementFromRaw(rawmeasurement);
-						measurements.Add(measurement);
+						try {
+							Measurement measurement = GetMeasurementFromRaw(rawmeasurement);
+							measurements.Add(measurement);
+						}
+						catch(Exception) {
+							Console.WriteLine(rawmeasurement.Code);
+						}
 						//measurement.PrintDebug();
 					}
 					if (findings.ContainsKey(sitename)) {

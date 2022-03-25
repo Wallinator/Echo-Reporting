@@ -61,7 +61,7 @@ namespace DICOMReporting.DicomFileReading {
 			}
 		}
 		private static bool IsValidDicom(DicomFile file) {
-			return file.Dataset.InternalTransferSyntax.Equals(DicomTransferSyntax.ImplicitVRLittleEndian);
+			return file.Dataset.InternalTransferSyntax.Equals(DicomTransferSyntax.ExplicitVRLittleEndian);
 		}
 
 		private void Init() {

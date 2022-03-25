@@ -28,7 +28,7 @@ namespace DICOMReporting.Data.Measurements {
 			Properties = properties;
 			DefaultUnitShorthand = defaultUnitShorthand;
 			Formula = formula;
-			IncludeImageMode = includeImageMode;
+			IncludeImageMode = false;
 			UnitEnum = unitEnum;
 			AltName = altName;
 			//NonMean = nonMean;

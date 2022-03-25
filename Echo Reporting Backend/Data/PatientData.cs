@@ -82,7 +82,7 @@ namespace DICOMReporting.Data {
 						DiastolicBloodPressure = new Result(temp);
 						break;
 					case "121029":
-						PatientName = new StringResult("Patient Name", child.Get<string>().Replace('^', ' ').Trim());
+						PatientName = new StringResult("Patient Name", FormatName(child.Get<string>()));
 						PatientName.Value = PatientName.Value.Split(' ').Reverse().Aggregate((x, y) => { return (x + " " + y).Trim(); });
 						Debug.WriteLine(PatientName);
 						break;
@@ -102,9 +102,7 @@ namespace DICOMReporting.Data {
 						string input = child.Get<string>();
 						Debug.WriteLine("dob input: " + input);
 
-						var numbers = Regex.Split(input, @"\D+").ToList().GetRange(1, 3).Select(x => int.Parse(x)).ToArray();
-
-						PatientDOB = new StringResult("DOB", new DateTime(numbers[0], numbers[1], numbers[2]).Date.ToShortDateString());
+						PatientDOB = new StringResult("DOB", FormatDate(input));
 
 						Debug.WriteLine(PatientDOB.Value);
 						break;
@@ -112,9 +110,7 @@ namespace DICOMReporting.Data {
 						string dateinput = child.Get<string>();
 						Debug.WriteLine("exam date input: " + dateinput);
 
-						var numbers2 = Regex.Split(dateinput, @"\D+").ToList().GetRange(1, 3).Select(x => int.Parse(x)).ToArray();
-
-						StudyDate = new StringResult("Study Date", new DateTime(numbers2[0], numbers2[1], numbers2[2]).Date.ToShortDateString());
+						StudyDate = new StringResult("Study Date", FormatDate(dateinput));
 
 						Debug.WriteLine(StudyDate.Value);
 						break;
@@ -169,6 +165,29 @@ namespace DICOMReporting.Data {
 			ReportingDoctor = new MultipleChoiceResult("Reporting Doctor", new List<string>() { "Dr Paul Brooks", "Dr Hannah Bourne" });
 
 			UpdateBSAResult();
+		}
+		private string FormatName(string name) {
+			//return name.Replace('^', ' ').Trim();
+			var list = name.Split('^');
+			return string.Format("{0} {1}", list[1], list[0]);
+		}
+		private string FormatDate(string dateinput) {
+			//var numbers2 = Regex.Split(dateinput, @"\D+").ToList().GetRange(1, 3).Select(x => int.Parse(x)).ToArray();
+			var year = int.Parse(dateinput.Substring(0, 4));
+			var month = int.Parse(dateinput.Substring(4, 2));
+			var day = int.Parse(dateinput.Substring(6, 2));
+
+			return new DateTime(year, month, day).Date.ToShortDateString();
+		}
+		public void GetPatientDataFromDataset(DicomDataset ds) {
+
+			PatientName = new StringResult("Patient Name", FormatName(ds.GetSingleValue<string>(DicomTag.PatientName)));
+
+			PatientID = new StringResult("Patient ID", ds.GetSingleValue<string>(DicomTag.PatientID));
+
+			StudyDate = new StringResult("Study Date", FormatDate(ds.GetSingleValue<string>(DicomTag.StudyDate)));
+
+			PatientDOB = new StringResult("DOB", FormatDate(ds.GetSingleValue<string>(DicomTag.PatientBirthDate)));
 		}
 	}
 }
