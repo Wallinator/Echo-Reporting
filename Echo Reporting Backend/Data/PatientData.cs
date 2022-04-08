@@ -158,7 +158,7 @@ namespace DICOMReporting.Data {
 
 			ReasonForStudy = new StringResult("Reason For Study");
 
-			ReferringPhysician = new StringResult("Referring Physician");
+			//ReferringPhysician = new StringResult("Referring Physician");
 
 			EchoType = new MultipleChoiceResult("Echo Type", new List<string>() { "Transthoracic echo" });
 
@@ -169,7 +169,7 @@ namespace DICOMReporting.Data {
 		private string FormatName(string name) {
 			//return name.Replace('^', ' ').Trim();
 			var list = name.Split('^');
-			return string.Format("{0} {1}", list[1], list[0]);
+			return string.Format("{0} {1}", list[0], list[1]);
 		}
 		private string FormatDate(string dateinput) {
 			//var numbers2 = Regex.Split(dateinput, @"\D+").ToList().GetRange(1, 3).Select(x => int.Parse(x)).ToArray();
