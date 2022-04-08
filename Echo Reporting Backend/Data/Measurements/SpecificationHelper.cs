@@ -268,12 +268,12 @@ namespace DICOMReporting.Data.Measurements {
 			specs.Add(new MeasurementSpecification("Mitral valve A wave", "Mitral Valve A-Wave Peak Velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.MitralValveAWave(pd, "Mitral valve A wave velocity"), unitEnum: SpeedUnit.CentimeterPerSecond));
 			props.Clear();
 
-			props.Add("Image Mode", "Tissue Doppler Imaging");
-			specs.Add(new MeasurementSpecification("Mitral E/A ratio", "Peak E wave/Peak A wave by US", new Dictionary<string, string>(props), "", formula: ImpactOfCardiacGrowthFormula.MitralEA_Ratio(pd, "Mitral E/A ratio")));
+			//props.Add("Image Mode", "Tissue Doppler Imaging");
+			specs.Add(new MeasurementSpecification("Mitral E/A ratio", "Mitral Valve E to A Ratio", new Dictionary<string, string>(props), "", formula: ImpactOfCardiacGrowthFormula.MitralEA_Ratio(pd, "Mitral E/A ratio")));
 			props.Clear();
 
 
-			props.Add("Flow Direction", "Antegrade Flow");
+			props.Add("Direction of Flow", "Antegrade Flow");
 			specs.Add(new MeasurementSpecification("MV decel time", "Deceleration Time", new Dictionary<string, string>(props), "ms", formula: EchoManualFormula.MVDecelTime(pd, "mitral valve deceleration time"), unitEnum: DurationUnit.Millisecond));
 			props.Clear();
 
@@ -306,7 +306,7 @@ namespace DICOMReporting.Data.Measurements {
 			specs.Add(new MeasurementSpecification("Tricuspid valve inflow mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mmHg"));
 			props.Clear();
 
-			props.Add("Flow Direction", "Regurgitant Flow");
+			props.Add("Direction of Flow", "Regurgitant Flow");
 			specs.Add(new MeasurementSpecification("Estimated RV systolic pressure", "Peak Gradient", new Dictionary<string, string>(props), "mmHg + RA pressure"));
 			specs.Add(new MeasurementSpecification("Tricuspid valve regurgitation peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
 			props.Clear();
