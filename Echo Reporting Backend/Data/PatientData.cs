@@ -164,6 +164,8 @@ namespace DICOMReporting.Data {
 
 			ReportingDoctor = new MultipleChoiceResult("Reporting Doctor", new List<string>() { "Dr Paul Brooks", "Dr Hannah Bourne" });
 
+			ReferringPhysician = new StringResult("Referring Physician");
+
 			UpdateBSAResult();
 		}
 		private string FormatName(string name) {
