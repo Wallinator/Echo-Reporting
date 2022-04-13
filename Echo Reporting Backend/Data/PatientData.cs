@@ -190,6 +190,8 @@ namespace DICOMReporting.Data {
 			StudyDate = new StringResult("Study Date", FormatDate(ds.GetSingleValue<string>(DicomTag.StudyDate)));
 
 			PatientDOB = new StringResult("DOB", FormatDate(ds.GetSingleValue<string>(DicomTag.PatientBirthDate)));
+
+			ReferringPhysician = new StringResult("Referring Physician", ds.GetSingleValue<string>(DicomTag.ReferringPhysicianName));
 		}
 	}
 }

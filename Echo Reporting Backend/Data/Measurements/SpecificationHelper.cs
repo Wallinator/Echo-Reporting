@@ -139,8 +139,8 @@ namespace DICOMReporting.Data.Measurements {
 			props.Clear();
 
 			props.Add("Measurement Method", "Method of Disks, Single Plane");
-			props.Add("Image View", "Apical four chamber");
-			specs.Add(new MeasurementSpecification("Left ventricular Apical 4 chamber EF", "Cardiac ejection fraction", new Dictionary<string, string>(props), "%", includeImageMode: true, formula: LVEFFormula.LVBiplaneEF()));
+			//props.Add("Image View", "Apical four chamber");
+			specs.Add(new MeasurementSpecification("Left ventricular Apical 4 chamber EF", "Left Ventricular Ejection Fraction", new Dictionary<string, string>(props), "%", includeImageMode: true, formula: LVEFFormula.LVBiplaneEF()));
 			props.Clear();
 
 			specs.Add(new MeasurementSpecification("MVCFc", "HR-Corrected Mean Velocity of Circumferential Fiber Shortening", new Dictionary<string, string>(props), "circ/sec", includeImageMode: true));
@@ -216,6 +216,7 @@ namespace DICOMReporting.Data.Measurements {
 			specs.Add(new MeasurementSpecification("Pulmonary valve mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mmHg"));
 			specs.Add(new MeasurementSpecification("Pulmonary valve peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mmHg"));
 			specs.Add(new MeasurementSpecification("Pulmonary valve peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
+			specs.Add(new MeasurementSpecification("Pulmonary artery acceleration time", "Acceleration Time", new Dictionary<string, string>(props), "ms", unitEnum: DurationUnit.Millisecond));
 			props.Clear();
 
 			//props.Add("Flow Direction", "Regurgitant Flow");
@@ -298,11 +299,15 @@ namespace DICOMReporting.Data.Measurements {
 			var specs = new List<MeasurementSpecification>();
 			Dictionary<string, string> props = new Dictionary<string, string>();
 
-			props.Add("Finding Site", "Cardiac valve annulus");
-			specs.Add(new MeasurementSpecification("Tricuspid valve annulus", "Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.TricuspidValveAnnulus(pd, "Tricuspid valve annulus"), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			props.Add("Finding Site", "Tricuspid Annulus");
+			props.Add("Direction of Flow", "Antegrade Flow");
+			specs.Add(new MeasurementSpecification("Tricuspid valve annulus", "Cardiovascular Orifice Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.TricuspidValveAnnulus(pd, "Tricuspid valve annulus"), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
 			props.Clear();
 
-			props.Add("Flow Direction", "Antegrade Flow");
+			specs.Add(new MeasurementSpecification("TAPSE", "Tricuspid Annular Plane Systolic Excursion (TAPSE)", new Dictionary<string, string>(props), "cm", includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			props.Clear();
+
+			props.Add("Direction of Flow", "Antegrade Flow");
 			specs.Add(new MeasurementSpecification("Tricuspid valve inflow mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mmHg"));
 			props.Clear();
 

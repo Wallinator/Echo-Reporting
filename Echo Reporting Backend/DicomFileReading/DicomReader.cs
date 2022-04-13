@@ -71,6 +71,7 @@ namespace DICOMReporting.DicomFileReading {
 						name = child.Code.Meaning;
 						value = child.Dataset.GetDicomItem<DicomSequence>(DicomTag.ConceptCodeSequence).Items[0].GetString(DicomTag.CodeMeaning);
 						measurement.AddProperty(name, value);
+
 					}
 				}
 			}

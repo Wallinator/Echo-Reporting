@@ -226,6 +226,8 @@
 			this.SystemicVeinsPanel = new System.Windows.Forms.Panel();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.SitusPanel = new System.Windows.Forms.Panel();
+			this.TAPSEPanel = new System.Windows.Forms.Panel();
+			this.PAAccelTimePanel = new System.Windows.Forms.Panel();
 			this.menuStrip1.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -948,6 +950,7 @@
 			// 
 			// groupBox8
 			// 
+			this.groupBox8.Controls.Add(this.PAAccelTimePanel);
 			this.groupBox8.Controls.Add(this.PVEndDiaGradPanel);
 			this.groupBox8.Controls.Add(this.PVEndDiaVelPanel);
 			this.groupBox8.Controls.Add(this.PV3Panel);
@@ -1242,6 +1245,7 @@
 			// 
 			// groupBox7
 			// 
+			this.groupBox7.Controls.Add(this.TAPSEPanel);
 			this.groupBox7.Controls.Add(this.VSDDescPanel);
 			this.groupBox7.Controls.Add(this.SeptalMotionPanel);
 			this.groupBox7.Controls.Add(this.VSDGradPanel);
@@ -2020,6 +2024,22 @@
 			this.SitusPanel.Size = new System.Drawing.Size(533, 26);
 			this.SitusPanel.TabIndex = 3;
 			// 
+			// TAPSEPanel
+			// 
+			this.TAPSEPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.TAPSEPanel.Location = new System.Drawing.Point(535, 591);
+			this.TAPSEPanel.Name = "TAPSEPanel";
+			this.TAPSEPanel.Size = new System.Drawing.Size(254, 59);
+			this.TAPSEPanel.TabIndex = 47;
+			// 
+			// PAAccelTimePanel
+			// 
+			this.PAAccelTimePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.PAAccelTimePanel.Location = new System.Drawing.Point(535, 806);
+			this.PAAccelTimePanel.Name = "PAAccelTimePanel";
+			this.PAAccelTimePanel.Size = new System.Drawing.Size(254, 59);
+			this.PAAccelTimePanel.TabIndex = 56;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2258,6 +2278,8 @@
 		private System.Windows.Forms.Panel PDAGradientPanel;
 		private System.Windows.Forms.Panel RVEPanel;
 		private System.Windows.Forms.Panel VSDDescPanel;
+		private System.Windows.Forms.Panel TAPSEPanel;
+		private System.Windows.Forms.Panel PAAccelTimePanel;
 	}
 }
 

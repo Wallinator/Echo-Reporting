@@ -218,6 +218,7 @@ namespace Echo_Reporting_Windows_App {
 			//TriAnnulusE2Panel.Controls.Add(new ResultControl(report.Results["Tricuspid annulus E'"], showNotFoundError, this));
 			TriAnnulusA2Panel.Controls.Add(new ResultControl(report.Results["Tricuspid annulus A'"], showNotFoundError, this));
 			TriAnnulusS2Panel.Controls.Add(new ResultControl(report.Results["Tricuspid annulus S'"], showNotFoundError, this));
+			TAPSEPanel.Controls.Add(new ResultControl(report.Results["TAPSE"], showNotFoundError, this));
 
 
 			DilatedRVPanel.Controls.Add(new StringDropDownControl(report.ReportingOptions.DilatedRV));
@@ -277,6 +278,7 @@ namespace Echo_Reporting_Windows_App {
 			PVVelocityPanel.Controls.Add(new ResultControl(report.Results["Pulmonary valve peak velocity"], showNotFoundError, this));
 			PVPeakPanel.Controls.Add(new ResultControl(report.Results["Pulmonary valve peak gradient"], showNotFoundError, this));
 			PVMeanPanel.Controls.Add(new ResultControl(report.Results["Pulmonary valve mean gradient"], showNotFoundError, this));
+			PAAccelTimePanel.Controls.Add(new ResultControl(report.Results["Pulmonary artery acceleration time"], showNotFoundError, this));
 			PVEndDiaVelPanel.Controls.Add(new ResultControl(report.Results["Pulmonary valve end diastolic velocity"], showNotFoundError, this));
 			PVEndDiaGradPanel.Controls.Add(new ResultControl(report.Results["Pulmonary valve end diastolic peak gradient"], showNotFoundError, this));
 			#endregion
