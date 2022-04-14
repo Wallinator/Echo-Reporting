@@ -23,7 +23,7 @@ namespace DICOMReporting.Data.Measurements {
 			final["Left Main Coronary Artery"] = LeftMainCoronaryArterySpecs(pd);
 			final["Anterior Descending Branch of Left Coronary Artery"] = AnteriorDescendingBranchOfLeftCoronaryArterySpecs(pd);
 			final["Right Coronary Artery"] = RightCoronaryArterySpecs(pd);
-			final["Pulmonary Vein"] = PulmonaryVeinSpecs(pd);
+			final["Pulmonary Venous Structure"] = PulmonaryVenousStructureSpecs(pd);
 			final["Atrial Septal Defect"] = AtrialSeptalDefectSpecs(pd);
 			final["Congenital Anomaly of Cardiovascular System"] = CongenitalAnomalyOfCardiovascularSystemSpecs(pd);
 			final["Right Ventricle"] = RightVentricleSpecs(pd);
@@ -77,17 +77,13 @@ namespace DICOMReporting.Data.Measurements {
 			specs.Add(new MeasurementSpecification("LV mass index", "Left Ventricle Mass Index", new Dictionary<string, string>(props), "g/m2", formula: ImpactOfCardiacGrowthFormula.LVMassIndex(pd, "LV mass index"), includeImageMode: true));
 			props.Clear();
 
+			//props.Add("Image Mode", "M mode");
 			specs.Add(new MeasurementSpecification("Heart Rate", "Heart rate", new Dictionary<string, string>(props), "bpm", formula: ImpactOfCardiacGrowthFormula.HeartRate(pd, ""), includeImageMode: true));
 			props.Clear();
 
 			specs.Add(new MeasurementSpecification("Fractional Shortening", "Left Ventricular Fractional Shortening", new Dictionary<string, string>(props), "%", formula: ImpactOfCardiacGrowthFormula.FractionalShortening(pd, ""), includeImageMode: true));
 			props.Clear();
 
-			props.Add("Finding Site", "Lateral Mitral Annulus");
-			props.Add("Cardiac Cycle Point", "Early Diastole");
-			props.Add("Image Mode", "Tissue Doppler Imaging");
-			specs.Add(new MeasurementSpecification("Mitral annulus E'", "Peak Tissue Velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.MitralAnnulusE(pd, "Mitral annulus E' velocity"), unitEnum: SpeedUnit.CentimeterPerSecond));
-			props.Clear();
 			props.Add("Finding Site", "Lateral Mitral Annulus");
 			props.Add("Cardiac Cycle Point", "Atrial Systole");
 			props.Add("Image Mode", "Tissue Doppler Imaging");
@@ -99,11 +95,7 @@ namespace DICOMReporting.Data.Measurements {
 			specs.Add(new MeasurementSpecification("Mitral annulus S'", "Peak Tissue Velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.MitralAnnulusS(pd, "Mitral annulus S' velocity"), unitEnum: SpeedUnit.CentimeterPerSecond));
 			props.Clear();
 
-			props.Add("Finding Site", "Medial Mitral Annulus");
-			props.Add("Cardiac Cycle Point", "Early Diastole");
-			props.Add("Image Mode", "Tissue Doppler Imaging");
-			specs.Add(new MeasurementSpecification("Septal annulus E'", "Peak Tissue Velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.SeptalAnnulusE(pd, "Septal annulus E' velocity"), unitEnum: SpeedUnit.CentimeterPerSecond));
-			props.Clear();
+
 			props.Add("Finding Site", "Medial Mitral Annulus");
 			props.Add("Cardiac Cycle Point", "Atrial Systole");
 			props.Add("Image Mode", "Tissue Doppler Imaging");
@@ -115,7 +107,7 @@ namespace DICOMReporting.Data.Measurements {
 			specs.Add(new MeasurementSpecification("Septal annulus S'", "Peak Tissue Velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.SeptalAnnulusS(pd, "Septal annulus S' velocity"), unitEnum: SpeedUnit.CentimeterPerSecond));
 			props.Clear();
 
-			specs.Add(new MeasurementSpecification("LV IVRT", "Isovolumic Relaxation Time", new Dictionary<string, string>(props), "ms", formula: EchoManualFormula.LVIVRT(pd, "LV IVRT"), unitEnum: DurationUnit.Millisecond));
+			specs.Add(new MeasurementSpecification("LV IVRT", "Left Ventricular Isovolumic Relaxation Time", new Dictionary<string, string>(props), "ms", formula: EchoManualFormula.LVIVRT(pd, "LV IVRT"), unitEnum: DurationUnit.Millisecond));
 			props.Clear();
 
 			props.Add("Finding Site", "Left Ventricle Outflow Tract");
@@ -135,6 +127,7 @@ namespace DICOMReporting.Data.Measurements {
 			props.Clear();
 
 			props.Add("Finding Site", "Left Ventricle Outflow Tract");
+			//props.Add("Image Mode", "Doppler Pulsed");
 			specs.Add(new MeasurementSpecification("Left ventricular cardiac output", "Cardiac Output", new Dictionary<string, string>(props), "l/min"));
 			props.Clear();
 
@@ -259,9 +252,21 @@ namespace DICOMReporting.Data.Measurements {
 			var specs = new List<MeasurementSpecification>();
 			Dictionary<string, string> props = new Dictionary<string, string>();
 
+			props.Add("Finding Site", "Mitral Annulus");
+			props.Add("Direction of Flow", "Antegrade Flow");
+			specs.Add(new MeasurementSpecification("Mitral valve annulus", "Cardiovascular Orifice Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.MitralValveAnnulus(pd, "Mitral valve annulus"), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			props.Clear();
+
 			props.Add("Finding Site", "Lateral Mitral Annulus");
 			props.Add("Cardiac Cycle Point", "Early Diastole");
-			specs.Add(new MeasurementSpecification("Mitral valve annulus", "Peak Tissue Velocity", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.MitralValveAnnulus(pd, "Mitral valve annulus"), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			//props.Add("Image Mode", "Tissue Doppler Imaging");
+			specs.Add(new MeasurementSpecification("Mitral annulus E'", "Peak Tissue Velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.MitralAnnulusE(pd, "Mitral annulus E' velocity"), unitEnum: SpeedUnit.CentimeterPerSecond));
+			props.Clear();
+
+			props.Add("Finding Site", "Medial Mitral Annulus");
+			props.Add("Cardiac Cycle Point", "Early Diastole");
+			//props.Add("Image Mode", "Tissue Doppler Imaging");
+			specs.Add(new MeasurementSpecification("Septal annulus E'", "Peak Tissue Velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.SeptalAnnulusE(pd, "Septal annulus E' velocity"), unitEnum: SpeedUnit.CentimeterPerSecond));
 			props.Clear();
 
 			//props.Add("Flow Direction", "Antegrade Flow");
@@ -276,19 +281,16 @@ namespace DICOMReporting.Data.Measurements {
 
 			props.Add("Direction of Flow", "Antegrade Flow");
 			specs.Add(new MeasurementSpecification("MV decel time", "Deceleration Time", new Dictionary<string, string>(props), "ms", formula: EchoManualFormula.MVDecelTime(pd, "mitral valve deceleration time"), unitEnum: DurationUnit.Millisecond));
-			props.Clear();
 
-
-			props.Add("Flow Direction", "Antegrade Flow");
 			specs.Add(new MeasurementSpecification("Mitral valve inflow mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mmHg"));
 			props.Clear();
 
-			props.Add("Flow Direction", "Regurgitant Flow");
+			props.Add("Direction of Flow", "Regurgitant Flow");
 			specs.Add(new MeasurementSpecification("Mitral valve regurgitation peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mmHg"));
 			specs.Add(new MeasurementSpecification("Mitral valve regurgitation peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
 			props.Clear();
 
-			specs.Add(new MeasurementSpecification("Mitral valve inflow A wave duration", "A-Wave Duration", new Dictionary<string, string>(props), "ms", unitEnum: DurationUnit.Millisecond));
+			specs.Add(new MeasurementSpecification("Mitral valve inflow A wave duration", "Mitral Valve A-Wave Duration", new Dictionary<string, string>(props), "ms", unitEnum: DurationUnit.Millisecond));
 			specs.Add(new MeasurementSpecification("Myocardial Performance Index", "Myocardial Performance Index (Tei)", new Dictionary<string, string>(props), ""));
 			props.Clear();
 
@@ -304,7 +306,7 @@ namespace DICOMReporting.Data.Measurements {
 			specs.Add(new MeasurementSpecification("Tricuspid valve annulus", "Cardiovascular Orifice Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.TricuspidValveAnnulus(pd, "Tricuspid valve annulus"), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
 			props.Clear();
 
-			specs.Add(new MeasurementSpecification("TAPSE", "Tricuspid Annular Plane Systolic Excursion (TAPSE)", new Dictionary<string, string>(props), "cm", includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			specs.Add(new MeasurementSpecification("TAPSE", "Tricuspid Annular Plane Systolic Excursion (TAPSE)", new Dictionary<string, string>(props), "cm", includeImageMode: false, unitEnum: LengthUnit.Centimeter));
 			props.Clear();
 
 			props.Add("Direction of Flow", "Antegrade Flow");
@@ -316,8 +318,9 @@ namespace DICOMReporting.Data.Measurements {
 			specs.Add(new MeasurementSpecification("Tricuspid valve regurgitation peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
 			props.Clear();
 
-			specs.Add(new MeasurementSpecification("Tricuspid annulus E'", "", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.TricuspidAnnulusE(pd, "Tricuspid annulus E' velocity"), unitEnum: SpeedUnit.CentimeterPerSecond));
-			specs.Add(new MeasurementSpecification("Tricuspid annulus A'", "", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.TricuspidAnnulusA(pd, "Tricuspid annulus A' velocity"), unitEnum: SpeedUnit.CentimeterPerSecond));
+			props.Add("Finding Site", "Lateral Tricuspid Annulus");
+			specs.Add(new MeasurementSpecification("Tricuspid annulus E'", "Tricuspid valve annulus Peak Tissue velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.TricuspidAnnulusE(pd, "Tricuspid annulus E' velocity"), unitEnum: SpeedUnit.CentimeterPerSecond));
+			specs.Add(new MeasurementSpecification("Tricuspid annulus A'", "RV Peak Diastolic Tissue Velocity During Atrial Systole:", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.TricuspidAnnulusA(pd, "Tricuspid annulus A' velocity"), unitEnum: SpeedUnit.CentimeterPerSecond));
 			specs.Add(new MeasurementSpecification("Tricuspid annulus S'", "", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.TricuspidAnnulusS(pd, "Tricuspid annulus S' velocity"), unitEnum: SpeedUnit.CentimeterPerSecond));
 			props.Clear();
 
@@ -367,21 +370,21 @@ namespace DICOMReporting.Data.Measurements {
 
 			return specs;
 		}
-		private static List<MeasurementSpecification> PulmonaryVeinSpecs(PatientData pd) {
+		private static List<MeasurementSpecification> PulmonaryVenousStructureSpecs(PatientData pd) {
 
 			var specs = new List<MeasurementSpecification>();
 			Dictionary<string, string> props = new Dictionary<string, string>();
 
-			props.Add("Cardiac Cycle Point", "End Systole");
-			specs.Add(new MeasurementSpecification("Pulm vein S wave", "Peak Velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.PulmVeinSWave(pd, "pulmonary venous S wave velocity"), unitEnum: SpeedUnit.CentimeterPerSecond));
+			//props.Add("Cardiac Cycle Point", "End Systole");
+			specs.Add(new MeasurementSpecification("Pulm vein S wave", "Pulmonary Vein Systolic Peak Velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.PulmVeinSWave(pd, "pulmonary venous S wave velocity"), unitEnum: SpeedUnit.CentimeterPerSecond));
 			props.Clear();
 
-			props.Add("Cardiac Cycle Point", "End Diastole");
-			specs.Add(new MeasurementSpecification("Pulm vein D wave", "Peak Velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.PulmVeinDWave(pd, "pulmonary venous D wave velocity"), unitEnum: SpeedUnit.CentimeterPerSecond));
+			//props.Add("Cardiac Cycle Point", "End Diastole");
+			specs.Add(new MeasurementSpecification("Pulm vein D wave", "Pulmonary Vein Diastolic Peak Velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.PulmVeinDWave(pd, "pulmonary venous D wave velocity"), unitEnum: SpeedUnit.CentimeterPerSecond));
 			props.Clear();
 
-			specs.Add(new MeasurementSpecification("Pulm vein A wave", "Peak Reversal Velocity during Atrial Contraction", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.PulmVeinAWave(pd, "pulmonary venous A wave velocity"), unitEnum: SpeedUnit.CentimeterPerSecond));
-			specs.Add(new MeasurementSpecification("Pulmonary vein A wave duration", "A-Wave Duration", new Dictionary<string, string>(props), "ms", unitEnum: DurationUnit.Millisecond));
+			specs.Add(new MeasurementSpecification("Pulm vein A wave", "Pulmonary Vein Atrial Contraction Reversal Peak Velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.PulmVeinAWave(pd, "pulmonary venous A wave velocity"), unitEnum: SpeedUnit.CentimeterPerSecond));
+			specs.Add(new MeasurementSpecification("Pulmonary vein A wave duration", "Pulmonary Vein A-Wave Duration", new Dictionary<string, string>(props), "ms", unitEnum: DurationUnit.Millisecond));
 			props.Clear();
 
 			return specs;
@@ -391,9 +394,6 @@ namespace DICOMReporting.Data.Measurements {
 			var specs = new List<MeasurementSpecification>();
 			Dictionary<string, string> props = new Dictionary<string, string>();
 
-			specs.Add(new MeasurementSpecification("Atrial Septal Defect dimension", "Major Axis", new Dictionary<string, string>(props), "cm", includeImageMode: true, unitEnum: LengthUnit.Centimeter));
-			specs.Add(new MeasurementSpecification("Atrial Septal Defect mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mmHg"));
-
 			return specs;
 		}
 		private static List<MeasurementSpecification> CongenitalAnomalyOfCardiovascularSystemSpecs(PatientData pd) {
@@ -401,10 +401,16 @@ namespace DICOMReporting.Data.Measurements {
 			var specs = new List<MeasurementSpecification>();
 			Dictionary<string, string> props = new Dictionary<string, string>();
 
+			props.Add("Finding Site", "Atrial Septal Defect");
+			specs.Add(new MeasurementSpecification("Atrial Septal Defect dimension", "Cardiovascular Orifice Diameter", new Dictionary<string, string>(props), "cm", includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			specs.Add(new MeasurementSpecification("Atrial Septal Defect mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mmHg"));
+			props.Clear();
+
 			props.Add("Finding Site", "Ventricular Septal Defect");
 			specs.Add(new MeasurementSpecification("Ventricular Septal Defect peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mmHg"));
 			specs.Add(new MeasurementSpecification("Ventricular Septal Defect peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
 			specs.Add(new MeasurementSpecification("Ventricular Septal Defect dimension", "Major Axis", new Dictionary<string, string>(props), "cm", includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			props.Clear();
 
 			return specs;
 		}

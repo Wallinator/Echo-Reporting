@@ -504,6 +504,7 @@ namespace Echo_Reporting_Windows_App {
 			//TriAnnulusE2Panel.Controls.Clear();
 			TriAnnulusA2Panel.Controls.Clear();
 			TriAnnulusS2Panel.Controls.Clear();
+			TAPSEPanel.Controls.Clear();
 
 			DilatedRVPanel.Controls.Clear();
 			HypertrophyRVPanel.Controls.Clear();
@@ -562,6 +563,7 @@ namespace Echo_Reporting_Windows_App {
 			PVVelocityPanel.Controls.Clear();
 			PVPeakPanel.Controls.Clear();
 			PVMeanPanel.Controls.Clear();
+			PAAccelTimePanel.Controls.Clear();
 			PVEndDiaVelPanel.Controls.Clear();
 			PVEndDiaGradPanel.Controls.Clear();
 
