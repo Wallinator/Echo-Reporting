@@ -209,7 +209,7 @@ namespace DICOMReporting.Data.Measurements {
 			specs.Add(new MeasurementSpecification("Pulmonary valve mean gradient", "Mean Gradient", new Dictionary<string, string>(props), "mmHg"));
 			specs.Add(new MeasurementSpecification("Pulmonary valve peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mmHg"));
 			specs.Add(new MeasurementSpecification("Pulmonary valve peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
-			specs.Add(new MeasurementSpecification("Pulmonary artery acceleration time", "Acceleration Time", new Dictionary<string, string>(props), "ms", unitEnum: DurationUnit.Millisecond));
+			specs.Add(new MeasurementSpecification("Pulmonary artery acceleration time", "Acceleration Time", new Dictionary<string, string>(props), "ms", formula: AgeBasedLimitFormula.PulmArtAccelTime(pd, "Pulmonary artery acceleration time"), unitEnum: DurationUnit.Millisecond));
 			props.Clear();
 
 			//props.Add("Flow Direction", "Regurgitant Flow");
@@ -306,7 +306,7 @@ namespace DICOMReporting.Data.Measurements {
 			specs.Add(new MeasurementSpecification("Tricuspid valve annulus", "Cardiovascular Orifice Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.TricuspidValveAnnulus(pd, "Tricuspid valve annulus"), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
 			props.Clear();
 
-			specs.Add(new MeasurementSpecification("TAPSE", "Tricuspid Annular Plane Systolic Excursion (TAPSE)", new Dictionary<string, string>(props), "cm", includeImageMode: false, unitEnum: LengthUnit.Centimeter));
+			specs.Add(new MeasurementSpecification("TAPSE", "Tricuspid Annular Plane Systolic Excursion (TAPSE)", new Dictionary<string, string>(props), "cm", formula: AgeBasedLimitFormula.TAPSE(pd, "TAPSE"), includeImageMode: false, unitEnum: LengthUnit.Centimeter));
 			props.Clear();
 
 			props.Add("Direction of Flow", "Antegrade Flow");

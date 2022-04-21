@@ -78,6 +78,7 @@
     <Compile Include="Formulas\DilationOfAscendingAortaFormula.cs" />
     <Compile Include="Formulas\EchoManualFormula.cs" />
     <Compile Include="Formulas\IFormula.cs" />
+    <Compile Include="Formulas\AgeBasedLimitFormula.cs" />
     <Compile Include="Formulas\ImpactOfCardiacGrowthFormula.cs" />
     <Compile Include="Formulas\RegressionEquationFormula.cs" />
     <Compile Include="Formulas\LVEFFormula.cs" />

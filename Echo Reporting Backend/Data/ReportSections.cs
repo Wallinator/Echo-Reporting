@@ -127,6 +127,9 @@ namespace Echo_Reporting_Backend.Data {
 			Ventricles += ResultToString(sr.Results["Tricuspid annulus E'"]);
 			Ventricles += ResultToString(sr.Results["Tricuspid annulus A'"]);
 			Ventricles += ResultToString(sr.Results["Tricuspid annulus S'"]);
+
+			Ventricles += ResultToString(sr.Results["TAPSE"], false);
+
 			Ventricles += OptionsToString(sr.ReportingOptions.DilatedRV);
 			Ventricles += OptionsToString(sr.ReportingOptions.HypertrophiedRV);
 			Ventricles += OptionsToString(sr.ReportingOptions.ReducedRVFunction);
@@ -185,6 +188,10 @@ namespace Echo_Reporting_Backend.Data {
 				Outlets += ResultToString(sr.Results["Pulmonary valve peak gradient"]);
 			}
 			Outlets += ResultToString(sr.Results["Pulmonary valve mean gradient"]);
+
+			Outlets += ResultToString(sr.Results["Pulmonary artery acceleration time"], false);
+
+
 			Outlets += ResultToString(sr.Results["Pulmonary valve end diastolic velocity"]);
 			Outlets += ResultToString(sr.Results["Pulmonary valve end diastolic peak gradient"]);
 		}
