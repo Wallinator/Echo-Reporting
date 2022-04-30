@@ -155,6 +155,7 @@ namespace DICOMReporting.Data {
 		}
 
 		private void AddCalculatedValues() {
+/*
 			var r1 = Results["Pulmonary valve end diastolic velocity"];
 			Result final1;
 			if (!r1.Empty) {
@@ -163,7 +164,7 @@ namespace DICOMReporting.Data {
 			else {
 				final1 = new Result("Pulmonary valve end diastolic peak gradient", "mmHg");
 			}
-			Results["Pulmonary valve end diastolic peak gradient"] = final1;
+			Results["Pulmonary valve end diastolic peak gradient"] = final1;*/
 
 
 			var r2 = Results["Patent Ductus Arteriosus peak velocity systole"];
