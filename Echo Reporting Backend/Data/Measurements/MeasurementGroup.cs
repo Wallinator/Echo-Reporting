@@ -34,14 +34,15 @@ namespace DICOMReporting.Data.Measurements {
 			return groups;
 		}
 		public Measurement SelectMean() {
-			if (Measurements.Count == 1) {
-				return Measurements.First();
-			}
-			else {
-				return Measurements.Find(m => (m.Properties.TryGetValue("Derivation", out string val) && val.Equals("Mean")
+			if (Measurements.Count > 1) {
+				var measurement = Measurements.Find(m => (m.Properties.TryGetValue("Derivation", out string val) && val.Equals("Mean")
 										   || (m.Properties.TryGetValue("Selection Status", out val) && val.Equals("Mean value chosen"))
 										   ));
+				if(measurement != null) {
+					return measurement;
+				}
 			}
+			return Measurements.First();
 		}
 		/*
 		public Measurement SelectNonMean() {

@@ -20,7 +20,7 @@ namespace DICOMReporting.Data.Measurements {
 			final["Mitral Valve"] = MitralValveSpecs(pd);
 			final["Tricuspid Valve"] = TricuspidValveSpecs(pd);
 			final["Ascending aorta"] = AscendingAortaSpecs(pd);
-			final["Left Main Coronary Artery"] = LeftMainCoronaryArterySpecs(pd);
+			final["Coronary Artery"] = CoronaryArterySpecs(pd);
 			final["Anterior Descending Branch of Left Coronary Artery"] = AnteriorDescendingBranchOfLeftCoronaryArterySpecs(pd);
 			final["Right Coronary Artery"] = RightCoronaryArterySpecs(pd);
 			final["Pulmonary Venous Structure"] = PulmonaryVenousStructureSpecs(pd);
@@ -220,18 +220,19 @@ namespace DICOMReporting.Data.Measurements {
 			var specs = new List<MeasurementSpecification>();
 			Dictionary<string, string> props = new Dictionary<string, string>();
 
-			specs.Add(new MeasurementSpecification("Main pulmonary artery", "Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.MainPulmonaryArtery(pd, "Main pulmonary artery"), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			specs.Add(new MeasurementSpecification("Main pulmonary artery", "Main Pulmonary Artery Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.MainPulmonaryArtery(pd, "Main pulmonary artery"), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			specs.Add(new MeasurementSpecification("Main pulmonary artery peak gradient", "Main Pulmonary Artery Peak Gradient", new Dictionary<string, string>(props), "mmHg"));
+			specs.Add(new MeasurementSpecification("Main pulmonary artery peak velocity", "Main Pulmonary Artery Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
 			props.Clear();
-
 			//props.Add("Finding Site", "Left pulmonary artery");
-			specs.Add(new MeasurementSpecification("Left pulmonary artery", "Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.LeftPulmonaryArtery(pd, "Left pulmonary artery"), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			specs.Add(new MeasurementSpecification("Left pulmonary artery", "Left Pulmonary Artery Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.LeftPulmonaryArtery(pd, "Left pulmonary artery"), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
 			props.Clear();
 
 			specs.Add(new MeasurementSpecification("Left pulmonary artery peak gradient", "Left Pulmonary Artery Peak Gradient", new Dictionary<string, string>(props), "mmHg"));
 			specs.Add(new MeasurementSpecification("Left pulmonary artery peak velocity", "Left Pulmonary Artery Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
 			props.Clear();
 			
-			specs.Add(new MeasurementSpecification("Right pulmonary artery", "Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.RightPulmonaryArtery(pd, "Right pulmonary artery"), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			specs.Add(new MeasurementSpecification("Right pulmonary artery", "Right Pulmonary Artery Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.RightPulmonaryArtery(pd, "Right pulmonary artery"), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
 			props.Clear();
 
 			props.Add("Finding Site", "Right Pulmonary Artery");
@@ -326,32 +327,12 @@ namespace DICOMReporting.Data.Measurements {
 
 			return specs;
 		}
-		private static List<MeasurementSpecification> LeftMainCoronaryArterySpecs(PatientData pd) {
-
-			var specs = new List<MeasurementSpecification>();
-			Dictionary<string, string> props = new Dictionary<string, string>();
-
-			specs.Add(new MeasurementSpecification("Left Main Coronary Artery", "Diameter", new Dictionary<string, string>(props), "mm", formula: CoronaryArteryInvolvementFormula.LeftMainCoronary(pd, "left main coronary artery"), includeImageMode: true, unitEnum: LengthUnit.Millimeter));
-			props.Clear();
-
-			return specs;
-		}
 		private static List<MeasurementSpecification> AnteriorDescendingBranchOfLeftCoronaryArterySpecs(PatientData pd) {
 
 			var specs = new List<MeasurementSpecification>();
 			Dictionary<string, string> props = new Dictionary<string, string>();
 
 			specs.Add(new MeasurementSpecification("Anterior Descending Branch of Left Coronary Artery", "Diameter", new Dictionary<string, string>(props), "mm", formula: CoronaryArteryInvolvementFormula.LeftAnteriorDescending(pd, "left anterior descending artery"), includeImageMode: true, unitEnum: LengthUnit.Millimeter, altName: "Left Anterior Descending Artery"));
-			props.Clear();
-
-			return specs;
-		}
-		private static List<MeasurementSpecification> RightCoronaryArterySpecs(PatientData pd) {
-
-			var specs = new List<MeasurementSpecification>();
-			Dictionary<string, string> props = new Dictionary<string, string>();
-
-			specs.Add(new MeasurementSpecification("Right Coronary Artery", "Diameter", new Dictionary<string, string>(props), "mm", formula: CoronaryArteryInvolvementFormula.RightCoronaryArtery(pd, "right coronary artery"), includeImageMode: true, unitEnum: LengthUnit.Millimeter));
 			props.Clear();
 
 			return specs;
@@ -429,9 +410,7 @@ namespace DICOMReporting.Data.Measurements {
 			var specs = new List<MeasurementSpecification>();
 			Dictionary<string, string> props = new Dictionary<string, string>();
 
-			specs.Add(new MeasurementSpecification("Main pulmonary artery peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mmHg"));
-			specs.Add(new MeasurementSpecification("Main pulmonary artery peak velocity", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
-			props.Clear();
+
 
 			return specs;
 		}
@@ -477,13 +456,36 @@ namespace DICOMReporting.Data.Measurements {
 
 			return specs;
 		}
-		private static List<MeasurementSpecification> CircumflexCoronaryArterySpecs(PatientData pd) {
+		private static List<MeasurementSpecification> CoronaryArterySpecs(PatientData pd) {
 
 			var specs = new List<MeasurementSpecification>();
 			Dictionary<string, string> props = new Dictionary<string, string>();
 
-			specs.Add(new MeasurementSpecification("Left Circumflex", "Diameter", new Dictionary<string, string>(props), "mm", includeImageMode: true, unitEnum: LengthUnit.Millimeter));
+			props.Add("Finding Site", "Left Main Coronary Artery");
+			specs.Add(new MeasurementSpecification("Left Main Coronary Artery", "Diameter", new Dictionary<string, string>(props), "mm", formula: CoronaryArteryInvolvementFormula.LeftMainCoronary(pd, "left main coronary artery"), includeImageMode: false, unitEnum: LengthUnit.Millimeter));
 			props.Clear();
+
+			props.Add("Finding Site", "Right Coronary Artery");
+			specs.Add(new MeasurementSpecification("Right Coronary Artery", "Diameter", new Dictionary<string, string>(props), "mm", formula: CoronaryArteryInvolvementFormula.RightCoronaryArtery(pd, "right coronary artery"), includeImageMode: false, unitEnum: LengthUnit.Millimeter));
+			props.Clear();
+
+			props.Add("Finding Site", "Circumflex Coronary Artery");
+			specs.Add(new MeasurementSpecification("Left Circumflex", "Diameter", new Dictionary<string, string>(props), "mm", includeImageMode: false, unitEnum: LengthUnit.Millimeter));
+			props.Clear();
+
+			return specs;
+		}
+		private static List<MeasurementSpecification> RightCoronaryArterySpecs(PatientData pd) {
+
+			var specs = new List<MeasurementSpecification>();
+			Dictionary<string, string> props = new Dictionary<string, string>();
+
+			return specs;
+		}
+		private static List<MeasurementSpecification> CircumflexCoronaryArterySpecs(PatientData pd) {
+
+			var specs = new List<MeasurementSpecification>();
+			Dictionary<string, string> props = new Dictionary<string, string>();
 
 			return specs;
 		}
@@ -494,11 +496,11 @@ namespace DICOMReporting.Data.Measurements {
 
 			specs.Add(new MeasurementSpecification("Patent Ductus Arteriosus", "Diameter", new Dictionary<string, string>(props), "cm", includeImageMode: true, unitEnum: LengthUnit.Centimeter));
 
-			props.Add("Cardiac Cycle Point", "End Systole");
+			props.Add("Cardiac Cycle Point", "Systole");
 			specs.Add(new MeasurementSpecification("Patent Ductus Arteriosus peak velocity systole", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
 			props.Clear();
 
-			props.Add("Cardiac Cycle Point", "End Diastole");
+			props.Add("Cardiac Cycle Point", "Diastole");
 			specs.Add(new MeasurementSpecification("Patent Ductus Arteriosus peak velocity diastole", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
 			props.Clear();
 
