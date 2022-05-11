@@ -175,7 +175,7 @@ namespace DICOMReporting.Data {
 			else {
 				final2 = new Result("Patent Ductus Arteriosus peak gradient", "mmHg");
 			}
-			Results["Patent Ductus Arteriosus peak gradient"] = final2;
+			//Results["Patent Ductus Arteriosus peak gradient"] = final2;
 		}
 	}
 }

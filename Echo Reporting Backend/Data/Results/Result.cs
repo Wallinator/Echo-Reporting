@@ -59,7 +59,7 @@ namespace DICOMReporting.Data.Results {
 			}
 			return Name + ": \n\t" + "Value: " + Value + " " + UnitShorthand + emptyZscorestring;
 		}
-		public string ReportString(bool includeZScore = true, bool includeComment = true) {
+		public string ReportString(bool includeZScore = true, bool includeComment = true, string rounding = null) {
 			string name;
 			string value;
 			string Zscorestring = "";
@@ -72,14 +72,18 @@ namespace DICOMReporting.Data.Results {
 			else {
 				name = Name;
 			}
-
-			if (UnitShorthand.Equals("mmHg") ||
-				UnitShorthand.Equals("cm/s") ||
-				UnitShorthand.Equals("m/s")) {
-				value = Math.Round(Value, 1).ToString();
+			if(rounding != null) {
+				value = Value.ToString(rounding);
 			}
 			else {
-				value = Math.Round(Value, 2).ToString();
+				if(UnitShorthand.Equals("mmHg") ||
+					UnitShorthand.Equals("cm/s") ||
+					UnitShorthand.Equals("m/s")) {
+					value = Math.Round(Value, 1).ToString();
+				}
+				else {
+					value = Math.Round(Value, 2).ToString();
+				}
 			}
 
 			if (ZScoreable && includeZScore) {

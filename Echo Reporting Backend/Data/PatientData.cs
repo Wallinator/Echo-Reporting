@@ -171,7 +171,7 @@ namespace DICOMReporting.Data {
 		private string FormatName(string name) {
 			//return name.Replace('^', ' ').Trim();
 			var list = name.Split('^');
-			return string.Format("{0} {1}", list[0], list[1]);
+			return string.Format("{0} {1}", list[1], list[0]);
 		}
 		private string FormatDate(string dateinput) {
 			//var numbers2 = Regex.Split(dateinput, @"\D+").ToList().GetRange(1, 3).Select(x => int.Parse(x)).ToArray();
@@ -182,16 +182,27 @@ namespace DICOMReporting.Data {
 			return new DateTime(year, month, day).Date.ToShortDateString();
 		}
 		public void GetPatientDataFromDataset(DicomDataset ds) {
+			string value;
+			if(ds.TryGetSingleValue<string>(DicomTag.PatientName, out value)) {
+				PatientName = new StringResult("Patient Name", FormatName(value));
+			}
 
-			PatientName = new StringResult("Patient Name", FormatName(ds.GetSingleValue<string>(DicomTag.PatientName)));
+			if(ds.TryGetSingleValue<string>(DicomTag.PatientID, out value)) {
+				PatientID = new StringResult("Patient ID", value);
+			}
 
-			PatientID = new StringResult("Patient ID", ds.GetSingleValue<string>(DicomTag.PatientID));
+			if(ds.TryGetSingleValue<string>(DicomTag.StudyDate, out value)) {
+				StudyDate = new StringResult("Study Date", FormatDate(value));
+			}
 
-			StudyDate = new StringResult("Study Date", FormatDate(ds.GetSingleValue<string>(DicomTag.StudyDate)));
+			if(ds.TryGetSingleValue<string>(DicomTag.PatientBirthDate, out value)) {
+				PatientDOB = new StringResult("DOB", FormatDate(value));
+			}
 
-			PatientDOB = new StringResult("DOB", FormatDate(ds.GetSingleValue<string>(DicomTag.PatientBirthDate)));
-
-			ReferringPhysician = new StringResult("Referring Physician", ds.GetSingleValue<string>(DicomTag.ReferringPhysicianName));
+			if(ds.TryGetSingleValue<string>(DicomTag.ReferringPhysicianName, out value)) {
+				ReferringPhysician = new StringResult("Referring Physician", value);
+			}
 		}
+		
 	}
 }

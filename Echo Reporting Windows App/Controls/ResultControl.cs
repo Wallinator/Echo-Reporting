@@ -78,7 +78,17 @@ namespace Echo_Reporting_Windows_App {
 					result.UnitShorthand.Equals("cm/s") ||
 					result.UnitShorthand.Equals("m/s")) {
 					ResultValueTextBox.Text = Math.Round(value, 1).ToString();
-				}
+				}/*
+				else if(result.UnitShorthand.Equals("yr")) {
+					if(result.Value < 1) {
+						result.UnitShorthand = "months";
+						ResultUnitLabel.Text = "months";
+						ResultValueTextBox.Text = Math.Round(value, 3).ToString();
+					}
+					else {
+						ResultValueTextBox.Text = Math.Floor(value).ToString();
+					}
+				}*/
 				else {
 					ResultValueTextBox.Text = Math.Round(value, 3).ToString();
 				}

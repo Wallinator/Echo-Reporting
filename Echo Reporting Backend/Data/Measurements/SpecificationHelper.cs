@@ -8,30 +8,30 @@ namespace DICOMReporting.Data.Measurements {
 		public static Dictionary<string, List<MeasurementSpecification>> SpecsBySite(PatientData pd) {
 			var final = new Dictionary<string, List<MeasurementSpecification>>();
 
-			final["Interventricular septum"] = InterventricularSeptumSpecs(pd);
+			//final["Interventricular septum"] = InterventricularSeptumSpecs(pd);
 			final["Left Ventricle"] = LeftVentricleSpecs(pd);
 			final["Aortic Valve"] = AorticValveSpecs(pd);
 			final["Sinus of Valsalva"] = SinusOfValsalvaSpecs(pd);
-			final["Aortic sinotubular junction"] = AorticSinotubularJunctionSpecs(pd);
+			//final["Aortic sinotubular junction"] = AorticSinotubularJunctionSpecs(pd);
 			final["Aortic arch"] = AorticArchSpecs(pd);
-			final["Aortic isthmus"] = AorticIsthmusSpecs(pd);
+			//final["Aortic isthmus"] = AorticIsthmusSpecs(pd);
 			final["Pulmonic Valve"] = PulmonicValveSpecs(pd);
 			final["Pulmonary Artery"] = PulmonaryArterySpecs(pd);
 			final["Mitral Valve"] = MitralValveSpecs(pd);
 			final["Tricuspid Valve"] = TricuspidValveSpecs(pd);
-			final["Ascending aorta"] = AscendingAortaSpecs(pd);
+			//final["Ascending aorta"] = AscendingAortaSpecs(pd);
 			final["Coronary Artery"] = CoronaryArterySpecs(pd);
 			final["Anterior Descending Branch of Left Coronary Artery"] = AnteriorDescendingBranchOfLeftCoronaryArterySpecs(pd);
-			final["Right Coronary Artery"] = RightCoronaryArterySpecs(pd);
+			//final["Right Coronary Artery"] = RightCoronaryArterySpecs(pd);
 			final["Pulmonary Venous Structure"] = PulmonaryVenousStructureSpecs(pd);
-			final["Atrial Septal Defect"] = AtrialSeptalDefectSpecs(pd);
+			//final["Atrial Septal Defect"] = AtrialSeptalDefectSpecs(pd);
 			final["Congenital Anomaly of Cardiovascular System"] = CongenitalAnomalyOfCardiovascularSystemSpecs(pd);
 			final["Right Ventricle"] = RightVentricleSpecs(pd);
-			final["Pulmonary Trunk"] = PulmonaryTrunkSpecs(pd);
-			final["Coarctation of aorta"] = CoarctationOfTheAortaSpecs(pd);
+			//final["Pulmonary Trunk"] = PulmonaryTrunkSpecs(pd);
+			//final["Coarctation of aorta"] = CoarctationOfTheAortaSpecs(pd);
 			//final["Thoracic aorta"] = ThoracicAortaSpecs(pd);
 			final["Aorta"] = AortaSpecs(pd);
-			final["Circumflex Coronary Artery"] = CircumflexCoronaryArterySpecs(pd);
+			//final["Circumflex Coronary Artery"] = CircumflexCoronaryArterySpecs(pd);
 			final["Patent Ductus Arteriosus"] = PatentDuctusArteriosusSpecs(pd);
 
 			return final;
@@ -164,9 +164,6 @@ namespace DICOMReporting.Data.Measurements {
 		private static List<MeasurementSpecification> AorticSinotubularJunctionSpecs(PatientData pd) {
 			var specs = new List<MeasurementSpecification>();
 			Dictionary<string, string> props = new Dictionary<string, string>();
-
-			specs.Add(new MeasurementSpecification("Sinotubular junction", "Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.SinotubularJunction(pd, "Sinotubular junction"), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
-			props.Clear();
 
 			return specs;
 		}
@@ -443,10 +440,13 @@ namespace DICOMReporting.Data.Measurements {
 			specs.Add(new MeasurementSpecification("Descending aorta peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mmHg"));
 			props.Clear();
 
-			specs.Add(new MeasurementSpecification("Ascending aorta", "Ascending Aortic Diameter", new Dictionary<string, string>(props), "mm", formula: DilationOfAscendingAortaFormula.AscendingAorta(pd, "ascending aorta"), includeImageMode: true, unitEnum: LengthUnit.Millimeter));
+			specs.Add(new MeasurementSpecification("Ascending aorta", "Ascending Aortic Diameter", new Dictionary<string, string>(props), "cm", formula: DilationOfAscendingAortaFormula.AscendingAorta(pd, "ascending aorta"), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
 			props.Clear();
 
 			specs.Add(new MeasurementSpecification("Aortic isthmus", "Aortic Isthmus Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.AorticIsthmus(pd, "Aortic isthmus"), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
+			props.Clear();
+
+			specs.Add(new MeasurementSpecification("Sinotubular junction", "Diameter", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.SinotubularJunction(pd, "Sinotubular junction"), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
 			props.Clear();
 
 			props.Add("Finding Site", "Ascending Aorta");
@@ -498,6 +498,7 @@ namespace DICOMReporting.Data.Measurements {
 
 			props.Add("Cardiac Cycle Point", "Systole");
 			specs.Add(new MeasurementSpecification("Patent Ductus Arteriosus peak velocity systole", "Peak Velocity", new Dictionary<string, string>(props), "m/s", unitEnum: SpeedUnit.MeterPerSecond));
+			specs.Add(new MeasurementSpecification("Patent Ductus Arteriosus peak gradient", "Peak Gradient", new Dictionary<string, string>(props), "mmHg"));
 			props.Clear();
 
 			props.Add("Cardiac Cycle Point", "Diastole");
