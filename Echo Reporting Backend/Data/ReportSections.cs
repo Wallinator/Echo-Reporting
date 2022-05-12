@@ -66,7 +66,7 @@ namespace Echo_Reporting_Backend.Data {
 			AVValves += ResultToString(sr.Results["Mitral valve A wave"]);
 			AVValves += ResultToString(sr.Results["Mitral E/A ratio"]);
 			AVValves += ResultToString(sr.Results["Mitral valve inflow A wave duration"]);
-			AVValves += ResultToString(sr.Results["MV decel time"], rounding: "N0");
+			AVValves += ResultToString(sr.Results["MV decel time"], rounding: 0);
 			AVValves += ResultToString(sr.Results["Mitral valve inflow mean gradient"]);
 			AVValves += ResultToString(sr.Results["Mitral valve regurgitation peak velocity"]);
 			AVValves += ResultToString(sr.Results["Mitral valve regurgitation peak gradient"]);
@@ -93,13 +93,13 @@ namespace Echo_Reporting_Backend.Data {
 			}
 			Ventricles += ResultToString(sr.Results["Fractional Shortening"]);
 			//Ventricles += ResultToString(sr.Results["Left Ventricular Teichholz EF"]);
-			string ejectionfraction = ResultToString(sr.Results["Left Ventricular biplane EF"], rounding: "N0");
+			string ejectionfraction = ResultToString(sr.Results["Left Ventricular biplane EF"], rounding: 1);
 			if (ejectionfraction.Length == 0) {
-				ejectionfraction = ResultToString(sr.Results["Left ventricular Apical 4 chamber EF"], rounding: "N0");
+				ejectionfraction = ResultToString(sr.Results["Left ventricular Apical 4 chamber EF"], rounding: 1);
 			}
 			Ventricles += ejectionfraction;
 
-			Ventricles += ResultToString(sr.Results["Heart Rate"], false, rounding:"N0");
+			Ventricles += ResultToString(sr.Results["Heart Rate"], false, rounding:0);
 
 			Ventricles += OptionsToString(sr.ReportingOptions.DilatedLV);
 			Ventricles += OptionsToString(sr.ReportingOptions.HypertrophiedLV);
@@ -261,7 +261,7 @@ namespace Echo_Reporting_Backend.Data {
 			string final = r.Value ? r.TrueText : r.FalseText;
 			return final.Length == 0 ? final : final + ". ";
 		}
-		private string ResultToString(Result r, bool includeZScore = true, bool includeComment = true, string rounding = null) {
+		private string ResultToString(Result r, bool includeZScore = true, bool includeComment = true, int rounding = -1) {
 			if (r.Empty) {
 				return "";
 			}

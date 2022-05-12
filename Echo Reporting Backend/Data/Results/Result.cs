@@ -59,7 +59,7 @@ namespace DICOMReporting.Data.Results {
 			}
 			return Name + ": \n\t" + "Value: " + Value + " " + UnitShorthand + emptyZscorestring;
 		}
-		public string ReportString(bool includeZScore = true, bool includeComment = true, string rounding = null) {
+		public string ReportString(bool includeZScore = true, bool includeComment = true, int rounding = -1) {
 			string name;
 			string value;
 			string Zscorestring = "";
@@ -72,8 +72,8 @@ namespace DICOMReporting.Data.Results {
 			else {
 				name = Name;
 			}
-			if(rounding != null) {
-				value = Value.ToString(rounding);
+			if(rounding >= 0) {
+				value = Math.Round(Value, rounding).ToString();
 			}
 			else {
 				if(UnitShorthand.Equals("mmHg") ||
@@ -103,11 +103,10 @@ namespace DICOMReporting.Data.Results {
 			return new List<string>() { Name, value + " " + UnitShorthand };
 		}
 
-		public List<string> AsString() {
+		public List<string> AsString(int rounding = -1) {
 			string value;
 			string zscore;
-			int rounding;
-			if (Empty) {
+			if(Empty) {
 				return new List<string> {
 					Name,
 					"",
@@ -116,14 +115,17 @@ namespace DICOMReporting.Data.Results {
 					};
 			}
 
-			if (UnitShorthand.Equals("mmHg") ||
+			if(rounding < 0) {
+				if(UnitShorthand.Equals("mmHg") ||
 				UnitShorthand.Equals("cm/s") ||
 				UnitShorthand.Equals("m/s")) {
-				rounding = 1;
+					rounding = 1;
+				}
+				else {
+					rounding = 2;
+				}
 			}
-			else {
-				rounding = 2;
-			}
+
 			value = Math.Round(Value, rounding).ToString();
 
 			if (ZScoreable) {

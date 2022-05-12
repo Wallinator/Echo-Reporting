@@ -96,7 +96,7 @@ namespace Echo_Reporting_Backend.Data {
 			html += AddTableRow(l1, l2, l3);
 
 			l1 = report.Results["LVPWd"].AsString();
-			l2 = report.Results["MV decel time"].AsString();
+			l2 = report.Results["MV decel time"].AsString(0);
 			l3 = report.Results["LV mass index"].AsString();
 			l2[0] = "MV decel time";
 			l3[0] = "LV Mass Index (Cubed)";
@@ -104,7 +104,7 @@ namespace Echo_Reporting_Backend.Data {
 
 			l1 = report.Results["IVSs"].AsString();
 			l2 = report.Results["Mitral annulus E'"].AsString();
-			l3 = report.Results["Heart Rate"].AsString();
+			l3 = report.Results["Heart Rate"].AsString(0);
 			l2[0] = "LV E'";
 			l3[0] = "HR";
 			html += AddTableRow(l1, l2, l3);
