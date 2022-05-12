@@ -90,7 +90,7 @@ namespace Echo_Reporting_Backend.Data {
 
 			l1 = report.Results["LVIDd"].AsString();
 			l2 = report.Results["Mitral valve A wave"].AsString();
-			l3 = report.Results["Left Ventricular Teichholz EF"].AsString();
+			l3 = report.Results["Left Ventricular Teichholz EF"].AsString(1);
 			l2[0] = "MV Peak A";
 			l3[0] = "EF (Teich)";
 			html += AddTableRow(l1, l2, l3);
