@@ -119,12 +119,18 @@ namespace DICOMReporting.Data {
 				}
 			}
 			UpdateBSAResult();
-			Debug.WriteLine(PatientDOB.Value);
+			UpdateAgeFromDOB();
 		}
 		public void UpdateBSAResult() {
 			BSA = new Result("Body Surface Area", "m2", value: 0.024265 * Math.Pow(PatientHeight.Value, 0.3964) * Math.Pow(PatientWeight.Value, 0.5378), empty: false);
-			if (PatientHeight.Empty || PatientWeight.Empty) {
+			if(PatientHeight.Empty || PatientWeight.Empty) {
 				BSA.Empty = true;
+			}
+		}
+		public void UpdateAgeFromDOB() {
+			if(!string.IsNullOrEmpty(PatientDOB.Value) && PatientAge.Empty) {
+				PatientAge.Value = (DateTime.Now - DateTime.Parse(PatientDOB.Value)).Duration().TotalDays / 365;
+				PatientAge.Empty = false;
 			}
 		}
 		public PatientData() {
@@ -202,6 +208,8 @@ namespace DICOMReporting.Data {
 			if(ds.TryGetSingleValue<string>(DicomTag.ReferringPhysicianName, out value)) {
 				ReferringPhysician = new StringResult("Referring Physician", value);
 			}
+
+			UpdateAgeFromDOB();
 		}
 		
 	}

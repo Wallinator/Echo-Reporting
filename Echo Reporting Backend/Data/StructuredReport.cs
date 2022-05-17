@@ -1,5 +1,6 @@
 ﻿using DICOMReporting.Data.Measurements;
 using DICOMReporting.Data.Results;
+using DICOMReporting.Formulas;
 using Echo_Reporting_Backend.Data;
 using System;
 using System.Collections.Generic;
@@ -154,8 +155,8 @@ namespace DICOMReporting.Data {
 			}
 		}
 
-		private void AddCalculatedValues() {
-/*
+		public void AddCalculatedValues() {
+			/*
 			var r1 = Results["Pulmonary valve end diastolic velocity"];
 			Result final1;
 			if (!r1.Empty) {
@@ -164,7 +165,7 @@ namespace DICOMReporting.Data {
 			else {
 				final1 = new Result("Pulmonary valve end diastolic peak gradient", "mmHg");
 			}
-			Results["Pulmonary valve end diastolic peak gradient"] = final1;*/
+			Results["Pulmonary valve end diastolic peak gradient"] = final1;
 
 
 			var r2 = Results["Patent Ductus Arteriosus peak velocity systole"];
@@ -175,7 +176,33 @@ namespace DICOMReporting.Data {
 			else {
 				final2 = new Result("Patent Ductus Arteriosus peak gradient", "mmHg");
 			}
-			//Results["Patent Ductus Arteriosus peak gradient"] = final2;
+			Results["Patent Ductus Arteriosus peak gradient"] = final2;
+			*/
+
+
+			var r1 = Results["Main pulmonary artery peak velocity"];
+			Result final1;
+			if(!r1.Empty) {
+				final1 = new Result("Main pulmonary artery peak gradient", "mmHg", empty: false, value: 4 * Math.Pow(r1.Value, 2));
+			}
+			else {
+				final1 = new Result("Main pulmonary artery peak gradient", "mmHg");
+			}
+			Results["Main pulmonary artery peak gradient"] = final1;
+
+			var LVIDd = Results["LVIDd"];
+			var IVSd = Results["IVSd"];
+			var LVPWd = Results["LVPWd"];
+			Result final2;
+			if(!LVIDd.Empty && !IVSd.Empty && !LVPWd.Empty && !PatientData.BSA.Empty) {
+				double value = (0.8 *(1.04 * (Math.Pow(LVIDd.Value + IVSd.Value + LVPWd.Value, 3) - Math.Pow(LVIDd.Value, 3))) + 0.6)/ PatientData.BSA.Value;
+				final2 = new Result("LV mass index", "g/m2", empty: false, value: value, formula:ImpactOfCardiacGrowthFormula.LVMassIndex(PatientData, "LV mass index"));
+				System.Console.WriteLine("ya we got it");
+			}
+			else {
+				final2 = new Result("LV mass index", "g/m2", formula: ImpactOfCardiacGrowthFormula.LVMassIndex(PatientData, "LV mass index"));
+			}
+			Results["LV mass index"] = final2;
 		}
 	}
 }

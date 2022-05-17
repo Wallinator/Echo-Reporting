@@ -65,7 +65,8 @@ namespace Echo_Reporting_Backend.Data {
 			AVValves += ResultToString(sr.Results["Mitral valve E wave"]);
 			AVValves += ResultToString(sr.Results["Mitral valve A wave"]);
 			AVValves += ResultToString(sr.Results["Mitral E/A ratio"]);
-			AVValves += ResultToString(sr.Results["Mitral valve inflow A wave duration"]);
+			AVValves += ResultToString(sr.Results["Mitral valve inflow A wave duration"], rounding: 0);
+			;
 			AVValves += ResultToString(sr.Results["MV decel time"], rounding: 0);
 			AVValves += ResultToString(sr.Results["Mitral valve inflow mean gradient"]);
 			AVValves += ResultToString(sr.Results["Mitral valve regurgitation peak velocity"]);
@@ -79,7 +80,7 @@ namespace Echo_Reporting_Backend.Data {
 			AVValves += ResultToString(sr.Results["Tricuspid valve annulus"]);
 			AVValves += ResultToString(sr.Results["Tricuspid valve inflow mean gradient"]);
 			AVValves += ResultToString(sr.Results["Tricuspid valve regurgitation peak velocity"]);
-			AVValves += ResultToString(sr.Results["Estimated RV systolic pressure"]);
+			AVValves += ResultToString(sr.Results["Estimated RV systolic pressure"], rounding: 1);
 		}
 		private void SetVentriclesText(StructuredReport sr) {
 			Ventricles += OptionsToString(sr.ReportingOptions.VentricleFunction);
@@ -106,15 +107,14 @@ namespace Echo_Reporting_Backend.Data {
 			Ventricles += OptionsToString(sr.ReportingOptions.ReducedLVFunction);
 			Ventricles += BoolResultToString(sr.ReportingOptions.LVSystolicFunction);
 			Ventricles += BoolResultToString(sr.ReportingOptions.NormalDiastolic);
-			Ventricles += ResultToString(sr.Results["LV IVRT"]);
+			Ventricles += ResultToString(sr.Results["LV IVRT"], rounding: 0);
 			Ventricles += ResultToString(sr.Results["Myocardial Performance Index"]);
 
 			Ventricles += ResultToString(sr.Results["Pulm vein S wave"]);
 			Ventricles += ResultToString(sr.Results["Pulm vein D wave"]);
 			Ventricles += ResultToString(sr.Results["Pulm vein A wave"]);
 
-			Ventricles += ResultToString(sr.Results["Pulmonary vein A wave duration"]);
-			Ventricles += ResultToString(sr.Results["Mitral valve inflow A wave duration"]);
+			Ventricles += ResultToString(sr.Results["Pulmonary vein A wave duration"], rounding: 0);
 
 			Ventricles += ResultToString(sr.Results["Mitral annulus E'"]);
 			Ventricles += ResultToString(sr.Results["Mitral annulus A'"]);
@@ -128,7 +128,7 @@ namespace Echo_Reporting_Backend.Data {
 			Ventricles += ResultToString(sr.Results["Tricuspid annulus A'"]);
 			Ventricles += ResultToString(sr.Results["Tricuspid annulus S'"]);
 
-			Ventricles += ResultToString(sr.Results["TAPSE"], false);
+			Ventricles += sr.Results["TAPSE"].ZString();
 
 			Ventricles += OptionsToString(sr.ReportingOptions.DilatedRV);
 			Ventricles += OptionsToString(sr.ReportingOptions.HypertrophiedRV);
@@ -189,7 +189,7 @@ namespace Echo_Reporting_Backend.Data {
 			}
 			Outlets += ResultToString(sr.Results["Pulmonary valve mean gradient"]);
 
-			Outlets += ResultToString(sr.Results["Pulmonary artery acceleration time"], false);
+			Outlets += sr.Results["Pulmonary artery acceleration time"].ZString();
 
 
 			Outlets += ResultToString(sr.Results["Pulmonary valve end diastolic velocity"]);
@@ -312,6 +312,16 @@ namespace Echo_Reporting_Backend.Data {
 
 				case "Pulmonary stenosis":
 					return "Normal biventricular dimensions and function. Mild pulmonary valve stenosis. Normal aortic, mitral and tricuspid valvular function. Unobstructed left sided left sided aortic arch. No septal defects and no PDA. Normal systemic and pulmonary venous connections";
+
+				case "Normal with PR":
+					return "Structurally and functionally normal heart. Normal valvular function with normal estimated pulmonary artery pressure from trivial pulmonary valve regurgitation. Unobstructed outflow tracts and left sided aortic arch. No septal defects and no PDA. Normal systemic and pulmonary venous connections";
+
+				case "Normal with TR":
+					return "Structurally and functionally normal heart. Normal valvular function with normal estimated right ventricular pressure from trivial tricuspid valve regurgitation. Unobstructed outflow tracts and left sided aortic arch. No septal defects and no PDA. Normal systemic and pulmonary venous connections";
+
+				case "Normal with TR and PR":
+					return "Structurally and functionally normal heart. Normal valvular function with normal estimated right ventricular and pulmonary artery pressure from trivial tricuspid and pulmonary valve regurgitation respectively. Unobstructed outflow tracts and left sided aortic arch. No septal defects and no PDA. Normal systemic and pulmonary venous connections";
+
 				default:
 					return "";
 			}

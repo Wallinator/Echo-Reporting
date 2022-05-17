@@ -72,10 +72,10 @@ namespace DICOMReporting.Data.Measurements {
 			specs.Add(new MeasurementSpecification("LVPWs", "Left Ventricle Posterior Wall Systolic Thickness", new Dictionary<string, string>(props), "cm", formula: RegressionEquationFormula.LVPWs(pd, ""), includeImageMode: true, unitEnum: LengthUnit.Centimeter));
 			props.Clear();
 
-			props.Add("Measurement Method", "Cube Method");
-			props.Add("Index", "Body Surface Area");
-			specs.Add(new MeasurementSpecification("LV mass index", "Left Ventricle Mass Index", new Dictionary<string, string>(props), "g/m2", formula: ImpactOfCardiacGrowthFormula.LVMassIndex(pd, "LV mass index"), includeImageMode: true));
-			props.Clear();
+			//props.Add("Measurement Method", "Cube Method");
+			//props.Add("Index", "Body Surface Area");
+			//specs.Add(new MeasurementSpecification("LV mass index", "Left Ventricle Mass Index", new Dictionary<string, string>(props), "g/m2", formula: ImpactOfCardiacGrowthFormula.LVMassIndex(pd, "LV mass index"), includeImageMode: true));
+			//props.Clear();
 
 			//props.Add("Image Mode", "M mode");
 			specs.Add(new MeasurementSpecification("Heart Rate", "Heart rate", new Dictionary<string, string>(props), "bpm", formula: ImpactOfCardiacGrowthFormula.HeartRate(pd, ""), includeImageMode: true));

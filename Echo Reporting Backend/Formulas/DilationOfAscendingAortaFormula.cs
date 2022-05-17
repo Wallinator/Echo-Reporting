@@ -5,7 +5,7 @@ namespace DICOMReporting.Formulas {
 	public class DilationOfAscendingAortaFormula : IFormula {
 		private Constants constants;
 		public string ReportAnomaly(double measurement) {
-			double ZScore = GetZScore(measurement);
+			double ZScore = GetZScore(measurement * 10);
 			int bracket;
 			if (ZScore < -2) {
 				bracket = 0;

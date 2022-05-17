@@ -300,6 +300,9 @@ namespace DICOMReporting.Data {
 																												"Muscular VSD with PFO",
 																												"Perimembranous VSD",
 																												"Perimembranous VSD with PFO",
-																												"Pulmonary stenosis"});
+																												"Pulmonary stenosis",
+																												"Normal with PR",
+																												"Normal with TR",
+																												"Normal with TR and PR"});
 	}
 }

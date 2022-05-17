@@ -91,6 +91,19 @@ namespace DICOMReporting.Data.Results {
 			}
 			return name + " (" + value + " " + UnitShorthand + Zscorestring + ")";
 		}
+		public string ZString() {
+			string name;
+			if(HasComment) {
+				if(AnomalyText.Length == 0) {
+					return "";
+				}
+				name = AnomalyText;
+			}
+			else {
+				return "";
+			}
+			return name;
+		}
 
 		public List<string> TableString() {
 			string value;

@@ -72,6 +72,7 @@ namespace Echo_Reporting_Windows_App {
 			ShowAllResults(false);
 		}
 		private void ShowAllResults(bool showNotFoundError) {
+			report.AddCalculatedValues();
 			panel3.Visible = false;
 			ClearAllPanels();
 			// Patient Data
