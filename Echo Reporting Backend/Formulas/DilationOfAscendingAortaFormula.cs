@@ -5,7 +5,7 @@ namespace DICOMReporting.Formulas {
 	public class DilationOfAscendingAortaFormula : IFormula {
 		private Constants constants;
 		public string ReportAnomaly(double measurement) {
-			double ZScore = GetZScore(measurement * 10);
+			double ZScore = GetZScore(measurement);
 			int bracket;
 			if (ZScore < -2) {
 				bracket = 0;
@@ -32,7 +32,7 @@ namespace DICOMReporting.Formulas {
 		}
 		public double GetZScore(double observed_y) {
 			double mean_y = (constants.Multiplier * Math.Log(constants.Pd.BSA.Value)) + constants.Intercept;
-			return (Math.Log(observed_y) - mean_y) / constants.MSE;
+			return (Math.Log(observed_y * 10) - mean_y) / constants.MSE;
 		}
 		public bool ZScoreable() => !constants.Pd.BSA.Empty;
 		public static DilationOfAscendingAortaFormula AscendingAorta(PatientData pd, string name) {

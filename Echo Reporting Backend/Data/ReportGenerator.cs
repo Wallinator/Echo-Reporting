@@ -83,7 +83,7 @@ namespace Echo_Reporting_Backend.Data {
 				<tbody>";
 			l1 = report.Results["IVSd"].AsString();
 			l2 = report.Results["Mitral valve E wave"].AsString();
-			l3 = report.Results["Fractional Shortening"].AsString();
+			l3 = report.Results["Fractional Shortening"].AsString(1);
 			l2[0] = "MV Peak E";
 			l3[0] = "FS%";
 			html += AddTableRow(l1, l2, l3);
@@ -97,7 +97,7 @@ namespace Echo_Reporting_Backend.Data {
 
 			l1 = report.Results["LVPWd"].AsString();
 			l2 = report.Results["MV decel time"].AsString(0);
-			l3 = report.Results["LV mass index"].AsString();
+			l3 = report.Results["LV mass index"].AsString(1);
 			l2[0] = "MV decel time";
 			l3[0] = "LV Mass Index (Cubed)";
 			html += AddTableRow(l1, l2, l3);

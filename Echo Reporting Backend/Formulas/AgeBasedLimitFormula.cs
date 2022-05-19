@@ -39,7 +39,7 @@ namespace DICOMReporting.Formulas {
 		public static AgeBasedLimitFormula TAPSE(PatientData pd, string name) {
 			double[] limits = { 0.68, 0.85, 1.01, 1.13, 1.25, 1.36, 1.48, 1.56, 1.6, 1.62, 1.64, 1.67, 1.73, 1.79, 1.83, 1.84, 1.85, 1.87, 1.93, 1.98, 2.04, 2.05 };
 			double[] ages = { 0, 0.0833, 0.3333, 0.5833, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 };
-			return new AgeBasedLimitFormula(new Constants(limits, ages, pd, name, new[] { "Reduced", "Normal" }, "({0}), lower limit of normal range {1} cm", 2));
+			return new AgeBasedLimitFormula(new Constants(limits, ages, pd, name, new[] { "Reduced", "Normal" }, " ({0} cm), lower limit of normal range {1} cm. ", 2));
 		}
 		public static AgeBasedLimitFormula PulmArtAccelTime(PatientData pd, string name) {
 			double[] flimits = { 54.5, 56.6, 58.1, 60.3, 64, 69.2, 74.5, 78.9, 82.8, 86.3, 89.5, 92.5, 95.3, 98, 100.6, 103.1, 105.4, 107.8, 110, 112.2, 114.3, 116.3 };
@@ -49,7 +49,7 @@ namespace DICOMReporting.Formulas {
 
 			double[] limits = pd.PatientSex.Value.ToLower().Contains("f") ? flimits : mlimits;
 
-			return new AgeBasedLimitFormula(new Constants(limits, ages, pd, name, new[] { "Reduced", "Normal" }, "({0}), lower limit of normal range {1} msec", 1));
+			return new AgeBasedLimitFormula(new Constants(limits, ages, pd, name, new[] { "Reduced", "Normal" }, "({0} ms), lower limit of normal range {1} ms. ", 0));
 		}
 		private struct Constants {
 			public string[] Anomalies {

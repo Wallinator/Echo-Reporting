@@ -296,13 +296,13 @@ namespace DICOMReporting.Data {
 		// Conclusion
 		public MultipleChoiceResult Conclusion = new MultipleChoiceResult("Conclusion:", new List<string>() {	"Normal",
 																												"Normal with PFO",
+																												"Normal with PR",
+																												"Normal with TR",
+																												"Normal with TR and PR",
 																												"Muscular VSD",
 																												"Muscular VSD with PFO",
 																												"Perimembranous VSD",
 																												"Perimembranous VSD with PFO",
-																												"Pulmonary stenosis",
-																												"Normal with PR",
-																												"Normal with TR",
-																												"Normal with TR and PR"});
+																												"Pulmonary stenosis"});
 	}
 }
