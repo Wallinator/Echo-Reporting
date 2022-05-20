@@ -49,7 +49,7 @@ namespace DICOMReporting.Formulas {
 
 			double[] limits = pd.PatientSex.Value.ToLower().Contains("f") ? flimits : mlimits;
 
-			return new AgeBasedLimitFormula(new Constants(limits, ages, pd, name, new[] { "Reduced", "Normal" }, "({0} ms), lower limit of normal range {1} ms. ", 0));
+			return new AgeBasedLimitFormula(new Constants(limits, ages, pd, name, new[] { "Reduced", "Normal" }, " ({0} ms), lower limit of normal range {1} ms. ", 0));
 		}
 		private struct Constants {
 			public string[] Anomalies {

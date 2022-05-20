@@ -128,8 +128,8 @@ namespace DICOMReporting.Data {
 			}
 		}
 		public void UpdateAgeFromDOB() {
-			if(!string.IsNullOrEmpty(PatientDOB.Value) && PatientAge.Empty) {
-				PatientAge.Value = (DateTime.Now - DateTime.Parse(PatientDOB.Value)).Duration().TotalDays / 365;
+			if(!string.IsNullOrEmpty(PatientDOB.Value) && !string.IsNullOrEmpty(StudyDate.Value) && (PatientAge.Empty || PatientAge.Value == 0)) {
+				PatientAge.Value = (DateTime.Parse(StudyDate.Value) - DateTime.Parse(PatientDOB.Value)).Duration().TotalDays / 365;
 				PatientAge.Empty = false;
 			}
 		}
